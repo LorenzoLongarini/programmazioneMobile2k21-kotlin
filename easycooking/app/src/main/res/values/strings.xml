@@ -13,5 +13,6 @@
     <string name="Stringa4">Cosa vuoi cucinare?</string>
     <string name="cat">Categoria:</string>
     <string name="naz">Nazionalità:</string>
+    <string name="go">Vai alla ricetta</string>
 
 </resources>
