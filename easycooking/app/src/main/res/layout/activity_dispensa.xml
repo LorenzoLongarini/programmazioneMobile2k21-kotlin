@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="Aggiungi un prodotto in dispensa ahahaha"
+        android:contentDescription="Aggiungi un prodotto in dispensa"
         app:backgroundTint="@color/rosso_chiaro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
