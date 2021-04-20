@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EasyCooking</string>
+
+    <string name="Stringa1">La mia dispensa</string>
+    <string name="Stringa2">Inserisci in dispensa...</string>
+    <string name="nome">Nome:</string>
+    <string name="quant">Quantità:</string>
+    <string name="Data">Data di scadenza:</string>
+    <string name="prodIns">Nome del prodotto da inserire...</string>
+    <string name="quantIns">Quantità</string>
+    <string name="aggProd">Aggiungi in dispensa</string>
+    <string name="Stringa3">Le mie ricette</string>
+    <string name="Stringa4">Cosa vuoi cucinare?</string>
+    <string name="cat">Categoria:</string>
+    <string name="naz">Nazionalità:</string>
+
 </resources>
