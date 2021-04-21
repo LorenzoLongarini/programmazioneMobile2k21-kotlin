@@ -224,6 +224,7 @@
                 app:srcCompat="@drawable/riga_arancio" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRicette"
                 android:layout_width="match_parent"
                 android:layout_height="209dp"
                 android:paddingStart="20dp"

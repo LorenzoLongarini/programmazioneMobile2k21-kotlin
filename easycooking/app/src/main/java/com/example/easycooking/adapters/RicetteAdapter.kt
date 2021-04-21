@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
-import com.example.easycooking.entities.ricettavisione
+import com.example.easycooking.models.RicetteModel
 
-class RicetteAdapter (private val mRicette:List<ricettavisione>) :RecyclerView.Adapter<RicetteAdapter.ViewHolder>() {
+class RicetteAdapter (private val mRicette:List<RicetteModel>) :RecyclerView.Adapter<RicetteAdapter.ViewHolder>() {
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
 
@@ -29,12 +29,12 @@ class RicetteAdapter (private val mRicette:List<ricettavisione>) :RecyclerView.A
 
     override fun onBindViewHolder(viewHolder: RicetteAdapter.ViewHolder, position: Int) {
         // Get the data model based on position
-        val ricetta: ricettavisione = mRicette.get(position)
+        val ricetta: RicetteModel = mRicette.get(position)
         // Set item views based on your views and data model
         val textView = viewHolder.nomeTextView
         textView.setText(ricetta.nome)
         val imageView = viewHolder.foto_ricetta
-        imageView.setImageDrawable(ricetta.immagine)
+        imageView.setImageDrawable(ricetta.img)
         val button = viewHolder.gobutton
 
     }
