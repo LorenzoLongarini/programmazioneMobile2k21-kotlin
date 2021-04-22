@@ -21,5 +21,6 @@
     <string name="social">Usa uno dei tuoi profili social</string>
     <string name="dimenticato">Hai dimenticato la password?</string>
     <string name="registrati" >Registrati</string>
+    <string name="noreg">Continua senza registrarti</string>
 
 </resources>
