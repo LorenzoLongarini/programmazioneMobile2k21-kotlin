@@ -28,5 +28,10 @@
     <string name="compr">Cosa devo comprare?</string>
     <string name="ricetta">Scrivi la tua ricetta</string>
     <string name="img">Immagine:</string>
+    <string name="vegano">Vegano</string>
+    <string name="noglutine">Senza glutine</string>
+    <string name="nolattosio">Senza lattosio</string>
+    <string name="prep">Tempo di preparazione</string>
+    <string name="cott">Tempo di cottura</string>
 
 </resources>
