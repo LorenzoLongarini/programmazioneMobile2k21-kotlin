@@ -4,25 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"><![CDATA[
     tools:context=".dispensa">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="Aggiungi un prodotto in dispensa"
-        app:backgroundTint="@color/rosso_chiaro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        app:tint="@color/white" />
+
+
+    ]]>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -92,7 +79,7 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
-            tools:visibility="visible" />
+            tools:visibility="invisible" />
 
         <ImageView
             android:id="@+id/imageView10"
@@ -110,7 +97,7 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
-            tools:visibility="invisible" />
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -126,7 +113,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Stringa1"
+        android:text="@string/spesa"
         android:textColor="@color/bordeaux"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,43 +125,50 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="149dp"
-        android:layout_marginTop="22dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="fitXY"
         android:src="@drawable/verdura"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/riga_arancio" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="325dp"
+        android:layout_height="383dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.060000002">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/compr"
+                android:textColor="@color/arancione_scuro"
+                android:textSize="24sp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="449dp"
+                android:layout_height="353dp"
+                android:background="@drawable/paginagialla2"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="149dp"
-                android:rotationX="180"
-                android:src="@drawable/verdura" />
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

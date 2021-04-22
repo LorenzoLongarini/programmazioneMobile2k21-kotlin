@@ -22,5 +22,9 @@
     <string name="dimenticato">Hai dimenticato la password?</string>
     <string name="registrati" >Registrati</string>
     <string name="noreg">Continua senza registrarti</string>
+    <string name="accetto">Accetto i termini di servizio e la privacy police</string>
+    <string name="accountesist">Hai già un account? ACCEDI</string>
+    <string name="spesa">Lista della spesa</string>
+    <string name="compr">Cosa devo comprare?</string>
 
 </resources>
