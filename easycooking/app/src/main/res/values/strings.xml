@@ -26,5 +26,7 @@
     <string name="accountesist">Hai già un account? ACCEDI</string>
     <string name="spesa">Lista della spesa</string>
     <string name="compr">Cosa devo comprare?</string>
+    <string name="ricetta">Scrivi la tua ricetta</string>
+    <string name="img">Immagine:</string>
 
 </resources>

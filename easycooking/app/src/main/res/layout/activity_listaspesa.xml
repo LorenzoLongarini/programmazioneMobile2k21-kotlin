@@ -97,7 +97,7 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
-            tools:visibility="visible" />
+            tools:visibility="invisible" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -106,7 +106,7 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
-            tools:visibility="invisible" />
+            tools:visibility="visible" />
     </LinearLayout>
 
     <TextView

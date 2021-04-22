@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start|center_vertical"
         android:layout_weight="1"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="Nome ricetta"
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/bottone_go"

@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/ricetta_aggiunta_nome"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -64,10 +64,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_nome" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/ricetta_aggiunta_descrizione"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
         android:text="@string/accetto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_descrizione" />
 
     <TextView
         android:id="@+id/textView16"

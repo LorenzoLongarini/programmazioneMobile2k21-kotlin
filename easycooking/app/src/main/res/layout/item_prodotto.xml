@@ -6,6 +6,7 @@
     android:background="#7AFF9340"
     android:orientation="horizontal"
     android:paddingTop="10dp"
+    android:paddingRight="5dp"
     android:paddingBottom="10dp">
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:text="TextView"
+        android:textAlignment="textEnd"
         android:textSize="12sp" />
 
     <ImageButton
