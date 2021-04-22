@@ -14,5 +14,12 @@
     <string name="cat">Categoria:</string>
     <string name="naz">Nazionalità:</string>
     <string name="go">Vai alla ricetta</string>
+    <string name="accedi">Accedi</string>
+    <string name="benvenuto">Che bello, sei tornato!!! Benvenuto.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="social">Usa uno dei tuoi profili social</string>
+    <string name="dimenticato">Hai dimenticato la password?</string>
+    <string name="registrati" >Registrati</string>
 
 </resources>
