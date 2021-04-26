@@ -12,7 +12,7 @@
     <string name="Stringa3">Le mie ricette</string>
     <string name="Stringa4">Cosa vuoi cucinare?</string>
     <string name="cat">Categoria:</string>
-    <string name="naz">Nazionalità:</string>
+    <string name="naz">Origine:</string>
     <string name="go">Vai alla ricetta</string>
     <string name="accedi">Accedi</string>
     <string name="benvenuto">Che bello, sei tornato!!! Benvenuto.</string>
@@ -33,5 +33,9 @@
     <string name="nolattosio">Senza lattosio</string>
     <string name="prep">Tempo di preparazione</string>
     <string name="cott">Tempo di cottura</string>
+    <string name="tot">Tempo totale</string>
+    <string name="intol">Intolleranze:</string>
+    <string name="ingr">Ingredienti:</string>
+    <string name="proc">Procedimento:</string>
 
 </resources>

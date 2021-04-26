@@ -88,7 +88,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="82dp"
         android:background="@color/rosso_chiaro"
         android:backgroundTint="@color/rosso_chiaro"
@@ -138,7 +138,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="82dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
