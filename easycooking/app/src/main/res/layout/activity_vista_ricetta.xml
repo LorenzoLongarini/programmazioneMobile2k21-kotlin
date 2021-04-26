@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/immagine_ricetta_vista"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:fontFamily="@font/bungee"
@@ -27,7 +27,7 @@
         android:background="@color/arancione_sbiadito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18">
+        app:layout_constraintTop_toBottomOf="@+id/immagine_ricetta_vista">
 
         <TableRow
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:padding="10">
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/tempo_preparazione"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -81,7 +81,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/tempo_cottura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -89,7 +89,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/tempo_totale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -162,7 +162,7 @@
             android:padding="10">
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -170,7 +170,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/origine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -178,7 +178,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/intolleranze"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -186,7 +186,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/vegano"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -218,7 +218,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView42"
+            android:id="@+id/lista_ingrdienti_vista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
@@ -246,7 +246,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView44"
+            android:id="@+id/procedimento_vista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />

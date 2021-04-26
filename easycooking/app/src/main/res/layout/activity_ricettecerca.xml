@@ -16,7 +16,7 @@
     ]]>
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/cerca_ricette"
         android:layout_width="354dp"
         android:layout_height="62dp"
         android:layout_marginTop="24dp"
@@ -28,17 +28,17 @@
     </SearchView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/bottone_ricerca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:contentDescription="Aggiungi un prodotto in dispensa"
         app:backgroundTint="@color/arancio_giallino"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner3"
+        app:layout_constraintBottom_toBottomOf="@+id/origine_ricerca"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner3"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintStart_toEndOf="@+id/origine_ricerca"
+        app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca"
         app:srcCompat="@drawable/ic_baseline_search_24"
         app:tint="@color/white" />
 
@@ -52,17 +52,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/cerca_ricette" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/categoria_ricerca"
         android:layout_width="227dp"
         android:layout_height="34dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/cerca_ricette" />
 
     <TextView
         android:id="@+id/textView7"
@@ -77,14 +77,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/origine_ricerca"
         android:layout_width="227dp"
         android:layout_height="34dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -205,7 +205,7 @@
         android:src="@drawable/verdura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3"
+        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
         app:srcCompat="@drawable/riga_arancio" />
 
     <ScrollView
