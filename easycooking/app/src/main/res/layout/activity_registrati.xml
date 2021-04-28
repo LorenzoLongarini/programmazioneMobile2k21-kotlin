@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/ricetta_aggiunta_nome"
+        android:id="@+id/email_registrati"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -71,10 +71,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/email_registrati" />
 
     <EditText
-        android:id="@+id/ricetta_aggiunta_descrizione"
+        android:id="@+id/psw_registrati"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bottone_registrati"
         android:layout_width="233dp"
         android:layout_height="44dp"
         android:layout_marginTop="30dp"
@@ -94,26 +94,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/termini_privacy" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/termini_privacy"
         android:layout_width="225dp"
         android:layout_height="67dp"
         android:layout_marginTop="20dp"
         android:text="@string/accetto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_descrizione" />
+        app:layout_constraintTop_toBottomOf="@+id/psw_registrati" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/accedi_registrati"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/accountesist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/bottone_registrati" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

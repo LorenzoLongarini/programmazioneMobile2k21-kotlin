@@ -10,7 +10,7 @@
         android:id="@+id/titolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:drawableTop=""
         android:fontFamily="@font/bungee"
         android:text="@string/app_name"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/accedi"
         android:textColor="@color/rosso_chiaro"
         android:textSize="24sp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
-        android:id="@+id/ricetta_aggiunta_nome"
+        android:id="@+id/email_accedi"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -94,10 +94,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/email_accedi" />
 
     <EditText
-        android:id="@+id/ricetta_aggiunta_descrizione"
+        android:id="@+id/psw_accedi"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bottone_registrati"
         android:layout_width="233dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
@@ -116,7 +116,7 @@
         android:text="@string/accedi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_descrizione" />
+        app:layout_constraintTop_toBottomOf="@+id/psw_accedi" />
 
     <TextView
         android:id="@+id/textView12"
@@ -126,41 +126,41 @@
         android:text="@string/social"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/bottone_registrati" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/bottone_facebook"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/facebook" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/bottone_twitter"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/twitter" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/bottone_instagram"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/instagram" />
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/bottone_gmail"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
@@ -168,7 +168,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/password_dimenticata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dimenticato"
@@ -180,7 +180,7 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/registrati_accedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -191,11 +191,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/password_dimenticata"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/senza_registrazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -205,6 +205,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/registrati_accedi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

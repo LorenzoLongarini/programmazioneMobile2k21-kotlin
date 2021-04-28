@@ -33,7 +33,7 @@
     </ScrollView>
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/senza_lattosio_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+        app:layout_constraintTop_toBottomOf="@+id/senza_glutine_inserimento" />
 
     <TextView
         android:id="@+id/textView19"
@@ -53,10 +53,10 @@
         android:textColor="@color/rosso_chiaro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/nome_ricetta_inserimento" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/vegano_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -65,10 +65,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+        app:layout_constraintTop_toBottomOf="@+id/senza_lattosio_inserimento" />
 
     <EditText
-        android:id="@+id/ricetta_aggiunta_nome"
+        android:id="@+id/nome_ricetta_inserimento"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
@@ -78,13 +78,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/categoria_inserimento"
         android:layout_width="183dp"
         android:layout_height="32dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/senza_glutine_inserimento"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <ImageButton
@@ -111,11 +111,11 @@
         android:layout_marginTop="25dp"
         android:text="@string/cat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime2" />
+        app:layout_constraintStart_toEndOf="@+id/senza_glutine_inserimento"
+        app:layout_constraintTop_toBottomOf="@+id/cott_inserimento" />
 
     <EditText
-        android:id="@+id/editTextTime2"
+        android:id="@+id/cott_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -136,10 +136,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+        app:layout_constraintTop_toBottomOf="@+id/prep_inserimento" />
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/prep_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -160,10 +160,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ricetta_aggiunta_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/nome_ricetta_inserimento" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/senza_glutine_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -173,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime2" />
+        app:layout_constraintTop_toBottomOf="@+id/cott_inserimento" />
 
     <TextView
         android:id="@+id/textView10"
