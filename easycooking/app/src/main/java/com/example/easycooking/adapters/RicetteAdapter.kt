@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
-import com.example.easycooking.network.RicetteModel
 
 class RicetteAdapter (private val mRicette:List<RicetteModel>) :RecyclerView.Adapter<RicetteAdapter.ViewHolder>() {
 

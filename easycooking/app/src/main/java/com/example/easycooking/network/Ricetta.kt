@@ -1,8 +1,14 @@
 package com.example.easycooking.network
 
+import android.os.Parcelable
+import androidx.lifecycle.LiveData
+import com.example.easycooking.models.RicettaApistatus
+import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 class Ricetta {
 
+        val id: String,
         var nome: String? = null
         var image: String? = null
         var descrizione: String? = null
@@ -18,7 +24,8 @@ class Ricetta {
         var Ingredienti: List<Ingrediente>? = null
         var preparazione: String? = null
 
-        constructor(nome: String?, image: String?, descrizione: String?, prepTime: String?, cookTime: String?, totalTime: String?, keywords: List<String>?, recipeCategory: String?, recipeCuisine: String?, intolleranze: List<String>?, vegano: Boolean, porzioni: Int, Ingredienti: List<Ingrediente>?, preparazione: String?){
+        constructor(id: String, nome: String?, image: String?, descrizione: String?, prepTime: String?, cookTime: String?, totalTime: String?, keywords: List<String>?, recipeCategory: String?, recipeCuisine: String?, intolleranze: List<String>?, vegano: Boolean, porzioni: Int, Ingredienti: List<Ingrediente>?, preparazione: String?){
+                this.id= id
                 this.nome=nome
                 this.image=image
                 this.descrizione=descrizione
@@ -35,4 +42,4 @@ class Ricetta {
                 this.preparazione=preparazione
         }
 
-        }
+}
