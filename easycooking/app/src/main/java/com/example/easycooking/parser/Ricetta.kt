@@ -3,7 +3,6 @@ package com.example.easycooking.parser
 
 class Ricetta {
 
-
         var nome: String? = null
         var image: String? = null
         var descrizione: String? = null
