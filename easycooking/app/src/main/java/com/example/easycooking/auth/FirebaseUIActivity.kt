@@ -1,9 +1,10 @@
-package com.example.easycooking
+package com.example.easycooking.auth
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easycooking.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -22,8 +23,7 @@ abstract class FirebaseUIActivity : AppCompatActivity() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build(),
-            AuthUI.IdpConfig.FacebookBuilder().build(),
-            AuthUI.IdpConfig.TwitterBuilder().build())
+            AuthUI.IdpConfig.FacebookBuilder().build())
 
         // Create and launch sign-in intent
         startActivityForResult(
@@ -31,7 +31,8 @@ abstract class FirebaseUIActivity : AppCompatActivity() {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .build(),
-            RC_SIGN_IN)
+            RC_SIGN_IN
+        )
         // [END auth_fui_create_intent]
     }
 
@@ -87,7 +88,8 @@ abstract class FirebaseUIActivity : AppCompatActivity() {
                 .setLogo(R.drawable.frigologo) // Set logo drawable
                 .setTheme(R.style.MySuperAppTheme) // Set theme
                 .build(),
-            RC_SIGN_IN)
+            RC_SIGN_IN
+        )
         // [END auth_fui_theme_logo]
     }
 
@@ -102,7 +104,8 @@ abstract class FirebaseUIActivity : AppCompatActivity() {
                     "https://example.com/terms.html",
                     "https://example.com/privacy.html")
                 .build(),
-            RC_SIGN_IN)
+            RC_SIGN_IN
+        )
         // [END auth_fui_pp_tos]
     }
 
