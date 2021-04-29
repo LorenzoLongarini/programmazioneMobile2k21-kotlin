@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="MySuperAppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bordeaux</item>
+        <item name="colorPrimaryDark">@color/arancione_scuro</item>
+        <item name="colorAccent">@color/arancio_giallino</item>
+    </style>
+
+
+</resources>
