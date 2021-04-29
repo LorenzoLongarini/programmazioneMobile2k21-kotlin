@@ -72,3 +72,6 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 }
+repositories {
+    mavenCentral()
+}
