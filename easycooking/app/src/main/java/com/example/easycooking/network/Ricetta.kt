@@ -1,4 +1,4 @@
-package com.example.easycooking.parser
+package com.example.easycooking.network
 
 
 class Ricetta {

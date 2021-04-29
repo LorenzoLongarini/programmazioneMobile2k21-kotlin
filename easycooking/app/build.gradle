@@ -8,6 +8,9 @@ plugins {
 
 android {
     compileSdkVersion 30
+    buildFeatures {
+        dataBinding true
+    }
     buildToolsVersion "30.0.3"
 
     defaultConfig {
@@ -27,9 +30,6 @@ android {
         }
     }
     productFlavors {
-    }
-    buildFeatures {
-        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
