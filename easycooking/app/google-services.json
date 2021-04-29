@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "295539785368",
+    "firebase_url": "https://gino-49a3d-default-rtdb.firebaseio.com",
+    "project_id": "gino-49a3d",
+    "storage_bucket": "gino-49a3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295539785368:android:e677b6a695ef3132481aed",
+        "android_client_info": {
+          "package_name": "com.example.easycooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XSlgR6UEMIc9EaPppAiSVDFxLIhLq4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
