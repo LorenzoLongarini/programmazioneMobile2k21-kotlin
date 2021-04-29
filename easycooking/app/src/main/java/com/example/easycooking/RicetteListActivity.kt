@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.adapters.RicetteAdapter
-import com.example.easycooking.models.RicetteModel
+import com.example.easycooking.network.RicetteModel
 
 class RicetteListActivity : AppCompatActivity() {
     lateinit var ricette: ArrayList<RicetteModel>

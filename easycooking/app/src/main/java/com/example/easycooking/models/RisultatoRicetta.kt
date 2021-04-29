@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.easycooking.databinding.FragmentOverviewBinding
+import com.example.easycooking.network.ApiRicettaFilter
 
 class RisultatoRicetta : Fragment() {
 
@@ -18,7 +19,9 @@ class RisultatoRicetta : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentOverviewBinding.inflate(inflater)
         binding.lifecycleOwener = this
-        binding.view
+        binding.viewmodel = viewModel
+
+        binding.photosGrid.adapter = Photo
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.easycooking.models
+package com.example.easycooking.network
 
 class RicetteModel (val nome:String, val img:String) {
     companion object{
