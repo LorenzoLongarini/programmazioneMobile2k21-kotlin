@@ -1,6 +1,8 @@
 package com.example.easycooking.parser
 
 import android.util.JsonReader
+import com.example.easycooking.network.Ingrediente
+import com.example.easycooking.network.Ricetta
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -32,7 +34,7 @@ class Parser {
     }
 
     @Throws(IOException::class)
-    fun readRicetta(reader: JsonReader):Ricetta? {
+    fun readRicetta(reader: JsonReader): Ricetta? {
         var nome: String? = null
         var image: String? = null
         var descrizione: String? = null
@@ -82,7 +84,7 @@ class Parser {
             }
         }
             reader.endObject()
-            return Ricetta(nome,image,descrizione,prepTime,cookTime,totalTime,keywords,recipeCategory,recipeCuisine,intolleranze,vegano,porzioni,Ingredienti,preparazione)
+            return Ricetta(nome, image, descrizione, prepTime, cookTime, totalTime, keywords, recipeCategory, recipeCuisine, intolleranze, vegano, porzioni, Ingredienti, preparazione)
 
     }
 
@@ -99,7 +101,7 @@ class Parser {
     }
 
     @Throws(IOException::class)
-    fun readIngrediente(reader: JsonReader):Ingrediente  {
+    fun readIngrediente(reader: JsonReader): Ingrediente {
         var nomeIngr: String? = null
         var quantità: String? = null
         var unitaMisura: String? = null
@@ -117,7 +119,11 @@ class Parser {
             }
         }
         reader.endObject();
-        return Ingrediente(nomeIngr,quantità,unitaMisura)
+        return Ingrediente(
+            nomeIngr,
+            quantità,
+            unitaMisura
+        )
     }
 
     @Throws(IOException::class)

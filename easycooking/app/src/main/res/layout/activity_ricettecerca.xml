@@ -183,6 +183,17 @@
             tools:visibility="invisible" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/verdura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
+        app:srcCompat="@drawable/riga_arancio" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -196,17 +207,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.060000002" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/verdura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
-        app:srcCompat="@drawable/riga_arancio" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -226,15 +226,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRicette"
+            <fragment
+                android:id="@+id/fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="275dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
+                android:layout_height="281dp"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/navigation" />
         </LinearLayout>
     </ScrollView>
 
