@@ -41,7 +41,7 @@
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_application_id" translatable="false">1616372175420001</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb1616372175420001</string>
-    
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
