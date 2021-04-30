@@ -33,14 +33,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="@string/prep"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="@string/cott"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="@string/tot"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -70,14 +70,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tempo_preparazione"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="TextView" />
 
             <TextView
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="TextView" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="7"
+                android:padding="7dp"
                 android:text="TextView" />
         </TableRow>
 
@@ -112,14 +112,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="@string/cat"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="@string/naz"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="@string/intol"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="@string/vegano"
                 android:textColor="@color/bordeaux"
                 android:textSize="15sp" />
@@ -159,14 +159,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="TextView" />
 
             <TextView
@@ -174,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="TextView" />
 
             <TextView
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="TextView" />
 
             <TextView
@@ -190,7 +190,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="9"
+                android:padding="9dp"
                 android:text="TextView" />
         </TableRow>
 

@@ -2,13 +2,12 @@ package com.example.easycooking.network
 
 import android.os.Parcelable
 import androidx.lifecycle.LiveData
-import com.example.easycooking.models.RicettaApistatus
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 class Ricetta {
 
-        val id: String,
+        var id: String?=null
         var nome: String? = null
         var image: String? = null
         var descrizione: String? = null
