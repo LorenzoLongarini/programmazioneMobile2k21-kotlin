@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".activities.RicetteCerca"></activity>
+        <activity android:name=".activities.Dispensa"></activity>
+        <activity android:name=".activities.ListaSpesa" />
+        <activity android:name=".activities.RicetteTue" />
+        <activity android:name=".activities.RicetteCerca" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
