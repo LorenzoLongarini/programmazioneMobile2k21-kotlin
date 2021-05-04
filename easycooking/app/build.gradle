@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -72,6 +73,8 @@ dependencies {
     //aggiunto da margherita 30-04-21 alle 19:03
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-database-ktx'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
 
 
 }
