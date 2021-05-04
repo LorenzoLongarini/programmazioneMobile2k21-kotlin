@@ -66,8 +66,8 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
     implementation "com.google.firebase:firebase-auth-ktx"
     implementation "com.firebaseui:firebase-ui-auth:7.1.1"
-    implementation "com.github.bumptech.glide:glide:$version_glide"
-    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    implementation "com.github.bumptech.glide:glide:4.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
     //aggiunto da margherita 30-04-21 alle 19:03
@@ -86,9 +86,9 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.moshi:moshi:2.9.0"
-    implementation "com.squareup.moshi:moshi-kotlin:2.9.0"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:2.9.0"
+    implementation "com.squareup.moshi:moshi:1.11.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
 
 
 }
