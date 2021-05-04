@@ -74,7 +74,21 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    //per i problemi database
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //per il parser con retrofit:
+    //material
+    implementation 'com.google.android.material:material:1.1.0'
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation "com.squareup.moshi:moshi:2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:2.9.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:2.9.0"
 
 
 }

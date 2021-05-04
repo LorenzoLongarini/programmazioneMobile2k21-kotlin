@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".activities.Dispensa"></activity>
+        <activity android:name=".view.RicetteCerca"></activity>
+        <activity android:name=".view.RicetteTue" />
+        <activity android:name=".view.ListaSpesa" />
+        <activity android:name=".view.Dispensa" />
+        <activity android:name=".activities.Dispensa" />
         <activity android:name=".database.QueryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +32,7 @@
         <activity android:name=".activities.RicetteCerca" />
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout">
-
-        </activity>
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

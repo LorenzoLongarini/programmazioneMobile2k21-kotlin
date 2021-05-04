@@ -1,11 +1,11 @@
-package com.example.easycooking.activities
+package com.example.easycooking.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ListaSpesa : AppCompatActivity() {
+class Dispensa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_lista_spesa)
+        //setContentView(R.layout.activity_dispensa)
     }
 }

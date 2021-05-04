@@ -1,4 +1,4 @@
-package com.example.easycooking.activities
+package com.example.easycooking.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

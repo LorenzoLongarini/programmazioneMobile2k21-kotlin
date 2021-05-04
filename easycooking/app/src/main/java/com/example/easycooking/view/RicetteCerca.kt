@@ -1,4 +1,4 @@
-package com.example.easycooking.activities
+package com.example.easycooking.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +16,7 @@ class RicetteCerca : AppCompatActivity() {
             val intent = Intent(this, RicetteTue::class.java)
             //intent.putExtra(NOTE_ID, note.id)
             startActivity(intent)
-    }
+        }
         val dispensa = findViewById<ImageView>(R.id.imageView9)
         dispensa.setOnClickListener{
             val intent = Intent(this, Dispensa::class.java)
@@ -29,5 +29,5 @@ class RicetteCerca : AppCompatActivity() {
             //intent.putExtra(NOTE_ID, note.id)
             startActivity(intent)
         }
-}
+    }
 }
