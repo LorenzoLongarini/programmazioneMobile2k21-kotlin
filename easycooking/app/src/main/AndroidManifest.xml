@@ -19,20 +19,13 @@
         <activity android:name=".view.RicetteTue" />
         <activity android:name=".view.ListaSpesa" />
         <activity android:name=".view.Dispensa" />
-        <activity android:name=".activities.Dispensa" />
-        <activity android:name=".database.QueryActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ListaSpesa" />
-        <activity android:name=".activities.RicetteTue" />
-        <activity android:name=".activities.RicetteCerca" />
-        <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
