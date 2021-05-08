@@ -92,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="dispensa"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -101,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ricetteCerca"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -119,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="listaSpesa"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -137,17 +140,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.060000002" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/verdura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/riga_arancio"
-        tools:layout_editor_absoluteY="94dp" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -177,5 +169,18 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/verdura"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209"
+        app:srcCompat="@drawable/riga_arancio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

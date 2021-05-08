@@ -145,6 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="dispensa"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -162,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ricetteTue"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -171,6 +173,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="listaSpesa"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />

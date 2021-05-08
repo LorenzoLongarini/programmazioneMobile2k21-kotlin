@@ -98,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ricetteCerca"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -107,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ricetteTue"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -116,6 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="listaSpesa"
             app:srcCompat="@drawable/circle"
             app:tint="#FFFFFF"
             tools:visibility="invisible" />
@@ -141,7 +144,8 @@
         android:layout_height="149dp"
         android:layout_marginTop="22dp"
         android:src="@drawable/verdura"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -163,17 +167,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="449dp"
+                android:onClick="ricetteTue"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="149dp"
-                android:rotationX="180"
-                android:src="@drawable/verdura" />
 
         </LinearLayout>
     </ScrollView>
