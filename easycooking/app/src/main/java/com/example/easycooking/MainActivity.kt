@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.view.RicetteCerca
 import com.google.firebase.auth.FirebaseAuth
+import com.example.easycooking.auth.EmailPasswordActivity
 
 class MainActivity : AppCompatActivity() {
 

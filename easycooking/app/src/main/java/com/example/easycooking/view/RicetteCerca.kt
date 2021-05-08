@@ -40,7 +40,7 @@ class RicetteCerca : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == LOGIN_REQUEST) {
             if (resultCode == RESULT_OK) {
@@ -52,6 +52,6 @@ class RicetteCerca : AppCompatActivity() {
                 editor.putBoolean("firstrun", false)
                 editor.apply()
             }
-        }
-    }
+        }*/
+    //}
 }
