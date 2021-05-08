@@ -25,13 +25,13 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_registrati)
         mAuth = FirebaseAuth.getInstance()
         textNome = findViewById(R.id.text_nome)
         textCognome = findViewById(R.id.text_cognome)
-        textEmail = findViewById(R.id.text_email)
-        textPassword = findViewById(R.id.text_password)
-        btnRegistra = findViewById(R.id.btn_registra)
+        textEmail = findViewById(R.id.email_registrati)
+        textPassword = findViewById(R.id.psw_registrati)
+        btnRegistra = findViewById(R.id.bottone_registrati)
         btnRegistra.setOnClickListener {
             try {
                 val nome = textNome.text.toString()

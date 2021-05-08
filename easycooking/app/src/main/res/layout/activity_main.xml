@@ -173,10 +173,10 @@
         android:text="@string/dimenticato"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.257" />
 
     <TextView
         android:id="@+id/registrati_accedi"
@@ -184,6 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
+        android:onClick="registratiView"
         android:text="@string/registrati"
         android:textColor="@color/arancione_scuro"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -204,9 +205,9 @@
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.938" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
