@@ -35,7 +35,7 @@ class EmailPasswordActivity : Activity() {
         }
     }
     // [END on_start_check_user]
-
+/*
     private fun createAccount(email: String, password: String) {
         // [START create_user_with_email]
         auth.createUserWithEmailAndPassword(email, password)
@@ -54,7 +54,7 @@ class EmailPasswordActivity : Activity() {
                 }
             }
         // [END create_user_with_email]
-    }
+    }*/
 
     private fun signIn(email: String, password: String) {
         // [START sign_in_with_email]
@@ -75,7 +75,7 @@ class EmailPasswordActivity : Activity() {
             }
         // [END sign_in_with_email]
     }
-
+/*
     private fun sendEmailVerification() {
         // [START send_email_verification]
         val user = auth.currentUser!!
@@ -85,7 +85,7 @@ class EmailPasswordActivity : Activity() {
             }
         // [END send_email_verification]
     }
-
+*/
     private fun updateUI(user: FirebaseUser?) {
 
     }

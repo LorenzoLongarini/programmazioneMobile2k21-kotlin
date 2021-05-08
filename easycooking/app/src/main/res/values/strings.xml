@@ -37,6 +37,9 @@
     <string name="intol">Intolleranze:</string>
     <string name="ingr">Ingredienti:</string>
     <string name="proc">Procedimento:</string>
+    <string name="cognome">Cognome</string>
+    <string name="inforequired">Per favore, inserisci tutte le informazioni richieste.</string>
+    <string name="errorsignup">C\'è stato un errore nella registrazione.</string>
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_app_id" translatable="false">1616372175420001</string>
