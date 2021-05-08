@@ -1,4 +1,4 @@
-package com.example.easycooking.auth
+/*package com.example.easycooking.auth
 
 import android.app.Activity
 import android.content.Intent
@@ -113,4 +113,4 @@ abstract class FirebaseUIActivity : AppCompatActivity() {
 
         private const val RC_SIGN_IN = 123
     }
-}
+}*/

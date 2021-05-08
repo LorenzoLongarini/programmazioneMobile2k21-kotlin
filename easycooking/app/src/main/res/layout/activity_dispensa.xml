@@ -49,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="dispensa"
             android:scaleX="0.7"
             android:scaleY="0.7"
             app:srcCompat="@drawable/_36_refrigerator" />
@@ -67,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ricetteTue"
             android:scaleX="0.7"
             android:scaleY="0.7"
             app:srcCompat="@drawable/_01_apron" />
@@ -76,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="listaSpesa"
             android:scaleX="0.7"
             android:scaleY="0.7"
             app:srcCompat="@drawable/_49_vegetable_box" />
@@ -87,20 +90,11 @@
         android:layout_height="82dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="352dp"
-            android:layout_height="62dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/circle"
-            app:tint="#FFFFFF"
-            tools:visibility="visible" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="1.0"/>
 
     <TextView
         android:id="@+id/textView"

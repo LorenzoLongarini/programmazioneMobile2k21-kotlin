@@ -12,16 +12,5 @@ class ListaSpesa : AppCompatActivity() {
         //setContentView(R.layout.activity_lista_spesa)
         setContentView(R.layout.activity_listaspesa)
     }
-    fun dispensa(v: View){
-        val intent = Intent(this, Dispensa::class.java)
-        startActivity(intent)
-    }
-    fun ricetteCerca(v: View){
-        val intent = Intent(this, RicetteCerca::class.java)
-        startActivity(intent)
-    }
-    fun ricetteTue(v: View) {
-        val intent = Intent(this, RicetteTue::class.java)
-        startActivity(intent)
-    }
+
 }

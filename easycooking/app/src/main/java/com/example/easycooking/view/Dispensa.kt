@@ -11,16 +11,4 @@ class Dispensa : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dispensa)
     }
-    fun ricetteCerca(v: View){
-        val intent = Intent(this, RicetteCerca::class.java)
-        startActivity(intent)
-    }
-    fun listaSpesa(v: View){
-        val intent = Intent(this, ListaSpesa::class.java)
-        startActivity(intent)
-    }
-    fun ricetteTue(v: View) {
-        val intent = Intent(this, RicetteTue::class.java)
-        startActivity(intent)
-    }
 }
