@@ -1,6 +1,7 @@
 package com.example.easycooking
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -12,8 +13,8 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class LoginActivity : AppCompatActivity() {
 
+class LoginActivity : AppCompatActivity() {
     private lateinit var textNome: TextInputEditText
     private lateinit var textCognome: TextInputEditText
     private lateinit var textEmail: TextInputEditText
@@ -25,13 +26,13 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registrati)
+        setContentView(R.layout.activity_login)
         mAuth = FirebaseAuth.getInstance()
         textNome = findViewById(R.id.text_nome)
         textCognome = findViewById(R.id.text_cognome)
-        textEmail = findViewById(R.id.email_registrati)
-        textPassword = findViewById(R.id.psw_registrati)
-        btnRegistra = findViewById(R.id.bottone_registrati)
+        textEmail = findViewById(R.id.text_email)
+        textPassword = findViewById(R.id.text_password)
+        btnRegistra = findViewById(R.id.btn_registra)
         btnRegistra.setOnClickListener {
             try {
                 val nome = textNome.text.toString()

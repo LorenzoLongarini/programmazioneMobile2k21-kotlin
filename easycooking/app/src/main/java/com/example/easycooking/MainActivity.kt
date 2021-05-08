@@ -16,16 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-        if (preferences.getBoolean("firstrun", true)) {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            startActivityForResult(intent, LOGIN_REQUEST)
-        } else {
-            mAuth = FirebaseAuth.getInstance()
-            val currentUser = mAuth!!.getCurrentUser()
-            supportActionBar!!.setTitle(currentUser.displayName)
-        }
-*/
+
     }
     fun senzaReg(v: View) {
         val intent = Intent(this, RicetteCerca::class.java)
@@ -33,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun registratiView(v: View) {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        val intent2 = Intent(this, LoginActivity::class.java)
+        startActivity(intent2)
     }
 }
