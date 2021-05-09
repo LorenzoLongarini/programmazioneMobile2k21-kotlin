@@ -25,10 +25,12 @@
         android:layout_margin="@dimen/fab_margin"
         android:contentDescription="Aggiungi un prodotto in dispensa"
         app:backgroundTint="@color/rosso_chiaro"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93"
         app:srcCompat="@drawable/ic_baseline_add_24"
         app:tint="@color/white" />
 
@@ -111,34 +113,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="149dp"
-        android:layout_marginTop="22dp"
-        android:src="@drawable/verdura"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="405dp"
-        android:layout_height="391dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:scaleX="0.9"
+                android:scaleY="0.8"
+                android:src="@drawable/verdura" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
@@ -149,6 +148,17 @@
                 android:paddingEnd="20dp">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:rotation="180"
+                android:scaleX="0.9"
+                android:scaleY="0.8"
+                android:src="@drawable/verdura" />
 
         </LinearLayout>
     </ScrollView>
