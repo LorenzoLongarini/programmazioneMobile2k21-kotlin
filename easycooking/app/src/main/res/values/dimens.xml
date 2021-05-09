@@ -6,4 +6,8 @@
         <dimen name="activity_horizontal_margin">16dp</dimen>
         <dimen name="activity_vertical_margin">16dp</dimen>
 
+        <!--per recyclerview-->
+    <dimen name="provider_name_vertical_margin">5dp</dimen>
+    <dimen name="provider_name_horizontal_margin">1dp</dimen>
+    <dimen name="provider_name_horizontalBig_margin">7dp</dimen>
 </resources>
