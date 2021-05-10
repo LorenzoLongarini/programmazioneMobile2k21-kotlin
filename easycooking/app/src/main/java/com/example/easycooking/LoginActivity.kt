@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -40,8 +41,8 @@ class LoginActivity : AppCompatActivity() {
                 val password = textPassword.text.toString()
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val user = mAuth.currentUser
-                        val profileChangeRequest = UserProfileChangeRequest.Builder()
+                        val user: FirebaseUser = mAuth.currentUser
+                        val profileChangeRequest: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
                                 .setDisplayName("$nome $cognome")
                                 .build()
                         user.updateProfile(profileChangeRequest).addOnCompleteListener {
