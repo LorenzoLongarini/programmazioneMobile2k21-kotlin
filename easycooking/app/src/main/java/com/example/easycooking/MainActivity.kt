@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.view.RicetteCerca
 import com.google.firebase.auth.FirebaseAuth
 import com.example.easycooking.auth.EmailPasswordActivity
+import com.example.easycooking.view.Base
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun senzaReg(v: View) {
-        val intent = Intent(this, RicetteCerca::class.java)
+        val intent = Intent(this, Base::class.java)
         startActivity(intent)
     }
 
