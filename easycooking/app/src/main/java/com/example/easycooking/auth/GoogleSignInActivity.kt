@@ -4,6 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import com.example.easycooking.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -27,36 +31,30 @@ class GoogleSignInActivity : Activity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    private lateinit var btnGmail: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+            // [START config_signin]
+            // Configure Google Sign In
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
 
-        // [START config_signin]
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-        // [END config_signin]
+            googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
-        // [START initialize_auth]
-        // Initialize Firebase Auth
-        auth = Firebase.auth
-        // [END initialize_auth]
+
     }
 
-    // [START on_start_check_user]
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
-    // [END on_start_check_user]
 
-    // [START onactivityresult]
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -74,9 +72,7 @@ class GoogleSignInActivity : Activity() {
             }
         }
     }
-    // [END onactivityresult]
 
-    // [START auth_with_google]
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
@@ -93,14 +89,11 @@ class GoogleSignInActivity : Activity() {
                 }
             }
     }
-    // [END auth_with_google]
 
-    // [START signin]
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
-    // [END signin]
 
     private fun updateUI(user: FirebaseUser?) {
 
@@ -110,4 +103,12 @@ class GoogleSignInActivity : Activity() {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
+
+    fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.bottone_gmail -> signIn()
+        }
+    }
+
 }
+
