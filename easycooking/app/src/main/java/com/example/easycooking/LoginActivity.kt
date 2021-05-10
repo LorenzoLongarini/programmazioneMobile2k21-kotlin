@@ -1,7 +1,6 @@
 package com.example.easycooking
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -26,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_registrati)
         mAuth = FirebaseAuth.getInstance()
         textNome = findViewById(R.id.text_nome)
         textCognome = findViewById(R.id.text_cognome)

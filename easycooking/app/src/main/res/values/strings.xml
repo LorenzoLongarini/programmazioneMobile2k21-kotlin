@@ -3,7 +3,7 @@
 
     <string name="Stringa1">La mia dispensa</string>
     <string name="Stringa2">Inserisci in dispensa...</string>
-    <string name="nome">Nome:</string>
+    <string name="nome">Nome</string>
     <string name="quant">Quantità:</string>
     <string name="Data">Data di scadenza:</string>
     <string name="prodIns">Nome del prodotto da inserire...</string>

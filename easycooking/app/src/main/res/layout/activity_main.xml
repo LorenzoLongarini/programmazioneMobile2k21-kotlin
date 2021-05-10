@@ -112,8 +112,10 @@
         android:layout_width="233dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/rosso_chiaro"
         android:text="@string/accedi"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,18 +179,20 @@
         android:id="@+id/password_dimenticata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:text="@string/dimenticato"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/senza_registrazione"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.32999998" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <TextView
         android:id="@+id/registrati_accedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="8dp"
         android:onClick="registratiView"
@@ -196,8 +200,7 @@
         android:textColor="@color/arancione_scuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/senza_registrazione"
         app:layout_constraintTop_toBottomOf="@+id/password_dimenticata"
         app:layout_constraintVertical_bias="0.6" />
 
@@ -205,16 +208,14 @@
         android:id="@+id/senza_registrazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
         android:onClick="senzaReg"
         android:text="@string/noreg"
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97" />
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
