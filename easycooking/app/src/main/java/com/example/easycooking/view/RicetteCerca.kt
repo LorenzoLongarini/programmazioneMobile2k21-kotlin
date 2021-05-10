@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class RicetteCerca : AppCompatActivity() {
+
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
