@@ -15,8 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".view.RicetteCerca"></activity>
+        <activity android:name=".view.Base"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".view.RicetteCerca" />
         <activity android:name=".view.RicetteTue" />
         <activity android:name=".view.ListaSpesa" />
         <activity android:name=".view.Dispensa" />

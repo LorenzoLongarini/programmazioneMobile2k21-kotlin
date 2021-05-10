@@ -11,8 +11,8 @@ import com.example.easycooking.auth.EmailPasswordActivity
 
 class MainActivity : AppCompatActivity() {
 
-    val LOGIN_REQUEST = 101
-    private var mAuth: FirebaseAuth? = null
+    //val LOGIN_REQUEST = 101
+    //private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

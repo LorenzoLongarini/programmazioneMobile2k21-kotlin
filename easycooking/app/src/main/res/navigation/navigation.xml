@@ -3,4 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    />
+    app:startDestination="@id/base">
+    <activity
+        android:id="@+id/base"
+        android:name="com.example.easycooking.view.Base"
+        android:label="Base" />
+    <fragment
+        android:id="@+id/dispensaFrag2"
+        android:name="dispensaFrag"
+        android:label="dispensaFrag" >
+        <action
+            android:id="@+id/action_dispensaFrag2_to_base"
+            app:destination="@id/base" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaSpesa"
+        android:name="com.example.easycooking.view.ListaSpesa"
+        android:label="ListaSpesa" >
+        <action
+            android:id="@+id/action_listaSpesa_to_base"
+            app:destination="@id/base" />
+    </fragment>
+    <fragment
+        android:id="@+id/ricetteTue"
+        android:name="com.example.easycooking.view.RicetteTue"
+        android:label="RicetteTue" >
+        <action
+            android:id="@+id/action_ricetteTue_to_base"
+            app:destination="@id/base" />
+    </fragment>
+</navigation>

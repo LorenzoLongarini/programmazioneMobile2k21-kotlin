@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.example.easycooking.adapter.dispensa.Dispensa
 import com.google.firebase.auth.FirebaseAuth
-import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
 
 class RicetteCerca : AppCompatActivity() {
@@ -21,7 +19,7 @@ class RicetteCerca : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ricettecerca)
+        setContentView(R.layout.fragment_ricettecerca)
 
         val rv: RecyclerView =findViewById(R.id.rv)
         rv.layoutManager= GridLayoutManager(this,2)
@@ -30,7 +28,7 @@ class RicetteCerca : AppCompatActivity() {
             resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin))
         )
 
-        val alphaAdapter = AlphaInAnimationAdapter(RicettaAdapter(TODO("PASSARE LISTA RICETTE"))).apply {
+        /*val alphaAdapter = AlphaInAnimationAdapter(RicettaAdapter(TODO("PASSARE LISTA RICETTE"))).apply {
             // Change the durations.
             setDuration(500)
             // Disable the first scroll mode.
@@ -38,7 +36,7 @@ class RicetteCerca : AppCompatActivity() {
         }
         rv.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             setDuration(250)
-        }
+        }*/
 
     }
 
