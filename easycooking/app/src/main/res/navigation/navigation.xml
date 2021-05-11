@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
-    app:startDestination="@id/blankFragment">
+    android:id="@+id/navigation">
     <fragment
         android:id="@+id/listaSpesa"
         android:name="com.example.easycooking.view.ListaSpesa"
@@ -20,9 +19,4 @@
         android:id="@+id/ricetteTue"
         android:name="com.example.easycooking.view.RicetteTue"
         android:label="RicetteTue" />
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.easycooking.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
 </navigation>

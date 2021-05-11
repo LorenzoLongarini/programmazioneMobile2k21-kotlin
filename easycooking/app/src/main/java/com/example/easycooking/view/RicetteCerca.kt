@@ -52,25 +52,6 @@ class RicetteCerca : AppCompatActivity() {
         }
     }
 
-    fun dispensa(v: View) {
-        val intent = Intent(this, Dispensa::class.java)
-        startActivity(intent)
-    }
-
-    fun listaSpesa(v: View) {
-        val intent = Intent(this, ListaSpesa::class.java)
-        startActivity(intent)
-    }
-
-    fun ricetteTue(v: View) {
-        val intent = Intent(this, RicetteTue::class.java)
-        startActivity(intent)
-    }
-
-    fun ricetteCerca(v: View) {
-        val intent = Intent(this, RicetteCerca::class.java)
-        startActivity(intent)
-    }
     /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == LOGIN_REQUEST) {
