@@ -9,6 +9,7 @@ import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.Dispensa
 import com.example.easycooking.adapter.dispensa.MyAdapter
+import com.google.firebase.firestore.FirebaseFirestore
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
@@ -55,7 +56,6 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             var Dis6=Dispensa("pennette",300,"grammi")
 
             var appoggio=mutableListOf<Dispensa>(Dis1,Dis2,Dis3,Dis11,Dis12,Dis13,Dis111,Dis112,Dis113,Dis1111,Dis1112,Dis1113,Dis4,Dis5,Dis6)
-
 
 
             rv?.addItemDecoration(
