@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Dispensa"
+        android:icon="@drawable/_36_refrigerator"
+        android:id="@+id/dispensaFrag"/>
+    <item android:title="RicetteCerca"
+        android:icon="@drawable/_37_rolling_pin"
+        android:id="@+id/ricetteCerca"/>
+    <item android:title="RicetteTue"
+        android:icon="@drawable/_01_apron"
+        android:id="@+id/ricetteTue"/>
+    <item android:title="ListaSpesa"
+        android:icon="@drawable/_49_vegetable_box"
+        android:id="@+id/listaSpesa"/>
+</menu>
