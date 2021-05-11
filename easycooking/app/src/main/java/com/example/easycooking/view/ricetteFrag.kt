@@ -30,7 +30,7 @@ class ricettaFrag: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.activity_main2, container, false)
+        val view: View = inflater.inflate(R.layout.activity_main, container, false)
         return view
     }
 

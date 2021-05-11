@@ -75,6 +75,7 @@ dependencies {
     //aggiunto da margherita 30-04-21 alle 19:03
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     //per i problemi database
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -98,7 +99,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.3.0"
 
     //connessione a FireStore
-    implementation 'com.google.firebase: firebase-firestore: 11.8.0'
+
 
 }
 repositories {
