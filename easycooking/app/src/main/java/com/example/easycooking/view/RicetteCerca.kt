@@ -2,7 +2,6 @@ package com.example.easycooking.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,22 +15,11 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class RicetteCerca : AppCompatActivity() {
-
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_ricettecerca)
-
-        val preferences: SharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-        if (preferences.getBoolean("firstrun", true)) {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivityForResult(intent, LOGIN_REQUEST)
-        } else {
-            mAuth = FirebaseAuth.getInstance()
-            val currentUser = mAuth!!.getCurrentUser()
-            supportActionBar!!.setTitle(currentUser.displayName)
-        }
 
         val rv: RecyclerView =findViewById(R.id.rv)
         rv.layoutManager= GridLayoutManager(this,2)
@@ -50,6 +38,18 @@ class RicetteCerca : AppCompatActivity() {
             setDuration(250)
         }*/
 
+    }
+
+    fun login(v: View) {
+        val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        if (preferences.getBoolean("firstrun", true)) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivityForResult(intent, LOGIN_REQUEST)
+        } else {
+            mAuth = FirebaseAuth.getInstance()
+            val currentUser = mAuth!!.getCurrentUser()
+            supportActionBar!!.setTitle(currentUser.displayName)
+        }
     }
 
     fun dispensa(v: View) {
@@ -71,23 +71,17 @@ class RicetteCerca : AppCompatActivity() {
         val intent = Intent(this, RicetteCerca::class.java)
         startActivity(intent)
     }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-         super.onActivityResult(requestCode, resultCode, intent)
-         if (requestCode == LOGIN_REQUEST) {
-             if (resultCode == RESULT_OK) {
-                 val nome = intent?.extras!!.getString("nome")
-                 val cognome = intent.extras!!.getString("cognome")
-                 supportActionBar!!.title = "$nome $cognome"
-                 val preferences = getSharedPreferences("login", MODE_PRIVATE)
-                 val editor = preferences.edit()
-                 editor.putBoolean("firstrun", false)
-                 editor.apply()
-             }
-         }
-     }
+    /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        if (requestCode == LOGIN_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                val nome = intent?.extras!!.getString("nome")
+                val cognome = intent.extras!!.getString("cognome")
+                supportActionBar!!.title = "$nome $cognome"
+                val preferences = getSharedPreferences("login", MODE_PRIVATE)
+                val editor = preferences.edit()
+                editor.putBoolean("firstrun", false)
+                editor.apply()
+            }
+        }*/
 }
