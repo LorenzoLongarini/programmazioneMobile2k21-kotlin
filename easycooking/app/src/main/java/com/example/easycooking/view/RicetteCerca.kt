@@ -3,8 +3,11 @@ package com.example.easycooking.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.LoginActivity
@@ -19,13 +22,22 @@ import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
 
-class RicetteCerca : AppCompatActivity() {
+class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_ricettecerca)
+    companion object {
 
+        fun newInstance(): RicetteTue {
+            return RicetteTue()
+        }
+    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+            val view: View = inflater.inflate(R.layout.fragment_ricettecerca, container, false)
+            return view
+    }
+
+        /*override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(itemView, savedInstanceState)
         val rv: RecyclerView =findViewById(R.id.rv)
         rv.layoutManager = GridLayoutManager(this, 2)
         rv?.apply {
@@ -80,7 +92,7 @@ class RicetteCerca : AppCompatActivity() {
             val currentUser = mAuth!!.getCurrentUser()
             supportActionBar!!.setTitle(currentUser.displayName)
         }
-    }
+    } */
 
     /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
@@ -96,4 +108,4 @@ class RicetteCerca : AppCompatActivity() {
             }
         }*/
 }
-}
+

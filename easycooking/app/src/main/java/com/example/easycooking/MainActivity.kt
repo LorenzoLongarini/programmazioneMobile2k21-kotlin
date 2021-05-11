@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import com.example.easycooking.view.Base
 import com.example.easycooking.view.RicetteCerca
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.*
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     fun senzaReg(v: View) {
-        val intent = Intent(this, RicetteCerca::class.java)
+        val intent = Intent(this, Base::class.java)
         startActivity(intent)
     }
     fun registratiView(v: View) {
