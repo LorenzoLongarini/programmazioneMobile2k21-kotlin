@@ -15,7 +15,7 @@ import com.google.android.gms.auth.api.signin.internal.zzi.getSignInResultFromIn
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.auth  
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
