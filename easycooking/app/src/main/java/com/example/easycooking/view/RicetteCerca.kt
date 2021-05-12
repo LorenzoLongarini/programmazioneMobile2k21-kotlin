@@ -25,21 +25,27 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
+
     companion object {
 
         fun newInstance(): RicetteTue {
             return RicetteTue()
         }
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            val view: View = inflater.inflate(R.layout.fragment_ricettecerca, container, false)
-            return view
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view: View = inflater.inflate(R.layout.fragment_ricettecerca, container, false)
+        return view
     }
 
-        /*override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(itemView, savedInstanceState)
-        val rv: RecyclerView =findViewById(R.id.rv)
-        rv.layoutManager = GridLayoutManager(this, 2)
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        val rv: RecyclerView = itemView.findViewById(R.id.rv)
+        rv.layoutManager = GridLayoutManager(activity, 2)
         rv?.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
@@ -57,7 +63,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             ricettario.get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        var Ricetta = document.toObject(Ricetta::class.java)
+                        var Ricetta = document.toObject<Ricetta>(Ricetta::class.java)
                         appoggio.add(Ricetta)
                     }
                 }
@@ -82,7 +88,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             }
         }
 
-    fun login(v: View) {
+        /*fun login(v: View) {
         val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         if (preferences.getBoolean("firstrun", true)) {
             val intent = Intent(this, LoginActivity::class.java)
@@ -94,7 +100,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }
     } */
 
-    /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == LOGIN_REQUEST) {
             if (resultCode == RESULT_OK) {
@@ -107,5 +113,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                 editor.apply()
             }
         }*/
+    }
 }
 
