@@ -15,7 +15,6 @@ class Ricetta {
         var intolleranze: List<String>? = null
         var vegano: Boolean = false
         var porzioni: Int = 0
-        var Ingredienti: List<Ingrediente>? = null
         var preparazione: String? = null
 
         constructor(nome: String?, image: String?, descrizione: String?, prepTime: String?, cookTime: String?, totalTime: String?, keywords: List<String>?, recipeCategory: String?, recipeCuisine: String?, intolleranze: List<String>?, vegano: Boolean, porzioni: Int, Ingredienti: List<Ingrediente>?, preparazione: String?){
@@ -31,7 +30,6 @@ class Ricetta {
                 this.intolleranze=intolleranze
                 this.vegano=vegano
                 this.porzioni=porzioni
-                this.Ingredienti=Ingredienti
                 this.preparazione=preparazione
         }
 
