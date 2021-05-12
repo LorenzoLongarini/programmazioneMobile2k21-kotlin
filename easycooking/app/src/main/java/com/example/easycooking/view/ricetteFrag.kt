@@ -1,5 +1,6 @@
 package com.example.easycooking.view
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,17 @@ import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
+import android.util.Log
+import android.widget.TextView
+import com.example.easycooking.adapter.dispensa.Dispensa
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.firestoreSettings
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 //classe di prova fatta da Margherita
 class ricettaFrag: Fragment() {
@@ -37,25 +49,11 @@ class ricettaFrag: Fragment() {
         rv?.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
-            layoutManager = GridLayoutManager(activity,2)
+            layoutManager = GridLayoutManager(activity, 2)
             // set the custom adapter to the RecyclerView
 
-            //connessione al DB
-            //creazione di un'istanza DB
-            val myDB = FirebaseFirestore.getInstance ()
-            //connessione alla collection
-            val ricettario=myDB.collection("cook")
-            //creo la lista dove metterò le ricette
             var appoggio= mutableListOf<Ricetta>()
-            //prendo le ricette e carico la lista
-            ricettario.get()
-                .addOnSuccessListener {documents ->
-                    for(document in documents){
-                        var Ricetta=document.toObject(Ricetta::class.java)
-                        appoggio.add(Ricetta)
-                    }
-                }
-            //FINE parte relativa allo scaricamento dei dati
+            
 
 
             rv?.addItemDecoration(
@@ -75,4 +73,5 @@ class ricettaFrag: Fragment() {
 
         }
     }
+
 }
