@@ -31,20 +31,4 @@
         android:textSize="10sp"
         tools:ignore="RtlCompat" />
 
-    <ImageButton
-        android:id="@+id/agg_prodotto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:backgroundTint="#00FFFFFF"
-        app:srcCompat="@drawable/ic_round_add_circle_24" />
-
-    <ImageButton
-        android:id="@+id/togli_prodotti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:backgroundTint="#00FFFFFF"
-        app:srcCompat="@drawable/ic_round_remove_circle_24" />
-
 </LinearLayout>
