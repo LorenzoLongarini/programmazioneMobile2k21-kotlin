@@ -20,4 +20,19 @@
         android:id="@+id/ricetteTue"
         android:name="com.example.easycooking.view.RicetteTue"
         android:label="RicetteTue" />
+    <fragment
+        android:id="@+id/contattaci2"
+        android:name="com.example.easycooking.view.Contattaci"
+        android:label="fragment_contattaci"
+        tools:layout="@layout/fragment_contattaci" />
+    <fragment
+        android:id="@+id/ricetta_del_giorno"
+        android:name="com.example.easycooking.view.Ricetta_del_giorno"
+        android:label="fragment_ricetta_del_giorno"
+        tools:layout="@layout/fragment_ricetta_del_giorno" />
+    <fragment
+        android:id="@+id/ispirami"
+        android:name="com.example.easycooking.view.Ispirami"
+        android:label="fragment_ispirami"
+        tools:layout="@layout/fragment_ispirami" />
 </navigation>

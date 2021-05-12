@@ -4,24 +4,54 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_base.*
 
 class Base : AppCompatActivity() {
 //    private val LOGIN_REQUEST = 101
 //    private var mAuth: FirebaseAuth? = null
+    lateinit var app_bar:AppBarConfiguration
+    lateinit var  navController:NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //val binding = DataBindingUtil.setContentView<ActivityBaseBinding>(this, R.layout.activity_main)
         setContentView(R.layout.activity_base)
-        val bottone = findViewById<BottomNavigationView>(R.id.navigation_bottom)
-        val navController = findNavController(R.id.fragment)
 
+        //navigation bottom
+        val bottone = findViewById<BottomNavigationView>(R.id.navigation_bottom)
+        navController = findNavController(R.id.fragment)
         bottone.setupWithNavController(navController)
 
+        //appbar
+        app_bar = AppBarConfiguration(navController.graph, drawerlayout)
+        setupActionBarWithNavController(this, navController, drawerlayout)
+
+        //actionbar
+        //drawerlayout = binding.drawerlayout
+        //NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
+
+
+        //navigation drawer
+        //  findViewById<NavigationView>(R.id.navigation_view).setupWithNavController(navController)
+
+
+        NavigationUI.setupWithNavController(navigation_view,navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
+        //NavigationUI.setupWithNavController(navigation_view, navController)
+    }
         /*val rv: RecyclerView =findViewById(R.id.rv)
         rv.layoutManager= GridLayoutManager(this,2)
         rv.addItemDecoration(
@@ -38,8 +68,12 @@ class Base : AppCompatActivity() {
         rv.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             setDuration(250)
         }*/
-
+        override fun onSupportNavigateUp(): Boolean {
+            return navController.navigateUp(drawerlayout)
+        }
     }
+
+
 
 
    /* fun login(v: View) {
@@ -54,6 +88,3 @@ class Base : AppCompatActivity() {
         }
     }*/
 
-
-
-    }
