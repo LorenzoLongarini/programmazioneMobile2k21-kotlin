@@ -15,12 +15,13 @@ import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.Dispensa
-import com.example.easycooking.adapter.ricetta.Ingrediente
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.ktx.toObject
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
@@ -53,26 +54,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             // RecyclerView behavior
             layoutManager = GridLayoutManager(activity, 2)
             // set the custom adapter to the RecyclerView
-            /*var ing= Ingrediente("a","b","c")
-            var ing1= Ingrediente("d","e","f")
-            var ingr=arrayOf<Ingrediente>(ing,ing1)
-            var listavuota= listOf<String>("","")
-
-            var Dis1= Ricetta("Baci di dama","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis2= Ricetta("pavesini","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis3= Ricetta("Polpettone","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis11= Ricetta("Ghiacciolo","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis12= Ricetta("Spinaci","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis13= Ricetta("pennette","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis111= Ricetta("Baci di dama","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis112= Ricetta("pavesini","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis113= Ricetta("Polpettone","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis1111= Ricetta("Ghiacciolo","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis1112= Ricetta("Spinaci","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-            var Dis1113= Ricetta("pennette","bacididama.jpg","","","","", listavuota,"","", listavuota,false,0,ingr.toList(),"")
-
-
-            var appoggio=mutableListOf<Ricetta>(Dis1,Dis2,Dis3,Dis11,Dis12,Dis13,Dis111,Dis112,Dis113,Dis1111,Dis1112,Dis1113)
 
             //connessione al DB
             //creazione di un'istanza DB
@@ -80,14 +61,17 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             //connessione alla collection
             val ricettario = myDB.collection("cook")
             //creo la lista dove metterò le ricette
-            var appoggio = mutableListOf<QueryDocumentSnapshot>()
+            var appoggio = mutableListOf<Ricetta>()
             //prendo le ricette e carico la lista
             ricettario.get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        appoggio.add(document)
+                        var ricetta=document.toObject<Ricetta>()
+                        appoggio.add(ricetta)
                     }
                 }
+
+
             //FINE parte relativa allo scaricamento dei dati
 
 
@@ -107,7 +91,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
                 setDuration(250)
             }
-        }*/
+        }
 
             /*fun login(v: View) {
         val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
@@ -135,5 +119,5 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             }
         }*/
         }
-    }}
+    }
 

@@ -21,7 +21,7 @@ class RicettaAdapter (val data: List<Ricetta>) : RecyclerView.Adapter<RicettaAda
         }
 
         override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
-            var nome_ric:String?=data.get(position).nome
+            var nome_ric:String?=data.get(position).getRicettaNome()
             holder.nomeRicetta.text = nome_ric
             //var puttt:String=(qua_dis.toString())+" "+um_dis
             //holder.textView2.text = puttt
