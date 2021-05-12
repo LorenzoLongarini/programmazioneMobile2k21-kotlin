@@ -2,29 +2,18 @@ package com.example.easycooking.view
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigator
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.Dispensa
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import org.w3c.dom.Text
 
 class Base : AppCompatActivity() {
-    val LOGIN_REQUEST = 101
-    private var mAuth: FirebaseAuth? = null
+//    private val LOGIN_REQUEST = 101
+//    private var mAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
@@ -52,6 +41,7 @@ class Base : AppCompatActivity() {
 
     }
 
+
    /* fun login(v: View) {
         val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
         if (preferences.getBoolean("firstrun", true)) {
@@ -65,17 +55,5 @@ class Base : AppCompatActivity() {
     }*/
 
 
-    /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-        if (requestCode == LOGIN_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                val nome = intent?.extras!!.getString("nome")
-                val cognome = intent.extras!!.getString("cognome")
-                supportActionBar!!.title = "$nome $cognome"
-                val preferences = getSharedPreferences("login", MODE_PRIVATE)
-                val editor = preferences.edit()
-                editor.putBoolean("firstrun", false)
-                editor.apply()
-            }
-        }*/
+
     }

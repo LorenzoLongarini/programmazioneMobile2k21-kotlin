@@ -1,37 +1,49 @@
 package com.example.easycooking.view
 
+import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
+<<<<<<< HEAD
+=======
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+>>>>>>> 6250dde975768a7ce92c5f570ea610e513292c4f
 import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.Dispensa
-import com.example.easycooking.adapter.ricetta.Ricetta
-import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.auth.FirebaseAuth
+<<<<<<< HEAD
+=======
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.toObject
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
+>>>>>>> 6250dde975768a7ce92c5f570ea610e513292c4f
 
 
 class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 
     companion object {
+>>>>>>> 6250dde975768a7ce92c5f570ea610e513292c4f
 
+    companion object {
         fun newInstance(): RicetteTue {
             return RicetteTue()
         }
@@ -46,9 +58,24 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         return view
     }
 
+<<<<<<< Updated upstream
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
+=======
+<<<<<<< HEAD
+
+
+        /*override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(itemView, savedInstanceState)
+        val rv: RecyclerView =findViewById(R.id.rv)
+        rv.layoutManager = GridLayoutManager(this, 2)
+=======
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
+>>>>>>> 6250dde975768a7ce92c5f570ea610e513292c4f
+>>>>>>> Stashed changes
         rv?.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
@@ -105,6 +132,13 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }
     } */
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+}
+=======
+>>>>>>> Stashed changes
             /* override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == LOGIN_REQUEST) {
@@ -120,4 +154,8 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }*/
         }
     }
+<<<<<<< Updated upstream
+=======
+>>>>>>> 6250dde975768a7ce92c5f570ea610e513292c4f
+>>>>>>> Stashed changes
 

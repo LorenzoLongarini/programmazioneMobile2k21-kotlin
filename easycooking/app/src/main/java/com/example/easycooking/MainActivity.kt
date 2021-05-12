@@ -15,7 +15,7 @@ import com.google.android.gms.auth.api.signin.internal.zzi.getSignInResultFromIn
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.ktx.auth  
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // a listener.
                 val result: GoogleSignInResult  = getSignInResultFromIntent(data)!!
                 handleSignInResult(result)
+                val intent = Intent(this, Base::class.java)
+                startActivity(intent)
             }
         }
 
@@ -61,6 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Log.d(TAG, "handleSignInResult:"+ result.isSuccess)
             if(result.isSuccess){
                 val acct: GoogleSignInAccount? = result.getSignInAccount()
+
             }else{
 
             }

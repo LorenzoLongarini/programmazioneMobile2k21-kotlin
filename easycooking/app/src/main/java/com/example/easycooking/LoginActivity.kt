@@ -3,9 +3,11 @@ package com.example.easycooking
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easycooking.view.Base
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -52,6 +54,8 @@ class LoginActivity : AppCompatActivity() {
                             intent.putExtra("cognome", textCognome.text.toString())
                             setResult(Activity.RESULT_OK, intent)
                             finish()
+                            val intent1 = Intent(this, Base::class.java)
+                            startActivity(intent1)
                         }
                     } else {
                         task.exception!!.printStackTrace()
@@ -72,4 +76,6 @@ class LoginActivity : AppCompatActivity() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         db.collection("utenti").document(uid).set(user)
     }
+
+
 }
