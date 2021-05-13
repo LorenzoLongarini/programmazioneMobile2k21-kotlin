@@ -53,7 +53,15 @@ class ricettaFrag: Fragment() {
             // set the custom adapter to the RecyclerView
 
             var appoggio= mutableListOf<Ricetta>()
-            
+
+            val db=FirebaseFirestore.getInstance()
+            db.collection("cook")
+                .get().addOnSuccessListener{result->
+                    for(document in result){
+                        val ric=document.toObject(Ricetta::class.java)
+                        appoggio.add(ric)
+                    }
+                }
 
 
             rv?.addItemDecoration(

@@ -13,12 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".view.Base"></activity>
+        <activity android:name=".view.Base">
+        </activity>
         <activity android:name=".LoginActivity" />
-        <fragment android:name=".view.RicetteCerca" />
-        <fragment android:name=".view.RicetteTue" />
-        <fragment android:name=".view.ListaSpesa" />
-        <fragment android:name=".view.Dispensa" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
