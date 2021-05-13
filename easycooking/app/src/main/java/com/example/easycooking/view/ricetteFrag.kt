@@ -1,4 +1,4 @@
-package com.example.easycooking.view
+/*package com.example.easycooking.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,7 +51,7 @@ class ricettaFrag: Fragment() {
                     appoggio.add(ric)
                 }}
             var o= mutableListOf<String>("k","k")
-            val ric1=Ricetta(o,"k","k",0,"k",o,o,"k",0,"k","k",o,"k","k","k",o,false)
+            val ric1=Ricetta(o,"k","k",0,"k",o,o,"k","0","k","k",o,"k","k","k",o,false)
             appoggio.add(ric1)
 
 
@@ -73,4 +73,4 @@ class ricettaFrag: Fragment() {
         }
     }
 
-}
+}*/
