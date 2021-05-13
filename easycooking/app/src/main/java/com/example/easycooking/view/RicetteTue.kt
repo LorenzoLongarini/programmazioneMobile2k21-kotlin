@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
+import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
@@ -29,6 +32,8 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
             val view: View = inflater.inflate(R.layout.fragment_ricettetue, container, false)
             return view
         }
+
+
         //setContentView(R.layout.activity_ricettetue)
 
         /*val rv: RecyclerView =findViewById(R.id.rv)

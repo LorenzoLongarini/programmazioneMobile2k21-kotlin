@@ -1,6 +1,5 @@
 package com.example.easycooking.view
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,17 +14,7 @@ import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import android.util.Log
-import android.widget.TextView
-import com.example.easycooking.adapter.dispensa.Dispensa
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.firestoreSettings
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
 
 //classe di prova fatta da Margherita
 class ricettaFrag: Fragment() {
@@ -39,7 +28,7 @@ class ricettaFrag: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.activity_main, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_ricettecerca, container, false)
         return view
     }
 
@@ -54,14 +43,16 @@ class ricettaFrag: Fragment() {
 
             var appoggio= mutableListOf<Ricetta>()
 
-            val db=FirebaseFirestore.getInstance()
-            db.collection("cook")
-                .get().addOnSuccessListener{result->
-                    for(document in result){
-                        val ric=document.toObject(Ricetta::class.java)
-                        appoggio.add(ric)
-                    }
-                }
+            val db:FirebaseFirestore=FirebaseFirestore.getInstance()
+            val docRef = db.collection("cook").document("100")
+            docRef.get().addOnSuccessListener { documentSnapshot ->
+                val ric = documentSnapshot.toObject<Ricetta>()
+                if (ric != null) {
+                    appoggio.add(ric)
+                }}
+            var o= mutableListOf<String>("k","k")
+            val ric1=Ricetta(o,"k","k",0,"k",o,o,"k",0,"k","k",o,"k","k","k",o,false)
+            appoggio.add(ric1)
 
 
             rv?.addItemDecoration(

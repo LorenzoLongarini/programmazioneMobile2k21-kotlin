@@ -1,9 +1,5 @@
 package com.example.easycooking.view
 
-import android.app.Activity
-import android.app.Activity.RESULT_OK
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
+import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
+import com.example.easycooking.adapter.ricetta.Ricetta
+import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.firestore.FirebaseFirestore
@@ -48,10 +47,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
-    }
-}
+        super.onViewCreated(itemView, savedInstanceState)}}
 
 
         /*override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
