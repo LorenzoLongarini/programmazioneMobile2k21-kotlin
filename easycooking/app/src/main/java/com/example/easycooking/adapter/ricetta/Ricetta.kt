@@ -1,6 +1,6 @@
 package com.example.easycooking.adapter.ricetta
 
-data class Ricetta(
+class Ricetta(
 
         var Ingredienti: List<String>? = null,
         var cookTime: String? = null,
