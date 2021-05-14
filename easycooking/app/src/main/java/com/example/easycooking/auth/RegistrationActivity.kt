@@ -1,4 +1,4 @@
-package com.example.easycooking
+package com.example.easycooking.auth
 
 import android.app.Activity
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easycooking.R
 import com.example.easycooking.view.Base
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -16,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
 
-class LoginActivity : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
     private lateinit var textNome: TextInputEditText
     private lateinit var textCognome: TextInputEditText
     private lateinit var textEmail: TextInputEditText
@@ -45,8 +46,8 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val user: FirebaseUser = mAuth.currentUser
                         val profileChangeRequest: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
-                                .setDisplayName("$nome $cognome")
-                                .build()
+                            .setDisplayName("$nome $cognome")
+                            .build()
                         user.updateProfile(profileChangeRequest).addOnCompleteListener {
                             writeUserToDb(nome, cognome, user.uid)
                             val intent = Intent()
@@ -59,11 +60,11 @@ class LoginActivity : AppCompatActivity() {
                         }
                     } else {
                         task.exception!!.printStackTrace()
-                        Toast.makeText(this@LoginActivity, getString(R.string.errorsignup), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RegistrationActivity, getString(R.string.errorsignup), Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@LoginActivity, getString(R.string.inforequired), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RegistrationActivity, getString(R.string.inforequired), Toast.LENGTH_SHORT).show()
             }
         }
         supportActionBar!!.setTitle(getString(R.string.registrati))

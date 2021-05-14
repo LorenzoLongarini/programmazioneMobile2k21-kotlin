@@ -1,34 +1,18 @@
 package com.example.easycooking.view
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.LoginActivity
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.MyAdapter
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_main.*
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.ktx.toObject
-import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import kotlinx.android.synthetic.main.fragment_ricettecerca.*
 import java.util.ArrayList
 
 
