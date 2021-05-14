@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
+import com.example.easycooking.adapter.dispensa.MyAdapter
 
 class RicettaAdapter (val data : ArrayList<Ricetta>) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() {
 
 
         class RicettaViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
 
-            //val ingredienti = row.findViewById<TextView>(R.id.ingr)
+            val ingredienti = row.findViewById<TextView>(R.id.ingr)
             //val id = row.findViewById<TextView>(R.id.id)
             //val cookTime = row.findViewById<TextView>(R.id.cook_time)
             //val prepTime = row.findViewById<TextView>(R.id.prep_time)
@@ -33,14 +34,14 @@ class RicettaAdapter (val data : ArrayList<Ricetta>) : RecyclerView.Adapter<Rice
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
-            val layout = LayoutInflater.from(parent.context).inflate(R.layout.ricetta_view, parent, false)
+            val layout = LayoutInflater.from(parent.context).inflate(R.layout.cards, parent, false)
             return RicettaViewHolder(layout)
         }
 
         override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
             val currentitem = data[position]
             holder.nomeRicetta.text = currentitem.nome
-            //holder.ingredienti.text = currentitem.Ingredienti
+            holder.ingredienti.text = currentitem.toString()
             //holder.id.text = currentitem.id
            // holder.cookTime.text = currentitem.cookTime
             //holder.prepTime.text = currentitem.prepTime

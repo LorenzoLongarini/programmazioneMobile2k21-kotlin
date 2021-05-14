@@ -35,9 +35,9 @@ import java.util.ArrayList
 class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
-    lateinit var dbref: DatabaseReference
-    lateinit var recView: RecyclerView
-    lateinit var ricettaArray: ArrayList<Ricetta>
+    private lateinit var dbref: DatabaseReference
+    private lateinit var recView: RecyclerView
+    private lateinit var ricettaArray: ArrayList<Ricetta>
 
 
     companion object {
@@ -64,19 +64,22 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        /*val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
-        rv?.layoutManager = LinearLayoutManager(this)
-        rv?.setHasFixedSize(true)*/
-        recView.findViewById<RecyclerView>(R.id.rv)
-        //recView.layoutManager = LinearLayoutManager(this)
 
-        /*rv?.apply {
+        //val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
+        //rv?.layoutManager = LinearLayoutManager(activity)
+        //rv?.setHasFixedSize(true)
+        recView = view?.findViewById<RecyclerView>(R.id.rv)!!
+        recView.layoutManager = LinearLayoutManager(activity)
+        recView.setHasFixedSize(true)
+        recView?.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = GridLayoutManager(activity, 2)
-            // set the custom adapter to the RecyclerView*/
+            // set the custom adapter to the RecyclerView
+            }
 
             var appoggio = mutableListOf<Ricetta>()
+            ricettaArray = arrayListOf<Ricetta>()
             getRicette()
 
             /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -113,28 +116,29 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
         }
 
-    private fun getRicette() {
-        dbref = FirebaseDatabase.getInstance().getReference(".")
-        dbref.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for (ricetteSnapshot in snapshot.children){
-                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                        ricettaArray.add(ricetta!!)
+        fun getRicette() {
+            dbref = FirebaseDatabase.getInstance().getReference("")
+            dbref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (ricetteSnapshot in snapshot.children) {
+                            val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                            ricettaArray.add(ricetta!!)
+                        }
+                        recView.adapter = RicettaAdapter(ricettaArray)
                     }
-                    recView.adapter = RicettaAdapter(ricettaArray)
-            }
 
-            }
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
 
 
+        }
     }
-}
+
 
 
         /*override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
