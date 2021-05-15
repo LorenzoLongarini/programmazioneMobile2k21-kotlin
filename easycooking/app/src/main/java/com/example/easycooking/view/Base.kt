@@ -64,6 +64,7 @@ class Base : AppCompatActivity() {
         override fun onSupportNavigateUp(): Boolean {
             return navController.navigateUp(drawerlayout)
         }
+
     }
 
 
