@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".auth.RegistrationActivity"></activity>
-        <activity android:name=".view.Base"></activity>
+        <activity android:name=".view.GoogleSign"></activity>
+        <activity android:name=".view.Base_nonReg" />
+        <activity android:name=".view.baseRegistrato" />
+        <activity android:name=".auth.RegistrationActivity" />
+        <activity android:name=".view.Base" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
