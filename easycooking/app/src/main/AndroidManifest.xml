@@ -7,13 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking">
-        <activity android:name=".view.GoogleSign"></activity>
         <activity android:name=".view.Base_nonReg" />
-        <activity android:name=".view.baseRegistrato" />
         <activity android:name=".auth.RegistrationActivity" />
         <activity android:name=".view.Base" />
         <activity android:name=".MainActivity">

@@ -9,16 +9,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingUtil.setContentView
 import com.example.easycooking.R
+import com.example.easycooking.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.auth.api.signin.internal.zzi
 import com.google.android.gms.auth.api.signin.internal.zzi.getSignInResultFromIntent
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottone_accedi
+import kotlinx.android.synthetic.main.activity_main.email_accedi
+import kotlinx.android.synthetic.main.activity_main.psw_accedi
+import kotlinx.android.synthetic.main.fragment_log_in_base.*
 
 
 class Log_in_base : Fragment() {
@@ -28,9 +38,12 @@ class Log_in_base : Fragment() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private val TAG: String = "SignInActivity"
     private val RC_SIGN_IN = 9001
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         }
 
 
@@ -39,21 +52,28 @@ class Log_in_base : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_log_in_base, container, false)
+        val
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        createRequest()
+
+        binding.bottoneGmail.setOnClickListener { onClick(bottone_gmail2) }
+        auth = FirebaseAuth.getInstance()
+        login()
+    }
+
+    private fun createRequest() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
         googleSignInClient = activity?.let { GoogleSignIn.getClient(it, gso) }!!
-        signInButton = view.findViewById(R.id.bottone_gmail2)
-        signInButton.setOnClickListener{onClick(signInButton)}
-        auth = FirebaseAuth.getInstance()
-        login()
     }
+
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -62,27 +82,42 @@ class Log_in_base : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val result: GoogleSignInResult = getSignInResultFromIntent(data)!!
-            handleSignInResult(result)
-
-
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e)
+            }
         }
     }
 
-    private fun handleSignInResult(result: GoogleSignInResult) {
-        Log.d(TAG, "handleSignInResult:"+ result.isSuccess)
-        if(result.isSuccess){
-            val acct: GoogleSignInAccount? = result.getSignInAccount()
-            val intent = Intent(activity, Base::class.java)
-            startActivity(intent)
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
 
-        }else{
+                    val user = auth.currentUser
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
 
-        }
+                }
+
+                val intent = Intent(activity, Base::class.java)
+                startActivity(intent)
+            }
+            .addOnFailureListener(OnFailureListener {
+                Log.d(TAG, "failure")
+            })
     }
 
     fun onConnectionFailed(connectionResult: ConnectionResult){

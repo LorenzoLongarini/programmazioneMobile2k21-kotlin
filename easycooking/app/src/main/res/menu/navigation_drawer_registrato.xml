@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Ispirami"
+        android:id="@+id/ispirami"/>
+    <item
+        android:title="Ricetta del giorno"
+        android:id="@+id/ricetta_del_giorno"/>
+    <item
+        android:title="Contattaci"
+        android:id="@+id/contattaci2"/>
+    <item
+        android:title="logout"
+        android:id="@+id/logout2"/>
+</menu>

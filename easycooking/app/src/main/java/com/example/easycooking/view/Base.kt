@@ -1,6 +1,8 @@
 package com.example.easycooking.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -9,8 +11,12 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.example.easycooking.MainActivity
 import com.example.easycooking.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_base.*
 
 class Base : AppCompatActivity() {
@@ -18,10 +24,13 @@ class Base : AppCompatActivity() {
 //    private var mAuth: FirebaseAuth? = null
     lateinit var app_bar:AppBarConfiguration
     lateinit var  navController:NavController
+    lateinit var logout: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //val binding = DataBindingUtil.setContentView<ActivityBaseBinding>(this, R.layout.activity_main)
         setContentView(R.layout.activity_base)
+
 
         //navigation bottom
         val bottone = findViewById<BottomNavigationView>(R.id.navigation_bottom)

@@ -35,4 +35,9 @@
         android:name="com.example.easycooking.view.Ispirami"
         android:label="fragment_ispirami"
         tools:layout="@layout/fragment_ispirami" />
+    <fragment
+        android:id="@+id/logout2"
+        android:name="com.example.easycooking.view.Logout"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
 </navigation>
