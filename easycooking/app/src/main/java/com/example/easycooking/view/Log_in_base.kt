@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil.setContentView
 import com.example.easycooking.R
+import com.example.easycooking.auth.RegistrationActivity
 import com.example.easycooking.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.auth.api.signin.internal.zzi
@@ -40,29 +41,20 @@ class Log_in_base : Fragment() {
     private val RC_SIGN_IN = 9001
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-
-        }
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_log_in_base, container, false)
-        val
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_log_in_base, container, false)
+        return  view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        createRequest()
-
-        binding.bottoneGmail.setOnClickListener { onClick(bottone_gmail2) }
         auth = FirebaseAuth.getInstance()
+        createRequest()
+       bottone_gmail2.setOnClickListener { onClick(bottone_gmail2) }
+
         login()
+        registratiView1()
     }
 
     private fun createRequest() {
@@ -160,6 +152,14 @@ class Log_in_base : Fragment() {
                         Toast.makeText(activity, "Login fallito", Toast.LENGTH_LONG).show()
                     }
                 }
+        }
+    }
+
+
+    private fun registratiView1() {
+        registrati_accedi1.setOnClickListener {
+            val intent2 = Intent(activity, RegistrationActivity::class.java)
+            startActivity(intent2)
         }
     }
 }
