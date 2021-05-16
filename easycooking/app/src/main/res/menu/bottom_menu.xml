@@ -7,7 +7,7 @@
     <item android:title="Cerca Ricetta"
         android:icon="@drawable/_37_rolling_pin"
         android:id="@+id/ricetteCerca2"/>
-    <item android:title="ListaSpesa"
+    <item android:title="Lista Spesa"
         android:icon="@drawable/_49_vegetable_box"
         android:id="@+id/listaSpesa2"/>
     <item android:title="Login"
