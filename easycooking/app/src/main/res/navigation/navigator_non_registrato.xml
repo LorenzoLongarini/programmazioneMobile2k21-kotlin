@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator_registrato"
+    app:startDestination="@id/ricetteCerca2">
+
+    <fragment
+        android:id="@+id/listaSpesa2"
+        android:name="com.example.easycooking.view.ListaSpesa"
+        android:label="ListaSpesa" />
+    <fragment
+        android:id="@+id/ricetteCerca2"
+        android:name="com.example.easycooking.view.RicetteCerca"
+        android:label="RicetteCerca" />
+    <fragment
+        android:id="@+id/dispensaFrag2"
+        android:name="dispensaFrag"
+        android:label="dispensaFrag" />
+    <fragment
+        android:id="@+id/log_in_base"
+        android:name="com.example.easycooking.view.Log_in_base"
+        android:label="fragment_log_in_base"
+        tools:layout="@layout/fragment_log_in_base" />
+    <fragment
+        android:id="@+id/contattaci"
+        android:name="com.example.easycooking.view.Contattaci"
+        android:label="fragment_contattaci"
+        tools:layout="@layout/fragment_contattaci" />
+    <fragment
+        android:id="@+id/ispirami2"
+        android:name="com.example.easycooking.view.Ispirami"
+        android:label="fragment_ispirami"
+        tools:layout="@layout/fragment_ispirami" />
+    <fragment
+        android:id="@+id/ricetta_del_giorno2"
+        android:name="com.example.easycooking.view.Ricetta_del_giorno"
+        android:label="fragment_ricetta_del_giorno"
+        tools:layout="@layout/fragment_ricetta_del_giorno" />
+</navigation>
