@@ -112,15 +112,6 @@ class Log_in_base : Fragment() {
             })
     }
 
-    fun onConnectionFailed(connectionResult: ConnectionResult){
-        Log.d(TAG, "onConnectionFailed:" + connectionResult)
-    }
-    private fun signOut() {
-        // [START auth_sign_out]
-        Firebase.auth.signOut()
-        // [END auth_sign_out]
-    }
-
     fun onClick(v: View?) {
         when (v!!.id) {
             R.id.bottone_gmail2 -> signIn()
