@@ -109,7 +109,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                             val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                             ricettaArray.add(ricetta!!)
                         }
-                        recView.adapter = RicettaAdapter(ricettaArray)
+                        recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                     }
 
                 }

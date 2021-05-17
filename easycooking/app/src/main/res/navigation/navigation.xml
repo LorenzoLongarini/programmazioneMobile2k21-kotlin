@@ -40,4 +40,9 @@
         android:name="com.example.easycooking.view.Logout"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/singolaRicetta"
+        android:name="com.example.easycooking.adapter.ricetta.SingolaRicetta"
+        android:label="fragment_singola_ricetta"
+        tools:layout="@layout/fragment_singola_ricetta" />
 </navigation>
