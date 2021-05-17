@@ -19,24 +19,26 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/foto_ricetta_cerca"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ricvuota" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome ricetta: "/>
+                android:text="Nome ricetta: "
+                android:textColor="@color/bordeaux"
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/nome_ric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="nome"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ingredienti: "/>
-            <TextView
-                android:id="@+id/ingr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nome"/>
+
             <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
