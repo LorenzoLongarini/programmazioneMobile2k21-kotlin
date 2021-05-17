@@ -46,7 +46,10 @@ class RicettaAdapter(val data: ArrayList<Ricetta>) : RecyclerView.Adapter<Ricett
             val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
            //val Immagine = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
             //val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
-        }   val storage=Firebase.storage
+
+
+        }
+    val storage=Firebase.storage
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
             val layout = LayoutInflater.from(parent.context).inflate(R.layout.cards, parent, false)
@@ -69,6 +72,11 @@ class RicettaAdapter(val data: ArrayList<Ricetta>) : RecyclerView.Adapter<Ricett
                     .load(R.drawable.coltforc)
                     .fitCenter()
                     .into(holder.itemView.foto_ricetta_cerca)
+            }
+
+            holder.itemView.setOnClickListener {
+                holder.nomeRicetta.text="cliccato"
+
             }
 
             
