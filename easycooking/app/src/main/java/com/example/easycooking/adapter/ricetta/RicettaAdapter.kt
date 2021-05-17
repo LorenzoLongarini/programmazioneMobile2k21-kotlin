@@ -71,7 +71,7 @@ class RicettaAdapter(val data: ArrayList<Ricetta>) : RecyclerView.Adapter<Ricett
                     .into(holder.itemView.foto_ricetta_cerca)
             }
 
-            //Glide.with(holder.itemView).load(imagereference).into(holder.itemView.foto_ricetta_cerca)
+            
 
         //holder.ingredienti.text = currentitem.toString()
             //holder.id.text = currentitem.id
