@@ -6,7 +6,7 @@ data class Ricetta(
         //var cookTime: String? = null,
         //var descrizione: String? = null,
         //var id: Int? = null,
-        //var image: String? = null,
+        var image: String? = null,
         //var intolleranze: List<String>? = null,
         //var keywords: List<String>? = null,
         var nome: String? = null,
