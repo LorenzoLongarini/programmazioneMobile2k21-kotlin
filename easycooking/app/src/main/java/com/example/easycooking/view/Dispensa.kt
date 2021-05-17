@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -103,6 +104,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                     DialogInterface.OnClickListener { dialog, id->
                        // var added=Dispensa(nomeProdotto.text.toString(),quantitaProdotto.text.toString().toInt(),quantitaProdotto.text.toString())
                         //appoggio.plus(added)
+                        Toast.makeText(getActivity(), "Pressed OK", Toast.LENGTH_SHORT).show()
                     })
                 setNegativeButton("Annulla",
                     DialogInterface.OnClickListener { dialog, id ->
