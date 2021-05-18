@@ -55,49 +55,8 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
                 .fitCenter()
                 .into(holder.itemView.foto_ricetta_cerca)
         }
-
-        /*holder.itemView.setOnClickListener{
-
-            var intent= Intent(this.context, Activity_ricetta::class.java)
-            intent.putExtra("Nome Ricetta", currentitem.nome)
-            startActivity(intent)
-        }*/
-/*(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-
-                val activity = v!!.context as AppCompatActivity
-                val fragment = SingolaRicetta()
-                activity.supportFragmentManager.beginTransaction().replace(R.id.rv, fragment)
-                    .addToBackStack(null).commit()
-
-
-                //  holder.nomeRicetta.text = "cliccato"
-            }
-        })*/
-
-
-        //holder.ingredienti.text = currentitem.toString()
-        //holder.id.text = currentitem.id
-        // holder.cookTime.text = currentitem.cookTime
-        //holder.prepTime.text = currentitem.prepTime
-        //holder.totalTime.text = currentitem.totalTime
-        // holder.Immagine.text = currentitem.image
-        //holder.intolleranze.text = currentitem.intolleranze
-        //holder.keywords.text = currentitem.keywords
-        //holder.porzione.text = currentitem.porzioni
-        //holder.quantità. = currentitem.quantita
-        //holder.misura.text = currentitem.unita
-        //holder.vegano.text = currentitem.vegano
-        //holder.preparazione.text = currentitem.preparazione
-        //holder.categoria.text = currentitem.recipeCategory
-        // holder.paese.text = currentitem.recipeCuisine
-        //holder.descrizione.text = currentitem.descrizione
-        //var puttt:String=(qua_dis.toString())+" "+um_dis
-        //holder.textView2.text = puttt
-
-
-
     }
+    
    inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
         /*
