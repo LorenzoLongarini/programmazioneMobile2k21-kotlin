@@ -59,6 +59,16 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
         holder.itemView.setOnClickListener {
             val intent= Intent(context,Activity_ricetta::class.java)
             intent.putExtra("Titolo", currentitem.nome)
+            intent.putExtra("Prep",currentitem.prepTime)
+            intent.putExtra("Cott",currentitem.cookTime)
+            intent.putExtra("Tot",currentitem.totalTime)
+            intent.putExtra("Cat",currentitem.recipeCategory)
+            intent.putExtra("Orig",currentitem.recipeCuisine)
+            intent.putExtra("Intoll", currentitem.intolleranze?.toTypedArray())
+            intent.putExtra("Veg", currentitem.vegano)
+            intent.putExtra("Ingr",currentitem.Ingredienti?.toTypedArray())
+            intent.putExtra("Preparaz",currentitem.preparazione)
+            intent.putExtra("image",currentitem.image)
             context.startActivity(intent)
         }
 
