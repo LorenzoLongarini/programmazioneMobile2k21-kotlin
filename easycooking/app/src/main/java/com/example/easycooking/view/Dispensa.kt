@@ -1,5 +1,6 @@
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -93,7 +94,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
 
 
-        val inflater = requireActivity().layoutInflater
+        /*val inflater = requireActivity().layoutInflater
         var nome:EditText?=view?.findViewById<EditText>(R.id.nomeProdotto)
         val builder: AlertDialog.Builder?=activity?.let{
             AlertDialog.Builder(it)
@@ -108,7 +109,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
                        // var added=Dispensa(nomeProdotto.text.toString(),quantitaProdotto.text.toString().toInt(),quantitaProdotto.text.toString())
                         //appoggio.plus(added)
-
+                            liste
                             Toast.makeText(activity, nome?.text.toString(), Toast.LENGTH_LONG).show()
 
                     })
@@ -121,14 +122,13 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
         
         
-        val dialog: AlertDialog? = builder?.create()
+        val dialog: AlertDialog? = builder?.create()*/
 
 
-        bt?.setOnClickListener {
-            if (dialog != null) {
-                dialog.show()
-            }
-        }
+        /*bt?.setOnClickListener {
+           var intent= Intent(this.activity,Activity_aggiungi::class.java)
+
+        }*/
 
 
     }
