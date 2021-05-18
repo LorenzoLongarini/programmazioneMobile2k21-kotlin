@@ -13,6 +13,7 @@
         android:id="@+id/photo"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ricvuota" />
@@ -21,6 +22,7 @@
         android:id="@+id/immagine_ricetta_vista"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="#C9FFFFFF"
         android:fontFamily="@font/bungee"
         android:gravity="bottom"
         android:text="TextView"
@@ -46,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
             <TextView
                 android:id="@+id/textView27"
@@ -83,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
             <TextView
                 android:id="@+id/tempo_preparazione"
@@ -128,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
             <TextView
                 android:id="@+id/textView33"
@@ -157,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
             <TextView
                 android:id="@+id/categoria"
@@ -195,7 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
 
             <TextView
@@ -223,7 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="10dp">
+            android:padding="2dp">
 
 
             <TextView

@@ -2,8 +2,14 @@ package com.example.easycooking.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import kotlinx.android.synthetic.main.cards.view.*
 
 class Activity_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +26,7 @@ class Activity_ricetta : AppCompatActivity() {
         val veg:TextView=findViewById<TextView>(R.id.vegano)
         val ingr:TextView=findViewById<TextView>(R.id.lista_ingrdienti_vista)
         val prep:TextView=findViewById<TextView>(R.id.procedimento_vista)
+        val photo:ImageView=findViewById<ImageView>(R.id.photo)
 
 
         var arrayIntoll=intent.getStringArrayExtra("Intoll")
@@ -36,6 +43,28 @@ class Activity_ricetta : AppCompatActivity() {
                 ingred=ingred+ing+"\n"
             }
         }
+        var veggy=intent.getBooleanExtra("Veg",false)
+        var vegano="No"
+        if (veggy){
+            vegano="Si"
+        }
+
+        val storage = Firebase.storage
+        var image=intent.getStringExtra("image")
+        val n_image = "images/".plus(image)
+        val imagereference = storage.reference.child(n_image)
+        imagereference.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(this)
+                .load(uri)
+                //.fitCenter()
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
+                .into(photo)
+        }.addOnFailureListener { // Handle any errors
+            Glide.with(this)
+                .load(R.drawable.coltforc)
+                //.fitCenter()
+                .into(photo)
+        }
 
 
         titolo.text=intent.getStringExtra("Titolo")
@@ -45,7 +74,7 @@ class Activity_ricetta : AppCompatActivity() {
         cat.text=intent.getStringExtra("Cat")
         orig.text=intent.getStringExtra("Orig")
         intoll.text=intoller
-        //veg.text=intent.getBooleanExtra("Veg")
+        veg.text=vegano
         ingr.text=ingred
         prep.text=intent.getStringExtra("Preparaz")
 

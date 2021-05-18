@@ -68,6 +68,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
             intent.putExtra("Veg", currentitem.vegano)
             intent.putExtra("Ingr",currentitem.Ingredienti?.toTypedArray())
             intent.putExtra("Preparaz",currentitem.preparazione)
+            intent.putExtra("image",currentitem.image)
             context.startActivity(intent)
         }
 
