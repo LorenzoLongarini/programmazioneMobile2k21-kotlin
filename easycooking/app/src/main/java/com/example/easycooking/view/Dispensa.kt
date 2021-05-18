@@ -57,7 +57,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         }
 
         val dbDAO=db?.DispensaDAO()
-        val appoggio= dbDAO?.getAll()
+        val appoggio = dbDAO?.getAll()
 
 
         val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)

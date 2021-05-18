@@ -20,6 +20,10 @@ class SingolaRicetta : Fragment() {
     }
 
     companion object {
+        fun newInstance(nome: Any): SingolaRicetta {
+            return SingolaRicetta()
+
+        }
 
     }
 }

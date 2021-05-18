@@ -14,6 +14,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:contentDescription="Aggiungi un prodotto in dispensa"
+        android:onClick="agg"
         android:text="Aggiungi"
         app:backgroundTint="@color/rosso_chiaro"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.example.easycooking.adapter.ricetta.SingolaRicetta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
@@ -62,9 +63,10 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             // set the custom adapter to the RecyclerView
             }
 
-            var appoggio = mutableListOf<Ricetta>()
+            //var appoggio = mutableListOf<Ricetta>()
             ricettaArray = arrayListOf<Ricetta>()
             getRicette()
+
 
             /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
             val docRef = db.collection("cook").document("100")
@@ -121,6 +123,18 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
 
         }
+     /*fun onItemClick(ricetta: Ricetta){
+        val fragment: Fragment = SingolaRicetta.newInstance(SingolaRicetta)
+        val transaction = activity?.supportFragmentManager!!.beginTransaction()
+        activity?.supportFragmentManager!!.findFragmentByTag("Singola Ricetta")?.let {
+            transaction.hide(
+                it
+            )
+        }
+        transaction.add(R.id.fragment_container_view_tag, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }*/
 
 
 
