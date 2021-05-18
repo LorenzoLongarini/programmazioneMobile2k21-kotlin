@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_base.*
 class Base : AppCompatActivity() {
 //    private val LOGIN_REQUEST = 101
 //    private var mAuth: FirebaseAuth? = null
+
     lateinit var app_bar:AppBarConfiguration
     lateinit var  navController:NavController
     lateinit var logout: Button

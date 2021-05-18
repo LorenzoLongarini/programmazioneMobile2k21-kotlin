@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_base.*
 
 class Base_nonReg : AppCompatActivity() {
+
     lateinit var app_bar: AppBarConfiguration
     lateinit var  navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {

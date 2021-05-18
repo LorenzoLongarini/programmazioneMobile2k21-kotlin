@@ -1,13 +1,9 @@
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,14 +12,12 @@ import androidx.room.Room
 import com.example.easycooking.DB.AppDatabase
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.Dispensa
 import com.example.easycooking.adapter.dispensa.MyAdapter
 import com.example.easycooking.view.Activity_inserisci_dispensa
-import com.example.easycooking.view.Activity_ricetta
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.easycooking.view.Base_nonReg
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import kotlinx.android.synthetic.main.dialog.*
+import kotlinx.android.synthetic.main.activity_base.*
 import kotlinx.android.synthetic.main.fragment_dispensa.*
 
 
@@ -53,7 +47,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             Room.databaseBuilder(
                 it,
                 AppDatabase::class.java, "dispensa"
-            ).build()
+            )   .allowMainThreadQueries()
+                .build()
         }
 
         val dbDAO=db?.DispensaDAO()
@@ -67,6 +62,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             // RecyclerView behavior
 
             layoutManager = LinearLayoutManager(activity)
+            //adapter = MyAdapter(appoggio)
             // set the custom adapter to the RecyclerView
             /*ar Dis1=Dispensa("gelato",10,"scatole")
             var Dis2=Dispensa("capperi",2,"barattoli")
