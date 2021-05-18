@@ -12,7 +12,7 @@ class Activity_ricetta : AppCompatActivity() {
 
         val titolo:TextView=findViewById<TextView>(R.id.immagine_ricetta_vista)
 
-        //titolo=intent.getStringExtra()
+        titolo.text=intent.getStringExtra("Titolo")
 
     }
 }

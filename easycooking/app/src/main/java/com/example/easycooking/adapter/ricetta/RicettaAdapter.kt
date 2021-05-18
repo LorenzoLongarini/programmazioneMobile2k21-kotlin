@@ -55,6 +55,13 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
                 .fitCenter()
                 .into(holder.itemView.foto_ricetta_cerca)
         }
+
+        holder.itemView.setOnClickListener {
+            val intent= Intent(context,Activity_ricetta::class.java)
+            intent.putExtra("Titolo", currentitem.nome)
+            context.startActivity(intent)
+        }
+
     }
     
    inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
@@ -78,14 +85,12 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
         val descrizione = row.findViewById<TextView>(R.id.descr)
 
          */
-        val intent: Intent? = null
+       
         val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
         val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
         val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
 
-        init {
-            row.setOnClickListener { context.startActivity(Intent(context,Activity_ricetta::class.java)) }
-        }
+
 
     }
 
