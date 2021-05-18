@@ -59,6 +59,15 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
         holder.itemView.setOnClickListener {
             val intent= Intent(context,Activity_ricetta::class.java)
             intent.putExtra("Titolo", currentitem.nome)
+            intent.putExtra("Prep",currentitem.prepTime)
+            intent.putExtra("Cott",currentitem.cookTime)
+            intent.putExtra("Tot",currentitem.totalTime)
+            intent.putExtra("Cat",currentitem.recipeCategory)
+            intent.putExtra("Orig",currentitem.recipeCuisine)
+            intent.putExtra("Intoll", currentitem.intolleranze?.toTypedArray())
+            intent.putExtra("Veg", currentitem.vegano)
+            intent.putExtra("Ingr",currentitem.Ingredienti?.toTypedArray())
+            intent.putExtra("Preparaz",currentitem.preparazione)
             context.startActivity(intent)
         }
 
@@ -85,7 +94,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
         val descrizione = row.findViewById<TextView>(R.id.descr)
 
          */
-       
+
         val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
         val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
         val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
