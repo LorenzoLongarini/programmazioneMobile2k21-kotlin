@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
 
-class MyAdapter(val data: List<Dispensa>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(val data: List<DispensaDBEntity>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         val textView = row.findViewById<TextView>(R.id.nome)
@@ -21,10 +22,10 @@ class MyAdapter(val data: List<Dispensa>) : RecyclerView.Adapter<MyAdapter.MyVie
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        var nome_dis:String?=data.get(position).Nome
+        var nome_dis:String?=data.get(position).nomeProdotto
         holder.textView.text = nome_dis
-        var qua_dis:Int?=data.get(position).Quant
-        var um_dis:String?=data.get(position).unita
+        var qua_dis:Int?=data.get(position).quantProdotto
+        var um_dis:String?=data.get(position).unitProdotto
         var puttt:String=(qua_dis.toString())+" "+um_dis
         holder.textView2.text = puttt
     }

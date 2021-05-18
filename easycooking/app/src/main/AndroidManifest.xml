@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.DialogActivity"></activity>
+        <activity android:name=".view.Activity_inserisci_dispensa"></activity>
+        <activity android:name=".view.DialogActivity" />
         <activity android:name=".view.Activity_ricetta" />
         <activity android:name=".view.Base_nonReg" />
         <activity android:name=".auth.RegistrationActivity" />

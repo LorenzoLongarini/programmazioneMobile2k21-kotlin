@@ -12,10 +12,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.easycooking.DB.AppDatabase
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.Dispensa
 import com.example.easycooking.adapter.dispensa.MyAdapter
+import com.example.easycooking.view.Activity_inserisci_dispensa
+import com.example.easycooking.view.Activity_ricetta
 import com.google.firebase.firestore.FirebaseFirestore
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
@@ -44,8 +48,20 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         val bt: Button? =view?.findViewById<Button>(R.id.bt)
+
+        val db = context?.let {
+            Room.databaseBuilder(
+                it,
+                AppDatabase::class.java, "dispensa"
+            ).build()
+        }
+
+        val dbDAO=db?.DispensaDAO()
+        val appoggio= dbDAO?.getAll()
+
+
         val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
-        var appoggio=mutableListOf<Dispensa>()
+       // var appoggio=mutableListOf<Dispensa>()
         rv?.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
@@ -77,17 +93,21 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             )
 
 
-            val alphaAdapter = AlphaInAnimationAdapter(MyAdapter(appoggio)).apply {
-                // Change the durations.
-                setDuration(750)
-                // Disable the first scroll mode.
-                setFirstOnly(false)
+            val alphaAdapter = appoggio?.let { MyAdapter(it) }?.let {
+                AlphaInAnimationAdapter(it).apply {
+                    // Change the durations.
+                    setDuration(750)
+                    // Disable the first scroll mode.
+                    setFirstOnly(false)
+                }
             }
-            rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
-                // Change the durations.
-                setDuration(350)
-                // Disable the first scroll mode.
-                setFirstOnly(false)
+            rv?.adapter = alphaAdapter?.let {
+                ScaleInAnimationAdapter(it).apply {
+                    // Change the durations.
+                    setDuration(350)
+                    // Disable the first scroll mode.
+                    setFirstOnly(false)
+                }
             }
 
         }
@@ -125,10 +145,11 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         val dialog: AlertDialog? = builder?.create()*/
 
 
-        /*bt?.setOnClickListener {
-           var intent= Intent(this.activity,Activity_aggiungi::class.java)
+        bt?.setOnClickListener {
+            val intent= Intent(context, Activity_inserisci_dispensa::class.java)
+            context?.startActivity(intent)
 
-        }*/
+        }
 
 
     }
