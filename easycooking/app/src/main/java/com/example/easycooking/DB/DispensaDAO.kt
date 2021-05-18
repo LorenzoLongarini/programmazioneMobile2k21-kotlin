@@ -1,16 +1,14 @@
 package com.example.easycooking.DB
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DispensaDAO {
-    @Query("SELECT * FROM dispensa")
-    fun getAll():List<DispensaDBEntity>
-    @Insert
-    fun insertAll(vararg dispensa:DispensaDBEntity)
-    @Delete
+    @Query("SELECT * FROM dispensa_table")
+    fun getAll(): Flow<List<DispensaDBEntity>>
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun insert( dispensa:DispensaDBEntity)
+    @Query("DELETE FROM dispensa_table")
     fun delete(dispensa:DispensaDBEntity)
 }
