@@ -93,7 +93,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
 
 
-        val inflater = requireActivity().layoutInflater;
+        val inflater = requireActivity().layoutInflater
+        var nome:EditText?=view?.findViewById<EditText>(R.id.nomeProdotto)
         val builder: AlertDialog.Builder?=activity?.let{
             AlertDialog.Builder(it)
         }
@@ -102,9 +103,14 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                 setView(inflater.inflate(R.layout.dialog,null))
                 setPositiveButton("Aggiungi",
                     DialogInterface.OnClickListener { dialog, id->
+
+
+
                        // var added=Dispensa(nomeProdotto.text.toString(),quantitaProdotto.text.toString().toInt(),quantitaProdotto.text.toString())
                         //appoggio.plus(added)
-                        Toast.makeText(getActivity(), "Pressed OK", Toast.LENGTH_SHORT).show()
+
+                            Toast.makeText(activity, nome?.text.toString(), Toast.LENGTH_LONG).show()
+
                     })
                 setNegativeButton("Annulla",
                     DialogInterface.OnClickListener { dialog, id ->

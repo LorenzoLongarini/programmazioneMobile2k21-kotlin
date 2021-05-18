@@ -36,4 +36,5 @@
         android:layout_marginBottom="16dp"
         android:hint="Unità di misura"
         android:inputType="textPersonName" />
+
 </LinearLayout>
