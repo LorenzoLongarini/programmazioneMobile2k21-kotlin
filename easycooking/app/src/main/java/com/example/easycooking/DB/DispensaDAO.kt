@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface DispensaDAO {
     @Query("SELECT * FROM dispensa_table")
     fun getAll(): Flow<List<DispensaDBEntity>>
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert( dispensa:DispensaDBEntity)
     @Query("DELETE FROM dispensa_table")
-    fun delete(dispensa:DispensaDBEntity)
+    suspend fun deleteAll()
 }

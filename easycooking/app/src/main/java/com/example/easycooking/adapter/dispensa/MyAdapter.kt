@@ -5,32 +5,49 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
 
-class MyAdapter(val data: List<DispensaDBEntity>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DISP_COMPARATOR) {
 
-    class MyViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
-        val textView = row.findViewById<TextView>(R.id.nome)
-        val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DispensaViewHolder {
+        return DispensaViewHolder.create(parent)
+    }
+
+    override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
+        val current = getItem(position)
+        holder.bind(current.nomeProdotto)
+    }
+
+    class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val dispensaItemView: TextView = itemView.findViewById(R.id.nome)
+
+        fun bind(text: String?) {
+            dispensaItemView.text = text
+        }
+
+        companion object {
+            fun create(parent: ViewGroup): DispensaViewHolder {
+                val view: View = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_view, parent, false)
+                return DispensaViewHolder(view)
+            }
+        }
+    }
+
+    companion object {
+        private val DISP_COMPARATOR = object : DiffUtil.ItemCallback<DispensaDBEntity>() {
+            override fun areItemsTheSame(oldItem: DispensaDBEntity, newItem: DispensaDBEntity): Boolean {
+                return oldItem === newItem
             }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
-        return MyViewHolder(layout)
+            override fun areContentsTheSame(oldItem: DispensaDBEntity, newItem: DispensaDBEntity): Boolean {
+                return oldItem.nomeProdotto == newItem.nomeProdotto
+            }
+        }
     }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        var nome_dis:String?=data.get(position).nomeProdotto
-        holder.textView.text = nome_dis
-        var qua_dis:Int?=data.get(position).quantProdotto
-        var um_dis:String?=data.get(position).unitProdotto
-        var puttt:String=(qua_dis.toString())+" "+um_dis
-        holder.textView2.text = puttt
-    }
-
-
-    override fun getItemCount(): Int = data.size
 }
