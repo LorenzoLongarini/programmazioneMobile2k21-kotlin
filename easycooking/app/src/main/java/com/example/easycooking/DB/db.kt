@@ -55,10 +55,10 @@ public abstract class DispensaDatabase : RoomDatabase() {
             // Not needed if you only populate on creation.
             dispensaDao.deleteAll()
 
-            var dispensa= DispensaDBEntity("Hello",10,"grammi")
+            /*var dispensa= DispensaDBEntity("Hello",10,"grammi")
             dispensaDao.insert(dispensa)
             dispensa= DispensaDBEntity("World!",20,"Litri")
-            dispensaDao.insert(dispensa)
+            dispensaDao.insert(dispensa)*/
 
     }
 }

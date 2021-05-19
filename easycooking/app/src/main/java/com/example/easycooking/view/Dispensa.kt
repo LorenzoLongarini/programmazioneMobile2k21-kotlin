@@ -56,9 +56,26 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         val bt = view?.findViewById<Button>(R.id.bt)
 
 
+
+
         val rv = view?.findViewById<RecyclerView>(R.id.rv)
         val adapter = DispensaListAdapter()
-        rv?.adapter = adapter
+
+        val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
+            // Change the durations.
+            setDuration(750)
+            // Disable the first scroll mode.
+            setFirstOnly(false)}
+        
+
+        rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
+            // Change the durations.
+            setDuration(350)
+            // Disable the first scroll mode.
+            setFirstOnly(false)
+        }
+        rv?.addItemDecoration(DefaultItemDecorator(resources.getDimensionPixelSize(R.dimen.provider_name_horizontal_margin),
+            resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin)))
         rv?.layoutManager = LinearLayoutManager(activity)
 
         activity?.let {
