@@ -13,11 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.example.easycooking.DB.*
 
-import com.example.easycooking.DB.DispensaApplication
-import com.example.easycooking.DB.DispensaDBEntity
-import com.example.easycooking.DB.DispensaViewModel
-import com.example.easycooking.DB.DispensaViewModelFactory
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
@@ -56,10 +53,10 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        val bt: Button? = view?.findViewById<Button>(R.id.bt)
+        val bt = view?.findViewById<Button>(R.id.bt)
 
 
-        val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
+        val rv = view?.findViewById<RecyclerView>(R.id.rv)
         val adapter = DispensaListAdapter()
         rv?.adapter = adapter
         rv?.layoutManager = LinearLayoutManager(activity)
@@ -102,7 +99,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
 
                 bt?.setOnClickListener {
-                    val intent = Intent(context, Activity_inserisci_dispensa::class.java)
+                    val intent = Intent(activity, Activity_inserisci_dispensa::class.java)
                     startActivityForResult(intent, newDispensaActivityRequestCode)
                 }
             }

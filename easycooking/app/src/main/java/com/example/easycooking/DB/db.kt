@@ -13,11 +13,6 @@ import kotlinx.coroutines.launch
 @Database(entities = arrayOf(DispensaDBEntity::class), version = 1,exportSchema = false)
 public abstract class DispensaDatabase : RoomDatabase() {
     abstract fun DispensaDAO(): DispensaDAO
-
-
-
-
-
     companion object {
         @Volatile
         private var INSTANCE: DispensaDatabase? = null
@@ -35,29 +30,27 @@ public abstract class DispensaDatabase : RoomDatabase() {
                 instance
                 }
             }
-        private class DispensaDatabaseCallback(
-            private val scope: CoroutineScope
-        ) : RoomDatabase.Callback() {
-            /**
-             * Override the onCreate method to populate the database.
-             */
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
-                INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.DispensaDAO())
-                    }
-                }
-            }
-        }
 
         /**
          * Populate the database in a new coroutine.
          * If you want to start with more words, just add them.
          */
-        suspend fun populateDatabase(dispensaDao: DispensaDAO) {
+    }
+
+    private class DispensaDatabaseCallback(
+        private val scope: CoroutineScope
+    ) : RoomDatabase.Callback(){
+        /**
+         * Override the onCreate method to populate the database.
+         */
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            // If you want to keep the data through app restarts,
+            // comment out the following line.
+            INSTANCE?.let { database ->
+                scope.launch{
+                    var dispensaDao = database.DispensaDAO()
+
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             dispensaDao.deleteAll()
@@ -66,6 +59,7 @@ public abstract class DispensaDatabase : RoomDatabase() {
             dispensaDao.insert(dispensa)
             dispensa= DispensaDBEntity("World!",20,"Litri")
             dispensaDao.insert(dispensa)
-        }
+
     }
 }
+        }}}

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
 
-class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DISP_COMPARATOR) {
+class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DispComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DispensaViewHolder {
         return DispensaViewHolder.create(parent)
@@ -39,8 +39,7 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
         }
     }
 
-    companion object {
-        private val DISP_COMPARATOR = object : DiffUtil.ItemCallback<DispensaDBEntity>() {
+    class DispComparator : DiffUtil.ItemCallback<DispensaDBEntity>() {
             override fun areItemsTheSame(oldItem: DispensaDBEntity, newItem: DispensaDBEntity): Boolean {
                 return oldItem === newItem
             }
@@ -50,4 +49,3 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
             }
         }
     }
-}
