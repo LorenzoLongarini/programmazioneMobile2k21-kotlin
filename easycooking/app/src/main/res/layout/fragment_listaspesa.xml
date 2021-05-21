@@ -37,14 +37,10 @@
             android:textColor="@color/arancione_scuro"
             android:textSize="24sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="353dp"
-            android:background="@drawable/paginagialla2"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
+        <ListView
+            android:id="@+id/list_todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
