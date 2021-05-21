@@ -20,14 +20,16 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
 
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.nomeProdotto)
+        holder.bind(current.nomeProdotto,current.quantProdotto,current.unitProdotto)
     }
 
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dispensaItemView: TextView = itemView.findViewById(R.id.nome)
+        private val dispensaQuant:TextView=itemView.findViewById(R.id.prodotto_quant)
 
-        fun bind(text: String?) {
+        fun bind(text: String?,i:Int?,text1:String?) {
             dispensaItemView.text = text
+            dispensaQuant.text=i.toString()+" "+text1
         }
 
         companion object {

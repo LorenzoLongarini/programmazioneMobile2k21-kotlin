@@ -32,7 +32,11 @@ class Activity_inserisci_dispensa : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val nomeprod = editorNomeView.text.toString()
+                val quant = editorQuantView.text.toString()
+                val unit = editorUnitView.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, nomeprod)
+                replyIntent.putExtra("quant",quant)
+                replyIntent.putExtra("unit",unit)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

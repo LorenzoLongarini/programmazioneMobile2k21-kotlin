@@ -127,8 +127,10 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newDispensaActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            var quant=intentData?.getStringExtra("quant")
+            var unit=intentData?.getStringExtra("unit")
             intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
-                val dispensa = DispensaDBEntity(reply,0,"kk")
+                val dispensa = DispensaDBEntity(reply,quant?.toInt(),unit)
                 dispensaViewModel.insert(dispensa)
             }
         } else {
