@@ -21,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.example.easycooking.auth.RegistrationActivity
 import com.example.easycooking.view.Base_nonReg
+import com.example.easycooking.view.Ispirami
 import com.google.api.Authentication
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -126,5 +127,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
          startActivity(intent2)
         }
 
+    fun random(v: View) {
+        val intent3 = Intent(this, Ispirami::class.java)
+        startActivity(intent3)
+    }
 
 }

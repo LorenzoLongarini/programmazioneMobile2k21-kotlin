@@ -39,7 +39,6 @@ class Log_in_base : Fragment() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private val TAG: String = "SignInActivity"
     private val RC_SIGN_IN = 9001
-    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

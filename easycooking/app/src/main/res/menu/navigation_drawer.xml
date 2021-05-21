@@ -5,8 +5,9 @@
         android:title="Ispirami"
         android:id="@+id/ispirami"/>
     <item
-        android:title="Ricetta del giorno"
-        android:id="@+id/ricetta_del_giorno"/>
+        android:id="@+id/ricetta_del_giorno"
+        android:onClick="random"
+        android:title="Ricetta del giorno" />
     <item
         android:title="Contattaci"
         android:id="@+id/contattaci2"/>
