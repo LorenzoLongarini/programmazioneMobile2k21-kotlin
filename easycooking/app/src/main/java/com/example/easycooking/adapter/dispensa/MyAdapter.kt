@@ -1,6 +1,7 @@
 package com.example.easycooking.adapter.dispensa
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
+import com.example.easycooking.view.Activity_gestione
+import com.example.easycooking.view.Activity_ricetta
 
 class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DispComparator()) {
 
@@ -21,6 +24,14 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.nomeProdotto,current.quantProdotto,current.unitProdotto)
+
+        holder.itemView.setOnClickListener {
+            val intent= Intent(it.context, Activity_gestione::class.java)
+            intent.putExtra("Prodotto", current.nomeProdotto)
+            intent.putExtra("Quantita",current.quantProdotto)
+            intent.putExtra("Unita",current.unitProdotto)
+            it.context.startActivity(intent)
+        }
     }
 
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
