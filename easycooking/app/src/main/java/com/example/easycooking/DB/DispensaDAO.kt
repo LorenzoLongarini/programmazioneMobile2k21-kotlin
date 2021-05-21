@@ -11,4 +11,5 @@ interface DispensaDAO {
     suspend fun insert( dispensa:DispensaDBEntity)
     @Query("DELETE FROM dispensa_table")
     suspend fun deleteAll()
+
 }
