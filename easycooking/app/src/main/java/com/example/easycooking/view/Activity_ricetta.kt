@@ -24,7 +24,9 @@ class Activity_ricetta : AppCompatActivity() {
         val orig:TextView=findViewById<TextView>(R.id.origine)
         val intoll:TextView=findViewById<TextView>(R.id.intolleranze)
         val veg:TextView=findViewById<TextView>(R.id.vegano)
-        val ingr:TextView=findViewById<TextView>(R.id.lista_ingrdienti_vista)
+        val ingr:TextView=findViewById<TextView>(R.id.Ingredienti)
+        val quant:TextView=findViewById<TextView>(R.id.Quantità)
+        val unit:TextView=findViewById<TextView>(R.id.Unitàdimisura)
         val prep:TextView=findViewById<TextView>(R.id.procedimento_vista)
         val photo:ImageView=findViewById<ImageView>(R.id.photo)
 
@@ -35,12 +37,30 @@ class Activity_ricetta : AppCompatActivity() {
             for (intol in arrayIntoll){
                 intoller += intol
             }
+        }else{
+            intoller="nessuna intolleranza"
         }
         var arrayIngr=intent.getStringArrayExtra("Ingr")
         var ingred=""
         if (arrayIngr != null) {
             for (ing in arrayIngr){
-                ingred=ingred+ing+"\n"
+                ingred=ing+"\n"
+            }
+        }
+        var arrayQuant=intent.getStringArrayExtra("Quant")
+        var quantit=""
+        if (arrayQuant != null) {
+            for (ing in arrayQuant){
+                quantit=quantit+quant+"\n"
+            }
+        }else{
+            quantit="null"
+        }
+        var arrayUnit=intent.getStringArrayExtra("Unit")
+        var unita=""
+        if (arrayUnit != null) {
+            for (ing in arrayUnit){
+                unita=unita+unit+"\n"
             }
         }
         var veggy=intent.getBooleanExtra("Veg",false)
@@ -76,6 +96,8 @@ class Activity_ricetta : AppCompatActivity() {
         intoll.text=intoller
         veg.text=vegano
         ingr.text=ingred
+        quant.text=quantit
+        unit.text=unita
         prep.text=intent.getStringExtra("Preparaz")
 
     }

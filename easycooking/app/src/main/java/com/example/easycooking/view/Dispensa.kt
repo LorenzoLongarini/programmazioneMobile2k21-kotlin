@@ -31,7 +31,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
     private val newDispensaActivityRequestCode = 1
     private val dispensaViewModel: DispensaViewModel by viewModels {
-        DispensaViewModelFactory((fragment.activity?.application as DispensaApplication).repository)
+        DispensaViewModelFactory((activity?.application as DispensaApplication).repository)
     }
 
     companion object {
