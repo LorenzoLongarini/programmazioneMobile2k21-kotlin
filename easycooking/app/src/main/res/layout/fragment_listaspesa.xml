@@ -37,10 +37,22 @@
             android:textColor="@color/arancione_scuro"
             android:textSize="24sp" />
 
-        <ListView
-            android:id="@+id/list_todo"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recspesa"
+            android:layout_width="match_parent"
+            android:layout_height="368dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/paginagialla2"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/compra"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Compra" />
 
     </LinearLayout>
 
