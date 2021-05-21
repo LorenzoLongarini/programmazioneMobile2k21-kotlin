@@ -44,14 +44,14 @@ class Activity_ricetta : AppCompatActivity() {
         var ingred=""
         if (arrayIngr != null) {
             for (ing in arrayIngr){
-                ingred=ing+"\n"
+                ingred=ingred+ing+"\n"
             }
         }
         var arrayQuant=intent.getStringArrayExtra("Quant")
         var quantit=""
         if (arrayQuant != null) {
             for (ing in arrayQuant){
-                quantit=quantit+quant+"\n"
+                quantit=quantit+ing+"\n"
             }
         }else{
             quantit="null"
@@ -60,7 +60,7 @@ class Activity_ricetta : AppCompatActivity() {
         var unita=""
         if (arrayUnit != null) {
             for (ing in arrayUnit){
-                unita=unita+unit+"\n"
+                unita=unita+ing+"\n"
             }
         }
         var veggy=intent.getBooleanExtra("Veg",false)
