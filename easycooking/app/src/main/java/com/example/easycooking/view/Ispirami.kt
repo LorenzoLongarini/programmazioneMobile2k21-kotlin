@@ -78,6 +78,61 @@ class Ispirami : Fragment() {
             }
             val ricettina = ricettaArray.random()
             titolo.text = ricettina?.nome
+            prepTime.text = ricettina?.prepTime
+            cookTime.text = ricettina?.cookTime
+            totTime.text = ricettina?.totalTime
+            cat.text = ricettina?.recipeCategory
+            orig.text = ricettina?.recipeCuisine
+
+            var arrayIntoll = ricettina.intolleranze
+            var intoller = ""
+            if (arrayIntoll != null) {
+                for (intol in arrayIntoll) {
+                    intoller += intol
+                }
+            } else {
+                intoller = "nessuna intolleranza"
+            }
+            var arrayIngr = ricettina.Ingredienti
+            var ingred = ""
+            if (arrayIngr != null) {
+                for (ing in arrayIngr) {
+                    ingred = ingred + ing + "\n"
+                }
+            }
+            var arrayQuant = ricettina.quantita
+            var quantit = ""
+            if (arrayQuant != null) {
+                for (ing in arrayQuant) {
+                    quantit = quantit + ing + "\n"
+                }
+            } else {
+                quantit = "null"
+            }
+            var arrayUnit = ricettina.unita
+            var unita = ""
+            if (arrayUnit != null) {
+                for (ing in arrayUnit) {
+                    unita = unita + ing + "\n"
+                }
+            }
+            var veggy = ricettina.vegano
+            var vegano = "No"
+            if (veggy == true) {
+                vegano = "Si"
+            }
+
+            intoll.text = intoller
+            veg.text = vegano
+            ingr.text = ingred
+            quant.text = quantit
+            unit.text = unita
+            prep.text = ricettina?.preparazione
+
+            
+
+
+
         }
 
         //ispirami()
