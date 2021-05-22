@@ -6,7 +6,6 @@
         android:id="@+id/ispirami"/>
     <item
         android:id="@+id/ricetta_del_giorno"
-        android:onClick="random"
         android:title="Ricetta del giorno" />
     <item
         android:title="Contattaci"

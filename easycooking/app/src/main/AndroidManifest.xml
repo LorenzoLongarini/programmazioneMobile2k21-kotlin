@@ -16,6 +16,7 @@
         <activity android:name=".view.Activity_gestione"></activity>
         <activity android:name=".view.Activity_inserisci_dispensa" />
         <activity android:name=".view.Activity_ricetta" />
+        <activity android:name=".spesa.Activity_compra" />
         <activity android:name=".view.Base_nonReg" />
         <activity android:name=".auth.RegistrationActivity" />
         <activity android:name=".view.Base" />

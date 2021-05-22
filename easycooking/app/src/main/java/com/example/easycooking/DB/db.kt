@@ -6,30 +6,32 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.easycooking.adapter.dispensa.Dispensa
+import com.example.easycooking.spesa.SpesaDAO
+import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(DispensaDBEntity::class), version = 1,exportSchema = false)
-public abstract class DispensaDatabase : RoomDatabase() {
-    abstract fun DispensaDAO(): DispensaDAO
+@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class), version = 2,exportSchema = false)
+public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
+
         @Volatile
-        private var INSTANCE: DispensaDatabase? = null
-        fun getDatabase(context: Context,scope: CoroutineScope): DispensaDatabase {
+        private var INSTANCE: ChoiceDatabase? = null
+        fun getDatabase(context: Context,scope: CoroutineScope): ChoiceDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    DispensaDatabase::class.java,
-                    "dispensa_database"
+                    ChoiceDatabase::class.java,
+                    "choice_database"
                 ).fallbackToDestructiveMigration()
-                    .addCallback(DispensaDatabaseCallback(scope))
+                    .addCallback(ChoiceDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
                 // return instance
                 instance
-                }
             }
+        }
 
         /**
          * Populate the database in a new coroutine.
@@ -37,7 +39,10 @@ public abstract class DispensaDatabase : RoomDatabase() {
          */
     }
 
-    private class DispensaDatabaseCallback(
+    abstract fun DispensaDAO(): DispensaDAO
+    abstract fun SpesaDAO(): SpesaDAO
+
+    private class ChoiceDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback(){
         /**
@@ -50,10 +55,12 @@ public abstract class DispensaDatabase : RoomDatabase() {
             INSTANCE?.let { database ->
                 scope.launch{
                     var dispensaDao = database.DispensaDAO()
+                    var spesaDao = database.SpesaDAO()
 
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             dispensaDao.deleteAll()
+            spesaDao.deleteAll()
 
             /*var dispensa= DispensaDBEntity("Hello",10,"grammi")
             dispensaDao.insert(dispensa)
@@ -62,4 +69,8 @@ public abstract class DispensaDatabase : RoomDatabase() {
 
     }
 }
-        }}}
+        }}
+
+
+
+}

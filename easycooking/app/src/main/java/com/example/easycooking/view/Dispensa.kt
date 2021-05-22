@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.annotation.NonNull
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.example.easycooking.DB.*
 
 import com.example.easycooking.R
@@ -20,18 +18,15 @@ import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 
 import com.example.easycooking.view.Activity_inserisci_dispensa
-import com.example.easycooking.view.Base_nonReg
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import kotlinx.android.synthetic.main.activity_base.*
-import kotlinx.android.synthetic.main.fragment_dispensa.*
 
 
 class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
     private val newDispensaActivityRequestCode = 1
     private val dispensaViewModel: DispensaViewModel by viewModels {
-        DispensaViewModelFactory((activity?.application as DispensaApplication).repository)
+        DispensaViewModelFactory((activity?.application as DispensaApplication).repositoryDispensa)
     }
 
     companion object {
