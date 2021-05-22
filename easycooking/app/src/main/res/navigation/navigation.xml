@@ -35,8 +35,9 @@
         android:name="com.example.easycooking.adapter.ricetta.SingolaRicetta"
         android:label="fragment_singola_ricetta"
         tools:layout="@layout/fragment_singola_ricetta" />
-    <activity
+    <fragment
         android:id="@+id/ispirami4"
         android:name="com.example.easycooking.view.Ispirami"
-        android:label="Ispirami" />
+        android:label="Ispirami"
+        tools:layout="@layout/ispirami" />
 </navigation>

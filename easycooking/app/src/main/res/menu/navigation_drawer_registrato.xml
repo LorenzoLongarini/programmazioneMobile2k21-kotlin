@@ -11,6 +11,9 @@
         android:title="Contattaci"
         android:id="@+id/contattaci2"/>
     <item
+        android:title="Ispirami"
+        android:id="@+id/ispirami4"/>
+    <item
         android:title="logout"
         android:id="@+id/logout2"/>
 </menu>

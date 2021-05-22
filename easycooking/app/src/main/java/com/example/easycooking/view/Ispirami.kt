@@ -24,41 +24,67 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
-class Ispirami : AppCompatActivity() {
+class Ispirami : Fragment() {
+
 
     private lateinit var dbref: DatabaseReference
-    private lateinit var ricettaArray: ArrayList<Ricetta>
+    /*private lateinit var ricettaArray: ArrayList<Ricetta>
     private lateinit var ricDay: Ricetta
     private lateinit var randomizer: Random
     private lateinit var nome: TextView
     private lateinit var immagine: ImageView
-    private lateinit var button: Button
+    private lateinit var button: Button*/
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view:View = inflater.inflate(R.layout.ispirami, container, false)
+        return view
+    }
+
+    companion object {
+        fun newInstance(): Ispirami {
+            return Ispirami()
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.ispirami)
+
+        //var ricettina:Ricetta= ricettaArray.random()
 
 
-        val titolo: TextView = findViewById<TextView>(R.id.immagine_ricetta_vista)
-        val prepTime: TextView = findViewById<TextView>(R.id.tempo_preparazione)
-        val cookTime: TextView = findViewById<TextView>(R.id.tempo_cottura)
-        val totTime: TextView = findViewById<TextView>(R.id.tempo_totale)
-        val cat: TextView = findViewById<TextView>(R.id.categoria)
-        val orig: TextView = findViewById<TextView>(R.id.origine)
-        val intoll: TextView = findViewById<TextView>(R.id.intolleranze)
-        val veg: TextView = findViewById<TextView>(R.id.vegano)
-        val ingr: TextView = findViewById<TextView>(R.id.Ingredienti)
-        val quant: TextView = findViewById<TextView>(R.id.Quantità)
-        val unit: TextView = findViewById<TextView>(R.id.Unitàdimisura)
-        val prep: TextView = findViewById<TextView>(R.id.procedimento_vista)
-        val photo: ImageView = findViewById<ImageView>(R.id.photo)
-        //getRicette()
+
+
+        val titolo: TextView = view?.findViewById<TextView>(R.id.immagine_ricetta_vista)
+        val prepTime: TextView = view?.findViewById<TextView>(R.id.tempo_preparazione)
+        val cookTime: TextView = view?.findViewById<TextView>(R.id.tempo_cottura)
+        val totTime: TextView = view?.findViewById<TextView>(R.id.tempo_totale)
+        val cat: TextView = view?.findViewById<TextView>(R.id.categoria)
+        val orig: TextView = view?.findViewById<TextView>(R.id.origine)
+        val intoll: TextView = view?.findViewById<TextView>(R.id.intolleranze)
+        val veg: TextView = view?.findViewById<TextView>(R.id.vegano)
+        val ingr: TextView = view?.findViewById<TextView>(R.id.Ingredienti)
+        val quant: TextView = view?.findViewById<TextView>(R.id.Quantità)
+        val unit: TextView = view?.findViewById<TextView>(R.id.Unitàdimisura)
+        val prep: TextView = view?.findViewById<TextView>(R.id.procedimento_vista)
+        val photo: ImageView = view?.findViewById<ImageView>(R.id.photo)
+        dbref = FirebaseDatabase.getInstance().getReference("")
+        dbref.get().addOnSuccessListener {
+            var ricettaArray= arrayListOf<Ricetta>()
+            for (ricetteSnapshot in it.children) {
+                val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                ricettaArray.add(ricetta!!)
+            }
+            val ricettina = ricettaArray.random()
+            titolo.text = ricettina?.nome
+        }
+
         //ispirami()
 
 
 
-            var arrayIntoll = intent.getStringArrayExtra("Intoll")
+            /*var arrayIntoll = intent.getStringArrayExtra("Intoll")
             var intoller = ""
             if (arrayIntoll != null) {
                 for (intol in arrayIntoll) {
@@ -111,21 +137,21 @@ class Ispirami : AppCompatActivity() {
                     .load(R.drawable.coltforc)
                     //.fitCenter()
                     .into(photo)
-            }
+            }*/
 
 
-            titolo.text = intent.getStringExtra("Titolo")
-            prepTime.text = intent.getStringExtra("Prep")
-            cookTime.text = intent.getStringExtra("Cott")
-            totTime.text = intent.getStringExtra("Tot")
-            cat.text = intent.getStringExtra("Cat")
-            orig.text = intent.getStringExtra("Orig")
-            intoll.text = intoller
-            veg.text = vegano
-            ingr.text = ingred
-            quant.text = quantit
-            unit.text = unita
-            prep.text = intent.getStringExtra("Preparaz")
+
+           /* prepTime.text = ricettina?.prepTime
+            cookTime.text = ricettina?.cookTime
+            totTime.text = ricettina?.totalTime
+            cat.text = ricettina?.recipeCategory
+            orig.text = ricettina?.recipeCuisine*/
+            //intoll.text = ricettina.
+            //veg.text = vegano
+            //ingr.text = ingred
+            //quant.text = quantit
+            //unit.text = unita
+           // prep.text = ricettina?.preparazione
 
             //button.setOnClickListener { onClick(random_button) }
 
@@ -144,30 +170,7 @@ class Ispirami : AppCompatActivity() {
         return ricDay
     }*/
 
-    private fun getRicette():Ricetta{
-        dbref = FirebaseDatabase.getInstance().getReference("")
-        dbref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val index = Random.nextInt(snapshot.childrenCount.toInt())
-                //var count = 0
-                if (snapshot.exists()) {
-                    for (ricetteSnapshot in snapshot.children) {
-                        //if(count == index) {
-                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                        ricettaArray.add(ricetta!!)
 
-                       // }
-                    }
-                    //count++
-                }
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-        return ricettaArray.random()
-    }
 }
 
