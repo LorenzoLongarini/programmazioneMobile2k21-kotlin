@@ -40,4 +40,9 @@
         android:name="com.example.easycooking.view.Ispirami"
         android:label="Ispirami"
         tools:layout="@layout/ispirami" />
+    <fragment
+        android:id="@+id/ricetta_del_giorno"
+        android:name="com.example.easycooking.view.Ricetta_del_giorno"
+        android:label="Ricetta del giorno"
+        tools:layout="@layout/ricetta_del_giorno" />
 </navigation>
