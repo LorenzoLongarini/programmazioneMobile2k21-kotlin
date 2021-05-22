@@ -27,4 +27,8 @@
         android:name="com.example.easycooking.view.Contattaci"
         android:label="fragment_contattaci"
         tools:layout="@layout/fragment_contattaci" />
+    <activity
+        android:id="@+id/ispirami2"
+        android:name="com.example.easycooking.view.Ispirami"
+        android:label="Ispirami" />
 </navigation>

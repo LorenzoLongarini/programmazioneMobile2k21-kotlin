@@ -1,9 +1,7 @@
 package com.example.easycooking.spesa
 
 import androidx.annotation.WorkerThread
-import com.example.easycooking.DB.DispensaDAO
-import com.example.easycooking.DB.DispensaDBEntity
-import com.example.easycooking.DB.SpesaDBEntity
+import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.flow.Flow
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO

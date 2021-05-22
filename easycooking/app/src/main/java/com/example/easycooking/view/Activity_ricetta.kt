@@ -9,6 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import kotlinx.android.synthetic.main.cards.view.*
 
 class Activity_ricetta : AppCompatActivity() {

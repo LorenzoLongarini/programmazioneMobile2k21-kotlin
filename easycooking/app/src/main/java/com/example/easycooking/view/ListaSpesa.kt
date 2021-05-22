@@ -12,10 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.DB.*
+import com.example.easycooking.spesa.SpesaDBEntity
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 import com.example.easycooking.spesa.*
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
@@ -25,7 +24,7 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
 
     private val newSpesaActivityRequestCode = 1
     private val spesaViewModel: SpesaViewModel by viewModels {
-        SpesaViewModelFactory((fragment.activity?.application as SpesaApplication).repository)
+        SpesaViewModelFactory((this.activity?.application as SpesaApplication).repository)
     }
 
     companion object {

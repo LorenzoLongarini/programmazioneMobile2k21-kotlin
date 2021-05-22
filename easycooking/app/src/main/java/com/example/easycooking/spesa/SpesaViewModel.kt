@@ -1,9 +1,7 @@
 package com.example.easycooking.spesa
 
 import androidx.lifecycle.*
-import com.example.easycooking.DB.DispensaDBEntity
-import com.example.easycooking.DB.SpesaDBEntity
-import com.example.easycooking.adapter.dispensa.DispensaRepository
+import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.launch
 
 class SpesaViewModel(private val repository: SpesaRepository) : ViewModel() {

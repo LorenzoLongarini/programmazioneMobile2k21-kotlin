@@ -34,9 +34,11 @@ class Ispirami : AppCompatActivity() {
     private lateinit var immagine: ImageView
     private lateinit var button: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ispirami)
+
 
         val titolo: TextView = findViewById<TextView>(R.id.immagine_ricetta_vista)
         val prepTime: TextView = findViewById<TextView>(R.id.tempo_preparazione)
@@ -51,108 +53,112 @@ class Ispirami : AppCompatActivity() {
         val unit: TextView = findViewById<TextView>(R.id.Unitàdimisura)
         val prep: TextView = findViewById<TextView>(R.id.procedimento_vista)
         val photo: ImageView = findViewById<ImageView>(R.id.photo)
+        //getRicette()
+        //ispirami()
 
-        ricettadelGiorno()
 
-        var arrayIntoll = intent.getStringArrayExtra("Intoll")
-        var intoller = ""
-        if (arrayIntoll != null) {
-            for (intol in arrayIntoll) {
-                intoller += intol
+
+            var arrayIntoll = intent.getStringArrayExtra("Intoll")
+            var intoller = ""
+            if (arrayIntoll != null) {
+                for (intol in arrayIntoll) {
+                    intoller += intol
+                }
+            } else {
+                intoller = "nessuna intolleranza"
             }
-        } else {
-            intoller = "nessuna intolleranza"
-        }
-        var arrayIngr = intent.getStringArrayExtra("Ingr")
-        var ingred = ""
-        if (arrayIngr != null) {
-            for (ing in arrayIngr) {
-                ingred = ingred + ing + "\n"
+            var arrayIngr = intent.getStringArrayExtra("Ingr")
+            var ingred = ""
+            if (arrayIngr != null) {
+                for (ing in arrayIngr) {
+                    ingred = ingred + ing + "\n"
+                }
             }
-        }
-        var arrayQuant = intent.getStringArrayExtra("Quant")
-        var quantit = ""
-        if (arrayQuant != null) {
-            for (ing in arrayQuant) {
-                quantit = quantit + ing + "\n"
+            var arrayQuant = intent.getStringArrayExtra("Quant")
+            var quantit = ""
+            if (arrayQuant != null) {
+                for (ing in arrayQuant) {
+                    quantit = quantit + ing + "\n"
+                }
+            } else {
+                quantit = "null"
             }
-        } else {
-            quantit = "null"
-        }
-        var arrayUnit = intent.getStringArrayExtra("Unit")
-        var unita = ""
-        if (arrayUnit != null) {
-            for (ing in arrayUnit) {
-                unita = unita + ing + "\n"
+            var arrayUnit = intent.getStringArrayExtra("Unit")
+            var unita = ""
+            if (arrayUnit != null) {
+                for (ing in arrayUnit) {
+                    unita = unita + ing + "\n"
+                }
             }
-        }
-        var veggy = intent.getBooleanExtra("Veg", false)
-        var vegano = "No"
-        if (veggy) {
-            vegano = "Si"
-        }
+            var veggy = intent.getBooleanExtra("Veg", false)
+            var vegano = "No"
+            if (veggy) {
+                vegano = "Si"
+            }
 
-        val storage = Firebase.storage
-        var image = intent.getStringExtra("image")
-        val n_image = "images/".plus(image)
-        val imagereference = storage.reference.child(n_image)
-        imagereference.downloadUrl.addOnSuccessListener { uri ->
-            Glide.with(this)
-                .load(uri)
-                //.fitCenter()
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
-                .into(photo)
-        }.addOnFailureListener { // Handle any errors
-            Glide.with(this)
-                .load(R.drawable.coltforc)
-                //.fitCenter()
-                .into(photo)
-        }
+            val storage = Firebase.storage
+            var image = intent.getStringExtra("image")
+            val n_image = "images/".plus(image)
+            val imagereference = storage.reference.child(n_image)
+            imagereference.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    //.fitCenter()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
+                    .into(photo)
+            }.addOnFailureListener { // Handle any errors
+                Glide.with(this)
+                    .load(R.drawable.coltforc)
+                    //.fitCenter()
+                    .into(photo)
+            }
 
 
-        titolo.text = intent.getStringExtra("Titolo")
-        prepTime.text = intent.getStringExtra("Prep")
-        cookTime.text = intent.getStringExtra("Cott")
-        totTime.text = intent.getStringExtra("Tot")
-        cat.text = intent.getStringExtra("Cat")
-        orig.text = intent.getStringExtra("Orig")
-        intoll.text = intoller
-        veg.text = vegano
-        ingr.text = ingred
-        quant.text = quantit
-        unit.text = unita
-        prep.text = intent.getStringExtra("Preparaz")
+            titolo.text = intent.getStringExtra("Titolo")
+            prepTime.text = intent.getStringExtra("Prep")
+            cookTime.text = intent.getStringExtra("Cott")
+            totTime.text = intent.getStringExtra("Tot")
+            cat.text = intent.getStringExtra("Cat")
+            orig.text = intent.getStringExtra("Orig")
+            intoll.text = intoller
+            veg.text = vegano
+            ingr.text = ingred
+            quant.text = quantit
+            unit.text = unita
+            prep.text = intent.getStringExtra("Preparaz")
 
-        button.setOnClickListener { onClick(random_button) }
+            //button.setOnClickListener { onClick(random_button) }
+
     }
 
-    private fun onClick(v: View) {
+
+   /* private fun onClick(v: View) {
         when (v!!.id) {
-            R.id.random_button -> ricettadelGiorno()
+            R.id.random_button -> getRicette()
         }
-    }
+    }*/
 
-    private fun ricettadelGiorno(): Ricetta {
-        var ricettarray=getRicette()
-        var ricDay= ricettarray.random()
+    /*private fun ispirami(): Ricetta {
+        var ricettarray = getRicette()
+        var ricDay = ricettarray.random()
         return ricDay
-    }
+    }*/
 
-    private fun getRicette(): ArrayList<Ricetta> {
+    private fun getRicette():Ricetta{
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val index = Random.nextInt(snapshot.childrenCount.toInt())
-                    var count = 0
+                //var count = 0
                 if (snapshot.exists()) {
                     for (ricetteSnapshot in snapshot.children) {
-                        if(count == index) {
-                            val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                            ricettaArray.add(ricetta!!)
-                            return
-                        }
+                        //if(count == index) {
+                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                        ricettaArray.add(ricetta!!)
+
+                       // }
                     }
-                  count++
+                    //count++
                 }
 
             }
@@ -161,9 +167,7 @@ class Ispirami : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-
-        return ricettaArray
+        return ricettaArray.random()
     }
-
 }
 

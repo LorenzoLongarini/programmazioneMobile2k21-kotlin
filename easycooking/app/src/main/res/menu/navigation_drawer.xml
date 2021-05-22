@@ -3,12 +3,11 @@
 
     <item
         android:title="Ispirami"
-        android:id="@+id/ispirami"/>
+        android:id="@+id/ispirami2"/>
     <item
         android:id="@+id/ricetta_del_giorno"
-        android:onClick="random"
-        android:title="Ricetta del giorno" />
+        android:title="Random" />
     <item
         android:title="Contattaci"
-        android:id="@+id/contattaci2"/>
+        android:id="@+id/contattaci"/>
 </menu>

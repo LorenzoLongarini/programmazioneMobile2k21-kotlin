@@ -1,4 +1,4 @@
-package com.example.easycooking.DB
+package com.example.easycooking.spesa
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

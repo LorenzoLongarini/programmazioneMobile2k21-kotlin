@@ -1,17 +1,12 @@
 package com.example.easycooking.adapter.ricetta
 
 
-
-
-
-
-
-
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +30,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
     }
 
     override fun getItemCount(): Int = items.size
+
 
     val storage = Firebase.storage
 

@@ -1,7 +1,7 @@
 package com.example.easycooking.spesa
 
 import androidx.room.*
-import com.example.easycooking.DB.SpesaDBEntity
+import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
