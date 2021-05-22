@@ -54,6 +54,7 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
+
         </androidx.recyclerview.widget.RecyclerView>
 
         <ImageView

@@ -9,6 +9,8 @@ interface DispensaDAO {
     fun getAll(): Flow<List<DispensaDBEntity>>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert( dispensa:DispensaDBEntity)
+    @Delete()
+    suspend fun delete(dispensa: DispensaDBEntity)
     @Query("DELETE FROM dispensa_table")
     suspend fun deleteAll()
 

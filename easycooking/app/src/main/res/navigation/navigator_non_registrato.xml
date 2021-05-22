@@ -27,8 +27,12 @@
         android:name="com.example.easycooking.view.Contattaci"
         android:label="fragment_contattaci"
         tools:layout="@layout/fragment_contattaci" />
-    <activity
-        android:id="@+id/ispirami2"
+    <fragment
+        android:id="@+id/ispirami"
         android:name="com.example.easycooking.view.Ispirami"
         android:label="Ispirami" />
+    <fragment
+        android:id="@+id/ricetta_del_giorno2"
+        android:name="com.example.easycooking.view.Ricetta_del_giorno"
+        android:label="Ricetta_del_giorno" />
 </navigation>

@@ -21,4 +21,8 @@ class DispensaRepository(private val dispensaDao: DispensaDAO) {
     suspend fun insert(dispensa: DispensaDBEntity) {
         dispensaDao.insert(dispensa)
     }
+    @WorkerThread
+    suspend fun delete(dispensa: DispensaDBEntity){
+        dispensaDao.delete(dispensa)
+    }
 }

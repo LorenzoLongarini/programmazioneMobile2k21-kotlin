@@ -16,9 +16,14 @@ import com.example.easycooking.view.Activity_gestione
 import com.example.easycooking.view.Activity_ricetta
 
 class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DispComparator()) {
-
+    var elem = ArrayList<DispensaDBEntity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DispensaViewHolder {
         return DispensaViewHolder.create(parent)
+    }
+
+    fun del(position: Int){
+        elem.removeAt(position)
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
@@ -33,6 +38,14 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
             it.context.startActivity(intent)
         }
     }
+
+    /*fun del(position: Int){
+        elem.removeAt(position)
+        notifyDataSetChanged()
+
+    }*/
+
+
 
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dispensaItemView: TextView = itemView.findViewById(R.id.nome)

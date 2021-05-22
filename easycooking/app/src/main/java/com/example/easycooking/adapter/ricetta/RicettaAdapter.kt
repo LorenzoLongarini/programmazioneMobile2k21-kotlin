@@ -102,7 +102,6 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
 
     }
 
-
 }
 
 

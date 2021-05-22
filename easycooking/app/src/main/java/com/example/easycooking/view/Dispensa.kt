@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.NonNull
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.easycooking.DB.*
 
 import com.example.easycooking.R
@@ -18,16 +21,21 @@ import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 
 import com.example.easycooking.view.Activity_inserisci_dispensa
+import com.example.easycooking.view.Base_nonReg
+import com.example.easycooking.view.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
+import kotlinx.android.synthetic.main.activity_base.*
+import kotlinx.android.synthetic.main.fragment_dispensa.*
 
 
 class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
     private val newDispensaActivityRequestCode = 1
     private val dispensaViewModel: DispensaViewModel by viewModels {
-        DispensaViewModelFactory((activity?.application as DispensaApplication).repositoryDispensa)
+        DispensaViewModel.DispensaViewModelFactory((activity?.application as DispensaApplication).repositoryDispensa)
     }
+    val adapter = DispensaListAdapter()
 
     companion object {
 
@@ -51,17 +59,16 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         val bt = view?.findViewById<Button>(R.id.bt)
 
 
-
-
         val rv = view?.findViewById<RecyclerView>(R.id.rv)
-        val adapter = DispensaListAdapter()
+
 
         val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
             // Change the durations.
             setDuration(750)
             // Disable the first scroll mode.
-            setFirstOnly(false)}
-        
+            setFirstOnly(false)
+        }
+
 
         rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             // Change the durations.
@@ -69,9 +76,24 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             // Disable the first scroll mode.
             setFirstOnly(false)
         }
-        rv?.addItemDecoration(DefaultItemDecorator(resources.getDimensionPixelSize(R.dimen.provider_name_horizontal_margin),
-            resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin)))
+        rv?.addItemDecoration(
+            DefaultItemDecorator(
+                resources.getDimensionPixelSize(R.dimen.provider_name_horizontal_margin),
+                resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin)
+            )
+        )
         rv?.layoutManager = LinearLayoutManager(activity)
+
+        val item  = object :SwipeToDelete(requireActivity(),0,ItemTouchHelper.LEFT){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                adapter.del(viewHolder.adapterPosition)
+                //dispensaViewModel.delete(dispensa)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(item)
+        itemTouchHelper.attachToRecyclerView(rv)
+
 
         activity?.let {
             dispensaViewModel.allprod.observe(it) { prods ->
@@ -118,22 +140,25 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         }
 
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newDispensaActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            var quant=intentData?.getStringExtra("quant")
-            var unit=intentData?.getStringExtra("unit")
+            var quant = intentData?.getStringExtra("quant")
+            var unit = intentData?.getStringExtra("unit")
             intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
-                val dispensa = DispensaDBEntity(reply,quant?.toInt(),unit)
+                val dispensa = DispensaDBEntity(reply, quant?.toInt(), unit)
                 dispensaViewModel.insert(dispensa)
+
             }
-        } else {
-            Toast.makeText(
-                context,
-                "Non hai inserito un prodotto",
-                Toast.LENGTH_LONG
-            ).show()
+        }else {
+                Toast.makeText(
+                    context,
+                    "Non hai inserito un prodotto",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
         }
     }
-}

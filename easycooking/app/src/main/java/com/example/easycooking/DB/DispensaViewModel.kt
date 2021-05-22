@@ -18,15 +18,20 @@ class DispensaViewModel(private val repository: DispensaRepository) : ViewModel(
     fun insert(dispensa: DispensaDBEntity) = viewModelScope.launch {
         repository.insert(dispensa)
     }
-}
 
-class DispensaViewModelFactory(private val repository: DispensaRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DispensaViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return DispensaViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Classe ViewModel sconosciuta")
+    fun delete(dispensa: DispensaDBEntity) = viewModelScope.launch {
+        repository.delete(dispensa)
     }
 
+    class DispensaViewModelFactory(private val repository: DispensaRepository) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(DispensaViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return DispensaViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Classe ViewModel sconosciuta")
+        }
+
+    }
 }
