@@ -129,7 +129,21 @@ class Ispirami : Fragment() {
             unit.text = unita
             prep.text = ricettina?.preparazione
 
-            
+            val storage = Firebase.storage
+            var image = ricettina.image
+            val n_image = "images/".plus(image)
+            val imagereference = storage.reference.child(n_image)
+            imagereference.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    //.fitCenter()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
+                    .into(photo)
+            }.addOnFailureListener { // Handle any errors
+                Glide.with(this)
+                    .load(R.drawable.coltforc)
+                    //.fitCenter()
+                    .into(photo)
 
 
 
@@ -227,5 +241,5 @@ class Ispirami : Fragment() {
 
 
 
-}
+}}
 
