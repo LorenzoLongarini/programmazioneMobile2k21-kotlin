@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaApplication
@@ -62,6 +63,26 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
             resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin))
         )
         rv?.layoutManager = LinearLayoutManager(activity)
+
+
+
+        val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                
+                var spe=spesaViewModel.allprod.value
+                var specanc= spe?.get(viewHolder.bindingAdapterPosition)
+                adapter.elems.remove(this)
+                if (specanc != null) {
+                    spesaViewModel.delete(specanc)
+                }
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(item)
+        itemTouchHelper.attachToRecyclerView(rv)
+
+
+
 
         activity?.let {
             spesaViewModel.allprod.observe(it) { prods ->

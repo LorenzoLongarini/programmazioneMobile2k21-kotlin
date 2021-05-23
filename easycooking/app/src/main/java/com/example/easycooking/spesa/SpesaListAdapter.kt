@@ -8,13 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.spesa.SpesaDBEntity
 import com.example.easycooking.R
 
 
 
 class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHolder>(SpesaComparator()) {
-
+    var elems = ArrayList<SpesaDBEntity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpesaViewHolder {
         return SpesaViewHolder.create(parent)
     }
