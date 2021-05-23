@@ -68,7 +68,8 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
 
         val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                
+                //adapter.del(viewHolder.absoluteAdapterPosition)
+                //dispensaViewModel.delete(dispensa)
                 var spe=spesaViewModel.allprod.value
                 var specanc= spe?.get(viewHolder.bindingAdapterPosition)
                 adapter.elems.remove(this)
