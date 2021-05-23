@@ -22,7 +22,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
-        android:onClick="deleteTask"
         android:textSize="0sp"
         app:icon="@drawable/com_facebook_button_like_icon_selected"
         app:iconPadding="0dp" />

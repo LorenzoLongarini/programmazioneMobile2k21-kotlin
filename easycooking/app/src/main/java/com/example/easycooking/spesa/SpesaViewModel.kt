@@ -1,6 +1,7 @@
 package com.example.easycooking.spesa
 
 import androidx.lifecycle.*
+import com.example.easycooking.DB.DispensaDBEntity
 
 import kotlinx.coroutines.launch
 
@@ -17,6 +18,9 @@ class SpesaViewModel(private val repository: SpesaRepository) : ViewModel() {
      */
     fun insert(spesa: SpesaDBEntity) = viewModelScope.launch {
         repository.insert(spesa)
+    }
+    fun delete(spesa: SpesaDBEntity) = viewModelScope.launch {
+        repository.delete(spesa)
     }
 }
 

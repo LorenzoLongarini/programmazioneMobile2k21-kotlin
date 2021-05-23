@@ -23,16 +23,12 @@ class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHo
         val current = getItem(position)
         holder.bind(current.nomeProdotto)
 
-        /*holder.itemView.setOnClickListener {
-            val intent= Intent(it.context, Activity_gestione::class.java)
-            intent.putExtra("Prodotto", current.nomeProdotto)
-            it.context.startActivity(intent)
-        }*/
+
     }
 
     class SpesaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val spesaItemView: TextView = itemView.findViewById(R.id.prodotto_compra)
-
+        //val comprato:Button=itemView.
 
         fun bind(text: String?) {
             spesaItemView.text = text

@@ -20,4 +20,8 @@ class SpesaRepository(private val spesaDao: SpesaDAO) {
     suspend fun insert(spesa: SpesaDBEntity) {
         spesaDao.insert(spesa)
     }
+
+    suspend fun delete(spesa: SpesaDBEntity) {
+    spesaDao.delete(spesa)
+    }
 }
