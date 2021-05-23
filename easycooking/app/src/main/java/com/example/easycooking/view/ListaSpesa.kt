@@ -56,7 +56,7 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
             // Change the durations.
             setDuration(350)
             // Disable the first scroll mode.
-            setFirstOnly(false)
+            setFirstOnly(true)
         }
         rv?.addItemDecoration(
             DefaultItemDecorator(resources.getDimensionPixelSize(R.dimen.provider_name_horizontal_margin),
