@@ -84,7 +84,7 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newSpesaActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
+            intentData?.getStringExtra(Activity_compra.EXTRAs_REPLY)?.let { reply ->
                 val spesa = SpesaDBEntity(reply)
                 spesaViewModel.insert(spesa)
             }

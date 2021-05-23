@@ -27,7 +27,7 @@ class Activity_compra : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val nomeprod = editorNomeView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, nomeprod)
+                replyIntent.putExtra(EXTRAs_REPLY, nomeprod)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
@@ -35,6 +35,6 @@ class Activity_compra : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.spesalistsql.REPLY"
+        const val EXTRAs_REPLY = "com.example.android.spesalistsql.REPLY"
     }
 }

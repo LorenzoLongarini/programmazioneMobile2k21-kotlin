@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_vertical">
 
     <TextView
         android:id="@+id/prodotto_compra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
 
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/comprato"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
         android:onClick="deleteTask"
-        android:text="Comprato" />
+        android:textSize="0sp"
+        app:icon="@drawable/com_facebook_button_like_icon_selected"
+        app:iconPadding="0dp" />
 
 </RelativeLayout>
