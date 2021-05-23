@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 data class DispensaDBEntity (
 
     @PrimaryKey @ColumnInfo(name="nome_prodotto")val nomeProdotto:String,
-    @ColumnInfo(name="quant_prodotto") val quantProdotto:Int?,
-    @ColumnInfo(name="unit_prodotto") val unitProdotto:String?
+    //@ColumnInfo(name="quant_prodotto") val quantProdotto:Int?,
+   // @ColumnInfo(name="unit_prodotto") val unitProdotto:String?
         )

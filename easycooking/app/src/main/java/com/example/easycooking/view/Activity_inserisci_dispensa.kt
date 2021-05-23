@@ -15,15 +15,15 @@ import com.example.easycooking.R
 class Activity_inserisci_dispensa : AppCompatActivity() {
 
     private lateinit var editorNomeView:EditText
-    private lateinit var editorQuantView:EditText
-    private lateinit var editorUnitView:EditText
+    //private lateinit var editorQuantView:EditText
+    //private lateinit var editorUnitView:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inserisci_in_dispensa)
         editorNomeView=findViewById(R.id.nome_prodotto_inserimento)
-        editorQuantView=findViewById(R.id.quantita_prodotto_inserimento)
-        editorUnitView=findViewById(R.id.unita_inserimento)
+        //editorQuantView=findViewById(R.id.quantita_prodotto_inserimento)
+        //editorUnitView=findViewById(R.id.unita_inserimento)
 
         val bt:Button=findViewById<Button>(R.id.bottone_aggiungi_inserimento)
         bt.setOnClickListener {
@@ -32,11 +32,11 @@ class Activity_inserisci_dispensa : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val nomeprod = editorNomeView.text.toString()
-                val quant = editorQuantView.text.toString()
-                val unit = editorUnitView.text.toString()
+                //val quant = editorQuantView.text.toString()
+                //val unit = editorUnitView.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, nomeprod)
-                replyIntent.putExtra("quant",quant)
-                replyIntent.putExtra("unit",unit)
+                //replyIntent.putExtra("quant",quant)
+                //replyIntent.putExtra("unit",unit)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

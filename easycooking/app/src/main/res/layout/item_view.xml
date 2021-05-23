@@ -20,15 +20,4 @@
         android:text="TextView"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/prodotto_quant"
-        android:layout_width="105dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:text="TextView"
-        android:textAlignment="textEnd"
-        android:textSize="10sp"
-        tools:ignore="RtlCompat" />
-
 </LinearLayout>

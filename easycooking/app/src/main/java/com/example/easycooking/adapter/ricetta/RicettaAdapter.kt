@@ -96,7 +96,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
        
         val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
         val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
-        val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
+        //val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
 
 
 

@@ -1,19 +1,14 @@
 package com.example.easycooking.adapter.dispensa
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
-import com.example.easycooking.view.Activity_gestione
-import com.example.easycooking.view.Activity_ricetta
 
 class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DispComparator()) {
     var elem = ArrayList<DispensaDBEntity>()
@@ -28,8 +23,8 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
 
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.nomeProdotto,current.quantProdotto,current.unitProdotto)
-
+        //holder.bind(current.nomeProdotto,current.quantProdotto,current.unitProdotto)
+        holder.bind(current.nomeProdotto)
 
     }
 
@@ -43,11 +38,14 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
 
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dispensaItemView: TextView = itemView.findViewById(R.id.nome)
-        private val dispensaQuant:TextView=itemView.findViewById(R.id.prodotto_quant)
+       // private val dispensaQuant:TextView=itemView.findViewById(R.id.prodotto_quant)
 
-        fun bind(text: String?,i:Int?,text1:String?) {
+        /*fun bind(text: String?,i:Int?,text1:String?) {
+            //dispensaItemView.text = text
+            //dispensaQuant.text=i.toString()+" "+text1
+        }*/
+        fun bind(text: String?) {
             dispensaItemView.text = text
-            dispensaQuant.text=i.toString()+" "+text1
         }
 
         companion object {

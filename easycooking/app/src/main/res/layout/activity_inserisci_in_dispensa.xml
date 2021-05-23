@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/lemonada"
         android:text="@string/Stringa2"
         android:textColor="@color/bordeaux"
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/nome"
         android:textColor="@color/rosso_chiaro"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,67 +49,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/quant"
-        android:textColor="@color/rosso_chiaro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nome_prodotto_inserimento" />
-
-    <EditText
-        android:id="@+id/quantita_prodotto_inserimento"
-        android:layout_width="300dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="40dp"
-        android:ems="10"
-        android:hint="@string/quantIns"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="Unità di misura:"
-        android:textColor="@color/rosso_chiaro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantita_prodotto_inserimento" />
-
-    <EditText
-        android:id="@+id/unita_inserimento"
-        android:layout_width="303dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="40dp"
-        android:ems="10"
-        android:hint="Unità di misura"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
     <Button
         android:id="@+id/bottone_aggiungi_inserimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/rosso_chiaro"
         android:text="@string/aggProd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unita_inserimento" />
+        app:layout_constraintTop_toBottomOf="@+id/nome_prodotto_inserimento" />
 </androidx.constraintlayout.widget.ConstraintLayout>
