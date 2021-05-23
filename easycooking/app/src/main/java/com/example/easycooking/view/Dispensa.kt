@@ -86,8 +86,11 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
         val item  = object :SwipeToDelete(requireActivity(),0,ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                adapter.del(viewHolder.adapterPosition)
+                //adapter.del(viewHolder.absoluteAdapterPosition)
                 //dispensaViewModel.delete(dispensa)
+                var dispenacanc=
+                adapter.elem.remove(this)
+                dispensaViewModel.delete()
             }
         }
 

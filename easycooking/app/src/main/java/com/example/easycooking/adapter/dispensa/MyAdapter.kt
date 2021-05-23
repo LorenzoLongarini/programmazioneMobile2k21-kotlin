@@ -21,22 +21,16 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
         return DispensaViewHolder.create(parent)
     }
 
-    fun del(position: Int){
+    /*fun del(position: Int){
         elem.removeAt(position)
         notifyDataSetChanged()
-    }
+    }*/
 
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.nomeProdotto,current.quantProdotto,current.unitProdotto)
 
-        holder.itemView.setOnClickListener {
-            val intent= Intent(it.context, Activity_gestione::class.java)
-            intent.putExtra("Prodotto", current.nomeProdotto)
-            intent.putExtra("Quantita",current.quantProdotto)
-            intent.putExtra("Unita",current.unitProdotto)
-            it.context.startActivity(intent)
-        }
+
     }
 
     /*fun del(position: Int){
