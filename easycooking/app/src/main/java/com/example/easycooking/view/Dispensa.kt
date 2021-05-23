@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.fragment_dispensa.*
 
 class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
+
     private val newDispensaActivityRequestCode = 1
     private val dispensaViewModel: DispensaViewModel by viewModels {
         DispensaViewModel.DispensaViewModelFactory((activity?.application as DispensaApplication).repositoryDispensa)
@@ -57,6 +58,9 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         val bt = view?.findViewById<Button>(R.id.bt)
+
+
+
 
 
         val rv = view?.findViewById<RecyclerView>(R.id.rv)
@@ -88,9 +92,12 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
                 //dispensaViewModel.delete(dispensa)
-                var dispenacanc=
+                var dis=dispensaViewModel.allprod.value
+                var discanc= dis?.get(viewHolder.bindingAdapterPosition)
                 adapter.elem.remove(this)
-                dispensaViewModel.delete()
+                if (discanc != null) {
+                    dispensaViewModel.delete(discanc)
+                }
             }
         }
 
