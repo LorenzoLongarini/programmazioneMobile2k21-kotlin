@@ -125,9 +125,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
          startActivity(intent2)
         }
 
-    /*fun random(v: View) {
-        val intent3 = Intent(this, Ispirami::class.java)
-        startActivity(intent3)
-    }*/
+
 
 }

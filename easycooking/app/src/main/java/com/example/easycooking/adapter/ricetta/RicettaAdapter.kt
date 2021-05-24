@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,7 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.cards.view.*
 
 
-class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() {
+class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() , Filterable{
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
@@ -100,6 +101,10 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
 
 
 
+    }
+
+    override fun getFilter(): Filter {
+        TODO("Not yet implemented")
     }
 
 }

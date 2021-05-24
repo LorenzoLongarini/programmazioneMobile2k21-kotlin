@@ -20,6 +20,7 @@
         <activity android:name=".view.Base_nonReg" />
         <activity android:name=".auth.RegistrationActivity" />
         <activity android:name=".view.Base" />
+        <activity android:name=".view.Ricetta_del_giorno"/>
         <activity android:name=".view.Ispirami"/>
         <activity android:name=".MainActivity">
             <intent-filter>
