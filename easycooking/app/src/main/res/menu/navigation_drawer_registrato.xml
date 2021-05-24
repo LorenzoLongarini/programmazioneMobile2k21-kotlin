@@ -3,7 +3,7 @@
 
 
     <item
-        android:id="@+id/ricetta_del_giorno"
+        android:id="@+id/ricetta_del_giorno3"
         android:title="Ricetta del giorno" />
     <item
         android:title="Contattaci"
