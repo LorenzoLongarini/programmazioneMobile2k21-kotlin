@@ -1,8 +1,9 @@
 package com.example.easycooking.view
 
-import android.os.Build
-import android.os.Bundle
-import android.os.Handler
+import android.icu.text.DateFormat.DAY
+import android.icu.text.DateTimePatternGenerator.DAY
+import android.icu.util.MeasureUnit.DAY
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /*
 class Ricetta_del_giorno : Fragment() {
@@ -238,11 +240,10 @@ class Ricetta_del_giorno : Fragment() {
     }
 }*/
 
-class Ricetta_del_giorno : AppCompatActivity() {
+class Ricetta_del_giorno() : AppCompatActivity(){
 
 
     private lateinit var dbref: DatabaseReference
-
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -272,85 +273,166 @@ class Ricetta_del_giorno : AppCompatActivity() {
                 val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                 ricettaArray.add(ricetta!!)
             }
+/*
+            val handler = Handler()
+            val runnableCode = Runnable { // Do something here on the main thread
+                var ricettina = ricettaArray.random()
+                titolo.text = ricettina?.nome
+                prepTime.text = ricettina?.prepTime
+                cookTime.text = ricettina?.cookTime
+                totTime.text = ricettina?.totalTime
+                cat.text = ricettina?.recipeCategory
+                orig.text = ricettina?.recipeCuisine
+
+                var arrayIntoll = ricettina.intolleranze
+                var intoller = ""
+                if (arrayIntoll != null) {
+                    for (intol in arrayIntoll) {
+                        intoller += intol
+                    }
+                } else {
+                    intoller = "nessuna intolleranza"
+                }
+                var arrayIngr = ricettina.Ingredienti
+                var ingred = ""
+                if (arrayIngr != null) {
+                    for (ing in arrayIngr) {
+                        ingred = ingred + ing + "\n"
+                    }
+                }
+                var arrayQuant = ricettina.quantita
+                var quantit = ""
+                if (arrayQuant != null) {
+                    for (ing in arrayQuant) {
+                        quantit = quantit + ing + "\n"
+                    }
+                } else {
+                    quantit = "null"
+                }
+                var arrayUnit = ricettina.unita
+                var unita = ""
+                if (arrayUnit != null) {
+                    for (ing in arrayUnit) {
+                        unita = unita + ing + "\n"
+                    }
+                }
+                var veggy = ricettina.vegano
+                var vegano = "No"
+                if (veggy == true) {
+                    vegano = "Si"
+                }
+
+                intoll.text = intoller
+                veg.text = vegano
+                ingr.text = ingred
+                quant.text = quantit
+                unit.text = unita
+                prep.text = ricettina?.preparazione
+
+
+                val storage = Firebase.storage
+                var image = ricettina.image
+                val n_image = "images/".plus(image)
+                val imagereference = storage.reference.child(n_image)
+                imagereference.downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(this)
+                        .load(uri)
+                        //.fitCenter()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
+                        .into(photo)
+                }.addOnFailureListener { // Handle any errors
+                    Glide.with(this)
+                        .load(R.drawable.coltforc)
+                        //.fitCenter()
+                        .into(photo)
+                }
+            }
+
+            handler.postDelayed( runnableCode,3, 0)
+
+ */
 
             val h = Handler()
-                h.postDelayed(object : Runnable {
-                    private var time: Long = 0
-                    override fun run() {
+            h.postDelayed(object : Runnable {
+                private var time: Long = 0
+                override fun run() {
+                    var ricettina = ricettaArray.random()
+                    titolo.text = ricettina?.nome
+                    prepTime.text = ricettina?.prepTime
+                    cookTime.text = ricettina?.cookTime
+                    totTime.text = ricettina?.totalTime
+                    cat.text = ricettina?.recipeCategory
+                    orig.text = ricettina?.recipeCuisine
 
-                        var ricettina = ricettaArray.random()
-                        var arrayIntoll=intent.getStringArrayExtra("Intoll")
-                        var intoller=""
-                        if (arrayIntoll != null) {
-                            for (intol in arrayIntoll){
-                                intoller += intol
-                            }
-                        }else{
-                            intoller="nessuna intolleranza"
+                    var arrayIntoll = ricettina.intolleranze
+                    var intoller = ""
+                    if (arrayIntoll != null) {
+                        for (intol in arrayIntoll) {
+                            intoller += intol
                         }
-                        var arrayIngr=intent.getStringArrayExtra("Ingr")
-                        var ingred=""
-                        if (arrayIngr != null) {
-                            for (ing in arrayIngr){
-                                ingred=ingred+ing+"\n"
-                            }
-                        }
-                        var arrayQuant=intent.getStringArrayExtra("Quant")
-                        var quantit=""
-                        if (arrayQuant != null) {
-                            for (ing in arrayQuant){
-                                quantit=quantit+ing+"\n"
-                            }
-                        }else{
-                            quantit="null"
-                        }
-                        var arrayUnit=intent.getStringArrayExtra("Unit")
-                        var unita=""
-                        if (arrayUnit != null) {
-                            for (ing in arrayUnit){
-                                unita=unita+ing+"\n"
-                            }
-                        }
-                        var veggy=intent.getBooleanExtra("Veg",false)
-                        var vegano="No"
-                        if (veggy){
-                            vegano="Si"
-                        }
-
-                        val storage = Firebase.storage
-                        var image=intent.getStringExtra("image")
-                        val n_image = "images/".plus(image)
-                        val imagereference = storage.reference.child(n_image)
-                        imagereference.downloadUrl.addOnSuccessListener { uri ->
-                            Glide.with(baseContext)
-                                .load(uri)
-                                //.fitCenter()
-                                .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
-                                .into(photo)
-                        }.addOnFailureListener { // Handle any errors
-                            Glide.with(baseContext)
-                                .load(R.drawable.coltforc)
-                                //.fitCenter()
-                                .into(photo)
-                        }
-
-
-                        titolo.text=intent.getStringExtra("Titolo")
-                        prepTime.text=intent.getStringExtra("Prep")
-                        cookTime.text=intent.getStringExtra("Cott")
-                        totTime.text=intent.getStringExtra("Tot")
-                        cat.text=intent.getStringExtra("Cat")
-                        orig.text=intent.getStringExtra("Orig")
-                        intoll.text=intoller
-                        veg.text=vegano
-                        ingr.text=ingred
-                        quant.text=quantit
-                        unit.text=unita
-                        prep.text=intent.getStringExtra("Preparaz")
-                        time += 1000
-                        h.postDelayed(this, 86400)
+                    } else {
+                        intoller = "nessuna intolleranza"
                     }
-        }, 0) // 1 second delay (takes millis)
+                    var arrayIngr = ricettina.Ingredienti
+                    var ingred = ""
+                    if (arrayIngr != null) {
+                        for (ing in arrayIngr) {
+                            ingred = ingred + ing + "\n"
+                        }
+                    }
+                    var arrayQuant = ricettina.quantita
+                    var quantit = ""
+                    if (arrayQuant != null) {
+                        for (ing in arrayQuant) {
+                            quantit = quantit + ing + "\n"
+                        }
+                    } else {
+                        quantit = "null"
+                    }
+                    var arrayUnit = ricettina.unita
+                    var unita = ""
+                    if (arrayUnit != null) {
+                        for (ing in arrayUnit) {
+                            unita = unita + ing + "\n"
+                        }
+                    }
+                    var veggy = ricettina.vegano
+                    var vegano = "No"
+                    if (veggy == true) {
+                        vegano = "Si"
+                    }
+
+                    intoll.text = intoller
+                    veg.text = vegano
+                    ingr.text = ingred
+                    quant.text = quantit
+                    unit.text = unita
+                    prep.text = ricettina?.preparazione
+
+
+                    val storage = Firebase.storage
+                    var image = ricettina.image
+                    val n_image = "images/".plus(image)
+                    val imagereference = storage.reference.child(n_image)
+                    imagereference.downloadUrl.addOnSuccessListener { uri ->
+                        Glide.with(baseContext)
+                            .load(uri)
+                            //.fitCenter()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
+                            .into(photo)
+                    }.addOnFailureListener { // Handle any errors
+                        Glide.with(baseContext)
+                            .load(R.drawable.coltforc)
+                            //.fitCenter()
+                            .into(photo)
+                    }
+                    time += 1000
+                    h.postDelayed(this, 20000)
+                }
+            }, 0) // 1 second delay (takes millis)
         }
+
     }
+
+
 }
