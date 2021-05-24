@@ -48,6 +48,20 @@ class Contattaci : Fragment() {
             }
         }
 
+        melmag.setOnClickListener {
+            val uri: Uri = Uri.parse("https://www.instagram.com/mela_magno/")
+            var likeIng:Intent = Intent(Intent.ACTION_VIEW, uri)
+
+            likeIng.setPackage("com.instagram.android")
+
+            try {
+                startActivity(likeIng);
+            } catch (activitynotfound: ActivityNotFoundException) {
+                startActivity(Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.instagram.com/mela_magno/")));
+            }
+        }
+
 
     }
 }
