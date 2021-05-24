@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import com.example.easycooking.R
 
 
@@ -31,8 +32,8 @@ class Contattaci : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ric8: ImageView = view?.findViewById<ImageView>(R.id.ric8bit)
-        val melmag: ImageView = view?.findViewById<ImageView>(R.id.melamagno)
+        val ric8: CardView = view?.findViewById<CardView>(R.id.ric8)
+        val melmag: CardView = view?.findViewById<CardView>(R.id.melmag)
 
         ric8.setOnClickListener {
             val uri: Uri = Uri.parse("https://www.instagram.com/ricette_a_8bit/")
