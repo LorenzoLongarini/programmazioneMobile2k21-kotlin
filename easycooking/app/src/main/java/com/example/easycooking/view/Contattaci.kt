@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import com.example.easycooking.R
@@ -34,6 +35,7 @@ class Contattaci : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val ric8: CardView = view?.findViewById<CardView>(R.id.ric8)
         val melmag: CardView = view?.findViewById<CardView>(R.id.melmag)
+        val mail:Button=view?.findViewById<Button>(R.id.mail)
 
         ric8.setOnClickListener {
             val uri: Uri = Uri.parse("https://www.instagram.com/ricette_a_8bit/")
@@ -61,6 +63,13 @@ class Contattaci : Fragment() {
                 startActivity(Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.instagram.com/mela_magno/")));
             }
+        }
+
+        mail.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:easycookingclm@gmail.com")
+            }
+            startActivity(Intent.createChooser(emailIntent, "Send feedback"))
         }
 
 
