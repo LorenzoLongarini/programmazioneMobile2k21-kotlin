@@ -31,8 +31,8 @@
         android:id="@+id/ispirami"
         android:name="com.example.easycooking.view.Ispirami"
         android:label="Ispirami" />
-    <fragment
-        android:id="@+id/ricetta_del_giorno2"
+    <activity
+        android:id="@+id/ricetta_del_giorno"
         android:name="com.example.easycooking.view.Ricetta_del_giorno"
         android:label="Ricetta_del_giorno" />
 </navigation>

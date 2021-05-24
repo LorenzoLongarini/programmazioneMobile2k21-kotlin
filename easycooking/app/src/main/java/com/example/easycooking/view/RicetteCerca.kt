@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.example.easycooking.adapter.ricetta.SingolaRicetta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_ricettecerca.*
 import java.util.ArrayList
 
 
@@ -23,6 +25,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
+    private lateinit var search: EditText
 
 
     companion object {
@@ -66,8 +69,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             //var appoggio = mutableListOf<Ricetta>()
             ricettaArray = arrayListOf<Ricetta>()
             getRicette()
-
-
             /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
             val docRef = db.collection("cook").document("100")
             docRef.get().addOnSuccessListener { document ->
