@@ -1,6 +1,5 @@
 package com.example.easycooking.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +10,8 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
-import com.example.easycooking.MainActivity
 import com.example.easycooking.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_base.*
 
 class Base : AppCompatActivity() {
@@ -31,6 +26,7 @@ class Base : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //val binding = DataBindingUtil.setContentView<ActivityBaseBinding>(this, R.layout.activity_main)
         setContentView(R.layout.activity_base)
+
 
 
         //navigation bottom
@@ -51,7 +47,7 @@ class Base : AppCompatActivity() {
         //  findViewById<NavigationView>(R.id.navigation_view).setupWithNavController(navController)
 
 
-        NavigationUI.setupWithNavController(navigation_view,navController)
+        NavigationUI.setupWithNavController(navigation_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
         //NavigationUI.setupWithNavController(navigation_view, navController)
     }
