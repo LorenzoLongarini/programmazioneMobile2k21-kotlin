@@ -5,7 +5,7 @@
         android:title="Ispirami"
         android:id="@+id/ispirami"/>
     <item
-        android:id="@+id/ricetta_del_giorno"
+        android:id="@+id/ricetta_del_giorno2"
         android:title="Random" />
     <item
         android:title="Contattaci"
