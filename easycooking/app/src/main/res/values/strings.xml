@@ -42,12 +42,47 @@
     <string name="errorsignup">C\'è stato un errore nella registrazione.</string>
 
     <string-array name="Categoria">
+        <item>-----</item>
         <item>Dolci</item>
-        <item></item>
-        <item>Swift</item>
-        <item>Python</item>
-        <item>Scala</item>
-        <item>Perl</item>
+        <item>Bevande &amp; Cocktail</item>
+        <item>Pane &amp; Pizza</item>
+        <item>Ricette base</item>
+        <item>Marmellate &amp; Conserve</item>
+        <item>Secondi Piatti</item>
+        <item>Primi</item>
+    </string-array>
+
+    <string-array name="Origini">
+        <item>-----</item>
+        <item>Italiana</item>
+        <item>Indiana</item>
+        <item>Americana</item>
+        <item>Cinese</item>
+        <item>Francese</item>
+        <item>Spagnola</item>
+        <item>Giapponese</item>
+        <item>Austriaca</item>
+        <item>Marocchina</item>
+        <item>Australiana</item>
+        <item>Hawaiiana</item>
+        <item>Brasiliana</item>
+        <item>Cubana</item>
+        <item>Inglese</item>
+        <item>Messicana</item>
+        <item>Polinesiana</item>
+        <item>Portoricana</item>
+        <item>Singaporiana</item>
+        <item>Turca</item>
+        <item>Tedesca</item>
+        <item>Tunisina</item>
+        <item>Greca</item>
+        <item>Ungherese</item>
+        <item>Svedese</item>
+        <item>Africana</item>
+        <item>SriLanka</item>
+        <item>Taiwan</item>
+        <item>Thailandese</item>
+
     </string-array>
 
 </resources>
