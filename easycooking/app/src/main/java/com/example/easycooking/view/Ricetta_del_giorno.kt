@@ -1,8 +1,5 @@
 package com.example.easycooking.view
 
-import android.icu.text.DateFormat.DAY
-import android.icu.text.DateTimePatternGenerator.DAY
-import android.icu.util.MeasureUnit.DAY
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.postDelayed
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -21,26 +16,42 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
-/*
+
 class Ricetta_del_giorno : Fragment() {
 
 
     private lateinit var dbref: DatabaseReference
-
+    private var someStateValue by Delegates.notNull<Int>()
+    private var VALUE_KEY: Int = 1
+    private var fragmentSimple: Ricetta_del_giorno? = null
+    private val SIMPLE_FRAGMENT_TAG = "ricetta_giorno"
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view:View = inflater.inflate(R.layout.ricetta_del_giorno, container, false)
+        if (savedInstanceState != null) {
+            someStateValue = savedInstanceState.getInt(VALUE_KEY.toString())
+            // Do something with value if needed
+        }
+        
+            if (savedInstanceState != null) { // saved instance state, fragment may exist
+                // look up the instance that already exists by tag
+                fragmentSimple =
+                    fragmentManager?.findFragmentByTag(SIMPLE_FRAGMENT_TAG) as Ricetta_del_giorno?
+            } else if (fragmentSimple == null) {
+                // only create fragment if they haven't been instantiated already
+                fragmentSimple = Ricetta_del_giorno()
+            }
+
+        val view: View =
+            inflater.inflate(R.layout.fragment_ricetta_del_giorno, container, false)
         return view
     }
-
 
     companion object {
         fun newInstance(): Ricetta_del_giorno {
@@ -51,7 +62,6 @@ class Ricetta_del_giorno : Fragment() {
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val titolo: TextView = view?.findViewById<TextView>(R.id.immagine_ricetta_vista)
         val prepTime: TextView = view?.findViewById<TextView>(R.id.tempo_preparazione)
@@ -75,10 +85,10 @@ class Ricetta_del_giorno : Fragment() {
                 val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                 ricettaArray.add(ricetta!!)
             }
-/*
+            var ricettina = ricettaArray.random()
             val handler = Handler()
             val runnableCode = Runnable { // Do something here on the main thread
-                var ricettina = ricettaArray.random()
+                //var ricettina = ricettaArray.random()
                 titolo.text = ricettina?.nome
                 prepTime.text = ricettina?.prepTime
                 cookTime.text = ricettina?.cookTime
@@ -150,13 +160,12 @@ class Ricetta_del_giorno : Fragment() {
                 }
             }
 
-            handler.postDelayed( runnableCode,3, 0)
+            handler.postDelayed(runnableCode, 3, 0)
 
- */
 
             val h = Handler()
             h.postDelayed(object : Runnable {
-                private var time: Long = 0
+                //private var time: Long = 0
                 override fun run() {
                     var ricettina = ricettaArray.random()
                     titolo.text = ricettina?.nome
@@ -232,15 +241,18 @@ class Ricetta_del_giorno : Fragment() {
                                 .into(photo)
                         }
                     }
-                    time += 1000
+                    //time += 1000
                     h.postDelayed(this, 86400)
                 }
             }, 0) // 1 second delay (takes millis)
         }
+        //val myViewModel = ViewModelProvider(activity as ViewModelStoreOwner).get(myViewModel::class.java)
     }
-}*/
 
-class Ricetta_del_giorno() : AppCompatActivity(){
+
+}
+
+/*class Ricetta_del_giorno() : AppCompatActivity() {
 
 
     private lateinit var dbref: DatabaseReference
@@ -273,7 +285,7 @@ class Ricetta_del_giorno() : AppCompatActivity(){
                 val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                 ricettaArray.add(ricetta!!)
             }
-/*
+
             val handler = Handler()
             val runnableCode = Runnable { // Do something here on the main thread
                 var ricettina = ricettaArray.random()
@@ -348,9 +360,16 @@ class Ricetta_del_giorno() : AppCompatActivity(){
                 }
             }
 
-            handler.postDelayed( runnableCode,3, 0)
+            handler.postDelayed(runnableCode, 3, 0)
 
- */
+
+        }
+    }
+
+
+}
+
+
 
             val h = Handler()
             h.postDelayed(object : Runnable {
@@ -435,4 +454,4 @@ class Ricetta_del_giorno() : AppCompatActivity(){
     }
 
 
-}
+}*/

@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.cards.view.*
 
 class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() , Filterable{
 
-
+    lateinit var itemsFilter: ArrayList<Ricetta>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.cards, parent, false)
         return RicettaViewHolder(layout)
@@ -104,7 +104,35 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
     }
 
     override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        return object : Filter() {
+            override fun performFiltering(charsequence: CharSequence?): FilterResults {
+
+                val filterResults = FilterResults()
+                if(charsequence==null || charsequence.length < 0 ){
+                    filterResults.count = items.size
+                    filterResults.values = items
+                }else{
+                    var searchChr  = charsequence.toString().toLowerCase()
+                    val ricette = ArrayList<Ricetta>()
+
+                    for (item in ricette){
+                        if(item.nome!!.contains(searchChr)){
+                            ricette.add(item)
+                        }
+                    }
+                    filterResults.count = ricette.size
+                    filterResults.values = ricette
+                }
+                return filterResults
+
+            }
+
+            override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
+               itemsFilter = filterResults!!.values as ArrayList<Ricetta>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
 }

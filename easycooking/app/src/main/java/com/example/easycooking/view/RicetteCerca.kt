@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,9 +26,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
     private lateinit var search: EditText
-    val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca)
-    val cat:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)
-    val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
+
 
     companion object {
         fun newInstance(): RicetteTue {
@@ -60,7 +56,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         //val rv: RecyclerView? = view?.findViewById<RecyclerView>(R.id.rv)
         //rv?.layoutManager = LinearLayoutManager(activity)
         //rv?.setHasFixedSize(true)
-
         recView = view?.findViewById<RecyclerView>(R.id.rv)!!
         recView.layoutManager = LinearLayoutManager(activity)
         recView.setHasFixedSize(true)
@@ -116,14 +111,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                         for (ricetteSnapshot in snapshot.children) {
                             val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                             ricettaArray.add(ricetta!!)
-                            if (btn != null) {
-                                btn.setOnClickListener {
-                                    var origin=orig?.selectedItem.toString()
-                                    var categ=cat?.selectedItem.toString()
-                                    ricettaArray=filtri(origin,categ,ricettaArray)
-
-                                }
-                            }
                         }
                         recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                     }
@@ -243,34 +230,5 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }*/
         }
     }*/
-
-fun filtri(origine:String, categoria:String,lista:ArrayList<Ricetta>):ArrayList<Ricetta> {
-    lateinit var risultato:ArrayList<Ricetta>
-    if ((origine == "-----")&&(categoria == "-----")){
-        risultato=lista
-    } else if (origine=="-----"){
-
-        for(ric in lista){
-            if (ric.recipeCategory==categoria){
-                risultato.add(ric)
-            }
-        }
-    }else if (categoria=="-----"){
-
-        for(ric in lista){
-            if (ric.recipeCuisine==origine){
-                risultato.add(ric)
-            }
-        }
-    }else {
-
-        for(ric in lista){
-            if ((ric.recipeCuisine==origine)&&(ric.recipeCategory==categoria)){
-                risultato.add(ric)
-            }
-        }
-    }
-    return risultato
-}
 
 
