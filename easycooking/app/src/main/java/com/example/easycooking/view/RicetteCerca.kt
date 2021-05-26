@@ -83,8 +83,14 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         // Spinner Drop down elements
         val categories: MutableList<String> = ArrayList()
         categories
-        categories.add("Primi")
+        categories.add("-----")
+        categories.add("Dolci")
+        categories.add("Bevande & Cocktail")
+        categories.add("Pane & Pizza")
         categories.add("Ricette base")
+        categories.add("Marmellate & Conserve")
+        categories.add("Secondi Piatti")
+        categories.add("Primi")
         /*categories.add("Item 3")
         categories.add("Item 4")
         categories.add("Item 5")
