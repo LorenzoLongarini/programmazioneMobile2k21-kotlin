@@ -9,7 +9,7 @@
 
     ]]>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/bottone_aggiungi_ricetta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

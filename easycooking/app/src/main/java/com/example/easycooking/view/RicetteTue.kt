@@ -53,7 +53,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
 
         override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
             super.onViewCreated(itemView, savedInstanceState)
-            val bot = view?.findViewById<Button>(R.id.bt)
+            val bot = view?.findViewById<Button>(R.id.bottone_aggiungi_ricetta)
             val rev = view?.findViewById<RecyclerView>(R.id.rv)
 
 
@@ -149,7 +149,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                 //var quant = intentData?.getStringExtra("quant")
                 //var unit = intentData?.getStringExtra("unit")
                 intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
-                    val ricetta = RicettaDBEntity(reply)
+                    val ricetta = RicettaDBEntity(reply,"","","","","")
                     ricettaViewModel.insert(ricetta)
 
                 }
