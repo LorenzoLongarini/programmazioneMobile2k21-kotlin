@@ -42,7 +42,6 @@
     <string name="errorsignup">C\'è stato un errore nella registrazione.</string>
 
     <string-array name="Categoria">
-        <item>Primi</item>
         <item>-----</item>
         <item>Dolci</item>
         <item>Bevande &amp; Cocktail</item>
