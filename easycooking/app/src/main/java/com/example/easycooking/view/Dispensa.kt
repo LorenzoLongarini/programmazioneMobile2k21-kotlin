@@ -181,7 +181,11 @@ fun getRicetteFiltrate(ingr: MutableList<String>) {
                     val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                     if (ingr!=null) {
                         for(j in ingr){
-                            if (ricetta?.Ingredienti!!.contains(j)){
+                            var appoggio= mutableListOf<String>()
+                            for (ing in ricetta?.Ingredienti!!){
+                                appoggio.add(ing.toLowerCase())
+                            }
+                            if (appoggio.contains(j.toLowerCase())){
                                 if (!ricettaArray.contains(ricetta!!))
                                 ricettaArray.add(ricetta!!)
                             }
