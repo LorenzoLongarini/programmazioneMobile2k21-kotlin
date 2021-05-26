@@ -99,6 +99,10 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             setDuration(250)
         }*/
+            btn?.setOnClickListener {
+                getRicetteFiltrate()
+            }
+
 
     }
 
@@ -110,14 +114,32 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                         ricettaArray.add(ricetta!!)
-                        if (btn != null) {
-                            btn.setOnClickListener {
-                                var origin=orig?.selectedItem.toString()
-                                var categ=cat?.selectedItem.toString()
-                                ricettaArray=filtri(origin,categ,ricettaArray)
 
-                            }
-                        }
+                    }
+                    recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+
+    }
+    fun getRicetteFiltrate() {
+        dbref = FirebaseDatabase.getInstance().getReference("")
+        dbref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (ricetteSnapshot in snapshot.children) {
+                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                        var origin=orig?.selectedItem.toString()
+                        var categ=cat?.selectedItem.toString()
+                        ricettaArray=filtri(origin,categ,ricettaArray)
+                        //ricettaArray.add(ricetta!!)
+
                     }
                     recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                 }
