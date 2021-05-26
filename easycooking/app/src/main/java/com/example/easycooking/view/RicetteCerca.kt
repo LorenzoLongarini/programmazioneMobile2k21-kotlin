@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
-import com.example.easycooking.adapter.ricetta.SingolaRicetta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_ricettecerca.*
 import java.util.ArrayList
 
 
