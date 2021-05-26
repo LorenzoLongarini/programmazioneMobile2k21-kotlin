@@ -93,6 +93,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginTop="24dp"
         android:contentDescription="Aggiungi un prodotto in dispensa"
+        android:text="Cerca"
         app:backgroundTint="@color/arancio_giallino"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
