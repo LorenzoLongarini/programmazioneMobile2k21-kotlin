@@ -182,6 +182,7 @@ fun getRicetteFiltrate(ingr: MutableList<String>) {
                     if (ingr!=null) {
                         for(j in ingr){
                             if (ricetta?.Ingredienti!!.contains(j)){
+                                if (!ricettaArray.contains(ricetta!!))
                                 ricettaArray.add(ricetta!!)
                             }
                         }
