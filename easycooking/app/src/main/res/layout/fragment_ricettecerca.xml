@@ -5,54 +5,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"><![CDATA[
-    tools:context=".view.RicetteCerca">]]>
+    tools:context=".view.RicetteCerca">
 
 
-    <SearchView
-        android:id="@+id/cerca_ricette"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
-        android:background="@color/arancione_sbiadito"
-        app:layout_constraintEnd_toStartOf="@+id/bottone_ricerca"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-    </SearchView>
+    ]]>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="18dp"
         android:text="@string/cat"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/categoria_ricerca"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cerca_ricette" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Spinner
         android:id="@+id/categoria_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cerca_ricette"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="34dp"
         android:text="@string/naz"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/origine_ricerca"
@@ -91,12 +77,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="Aggiungi un prodotto in dispensa"
         android:text="Cerca"
         app:backgroundTint="@color/arancio_giallino"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
         app:srcCompat="@drawable/ic_baseline_search_24"
         app:tint="@color/white" />
 
@@ -104,13 +91,12 @@
         android:id="@+id/rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/bottone_ricerca"
         tools:listitem="@layout/cards">
 
     </androidx.recyclerview.widget.RecyclerView>
