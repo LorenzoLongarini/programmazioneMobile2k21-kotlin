@@ -6,171 +6,139 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/titolo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/bungee"
-        android:text="@string/app_name"
-        android:textColor="@color/bordeaux"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/frigologo" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/accedi"
-        android:textColor="@color/rosso_chiaro"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titolo"
-        app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/frigologo" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="@string/benvenuto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        <TextView
+            android:id="@+id/titolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/bungee"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/bordeaux"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/email"
-        android:textColor="@color/bordeaux"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/accedi"
+            android:textColor="@color/rosso_chiaro"
+            android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/email_accedi"
-        android:layout_width="330dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/benvenuto" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/password"
-        android:textColor="@color/bordeaux"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_accedi" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/email"
+            android:textColor="@color/bordeaux" />
 
-    <EditText
-        android:id="@+id/psw_accedi"
-        android:layout_width="330dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        <EditText
+            android:id="@+id/email_accedi"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:padding="0dp"
+            android:paddingStart="0dp" />
 
-    <Button
-        android:id="@+id/bottone_accedi"
-        android:layout_width="180dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/rosso_chiaro"
-        android:text="@string/accedi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/psw_accedi" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/password"
+            android:textColor="@color/bordeaux" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/bottone_gmail"
-        android:layout_width="180dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="2dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottone_accedi"
-        app:srcCompat="@drawable/gmail" />
+        <EditText
+            android:id="@+id/psw_accedi"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:padding="0dp"
+            android:paddingStart="0dp" />
 
-    <TextView
-        android:id="@+id/password_dimenticata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/dimenticato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottone_gmail" />
+        <Button
+            android:id="@+id/bottone_accedi"
+            android:layout_width="180dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/rosso_chiaro"
+            android:text="@string/accedi" />
 
-    <TextView
-        android:id="@+id/registrati_accedi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="registratiView"
-        android:text="@string/registrati"
-        android:textColor="@color/arancione_scuro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/senza_registrazione"
-        app:layout_constraintTop_toTopOf="@+id/senza_registrazione"
-        app:layout_constraintVertical_bias="0.029999971" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/bottone_gmail"
+            android:layout_width="180dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="2dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/gmail" />
 
-    <TextView
-        android:id="@+id/senza_registrazione"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="senzaReg"
-        android:text="@string/noreg"
-        android:textColor="@color/bordeaux"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_dimenticata"
-        app:layout_constraintVertical_bias="0.04000002" />
+        <TextView
+            android:id="@+id/password_dimenticata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/dimenticato" />
+
+        <TextView
+            android:id="@+id/registrati_accedi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="registratiView"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/registrati"
+            android:textColor="@color/arancione_scuro" />
+
+        <TextView
+            android:id="@+id/senza_registrazione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="senzaReg"
+            android:padding="0dp"
+            android:paddingStart="0dp"
+            android:text="@string/noreg"
+            android:textColor="@color/bordeaux" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
