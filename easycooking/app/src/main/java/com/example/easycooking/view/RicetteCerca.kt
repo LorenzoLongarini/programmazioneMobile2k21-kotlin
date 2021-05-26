@@ -29,7 +29,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
     private lateinit var ricettaArray: ArrayList<Ricetta>
     private lateinit var search: EditText
     val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca)
-    val cat:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)
+    val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)
     val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
 
     companion object {
@@ -70,6 +70,10 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }
         var origin="-----"
         var categ="-----"
+
+        
+
+
         //var appoggio = mutableListOf<Ricetta>()
         ricettaArray = arrayListOf<Ricetta>()
         getRicetteFiltrate(origin,categ)
