@@ -68,7 +68,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         }
         var origin="-----"
         var categ="-----"
-        ricettaArray = arrayListOf<Ricetta>()
+
         //getRicetteFiltrate(origin,categ)
 
         val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)as Spinner
@@ -103,6 +103,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
             override fun onClick(v: View?) {
 
                  categ=cate?.selectedItem.toString()
+                ricettaArray = arrayListOf<Ricetta>()
                 getRicetteFiltrate(origin,categ)
             }
         })
