@@ -1,12 +1,11 @@
 package com.example.easycooking.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,16 +20,15 @@ import kotlinx.android.synthetic.main.fragment_ricettecerca.*
 import java.util.ArrayList
 
 
-class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
+class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
     private lateinit var search: EditText
-    val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca)
-    val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)
-    val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
+
+
 
     companion object {
         fun newInstance(): RicetteTue {
@@ -70,13 +68,61 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         }
         var origin="-----"
         var categ="-----"
-
-        
-
-
-        //var appoggio = mutableListOf<Ricetta>()
         ricettaArray = arrayListOf<Ricetta>()
-        getRicetteFiltrate(origin,categ)
+        //getRicetteFiltrate(origin,categ)
+
+        val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)as Spinner
+        val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
+        val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca) as Button
+
+
+
+        // Spinner click listener
+        cate?.onItemSelectedListener = this
+
+        // Spinner Drop down elements
+        val categories: MutableList<String> = ArrayList()
+        categories
+        categories.add("Primi")
+        categories.add("Ricette base")
+        /*categories.add("Item 3")
+        categories.add("Item 4")
+        categories.add("Item 5")
+        categories.add("Item 6")*/
+
+        // Creating adapter for spinner
+        val dataAdapter =
+            this.context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, categories) }
+
+        // Drop down layout style - list view with radio button
+        dataAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // attaching data adapter to spinner
+        cate?.adapter = dataAdapter
+        btn?.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+                 categ=cate?.selectedItem.toString()
+                getRicetteFiltrate(origin,categ)
+            }
+        })
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+        // On selecting a spinner item
+        val item = parent.getItemAtPosition(position).toString()
+
+        // Showing selected spinner item
+        Toast.makeText(parent.context, "Selected: $item", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
+
+    //var appoggio = mutableListOf<Ricetta>()
+
         /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val docRef = db.collection("cook").document("100")
         docRef.get().addOnSuccessListener { document ->
@@ -107,9 +153,9 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
 
 
-    }
 
-    fun getRicette() {
+
+   /* fun getRicette() {
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -130,7 +176,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         })
 
 
-    }
+    }*/
     fun getRicetteFiltrate(origin:String,categ:String) {
 
         dbref = FirebaseDatabase.getInstance().getReference("")
