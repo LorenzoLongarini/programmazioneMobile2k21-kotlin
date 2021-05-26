@@ -79,6 +79,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
         // Spinner click listener
         cate?.onItemSelectedListener = this
+        orig?.onItemSelectedListener = this
 
         // Spinner Drop down elements
         val categories: MutableList<String> = ArrayList()
@@ -91,24 +92,57 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         categories.add("Marmellate & Conserve")
         categories.add("Secondi Piatti")
         categories.add("Primi")
-        /*categories.add("Item 3")
-        categories.add("Item 4")
-        categories.add("Item 5")
-        categories.add("Item 6")*/
+
+        val origini: MutableList<String> = ArrayList()
+        origini
+        origini.add("-----")
+        origini.add("Italiana")
+        origini.add("Indiana")
+        origini.add("Americana")
+        origini.add("Cinese")
+        origini.add("Francese")
+        origini.add("Spagnola")
+        origini.add("Giapponese")
+        origini.add("Austriaca")
+        origini.add("Marocchina")
+        origini.add("Australiana")
+        origini.add("Hawaiiana")
+        origini.add("Brasiliana")
+        origini.add("Cubana")
+        origini.add("Inglese")
+        origini.add("Messicana")
+        origini.add("Polinesiana")
+        origini.add("Portoricana")
+        origini.add("Singaporiana")
+        origini.add("Turca")
+        origini.add("Tedesca")
+        origini.add("Tunisina")
+        origini.add("Greca")
+        origini.add("Ungherese")
+        origini.add("Svedese")
+        origini.add("Africana")
+        origini.add("SriLanka")
+        origini.add("Taiwan")
+        origini.add("Thailandese")
 
         // Creating adapter for spinner
         val dataAdapter =
             this.context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, categories) }
+        val dataAdapter2 =
+            this.context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, origini) }
 
         // Drop down layout style - list view with radio button
         dataAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dataAdapter2?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // attaching data adapter to spinner
         cate?.adapter = dataAdapter
+        orig?.adapter = dataAdapter2
         btn?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
                  categ=cate?.selectedItem.toString()
+                 origin=orig?.selectedItem.toString()
                 ricettaArray = arrayListOf<Ricetta>()
                 getRicetteFiltrate(origin,categ)
             }
@@ -120,7 +154,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         val item = parent.getItemAtPosition(position).toString()
 
         // Showing selected spinner item
-        Toast.makeText(parent.context, "Selected: $item", Toast.LENGTH_LONG).show()
+        Toast.makeText(parent.context, "Hai selezionato: $item", Toast.LENGTH_LONG).show()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

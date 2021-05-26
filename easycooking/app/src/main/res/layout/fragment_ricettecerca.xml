@@ -69,7 +69,7 @@
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca"
-        android:entries="@array/Origini"/>
+        />
 
     <TextView
         android:id="@+id/textView"
