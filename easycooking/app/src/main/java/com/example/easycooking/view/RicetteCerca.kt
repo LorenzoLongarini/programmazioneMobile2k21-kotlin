@@ -71,7 +71,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
         //var appoggio = mutableListOf<Ricetta>()
         ricettaArray = arrayListOf<Ricetta>()
-        getRicette()
+        getRicetteFiltrate()
         /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val docRef = db.collection("cook").document("100")
         docRef.get().addOnSuccessListener { document ->
@@ -129,18 +129,19 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
     }
     fun getRicetteFiltrate() {
+        var origin=orig?.selectedItem.toString()
+        var categ=cat?.selectedItem.toString()
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                        var origin=orig?.selectedItem.toString()
-                        var categ=cat?.selectedItem.toString()
-                        ricettaArray=filtri(origin,categ,ricettaArray)
-                        //ricettaArray.add(ricetta!!)
+                        if (ricetta?.recipeCategory=="Primi"&&ricetta?.recipeCuisine=="Africana"){
+                        ricettaArray.add(ricetta!!)}
 
                     }
+
                     recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                 }
 
@@ -247,8 +248,8 @@ if (requestCode == LOGIN_REQUEST) {
 }
 }*/
 
-fun filtri(origine:String, categoria:String,lista:ArrayList<Ricetta>):ArrayList<Ricetta> {
-    lateinit var risultato:ArrayList<Ricetta>
+/*fun filtri(origine:String, categoria:String,lista:ArrayList<Ricetta>):ArrayList<Ricetta> {
+     var risultato= arrayListOf<Ricetta>()
     if ((origine == "-----")&&(categoria == "-----")){
         risultato=lista
     } else if (origine=="-----"){
@@ -274,4 +275,4 @@ fun filtri(origine:String, categoria:String,lista:ArrayList<Ricetta>):ArrayList<
         }
     }
     return risultato
-}
+}*/
