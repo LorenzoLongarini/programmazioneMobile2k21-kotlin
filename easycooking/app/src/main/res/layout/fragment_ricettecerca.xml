@@ -9,6 +9,28 @@
 
 
     ]]>
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:text="Nome:"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/categoria_ricerca"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+    <SearchView
+        android:id="@+id/nome_ricerca"
+        android:layout_width="200dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView6"
@@ -21,17 +43,17 @@
         app:layout_constraintEnd_toStartOf="@+id/categoria_ricerca"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/nome_ricerca" />
 
     <Spinner
         android:id="@+id/categoria_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/nome_ricerca" />
 
     <TextView
         android:id="@+id/textView7"
@@ -50,12 +72,11 @@
         android:id="@+id/origine_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca" />
 
     <TextView
         android:id="@+id/textView"
@@ -77,26 +98,28 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:contentDescription="Cerca ricette"
         android:text="Cerca"
         app:backgroundTint="@color/arancio_giallino"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/origine_ricerca"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:srcCompat="@drawable/ic_baseline_search_24"
         app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="410dp"
+        android:layout_height="437dp"
         android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottone_ricerca"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/cards">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -18,13 +18,14 @@ import com.google.firebase.database.*
 import java.util.ArrayList
 
 
-class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener {
+class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener, SearchView.OnQueryTextListener {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
-    private lateinit var search: EditText
+    private lateinit var ricettaArray2: ArrayList<Ricetta>
+   // private lateinit var search: EditText
 
 
 
@@ -72,6 +73,9 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)as Spinner
         val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
         val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca) as Button
+
+        val nome = view?.findViewById<SearchView>(R.id.nome_ricerca)
+        nome?.setOnQueryTextListener(this)
 
 
 
@@ -123,25 +127,34 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         origini.add("Taiwan")
         origini.add("Thailandese")
 
+
+
         // Creating adapter for spinner
         val dataAdapter =
             this.context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, categories) }
         val dataAdapter2 =
             this.context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, origini) }
 
+
         // Drop down layout style - list view with radio button
         dataAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         dataAdapter2?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
+
+
         // attaching data adapter to spinner
         cate?.adapter = dataAdapter
         orig?.adapter = dataAdapter2
+
+
+
         btn?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
                  categ=cate?.selectedItem.toString()
                  origin=orig?.selectedItem.toString()
                 ricettaArray = arrayListOf<Ricetta>()
+                ricettaArray2 = arrayListOf<Ricetta>()
                 getRicetteFiltrate(origin,categ)
             }
         })
@@ -158,6 +171,48 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
+
+    private fun searchNome(query: String?){
+        val searchQuery = "%$query%"
+        dbref = FirebaseDatabase.getInstance().getReference("")
+        dbref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (ricetteSnapshot in snapshot.children) {
+                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                            if (ricetta?.nome.equals(searchQuery)){
+                                ricettaArray2.add(ricetta!!)
+                            }else{
+                                ricettaArray2.add(ricetta!!)
+                            }
+
+                    }
+                    recView.adapter = context?.let { RicettaAdapter(ricettaArray2, it) }
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if(query!=null){
+            searchNome(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query!=null){
+            searchNome(query)
+        }
+        return true
+    }
+
 
 
     //var appoggio = mutableListOf<Ricetta>()
