@@ -68,10 +68,11 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
             layoutManager = GridLayoutManager(activity, 2)
             // set the custom adapter to the RecyclerView
         }
-
+        var origin="-----"
+        var categ="-----"
         //var appoggio = mutableListOf<Ricetta>()
         ricettaArray = arrayListOf<Ricetta>()
-        getRicetteFiltrate()
+        getRicetteFiltrate(origin,categ)
         /*val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val docRef = db.collection("cook").document("100")
         docRef.get().addOnSuccessListener { document ->
@@ -99,9 +100,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
         rv?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             setDuration(250)
         }*/
-            btn?.setOnClickListener {
-                getRicetteFiltrate()
-            }
+
 
 
     }
@@ -128,9 +127,8 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
 
 
     }
-    fun getRicetteFiltrate() {
-        var origin=orig?.selectedItem.toString()
-        var categ=cat?.selectedItem.toString()
+    fun getRicetteFiltrate(origin:String,categ:String) {
+
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -138,14 +136,14 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                         if ((origin!="-----")&&(categ!="-----")){
-                        if (ricetta?.recipeCategory=="Primi"&&ricetta?.recipeCuisine=="Africana"){
+                        if ((ricetta?.recipeCategory==categ) && (ricetta?.recipeCuisine==origin)){
                         ricettaArray.add(ricetta!!)}}
                         else if (origin!="-----"){
-                            if (ricetta?.recipeCuisine=="Africana"){
+                            if (ricetta?.recipeCuisine==origin){
                                 ricettaArray.add(ricetta!!)}
                         }
                         else if (categ!="-----"){
-                            if (ricetta?.recipeCategory=="Primi"){
+                            if (ricetta?.recipeCategory==categ){
                                 ricettaArray.add(ricetta!!)}
                         } else{
                             ricettaArray.add(ricetta!!)
