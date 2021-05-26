@@ -134,7 +134,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
 
 
                     bot?.setOnClickListener {
-                        val intent = Intent(activity, Activity_inserisci_dispensa::class.java)
+                        val intent = Intent(activity, Inserisci_ricetta::class.java)
                         startActivityForResult(intent, newRicettaActivityRequestCode)
                     }
                 }
