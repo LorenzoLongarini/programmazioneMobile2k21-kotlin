@@ -76,18 +76,24 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             // set the custom adapter to the RecyclerView
         }
 
-        val ingr: MutableList<String> = ArrayList()
+        /*val ingr: MutableList<String> = ArrayList()
         ingr
         if (rv != null) {
             for(i in rv){
                 ingr.add(i.toString())
             }
-        }
+        }*/
 
         bt_cerca?.setOnClickListener( object : View.OnClickListener{
             override fun onClick(v: View?) {
-                
-                ricettaArray = arrayListOf<Ricetta>()
+                var ingr= mutableListOf<String>()
+                var ingred=dispensaViewModel.allprod.value
+                if (ingred != null) {
+                    for (k in ingred){
+                        ingr.add(k.nomeProdotto)
+                    }
+                        ricettaArray = arrayListOf<Ricetta>()
+                }
                 getRicetteFiltrate(ingr)
             }
         })
