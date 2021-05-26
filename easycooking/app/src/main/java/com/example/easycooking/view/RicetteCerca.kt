@@ -18,14 +18,15 @@ import com.google.firebase.database.*
 import java.util.ArrayList
 
 
-class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener, SearchView.OnQueryTextListener {
+class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener {
     val LOGIN_REQUEST = 101
     private var mAuth: FirebaseAuth? = null
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
-    private lateinit var ricettaArray2: ArrayList<Ricetta>
+    //private lateinit var ricettaArray2: ArrayList<Ricetta>
    // private lateinit var search: EditText
+
 
 
 
@@ -69,14 +70,15 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         var categ="-----"
         var nome_ricetta=""
 
+
         //getRicetteFiltrate(origin,categ)
 
         val cate:Spinner?=view?.findViewById<Spinner>(R.id.categoria_ricerca)as Spinner
         val orig:Spinner?=view?.findViewById<Spinner>(R.id.origine_ricerca)
         val btn: Button? =view?.findViewById<Button>(R.id.bottone_ricerca) as Button
 
-        val nome = view?.findViewById<SearchView>(R.id.nome_ricerca)
-        nome?.setOnQueryTextListener(this)
+        val nome = view?.findViewById<EditText>(R.id.nome_ricerca)
+
 
         // Spinner click listener
         cate?.onItemSelectedListener = this
@@ -152,11 +154,11 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
                  categ=cate?.selectedItem.toString()
                  origin=orig?.selectedItem.toString()
-                nome_ricetta = nome.toString()
+                nome_ricetta = nome?.text.toString()
                 ricettaArray = arrayListOf<Ricetta>()
-                ricettaArray2 = arrayListOf<Ricetta>()
-                getRicetteFiltrate(origin,categ)
-                searchNome(nome_ricetta)
+                //ricettaArray2 = arrayListOf<Ricetta>()
+                getRicetteFiltrate(origin,categ,nome_ricetta)
+                //searchNome(nome_ricetta)
             }
         })
     }
@@ -172,8 +174,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
-
-    private fun searchNome(query: String?){
+/*    private fun searchNome(query: String?){
         val searchQuery = "%$query%"
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
@@ -182,13 +183,13 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                             if (ricetta?.nome.equals(searchQuery)){
-                                ricettaArray2.add(ricetta!!)
+                                ricettaArray.add(ricetta!!)
                             }else{
-                                ricettaArray2.add(ricetta!!)
+                                ricettaArray.add(ricetta!!)
                             }
 
                     }
-                    recView.adapter = context?.let { RicettaAdapter(ricettaArray2, it) }
+                    recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                 }
 
             }
@@ -198,21 +199,21 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
             }
         })
 
-    }
+    }*/
 
-    override fun onQueryTextChange(query: String?): Boolean {
+   /* override fun onQueryTextChange(query: String?): Boolean {
         if(query!=null){
-            searchNome(query)
+            getRicetteFiltrate(query)
         }
         return true
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if(query!=null){
-            searchNome(query)
+            getRicetteFiltrate(query)
         }
         return true
-    }
+    }*/
 
 
 
@@ -272,7 +273,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
 
     }*/
-    fun getRicetteFiltrate(origin:String,categ:String) {
+    fun getRicetteFiltrate(origin:String,categ:String,nomeRic:String) {
 
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {
@@ -280,20 +281,24 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
                 if (snapshot.exists()) {
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                        if ((origin!="-----")&&(categ!="-----")){
-                        if ((ricetta?.recipeCategory==categ) && (ricetta?.recipeCuisine==origin)){
-                        ricettaArray.add(ricetta!!)}}
-                        else if (origin!="-----"){
-                            if (ricetta?.recipeCuisine==origin){
-                                ricettaArray.add(ricetta!!)}
-                        }
-                        else if (categ!="-----"){
-                            if (ricetta?.recipeCategory==categ){
-                                ricettaArray.add(ricetta!!)}
-                        } else{
-                            ricettaArray.add(ricetta!!)
-                        }
+                        if (ricetta?.nome!!.toLowerCase().contains(nomeRic.toLowerCase())) {
+                            if ((origin != "-----") && (categ != "-----")) {
+                                if ((ricetta?.recipeCategory == categ) && (ricetta?.recipeCuisine == origin)) {
+                                    ricettaArray.add(ricetta!!)
+                                }
+                            } else if (origin != "-----") {
+                                if (ricetta?.recipeCuisine == origin) {
+                                    ricettaArray.add(ricetta!!)
+                                }
+                            } else if (categ != "-----") {
+                                if (ricetta?.recipeCategory == categ) {
+                                    ricettaArray.add(ricetta!!)
+                                }
+                            } else {
+                                ricettaArray.add(ricetta!!)
+                            }
 
+                        }
                     }
 
                     recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
@@ -308,6 +313,8 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
 
     }
+
+
     /*fun onItemClick(ricetta: Ricetta){
        val fragment: Fragment = SingolaRicetta.newInstance(SingolaRicetta)
        val transaction = activity?.supportFragmentManager!!.beginTransaction()
