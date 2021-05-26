@@ -67,6 +67,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         }
         var origin="-----"
         var categ="-----"
+        var nome_ricetta=""
 
         //getRicetteFiltrate(origin,categ)
 
@@ -76,8 +77,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
         val nome = view?.findViewById<SearchView>(R.id.nome_ricerca)
         nome?.setOnQueryTextListener(this)
-
-
 
         // Spinner click listener
         cate?.onItemSelectedListener = this
@@ -153,9 +152,11 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
                  categ=cate?.selectedItem.toString()
                  origin=orig?.selectedItem.toString()
+                nome_ricetta = nome.toString()
                 ricettaArray = arrayListOf<Ricetta>()
                 ricettaArray2 = arrayListOf<Ricetta>()
                 getRicetteFiltrate(origin,categ)
+                searchNome(nome_ricetta)
             }
         })
     }

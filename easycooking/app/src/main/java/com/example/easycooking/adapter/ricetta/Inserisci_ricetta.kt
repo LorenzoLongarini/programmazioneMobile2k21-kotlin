@@ -12,9 +12,9 @@ private lateinit var editorNomeView: EditText
 class Inserisci_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inserisci_ricetta)
+        setContentView(R.layout.activity_scriviricetta)
 
-        editorNomeView=findViewById(R.id.nomeric)
+        editorNomeView=findViewById(R.id.nome_ricetta_inserimento)
 
 
         val bt: Button =findViewById<Button>(R.id.salvaRicetta)
