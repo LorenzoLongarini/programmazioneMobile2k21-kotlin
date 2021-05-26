@@ -7,15 +7,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
+import com.example.easycooking.ViewModels.ricettaDelGiornoViewModel
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import io.reactivex.Observer
 import java.util.*
 import kotlin.coroutines.coroutineContext
 import kotlin.properties.Delegates
@@ -112,33 +116,23 @@ class Ricetta_del_giorno : Fragment() {
         val photo: ImageView = view?.findViewById<ImageView>(R.id.photo)
          */
 
-         titolo = view?.findViewById<TextView>(R.id.immagine_ricetta_vista).toString()
-         prepTime = view?.findViewById<TextView>(R.id.tempo_preparazione).toString()
-         cookTime = view?.findViewById<TextView>(R.id.tempo_cottura).toString()
-         totTime = view?.findViewById<TextView>(R.id.tempo_totale).toString()
-         cat = view?.findViewById<TextView>(R.id.categoria).toString()
-         orig = view?.findViewById<TextView>(R.id.origine).toString()
-         intoll = view?.findViewById<TextView>(R.id.intolleranze).toString()
-         veg = view?.findViewById<TextView>(R.id.vegano).toString()
-         ingr = view?.findViewById<TextView>(R.id.Ingredienti).toString()
-         quant = view?.findViewById<TextView>(R.id.Quantità).toString()
-         unit = view?.findViewById<TextView>(R.id.Unitàdimisura).toString()
-         prep = view?.findViewById<TextView>(R.id.procedimento_vista).toString()
+        titolo = view?.findViewById<TextView>(R.id.immagine_ricetta_vista).toString()
+        prepTime = view?.findViewById<TextView>(R.id.tempo_preparazione).toString()
+        cookTime = view?.findViewById<TextView>(R.id.tempo_cottura).toString()
+        totTime = view?.findViewById<TextView>(R.id.tempo_totale).toString()
+        cat = view?.findViewById<TextView>(R.id.categoria).toString()
+        orig = view?.findViewById<TextView>(R.id.origine).toString()
+        intoll = view?.findViewById<TextView>(R.id.intolleranze).toString()
+        veg = view?.findViewById<TextView>(R.id.vegano).toString()
+        ingr = view?.findViewById<TextView>(R.id.Ingredienti).toString()
+        quant = view?.findViewById<TextView>(R.id.Quantità).toString()
+        unit = view?.findViewById<TextView>(R.id.Unitàdimisura).toString()
+        prep = view?.findViewById<TextView>(R.id.procedimento_vista).toString()
 
-        dbref = FirebaseDatabase.getInstance().getReference("")
-        dbref.get().addOnSuccessListener {
-            var ricettaArray = arrayListOf<Ricetta>()
-            for (ricetteSnapshot in it.children) {
-                val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                ricettaArray.add(ricetta!!)
-            }
-            val h = Handler()
-            h.postDelayed(object : Runnable {
-                //private var time: Long = 0
-                override fun run() {
-                    var ricettina = ricettaArray.random()
-
-                    /*
+        val viewModel: ricettaDelGiornoViewModel by viewModels()
+        viewModel.getRicette()
+        })
+        /*
                     titolo!!.text = savedInstanceState!!.getString("titolo") ?: ricettina?.nome
                     prepTime!!.text = savedInstanceState!!.getString("prepTime") ?: ricettina?.prepTime
                     cookTime!!.text = savedInstanceState!!.getString("cookTime") ?: ricettina?.cookTime
@@ -148,60 +142,62 @@ class Ricetta_del_giorno : Fragment() {
                     */
 
 
-                    titolo = savedInstanceState!!.getString("titolo") ?: ricettina.nome.toString()
-                    prepTime = savedInstanceState.getString("prepTime") ?: ricettina.prepTime.toString()
-                    cookTime = savedInstanceState.getString("cookTime") ?: ricettina.cookTime.toString()
-                    totTime = savedInstanceState.getString("totalTime") ?: ricettina.totalTime.toString()
-                    cat = savedInstanceState.getString("recipeCategory") ?: ricettina.recipeCategory.toString()
-                    orig = savedInstanceState.getString("recipeCuisine") ?: ricettina.recipeCuisine.toString()
+        titolo = savedInstanceState!!.getString("titolo") ?: ricettina.nome.toString()
+        prepTime = savedInstanceState.getString("prepTime") ?: ricettina.prepTime.toString()
+        cookTime = savedInstanceState.getString("cookTime") ?: ricettina.cookTime.toString()
+        totTime = savedInstanceState.getString("totalTime") ?: ricettina.totalTime.toString()
+        cat = savedInstanceState.getString("recipeCategory") ?: ricettina.recipeCategory.toString()
+        orig = savedInstanceState.getString("recipeCuisine") ?: ricettina.recipeCuisine.toString()
 
-                    var arrayIntoll = savedInstanceState.getStringArrayList("intolleranze") ?: ricettina.intolleranze
-                    var intoller = ""
-                    if (arrayIntoll != null) {
-                        for (intol in arrayIntoll) {
-                            intoller += intol
-                        }
-                    } else {
-                        intoller = "nessuna intolleranza"
-                    }
-                    var arrayIngr =  savedInstanceState.getStringArrayList("ingredienti") ?: ricettina.Ingredienti
-                    var ingred = ""
-                    if (arrayIngr != null) {
-                        for (ing in arrayIngr) {
-                            ingred = ingred + ing + "\n"
-                        }
-                    }
-                    var arrayQuant =  savedInstanceState.getStringArrayList("quantita") ?: ricettina.quantita
-                    var quantit = ""
-                    if (arrayQuant != null) {
-                        for (ing in arrayQuant) {
-                            quantit = quantit + ing + "\n"
-                        }
-                    } else {
-                        quantit = "null"
-                    }
-                    var arrayUnit =  savedInstanceState.getStringArrayList("unita") ?: ricettina.unita
-                    var unita = ""
-                    if (arrayUnit != null) {
-                        for (ing in arrayUnit) {
-                            unita = unita + ing + "\n"
-                        }
-                    }
-                    var veggy = savedInstanceState.getBoolean("vegano")
-                    var vegano = "No"
-                    if (veggy) {
-                        vegano = "Si"
-                    }
+        var arrayIntoll =
+            savedInstanceState.getStringArrayList("intolleranze") ?: ricettina.intolleranze
+        var intoller = ""
+        if (arrayIntoll != null) {
+            for (intol in arrayIntoll) {
+                intoller += intol
+            }
+        } else {
+            intoller = "nessuna intolleranza"
+        }
+        var arrayIngr =
+            savedInstanceState.getStringArrayList("ingredienti") ?: ricettina.Ingredienti
+        var ingred = ""
+        if (arrayIngr != null) {
+            for (ing in arrayIngr) {
+                ingred = ingred + ing + "\n"
+            }
+        }
+        var arrayQuant = savedInstanceState.getStringArrayList("quantita") ?: ricettina.quantita
+        var quantit = ""
+        if (arrayQuant != null) {
+            for (ing in arrayQuant) {
+                quantit = quantit + ing + "\n"
+            }
+        } else {
+            quantit = "null"
+        }
+        var arrayUnit = savedInstanceState.getStringArrayList("unita") ?: ricettina.unita
+        var unita = ""
+        if (arrayUnit != null) {
+            for (ing in arrayUnit) {
+                unita = unita + ing + "\n"
+            }
+        }
+        var veggy = savedInstanceState.getBoolean("vegano")
+        var vegano = "No"
+        if (veggy) {
+            vegano = "Si"
+        }
 
 
-                    intoll = savedInstanceState.getString("intoller") ?: intoller
-                    veg = savedInstanceState.getString("vegano") ?: vegano
-                    ingr = savedInstanceState.getString("ingred") ?: ingred
-                    quant = savedInstanceState.getString("quantit") ?:quantit
-                    unit = savedInstanceState.getString("unita") ?: unita
-                    prep = savedInstanceState.getString("preparazione") ?: ricettina?.preparazione.toString()
+        /*intoll = savedInstanceState.getString("intoller") ?: intoller
+        veg = savedInstanceState.getString("vegano") ?: vegano
+        ingr = savedInstanceState.getString("ingred") ?: ingred
+        quant = savedInstanceState.getString("quantit") ?: quantit
+        unit = savedInstanceState.getString("unita") ?: unita
+        prep = savedInstanceState.getString("preparazione") ?: ricettina?.preparazione.toString()*/
 
-                    /*
+        /*
                     intoll!!.text = savedInstanceState.getString("intoller") ?: intoller
                     veg!!.text = savedInstanceState.getString("vegano") ?: vegano
                     ingr!!.text = savedInstanceState.getString("ingred") ?: ingred
@@ -209,7 +205,7 @@ class Ricetta_del_giorno : Fragment() {
                     unit!!.text = savedInstanceState.getString("unita") ?: unita
                     prep!!.text = savedInstanceState.getString("preparazione") ?: ricettina?.preparazione.toString()
                     */
-                    /*
+        /*
                     val storage = Firebase.storage
                     var image = savedInstanceState.getString("image") ?: ricettina.image
                     val n_image = "images/".plus(image)
@@ -229,20 +225,20 @@ class Ricetta_del_giorno : Fragment() {
 
                     }*/
 
-                    view?.findViewById<TextView>(R.id.immagine_ricetta_vista).text = titolo.toString()
-                    view?.findViewById<TextView>(R.id.tempo_preparazione).text = prepTime.toString()
-                    view?.findViewById<TextView>(R.id.tempo_cottura).text = cookTime.toString()
-                    view?.findViewById<TextView>(R.id.tempo_totale).text = totTime.toString()
-                    view?.findViewById<TextView>(R.id.categoria).text = cat.toString()
-                    view?.findViewById<TextView>(R.id.origine).text = orig.toString()
-                    view?.findViewById<TextView>(R.id.intolleranze).text = intoll.toString()
-                    view?.findViewById<TextView>(R.id.vegano).text = veg.toString()
-                    view?.findViewById<TextView>(R.id.Ingredienti).text = ingr.toString()
-                    view?.findViewById<TextView>(R.id.Quantità).text = quant.toString()
-                    view?.findViewById<TextView>(R.id.Unitàdimisura).text = unit.toString()
-                    view?.findViewById<TextView>(R.id.procedimento_vista).text = prep.toString()
+        view?.findViewById<TextView>(R.id.immagine_ricetta_vista).text = titolo.toString()
+        view?.findViewById<TextView>(R.id.tempo_preparazione).text = prepTime.toString()
+        view?.findViewById<TextView>(R.id.tempo_cottura).text = cookTime.toString()
+        view?.findViewById<TextView>(R.id.tempo_totale).text = totTime.toString()
+        view?.findViewById<TextView>(R.id.categoria).text = cat.toString()
+        view?.findViewById<TextView>(R.id.origine).text = orig.toString()
+        view?.findViewById<TextView>(R.id.intolleranze).text = intoll.toString()
+        view?.findViewById<TextView>(R.id.vegano).text = veg.toString()
+        view?.findViewById<TextView>(R.id.Ingredienti).text = ingr.toString()
+        view?.findViewById<TextView>(R.id.Quantità).text = quant.toString()
+        view?.findViewById<TextView>(R.id.Unitàdimisura).text = unit.toString()
+        view?.findViewById<TextView>(R.id.procedimento_vista).text = prep.toString()
 
-                    /*
+        /*
                     view?.findViewById<TextView>(R.id.immagine_ricetta_vista).text = titolo
                     view?.findViewById<TextView>(R.id.tempo_preparazione).text = prepTime
                     view?.findViewById<TextView>(R.id.tempo_cottura).text = cookTime
@@ -257,12 +253,7 @@ class Ricetta_del_giorno : Fragment() {
                     view?.findViewById<TextView>(R.id.procedimento_vista).text = prep*/
 
 
-                    //time += 1000
-                    h.postDelayed(this, 86400)
-                }
-            }, 0) // 1 second delay (takes millis)
-        }
-        //val myViewModel = ViewModelProvider(activity as ViewModelStoreOwner).get(myViewModel::class.java)
+        //time += 1000
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
