@@ -6,13 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.easycooking.adapter.dispensa.Dispensa
+import com.example.easycooking.adapter.ricetta.RicettaDAO
 import com.example.easycooking.spesa.SpesaDAO
 import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class), version = 3,exportSchema = false)
+@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class), version = 4,exportSchema = false)
 public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
 
@@ -41,6 +42,7 @@ public abstract class ChoiceDatabase : RoomDatabase() {
 
     abstract fun DispensaDAO(): DispensaDAO
     abstract fun SpesaDAO(): SpesaDAO
+    abstract fun RicettaDAO(): RicettaDAO
 
     private class ChoiceDatabaseCallback(
         private val scope: CoroutineScope
@@ -56,11 +58,13 @@ public abstract class ChoiceDatabase : RoomDatabase() {
                 scope.launch{
                     var dispensaDao = database.DispensaDAO()
                     var spesaDao = database.SpesaDAO()
+                    var ricettaDao = database.RicettaDAO()
 
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             dispensaDao.deleteAll()
             spesaDao.deleteAll()
+            ricettaDao.deleteAll()
 
             /*var dispensa= DispensaDBEntity("Hello",10,"grammi")
             dispensaDao.insert(dispensa)

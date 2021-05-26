@@ -13,15 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.Activity_gestione"></activity>
+        <activity android:name=".adapter.ricetta.Inserisci_ricetta"></activity>
+        <activity android:name=".view.Activity_gestione" />
         <activity android:name=".view.Activity_inserisci_dispensa" />
         <activity android:name=".view.Activity_ricetta" />
         <activity android:name=".spesa.Activity_compra" />
         <activity android:name=".view.Base_nonReg" />
         <activity android:name=".auth.RegistrationActivity" />
         <activity android:name=".view.Base" />
-        <activity android:name=".view.Ricetta_del_giorno"/>
-        <activity android:name=".view.Ispirami"/>
+        <activity android:name=".view.Ricetta_del_giorno" />
+        <activity android:name=".view.Ispirami" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
