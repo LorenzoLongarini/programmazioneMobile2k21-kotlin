@@ -137,8 +137,19 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca) {
                 if (snapshot.exists()) {
                     for (ricetteSnapshot in snapshot.children) {
                         val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                        if ((origin!="-----")&&(categ!="-----")){
                         if (ricetta?.recipeCategory=="Primi"&&ricetta?.recipeCuisine=="Africana"){
-                        ricettaArray.add(ricetta!!)}
+                        ricettaArray.add(ricetta!!)}}
+                        else if (origin!="-----"){
+                            if (ricetta?.recipeCuisine=="Africana"){
+                                ricettaArray.add(ricetta!!)}
+                        }
+                        else if (categ!="-----"){
+                            if (ricetta?.recipeCategory=="Primi"){
+                                ricettaArray.add(ricetta!!)}
+                        } else{
+                            ricettaArray.add(ricetta!!)
+                        }
 
                     }
 
