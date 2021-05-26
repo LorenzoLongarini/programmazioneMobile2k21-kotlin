@@ -6,33 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.annotation.NonNull
+import androidx.core.view.iterator
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.example.easycooking.DB.*
 
 import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
+import com.example.easycooking.adapter.ricetta.Ricetta
+import com.example.easycooking.adapter.ricetta.RicettaAdapter
 
 import com.example.easycooking.view.Activity_inserisci_dispensa
-import com.example.easycooking.view.Base_nonReg
 import com.example.easycooking.view.SwipeToDelete
+import com.google.firebase.database.*
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import kotlinx.android.synthetic.main.activity_base.*
-import kotlinx.android.synthetic.main.fragment_dispensa.*
+import java.util.ArrayList
 
 
 class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
 
     private val newDispensaActivityRequestCode = 1
+    private lateinit var dbref: DatabaseReference
+    private lateinit var recView: RecyclerView
+    private lateinit var ricettaArray: ArrayList<Ricetta>
     private val dispensaViewModel: DispensaViewModel by viewModels {
         DispensaViewModel.DispensaViewModelFactory((activity?.application as DispensaApplication).repositoryDispensa)
     }
@@ -58,13 +63,34 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         val bt = view?.findViewById<Button>(R.id.bt)
-
-
-
-
-
+        val bt_cerca = view?.findViewById<Button>(R.id.bt_cerca)
         val rv = view?.findViewById<RecyclerView>(R.id.rv)
 
+        recView = view?.findViewById<RecyclerView>(R.id.rv1)!!
+        recView.layoutManager = LinearLayoutManager(activity)
+        recView.setHasFixedSize(true)
+        recView?.apply {
+            // set a LinearLayoutManager to handle Android
+            // RecyclerView behavior
+            layoutManager = GridLayoutManager(activity, 2)
+            // set the custom adapter to the RecyclerView
+        }
+
+        val ingr: MutableList<String> = ArrayList()
+        ingr
+        if (rv != null) {
+            for(i in rv){
+                ingr.add(i.toString())
+            }
+        }
+
+        bt_cerca?.setOnClickListener( object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                
+                ricettaArray = arrayListOf<Ricetta>()
+                getRicetteFiltrate(ingr)
+            }
+        })
 
         val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
             // Change the durations.
@@ -110,38 +136,6 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                 // Update the cached copy of the words in the adapter.
                 prods.let { adapter.submitList(it) }
 
-
-                /*val inflater = requireActivity().layoutInflater
-                var nome:EditText?=view?.findViewById<EditText>(R.id.nomeProdotto)
-                val builder: AlertDialog.Builder?=activity?.let{
-                    AlertDialog.Builder(it)
-                }
-                builder?.setTitle("Inserisci in dispensa:")
-                    ?.apply {
-                        setView(inflater.inflate(R.layout.dialog,null))
-                        setPositiveButton("Aggiungi",
-                            DialogInterface.OnClickListener { dialog, id->
-
-
-
-                               // var added=Dispensa(nomeProdotto.text.toString(),quantitaProdotto.text.toString().toInt(),quantitaProdotto.text.toString())
-                                //appoggio.plus(added)
-                                    liste
-                                    Toast.makeText(activity, nome?.text.toString(), Toast.LENGTH_LONG).show()
-
-                            })
-                        setNegativeButton("Annulla",
-                            DialogInterface.OnClickListener { dialog, id ->
-
-                            })
-
-                    }
-
-
-
-                val dialog: AlertDialog? = builder?.create()*/
-
-
                 bt?.setOnClickListener {
                     val intent = Intent(activity, Activity_inserisci_dispensa::class.java)
                     startActivityForResult(intent, newDispensaActivityRequestCode)
@@ -155,8 +149,6 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newDispensaActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            //var quant = intentData?.getStringExtra("quant")
-            //var unit = intentData?.getStringExtra("unit")
             intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
                 val dispensa = DispensaDBEntity(reply)
                 dispensaViewModel.insert(dispensa)
@@ -171,4 +163,36 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             }
 
         }
-    }
+
+
+fun getRicetteFiltrate(ingr: MutableList<String>) {
+
+    dbref = FirebaseDatabase.getInstance().getReference("")
+    dbref.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            if (snapshot.exists()) {
+                for (ricetteSnapshot in snapshot.children) {
+                    val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                    if (ingr!=null) {
+                        for(j in ingr){
+                            if (ricetta?.Ingredienti!!.contains(j)){
+                                ricettaArray.add(ricetta!!)
+                            }
+                        }
+
+                    }
+
+                }
+
+                recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
+            }
+
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
+
+}
+}

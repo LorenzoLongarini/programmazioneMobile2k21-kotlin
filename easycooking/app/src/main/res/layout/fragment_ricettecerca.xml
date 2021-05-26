@@ -78,7 +78,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginTop="10dp"
-        android:contentDescription="Aggiungi un prodotto in dispensa"
+        android:contentDescription="Cerca ricette"
         android:text="Cerca"
         app:backgroundTint="@color/arancio_giallino"
         app:layout_constraintEnd_toEndOf="parent"
