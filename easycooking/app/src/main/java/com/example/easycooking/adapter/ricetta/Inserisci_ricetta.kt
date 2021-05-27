@@ -31,6 +31,7 @@ class Inserisci_ricetta : AppCompatActivity() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "select a picture"), YOUR_IMAGE_CODE)
+        photoview.setImageResource(R.drawable.thumbs_up)
         }
 
         var add = findViewById<Button>(R.id.addingr)
