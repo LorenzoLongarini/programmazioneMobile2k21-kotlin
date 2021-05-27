@@ -89,14 +89,14 @@ class Inserisci_ricetta : AppCompatActivity() {
 
         }
 
-        var appo=""
+
         var add = findViewById<Button>(R.id.addingr)
             add.setOnClickListener { view ->
                 val editText = EditText(this)
                 allEds.plus(editText)
-                if (n!=0){
+                /*if (n!=0){
                     appo=allEds[n-1].text.toString()+"@"
-                }
+                }*/
                 n=n+1
                 val lay=findViewById<LinearLayout>(R.id.edit_texts_container).addView(editText)
             }
@@ -136,11 +136,11 @@ class Inserisci_ricetta : AppCompatActivity() {
                 }
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
-                var strIngr= editorIngr.text.toString()+"@"+appo
-                    for (edi in allEds){
-                        var ingre:String=edi.text.toString()+"@"
+                var strIngr= editorIngr.text.toString()+"@"
+                    /*for (J in 0..n){
+                        var ingre:String= allEds[J].text.toString()+"@"
                         strIngr += ingre
-                    }
+                    }*/
 
 
 
