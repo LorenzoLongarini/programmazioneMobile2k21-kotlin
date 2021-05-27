@@ -1,21 +1,21 @@
 package com.example.easycooking.adapter.ricetta
 
+
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.easycooking.R
-import com.example.easycooking.adapter.ricetta.RicettaListAdapter.RicettaViewHolder.Companion.create
 
-
-import com.example.easycooking.spesa.SpesaDBEntity
-import com.example.easycooking.spesa.SpesaListAdapter
-import com.example.easycooking.spesa.SpesaListAdapter.SpesaViewHolder.Companion.create
-
- class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.RicettaViewHolder>(RicettaComparator()) {
+class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.RicettaViewHolder>(
+     RicettaComparator()
+ ) {
     var elemo = ArrayList<RicettaDBEntity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
         return RicettaViewHolder.create(parent)
@@ -23,17 +23,22 @@ import com.example.easycooking.spesa.SpesaListAdapter.SpesaViewHolder.Companion.
 
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.nome)
+        holder.bind(current.nome, current.image)
 
 
     }
 
     class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ricettaItemView: TextView = itemView.findViewById(R.id.nome_ric)
+        private val ricettaPhoto:ImageView=itemView.findViewById(R.id.foto_ricetta_cerca)
         //val comprato:Button=itemView.
 
-        fun bind(text: String?) {
+        fun bind(text: String?,fotoo:String?) {
             ricettaItemView.text = text
+            val uri: Uri = Uri.parse(fotoo)
+            Glide.with(itemView)
+                .load(uri)
+                .into(ricettaPhoto)
 
         }
 

@@ -14,7 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class), version = 4,exportSchema = false)
+@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class), version = 5,exportSchema = false)
 public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
 

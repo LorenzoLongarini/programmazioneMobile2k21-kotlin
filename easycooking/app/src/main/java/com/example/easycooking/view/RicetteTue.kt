@@ -150,7 +150,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                 //var quant = intentData?.getStringExtra("quant")
                 //var unit = intentData?.getStringExtra("unit")
                 intentData?.getStringExtra(Inserisci_ricetta.EXTRAs_REPLY)?.let { reply ->
-                    val ricetta = RicettaDBEntity(reply,"","","","","")
+                    val ricetta = RicettaDBEntity(reply,"",intentData?.getStringExtra("photo"),"","","","")
                     ricettaViewModel.insert(ricetta)
 
                 }

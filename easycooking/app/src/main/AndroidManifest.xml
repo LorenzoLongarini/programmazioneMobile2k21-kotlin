@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking"
         android:usesCleartextTraffic="true">
-        <activity android:name=".adapter.ricetta.Inserisci_ricetta"></activity>
+        <activity android:name=".adapter.ricetta.Scatta"></activity>
+        <activity android:name=".adapter.ricetta.Inserisci_ricetta" />
         <activity android:name=".view.Activity_gestione" />
         <activity android:name=".view.Activity_inserisci_dispensa" />
         <activity android:name=".view.Activity_ricetta" />

@@ -11,7 +11,7 @@ data class RicettaDBEntity (
      @ColumnInfo(name="tempocott_ricetta")val cookTime: String,
      //@ColumnInfo(name="nome_ricetta")val descrizione: String? = null,
 
-     //@ColumnInfo(name="nome_ricetta")val image: String? = null,
+     @ColumnInfo(name="photo_ricetta")val image: String?,
      //@ColumnInfo(name="nome_ricetta")val intolleranze: List<String>? = null,
 
 
