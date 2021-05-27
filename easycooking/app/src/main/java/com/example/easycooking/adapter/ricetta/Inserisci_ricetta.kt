@@ -37,7 +37,7 @@ class Inserisci_ricetta : AppCompatActivity() {
         editorCookTime=findViewById(R.id.cott_inserimento)
         editorPorzioni=findViewById(R.id.editTextNumber)
         editorIngr=findViewById(R.id.Ingrediente_1)
-        var n=1
+        var n=0
 
         editorPrepTime.addTextChangedListener(object : TextWatcher {
             var len = 0
@@ -89,10 +89,15 @@ class Inserisci_ricetta : AppCompatActivity() {
 
         }
 
+        var appo=""
         var add = findViewById<Button>(R.id.addingr)
             add.setOnClickListener { view ->
                 val editText = EditText(this)
                 allEds.plus(editText)
+                if (n!=0){
+                    appo=allEds[n-1].text.toString()+"@"
+                }
+                n=n+1
                 val lay=findViewById<LinearLayout>(R.id.edit_texts_container).addView(editText)
             }
 
@@ -131,7 +136,7 @@ class Inserisci_ricetta : AppCompatActivity() {
                 }
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
-                var strIngr= editorIngr.text.toString()
+                var strIngr= editorIngr.text.toString()+"@"+appo
                     for (edi in allEds){
                         var ingre:String=edi.text.toString()+"@"
                         strIngr += ingre
@@ -160,6 +165,7 @@ class Inserisci_ricetta : AppCompatActivity() {
                 var selectedImageUri: Uri? = data?.data
                 fotoscelta=selectedImageUri.toString()
                 photoview.setImageResource(R.drawable.thumbs_up)
+                photoview.drawable.setTintList(null)
             }
         }
     }
