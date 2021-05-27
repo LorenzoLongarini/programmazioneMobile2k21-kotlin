@@ -100,13 +100,7 @@ class Inserisci_ricetta : AppCompatActivity() {
 
 
 
-        var strIngr= editorIngr.text.toString()
-        if (n!=1){
-            for (edi in allEds){
-                var ingre:String=edi.text.toString()+"@"
-                strIngr += ingre
-            }
-        }
+
 
 
 
@@ -119,19 +113,25 @@ class Inserisci_ricetta : AppCompatActivity() {
             } else {
                 var tempoprep= editorPrepTime.text.toString()
                 var tempocott= editorCookTime.text.toString()
-                var oreCott=tempocott.subSequence(0,1)
-                var minCott=tempocott.subSequence(3,4)
-                var secCott=tempocott.subSequence(6,7)
-                var orePrep=tempoprep.subSequence(0,1)
-                var minPrep=tempoprep.subSequence(3,4)
-                var secPrep=tempoprep.subSequence(6,7)
+                var oreCott=tempocott.subSequence(0,2)
+                var minCott=tempocott.subSequence(3,5)
+                var secCott=tempocott.subSequence(6,8)
+                var orePrep=tempoprep.subSequence(0,2)
+                var minPrep=tempoprep.subSequence(3,5)
+                var secPrep=tempoprep.subSequence(6,8)
 
                 var oreTot=(oreCott.toString().toInt())+(orePrep.toString().toInt())
                 var minTot=(minCott.toString().toInt())+(minPrep.toString().toInt())
                 var secTot=(secCott.toString().toInt())+(secPrep.toString().toInt())
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
+                var strIngr= editorIngr.text.toString()
+                    for (edi in allEds){
+                        var ingre:String=edi.text.toString()+"@"
+                        strIngr += ingre
+                    }
                 
+
 
                 val nomeric= editorNomeView.text.toString()
                 replyIntent.putExtra(EXTRAs_REPLY, nomeric)
