@@ -18,13 +18,19 @@ import com.example.easycooking.R
 var fotoscelta:String=""
 private lateinit var editorNomeView: EditText
 private lateinit var photoview:ImageButton
+private lateinit var editorProcedimento:EditText
+private lateinit var editorPrepTime:EditText
+private lateinit var editorCookTime:EditText
 class Inserisci_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scriviricetta)
 
         editorNomeView=findViewById(R.id.nome_ricetta_inserimento)
-        photoview=findViewById<ImageButton>(R.id.imageButton3)
+        photoview=findViewById(R.id.imageButton3)
+        editorProcedimento=findViewById(R.id.editTextTextMultiLine)
+        editorPrepTime=findViewById(R.id.prep_inserimento)
+        editorCookTime=findViewById(R.id.cott_inserimento)
 
         photoview.setOnClickListener {
         val intent = Intent()
