@@ -27,6 +27,7 @@
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/lemonada"
                 android:text="@string/ricetta"
+                android:textAlignment="center"
                 android:textColor="@color/bordeaux"
                 android:textSize="17sp"
                 app:layout_constraintLeft_toLeftOf="parent"
