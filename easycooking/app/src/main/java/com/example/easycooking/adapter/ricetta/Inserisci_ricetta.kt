@@ -136,7 +136,7 @@ class Inserisci_ricetta : AppCompatActivity() {
                         strIngr += ingre
                     }*/
                 for (ingr in Ingredienti){
-                    strIngr+=ingr+"@"
+                    strIngr+=ingr+"\n"
                 }
 
 

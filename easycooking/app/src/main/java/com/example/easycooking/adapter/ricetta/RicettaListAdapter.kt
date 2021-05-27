@@ -36,7 +36,6 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
             intent.putExtra("Tot",current.totalTime)
             intent.putExtra("Ingr",current.Ingredienti)
             intent.putExtra("Preparaz",current.preparazione)
-            intent.putExtra("image",current.image)
             holder.itemView.context.startActivity(intent)
         }
 

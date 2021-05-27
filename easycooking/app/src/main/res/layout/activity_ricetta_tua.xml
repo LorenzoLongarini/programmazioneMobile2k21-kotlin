@@ -9,15 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/photo"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ricvuota" />
-
         <TextView
             android:id="@+id/immagine_ricetta_vista"
             android:layout_width="0dp"
@@ -26,14 +17,12 @@
             android:fontFamily="@font/bungee"
             android:gravity="bottom"
             android:text="TextView"
-            android:textAlignment="gravity"
+            android:textAlignment="center"
             android:textColor="@color/bordeaux"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -42,7 +31,7 @@
             android:background="@color/arancione_sbiadito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/photo">
+            app:layout_constraintTop_toBottomOf="@+id/immagine_ricetta_vista">
 
             <TableRow
                 android:layout_width="match_parent"

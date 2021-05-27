@@ -22,17 +22,7 @@ class Activity_ricettaTua : AppCompatActivity() {
         val totTime: TextView =findViewById<TextView>(R.id.tempo_totale)
         val ingr: TextView =findViewById<TextView>(R.id.Ingredienti)
         val prep: TextView =findViewById<TextView>(R.id.procedimento_vista)
-        val photo: ImageView =findViewById<ImageView>(R.id.photo)
 
-
-
-
-
-        var image=intent.getStringExtra("image")
-        val uri: Uri = Uri.parse(image)
-        Glide.with(this)
-            .load(uri)
-            .into(photo)
 
 
         titolo.text=intent.getStringExtra("Titolo")

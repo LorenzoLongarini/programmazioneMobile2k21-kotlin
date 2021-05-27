@@ -169,13 +169,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/addingr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/arancione_scuro"
-                    android:text="Aggiungi ingrediente" />
-
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
@@ -183,13 +176,27 @@
                     android:text="Ingredienti"
                     android:textColor="@color/rosso_chiaro" />
 
-                <EditText
-                    android:id="@+id/Ingrediente_1"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="ingrediente, quantità"
-                    android:inputType="textPersonName" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/Ingrediente_1"
+                        android:layout_width="178dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="ingrediente, quantità"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/addingr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/arancione_scuro"
+                        android:text="Aggiungi" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -203,14 +210,14 @@
             <EditText
                 android:id="@+id/editTextTextMultiLine"
                 android:layout_width="match_parent"
-                android:layout_height="175dp"
+                android:layout_height="89dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
 
             <Button
                 android:id="@+id/salvaRicetta"
-                android:layout_width="188dp"
+                android:layout_width="wrap_content"
                 android:layout_height="43dp"
                 android:text="Salva la ricetta"
                 app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
