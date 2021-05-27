@@ -8,7 +8,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class ricettaDelGiornoViewModel : ViewModel(){
     private lateinit var dbref: DatabaseReference
-    private var ricettaArray1:ArrayList<Ricetta> = getRicette()
+    //private var ricettaArray1:ArrayList<Ricetta> = getRicette()
     private val ricetta: Ricetta by lazy {
         Ricetta().also {
 
@@ -16,7 +16,7 @@ class ricettaDelGiornoViewModel : ViewModel(){
     }
 
 
-    private fun randomizeRecipe : Ricetta{
+    /*private fun randomizeRecipe() : Ricetta{
         val h = Handler()
         var ricettina:Ricetta
         h.postDelayed(object : Runnable {
@@ -39,7 +39,7 @@ class ricettaDelGiornoViewModel : ViewModel(){
             }
         }
         return ricettaArray
-    }
+    }*/
     }
 
 

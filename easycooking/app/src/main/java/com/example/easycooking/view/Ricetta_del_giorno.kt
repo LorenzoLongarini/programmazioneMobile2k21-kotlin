@@ -1,4 +1,4 @@
-package com.example.easycooking.view
+/*package com.example.easycooking.view
 
 import android.os.*
 import android.view.LayoutInflater

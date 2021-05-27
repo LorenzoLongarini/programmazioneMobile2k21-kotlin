@@ -152,6 +152,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         btn?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
+                btn?.text="cerca"
                  categ=cate?.selectedItem.toString()
                  origin=orig?.selectedItem.toString()
                 nome_ricetta = nome?.text.toString()

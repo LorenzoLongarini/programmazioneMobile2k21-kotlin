@@ -101,7 +101,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginTop="80dp"
         android:contentDescription="Cerca ricette"
-        android:text="Cerca"
+        android:text="Vedi ricette"
         app:backgroundTint="@color/arancio_giallino"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

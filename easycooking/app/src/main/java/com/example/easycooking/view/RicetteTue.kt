@@ -149,7 +149,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
             if (requestCode == newRicettaActivityRequestCode && resultCode == Activity.RESULT_OK) {
                 //var quant = intentData?.getStringExtra("quant")
                 //var unit = intentData?.getStringExtra("unit")
-                intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
+                intentData?.getStringExtra(Inserisci_ricetta.EXTRAs_REPLY)?.let { reply ->
                     val ricetta = RicettaDBEntity(reply,"","","","","")
                     ricettaViewModel.insert(ricetta)
 
