@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.LinearLayout
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.R
 
@@ -24,7 +21,7 @@ private lateinit var editorPrepTime:EditText
 private lateinit var editorCookTime:EditText
 private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
-private var allEds: ArrayList<EditText> = ArrayList<EditText>()
+//private var allEds: List<EditText> = ArrayList<EditText>()
 class Inserisci_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,16 +86,13 @@ class Inserisci_ricetta : AppCompatActivity() {
 
         }
 
-
+        var Ingredienti:ArrayList<String> = arrayListOf()
         var add = findViewById<Button>(R.id.addingr)
             add.setOnClickListener { view ->
-                val editText = EditText(this)
-                allEds.plus(editText)
-                /*if (n!=0){
-                    appo=allEds[n-1].text.toString()+"@"
-                }*/
-                n=n+1
-                val lay=findViewById<LinearLayout>(R.id.edit_texts_container).addView(editText)
+               var appo=editorIngr.text.toString()
+            Ingredienti.add(appo)
+                editorIngr.text.clear()
+                Toast.makeText(applicationContext, "$appo è stato aggiunto", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -136,11 +130,14 @@ class Inserisci_ricetta : AppCompatActivity() {
                 }
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
-                var strIngr= editorIngr.text.toString()+"@"
-                    /*for (J in allEds){
-                        var ingre:String= allEds.get(J).toString()+"@"
+                var strIngr=""
+                    /*for (J in 0..n){
+                        var ingre:String= allEds[J].text.toString()+"@"
                         strIngr += ingre
                     }*/
+                for (ingr in Ingredienti){
+                    strIngr+=ingr+"@"
+                }
 
 
 
@@ -152,20 +149,7 @@ class Inserisci_ricetta : AppCompatActivity() {
                 replyIntent.putExtra("tempo_cott", editorCookTime.text.toString())
                 replyIntent.putExtra("tempo_tot",tempoTot)
                 replyIntent.putExtra("porzioni", editorPorzioni.text.toString())
-                var ingred = mutableListOf<EditText>()
-                if(allEds != null) {
-                    for (j in allEds) {
-                        ingred.add(j)
-                    }
-                }
-                var ciao : String = ""
-                if(ingred != null) {
-                    for (k in ingred) {
-                        ciao += k.text.toString() + ""
-                    }
-                }
-
-                replyIntent.putExtra("ingredienti", ciao)
+                replyIntent.putExtra("ingredienti",strIngr)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
