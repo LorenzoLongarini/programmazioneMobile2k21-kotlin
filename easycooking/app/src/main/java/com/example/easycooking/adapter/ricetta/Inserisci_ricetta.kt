@@ -93,8 +93,6 @@ class Inserisci_ricetta : AppCompatActivity() {
             add.setOnClickListener { view ->
                 val editText = EditText(this)
                 allEds.plus(editText)
-                n=n+1
-                editText.id=n
                 val lay=findViewById<LinearLayout>(R.id.edit_texts_container).addView(editText)
             }
 
@@ -123,6 +121,14 @@ class Inserisci_ricetta : AppCompatActivity() {
                 var oreTot=(oreCott.toString().toInt())+(orePrep.toString().toInt())
                 var minTot=(minCott.toString().toInt())+(minPrep.toString().toInt())
                 var secTot=(secCott.toString().toInt())+(secPrep.toString().toInt())
+                if (secTot>=60){
+                    secTot -= 60
+                    minTot += 1
+                }
+                if (minTot>=60){
+                    minTot -= 60
+                    oreTot += 1
+                }
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
                 var strIngr= editorIngr.text.toString()
@@ -130,7 +136,7 @@ class Inserisci_ricetta : AppCompatActivity() {
                         var ingre:String=edi.text.toString()+"@"
                         strIngr += ingre
                     }
-                
+
 
 
                 val nomeric= editorNomeView.text.toString()
