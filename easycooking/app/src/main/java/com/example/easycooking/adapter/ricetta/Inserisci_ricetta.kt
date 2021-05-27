@@ -1,12 +1,12 @@
 package com.example.easycooking.adapter.ricetta
 
 import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
-import android.view.View
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -31,6 +31,49 @@ class Inserisci_ricetta : AppCompatActivity() {
         editorProcedimento=findViewById(R.id.editTextTextMultiLine)
         editorPrepTime=findViewById(R.id.prep_inserimento)
         editorCookTime=findViewById(R.id.cott_inserimento)
+        var n=1
+
+        editorPrepTime.addTextChangedListener(object : TextWatcher {
+            var len = 0
+            override fun afterTextChanged(s: Editable) {
+                val str: String = editorPrepTime.text.toString()
+                if (str.length == 2 && len < str.length) { //len check for backspace
+                    editorPrepTime.append(":")
+                }
+                if (str.length == 5 && len < str.length) { //len check for backspace
+                    editorPrepTime.append(":")
+                }
+
+            }
+
+            override fun beforeTextChanged(arg0: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
+                val str: String = editorPrepTime.text.toString()
+                len = str.length
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
+        editorCookTime.addTextChangedListener(object : TextWatcher {
+            var len = 0
+            override fun afterTextChanged(s: Editable) {
+                val str: String = editorCookTime.text.toString()
+                if (str.length == 2 && len < str.length) { //len check for backspace
+                    editorCookTime.append(":")
+                }
+                if (str.length == 5 && len < str.length) { //len check for backspace
+                    editorCookTime.append(":")
+                }
+
+            }
+
+            override fun beforeTextChanged(arg0: CharSequence, arg1: Int, arg2: Int, arg3: Int) {
+                val str: String = editorCookTime.text.toString()
+                len = str.length
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
+
 
         photoview.setOnClickListener {
         val intent = Intent()
@@ -41,7 +84,6 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
 
         var add = findViewById<Button>(R.id.addingr)
-        var n=1
             add.setOnClickListener { view ->
                 val editText = EditText(this)
                 n=n+1
@@ -59,6 +101,10 @@ class Inserisci_ricetta : AppCompatActivity() {
                 val nomeric= editorNomeView.text.toString()
                 replyIntent.putExtra(EXTRAs_REPLY, nomeric)
                 replyIntent.putExtra("photo", fotoscelta)
+                replyIntent.putExtra("procedimento", editorProcedimento.text.toString())
+                replyIntent.putExtra("tempo_prep", editorPrepTime.text.toString())
+                replyIntent.putExtra("tempo_cott", editorCookTime.text.toString())
+                //replyIntent.putExtra("tempo_tot")
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
