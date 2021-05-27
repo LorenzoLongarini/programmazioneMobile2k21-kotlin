@@ -78,7 +78,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                     resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin)
                 )
             )
-            rev?.layoutManager = LinearLayoutManager(activity)
+            rev?.layoutManager = GridLayoutManager(activity,2)
 
             val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
