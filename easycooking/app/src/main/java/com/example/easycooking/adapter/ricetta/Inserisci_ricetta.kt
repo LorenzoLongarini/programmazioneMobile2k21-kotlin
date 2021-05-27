@@ -24,7 +24,7 @@ private lateinit var editorPrepTime:EditText
 private lateinit var editorCookTime:EditText
 private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
-private var allEds: List<EditText> = ArrayList<EditText>()
+private var allEds: ArrayList<EditText> = ArrayList<EditText>()
 class Inserisci_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,8 +137,8 @@ class Inserisci_ricetta : AppCompatActivity() {
 
                 var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
                 var strIngr= editorIngr.text.toString()+"@"
-                    /*for (J in 0..n){
-                        var ingre:String= allEds[J].text.toString()+"@"
+                    /*for (J in allEds){
+                        var ingre:String= allEds.get(J).toString()+"@"
                         strIngr += ingre
                     }*/
 
@@ -152,7 +152,8 @@ class Inserisci_ricetta : AppCompatActivity() {
                 replyIntent.putExtra("tempo_cott", editorCookTime.text.toString())
                 replyIntent.putExtra("tempo_tot",tempoTot)
                 replyIntent.putExtra("porzioni", editorPorzioni.text.toString())
-                replyIntent.putExtra("ingredienti",strIngr)
+                for(j in allEds){
+                replyIntent.putExtra("ingredienti", allEds.[j].text.toString()}
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

@@ -152,10 +152,12 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                 intentData?.getStringExtra(Inserisci_ricetta.EXTRAs_REPLY)?.let { reply ->
                     val ricetta = RicettaDBEntity(reply,
                         intentData?.getStringExtra("ingredienti")!!,
-                        intentData?.getStringExtra("tempo_cott")!!,intentData?.getStringExtra("photo"),
+                        intentData?.getStringExtra("tempo_cott")!!,
+                        intentData?.getStringExtra("photo"),
                         intentData?.getStringExtra("porzioni")!!,
                         intentData?.getStringExtra("tempo_prep")!!,
-                        intentData?.getStringExtra("procedimento")!!,intentData?.getStringExtra("tempo_tot"))
+                        intentData?.getStringExtra("procedimento")!!,
+                        intentData?.getStringExtra("tempo_tot"))
 
                     ricettaViewModel.insert(ricetta)
 

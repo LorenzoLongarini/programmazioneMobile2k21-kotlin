@@ -48,9 +48,9 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
         //val comprato:Button=itemView.
 
 
-        fun bind(text: String?,fotoo:String?) {
+        fun bind(text: String?,foto:String?) {
             ricettaItemView.text = text
-            val uri: Uri = Uri.parse(fotoo)
+            val uri: Uri = Uri.parse(foto)
             Glide.with(itemView)
                 .load(uri)
                 .into(ricettaPhoto)
