@@ -15,12 +15,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.R
 
 
+
 var fotoscelta:String=""
 private lateinit var editorNomeView: EditText
 private lateinit var photoview:ImageButton
 private lateinit var editorProcedimento:EditText
 private lateinit var editorPrepTime:EditText
 private lateinit var editorCookTime:EditText
+private lateinit var editorPorzioni:EditText
+private lateinit var editorIngr:EditText
+private var allEds: List<EditText> = ArrayList<EditText>()
 class Inserisci_ricetta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,8 @@ class Inserisci_ricetta : AppCompatActivity() {
         editorProcedimento=findViewById(R.id.editTextTextMultiLine)
         editorPrepTime=findViewById(R.id.prep_inserimento)
         editorCookTime=findViewById(R.id.cott_inserimento)
+        editorPorzioni=findViewById(R.id.editTextNumber)
+        editorIngr=findViewById(R.id.Ingrediente_1)
         var n=1
 
         editorPrepTime.addTextChangedListener(object : TextWatcher {
@@ -86,10 +92,23 @@ class Inserisci_ricetta : AppCompatActivity() {
         var add = findViewById<Button>(R.id.addingr)
             add.setOnClickListener { view ->
                 val editText = EditText(this)
+                allEds.plus(editText)
                 n=n+1
                 editText.id=n
                 val lay=findViewById<LinearLayout>(R.id.edit_texts_container).addView(editText)
             }
+
+
+
+        var strIngr= editorIngr.text.toString()
+        if (n!=1){
+            for (edi in allEds){
+                var ingre:String=edi.text.toString()+"@"
+                strIngr += ingre
+            }
+        }
+
+
 
 
         val bt: Button =findViewById<Button>(R.id.salvaRicetta)
@@ -98,13 +117,31 @@ class Inserisci_ricetta : AppCompatActivity() {
             if (TextUtils.isEmpty(editorNomeView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
+                var tempoprep= editorPrepTime.text.toString()
+                var tempocott= editorCookTime.text.toString()
+                var oreCott=tempocott.subSequence(0,1)
+                var minCott=tempocott.subSequence(3,4)
+                var secCott=tempocott.subSequence(6,7)
+                var orePrep=tempoprep.subSequence(0,1)
+                var minPrep=tempoprep.subSequence(3,4)
+                var secPrep=tempoprep.subSequence(6,7)
+
+                var oreTot=(oreCott.toString().toInt())+(orePrep.toString().toInt())
+                var minTot=(minCott.toString().toInt())+(minPrep.toString().toInt())
+                var secTot=(secCott.toString().toInt())+(secPrep.toString().toInt())
+
+                var tempoTot:String=oreTot.toString()+":"+minTot.toString()+":"+secTot.toString()
+                
+
                 val nomeric= editorNomeView.text.toString()
                 replyIntent.putExtra(EXTRAs_REPLY, nomeric)
                 replyIntent.putExtra("photo", fotoscelta)
                 replyIntent.putExtra("procedimento", editorProcedimento.text.toString())
                 replyIntent.putExtra("tempo_prep", editorPrepTime.text.toString())
                 replyIntent.putExtra("tempo_cott", editorCookTime.text.toString())
-                //replyIntent.putExtra("tempo_tot")
+                replyIntent.putExtra("tempo_tot",tempoTot)
+                replyIntent.putExtra("porzioni", editorPorzioni.text.toString())
+                replyIntent.putExtra("ingredienti",strIngr)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

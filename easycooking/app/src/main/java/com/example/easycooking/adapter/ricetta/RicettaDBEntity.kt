@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "ricetta_table")
 data class RicettaDBEntity (
      @PrimaryKey @ColumnInfo(name="nome_ricetta")val nome:String,
-     //@ColumnInfo(name="nome_ricetta")val Ingredienti: List<String>,
+     @ColumnInfo(name="ingredienti_ricetta")val Ingredienti: String,
      @ColumnInfo(name="tempocott_ricetta")val cookTime: String,
      //@ColumnInfo(name="nome_ricetta")val descrizione: String? = null,
 
