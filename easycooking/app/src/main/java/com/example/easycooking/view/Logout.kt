@@ -38,6 +38,7 @@ class Logout : Fragment(R.layout.fragment_logout) {
 
     }
 
+
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()

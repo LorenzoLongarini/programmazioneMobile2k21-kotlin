@@ -22,6 +22,7 @@ import com.google.firebase.ktx.Firebase
 import com.example.easycooking.auth.RegistrationActivity
 import com.example.easycooking.view.Base_nonReg
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_logout.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             signInButton = findViewById(R.id.bottone_gmail)
             signInButton.setOnClickListener(this)
             login()
+            resetPassword()
         }
 
         private fun signIn() {
@@ -79,6 +81,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fun onConnectionFailed(connectionResult: ConnectionResult){
             Log.d(TAG, "onConnectionFailed:" + connectionResult)
         }
+
+
         private fun signOut() {
          // [START auth_sign_out]
             Firebase.auth.signOut()
@@ -125,6 +129,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
          startActivity(intent2)
         }
 
+        private fun resetPassword(){
 
+            password_dimenticata.setOnClickListener {
+            val emailAddress = email_accedi
+
+            Firebase.auth.sendPasswordResetEmail(emailAddress.toString())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "Email sent.")
+                    }
+                }
+            }
+        }
 
 }

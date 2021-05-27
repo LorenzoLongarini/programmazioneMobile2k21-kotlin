@@ -152,8 +152,20 @@ class Inserisci_ricetta : AppCompatActivity() {
                 replyIntent.putExtra("tempo_cott", editorCookTime.text.toString())
                 replyIntent.putExtra("tempo_tot",tempoTot)
                 replyIntent.putExtra("porzioni", editorPorzioni.text.toString())
-                for(j in allEds){
-                replyIntent.putExtra("ingredienti", allEds.[j].text.toString()}
+                var ingred = mutableListOf<EditText>()
+                if(allEds != null) {
+                    for (j in allEds) {
+                        ingred.add(j)
+                    }
+                }
+                var ciao : String = ""
+                if(ingred != null) {
+                    for (k in ingred) {
+                        ciao += k.text.toString() + ""
+                    }
+                }
+
+                replyIntent.putExtra("ingredienti", ciao)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
