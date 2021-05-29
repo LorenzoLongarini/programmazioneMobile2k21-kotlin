@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
@@ -20,7 +21,11 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.example.easycooking.auth.RegistrationActivity
+import com.example.easycooking.auth.ResetPassword
+import com.example.easycooking.databinding.ActivityMainBinding
 import com.example.easycooking.view.Base_nonReg
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_logout.*
 
@@ -29,24 +34,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         private lateinit var auth: FirebaseAuth
         private lateinit var signInButton: SignInButton
         private lateinit var googleSignInClient: GoogleSignInClient
+        private lateinit var forgotPassword: TextView
         private val TAG: String = "SignInActivity"
         private val RC_SIGN_IN = 9001
+        private lateinit var binding: ActivityMainBinding
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
             auth = FirebaseAuth.getInstance()
 
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
+            createRequest()
+
+            auth = FirebaseAuth.getInstance()
+
+            binding.bottoneGmail.setOnClickListener { onClick(bottone_gmail) }
+
+            forgotPassword = findViewById(R.id.password_dimenticata)
+            forgotPassword.setOnClickListener{startActivity(Intent(this, ResetPassword::class.java))}
+            login()
+
+        }
+
+        private fun createRequest() {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
 
             googleSignInClient = GoogleSignIn.getClient(this, gso)
-            signInButton = findViewById(R.id.bottone_gmail)
-            signInButton.setOnClickListener(this)
-            login()
-            resetPassword()
         }
 
         private fun signIn() {
@@ -54,40 +73,47 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
 
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-            // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-            if (requestCode == RC_SIGN_IN) {
-                // The Task returned from this call is always completed, no need to attach
-                // a listener.
-                val result: GoogleSignInResult  = getSignInResultFromIntent(data)!!
-                handleSignInResult(result)
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e)
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+
+                    val user = auth.currentUser
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+
+                }
+
                 val intent = Intent(this, Base::class.java)
                 startActivity(intent)
+                finish()
             }
-        }
-
-        private fun handleSignInResult(result: GoogleSignInResult) {
-            Log.d(TAG, "handleSignInResult:"+ result.isSuccess)
-            if(result.isSuccess){
-                val acct: GoogleSignInAccount? = result.getSignInAccount()
-
-            }else{
-
-            }
-        }
-
-        fun onConnectionFailed(connectionResult: ConnectionResult){
-            Log.d(TAG, "onConnectionFailed:" + connectionResult)
-        }
-
-
-        private fun signOut() {
-         // [START auth_sign_out]
-            Firebase.auth.signOut()
-            // [END auth_sign_out]
-        }
+            .addOnFailureListener(OnFailureListener {
+                Log.d(TAG, "failure")
+            })
+    }
 
         override fun onClick(v: View?) {
          when (v!!.id) {
@@ -129,18 +155,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
          startActivity(intent2)
         }
 
-        private fun resetPassword(){
-
-            password_dimenticata.setOnClickListener {
-            val emailAddress = email_accedi
-
-            Firebase.auth.sendPasswordResetEmail(emailAddress.toString())
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "Email sent.")
-                    }
-                }
-            }
-        }
 
 }

@@ -41,6 +41,8 @@
     <string name="inforequired">Per favore, inserisci tutte le informazioni richieste.</string>
     <string name="errorsignup">C\'è stato un errore nella registrazione.</string>
     <string name="addio">Sei sicuro di voler andare via? Se effettui il logout non avrai più possibilità di inserire le tue ricette.</string>
+    <string name="resetPassword">Inserisci la tua mail per resettare la password</string>
+    <string name="ButtonResetPassword">Resetta Password</string>
 
     <string-array name="Categoria">
         <item>-----</item>
