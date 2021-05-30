@@ -169,7 +169,9 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         val item = parent.getItemAtPosition(position).toString()
 
         // Showing selected spinner item
-        Toast.makeText(parent.context, "Hai selezionato: $item", Toast.LENGTH_SHORT).show()
+        if(item != "-----"){
+            Toast.makeText(parent.context, "Hai selezionato: $item", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

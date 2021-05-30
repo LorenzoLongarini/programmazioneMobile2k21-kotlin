@@ -1,25 +1,25 @@
 package com.example.easycooking.view
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
 import com.example.easycooking.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.internal.NavigationMenu
 import kotlinx.android.synthetic.main.activity_base.*
 
 class Base : AppCompatActivity() {
 //    private val LOGIN_REQUEST = 101
 //    private var mAuth: FirebaseAuth? = null
 
-    lateinit var app_bar:AppBarConfiguration
-    lateinit var  navController:NavController
+    lateinit var app_bar: AppBarConfiguration
+    lateinit var navController: NavController
     lateinit var logout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +28,11 @@ class Base : AppCompatActivity() {
         setContentView(R.layout.activity_base)
 
 
-
         //navigation bottom
         val bottone = findViewById<BottomNavigationView>(R.id.navigation_bottom)
         navController = findNavController(R.id.fragment)
         bottone.setupWithNavController(navController)
+
 
         //appbar
         app_bar = AppBarConfiguration(navController.graph, drawerlayout)
@@ -49,16 +49,18 @@ class Base : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(navigation_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
+
+
         //NavigationUI.setupWithNavController(navigation_view, navController)
     }
-        /*val rv: RecyclerView =findViewById(R.id.rv)
+    /*val rv: RecyclerView =findViewById(R.id.rv)
         rv.layoutManager= GridLayoutManager(this,2)
         rv.addItemDecoration(
             DefaultItemDecorator(resources.getDimensionPixelSize(R.dimen.provider_name_horizontalBig_margin),
                 resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin))
         )*/
 
-        /*val alphaAdapter = AlphaInAnimationAdapter(RicettaAdapter(TODO("PASSARE LISTA RICETTE"))).apply {
+    /*val alphaAdapter = AlphaInAnimationAdapter(RicettaAdapter(TODO("PASSARE LISTA RICETTE"))).apply {
             // Change the durations.
             setDuration(500)
             // Disable the first scroll mode.
@@ -67,11 +69,20 @@ class Base : AppCompatActivity() {
         rv.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
             setDuration(250)
         }*/
-        override fun onSupportNavigateUp(): Boolean {
-            return navController.navigateUp(drawerlayout)
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(drawerlayout)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
 
     }
+}
 
 
 
