@@ -1,11 +1,13 @@
 package com.example.easycooking.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +30,7 @@ class Ispirami : Fragment() {
 
 
     private lateinit var dbref: DatabaseReference
+    private lateinit var condividi: ImageButton
     /*private lateinit var ricettaArray: ArrayList<Ricetta>
     private lateinit var ricDay: Ricetta
     private lateinit var randomizer: Random
@@ -148,6 +151,22 @@ class Ispirami : Fragment() {
                     .load(R.drawable.coltforc)
                     //.fitCenter()
                     .into(photo)
+            }
+
+            condividi = view?.findViewById(R.id.button_share1)
+
+            condividi.setOnClickListener {
+
+
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                val shareSub = "Scarica EasyCooking"
+                val shareBody = "Scarica la app EasyCooking per scoprire tante ricette come "+(titolo.text as String?)
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareSub)
+                intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                startActivity(Intent.createChooser(intent, "Vieni a visitare la app EasyCooking"))
+
+
             }
 
             ispirami.setOnClickListener {

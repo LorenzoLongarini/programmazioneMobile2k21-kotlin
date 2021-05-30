@@ -333,8 +333,8 @@
 
         <ImageButton
             android:id="@+id/button_share"
-            android:layout_width="60dp"
-            android:layout_height="49dp"
+            android:layout_width="46dp"
+            android:layout_height="53dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.955"

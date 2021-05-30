@@ -345,6 +345,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
+        <ImageButton
+            android:id="@+id/button_share1"
+            android:layout_width="46dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="92dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_share_24" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
