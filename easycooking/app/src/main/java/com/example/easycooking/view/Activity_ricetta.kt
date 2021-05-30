@@ -1,9 +1,12 @@
 package com.example.easycooking.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ShareCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
@@ -13,6 +16,9 @@ import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import kotlinx.android.synthetic.main.cards.view.*
 
 class Activity_ricetta : AppCompatActivity() {
+
+    private lateinit var condividi: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vista_ricetta)
@@ -101,5 +107,23 @@ class Activity_ricetta : AppCompatActivity() {
         unit.text=unita
         prep.text=intent.getStringExtra("Preparaz")
 
+        condividi = findViewById(R.id.button_share)
+
+        condividi.setOnClickListener {
+
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            val shareSub = "Scarica EasyCooking"
+            val shareBody = "Scarica la app EasyCooking per scoprire tante ricette come "+(titolo.text as String?)
+            intent.putExtra(Intent.EXTRA_SUBJECT, shareSub)
+            intent.putExtra(Intent.EXTRA_TEXT, shareBody)
+            startActivity(Intent.createChooser(intent, "Vieni a visitare la app EasyCooking"))
+
+
+        }
+
     }
+
+
 }
