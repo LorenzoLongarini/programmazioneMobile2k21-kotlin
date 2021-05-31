@@ -6,4 +6,9 @@
         android:icon="@drawable/help"
         android:id="@+id/informations"
         app:showAsAction="always"/>
+    <item android:title="Offline"
+        android:icon="@drawable/ic_off"
+        android:id="@+id/offline2"
+        app:showAsAction="always"/>
+
 </menu>

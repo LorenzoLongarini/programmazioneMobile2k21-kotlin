@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyCooking"
         android:usesCleartextTraffic="true">
-        <activity android:name=".auth.ResetPassword"></activity>
+        <activity android:name=".view.OfflineRicetta"></activity>
+        <activity android:name=".auth.ResetPassword" />
         <activity android:name=".view.Activity_ricettaTua" />
         <activity android:name=".adapter.ricetta.Scatta" />
         <activity android:name=".adapter.ricetta.Inserisci_ricetta" />

@@ -2,6 +2,7 @@ package com.example.easycooking.DB
 
 import android.app.Application
 import com.example.easycooking.adapter.dispensa.DispensaRepository
+import com.example.easycooking.adapter.offline.OfflineRepository
 import com.example.easycooking.adapter.ricetta.RicettaRepository
 import com.example.easycooking.spesa.SpesaRepository
 import kotlinx.coroutines.CoroutineScope
@@ -15,4 +16,5 @@ class DispensaApplication : Application() {
     val repositoryDispensa by lazy {DispensaRepository(database.DispensaDAO())}
     val repositorySpesa by lazy { SpesaRepository(database.SpesaDAO()) }
     val repositoryRicetta by lazy { RicettaRepository(database.RicettaDAO()) }
+    val repositoryOffline by lazy{OfflineRepository(database.OfflineDAO())}
 }

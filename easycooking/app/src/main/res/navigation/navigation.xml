@@ -48,4 +48,8 @@
         android:id="@+id/informations"
         android:name="com.example.easycooking.view.Informations"
         android:label="Informations" />
+    <fragment
+        android:id="@+id/offline2"
+        android:name="com.example.easycooking.view.Offline"
+        android:label="Offline" />
 </navigation>
