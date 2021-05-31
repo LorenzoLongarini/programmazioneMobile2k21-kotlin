@@ -35,4 +35,13 @@
         android:id="@+id/ricetta_del_giorno2"
         android:name="com.example.easycooking.view.Ricetta_del_giorno"
         android:label="Ricetta_del_giorno" />
+    <fragment
+        android:id="@+id/informations2"
+        android:name="com.example.easycooking.view.Informations"
+        android:label="informations"
+        tools:layout="@layout/informations" />
+    <fragment
+        android:id="@+id/offline"
+        android:name="com.example.easycooking.view.Offline"
+        android:label="Offline" />
 </navigation>
