@@ -1,6 +1,7 @@
 package com.example.easycooking.adapter.offline
 
 import androidx.lifecycle.*
+import com.example.easycooking.adapter.ricetta.Ricetta
 
 import kotlinx.coroutines.launch
 
@@ -11,8 +12,10 @@ class OfflineViewModel (private val repository: OfflineRepository):ViewModel(){
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
-    fun insert(ric: OfflineDBEntity) = viewModelScope.launch {
-        repository.insert(ric)
+    fun insert(ric: OfflineDBEntity?) = viewModelScope.launch {
+        if (ric != null) {
+            repository.insert(ric)
+        }
     }
 
     fun delete(ric: OfflineDBEntity) = viewModelScope.launch {

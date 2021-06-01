@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
 data class OfflineDBEntity(
 
 
-        @PrimaryKey @ColumnInfo(name = "nome_ricetta") val nome: String,
-        @ColumnInfo(name = "ingredienti_ricetta") val Ingredienti: String,
+        @PrimaryKey @ColumnInfo(name = "nome_ricetta") var nome: String,
+        @ColumnInfo(name = "ingredienti_ricetta") var Ingredienti: String,
         @ColumnInfo(name = "tempocott_ricetta") val cookTime: String,
         @ColumnInfo(name = "descrizione_ricetta") val descrizione: String,
         @ColumnInfo(name = "photo_ricetta") val image: String?,
