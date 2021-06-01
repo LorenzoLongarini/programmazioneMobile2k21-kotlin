@@ -6,18 +6,19 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
-import com.example.easycooking.adapter.offline.OfflineDBEntity
 import com.example.easycooking.view.Activity_ricetta
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.activity_vista_ricetta.*
 import kotlinx.android.synthetic.main.cards.view.*
 
 
@@ -67,7 +68,6 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
             intent.putExtra("Unit",currentitem.unita?.toTypedArray())
             intent.putExtra("Preparaz",currentitem.preparazione)
             intent.putExtra("image",currentitem.image)
-
             context.startActivity(intent)
         }
 

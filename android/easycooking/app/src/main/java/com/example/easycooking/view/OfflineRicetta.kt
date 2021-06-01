@@ -37,7 +37,7 @@ class OfflineRicetta : AppCompatActivity() {
         }else{
             intoller="nessuna intolleranza"
         }
-        /*var arrayIngr=intent.getStringArrayExtra("Ingr")
+        var arrayIngr=intent.getStringArrayExtra("Ingr")
         var ingred=""
         if (arrayIngr != null) {
             for (ing in arrayIngr){
@@ -64,7 +64,7 @@ class OfflineRicetta : AppCompatActivity() {
         var vegano="No"
         if (veggy){
             vegano="Si"
-        }*/
+        }
 
 
         titolo.text=intent.getStringExtra("Titolo")
@@ -74,10 +74,10 @@ class OfflineRicetta : AppCompatActivity() {
         cat.text=intent.getStringExtra("Cat")
         orig.text=intent.getStringExtra("Orig")
         intoll.text=intoller
-        //veg.text=vegano
-        //ingr.text=ingred
-        //quant.text=quantit
-        //unit.text=unita
+        veg.text=vegano
+        ingr.text=ingred
+        quant.text=quantit
+        unit.text=unita
         prep.text=intent.getStringExtra("Preparaz")
     }
 }

@@ -1,26 +1,20 @@
 package com.example.easycooking.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.DB.DispensaApplication
 import com.example.easycooking.R
-import com.example.easycooking.adapter.offline.OfflineDBEntity
-import com.example.easycooking.adapter.offline.OfflineViewModel
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
-import com.example.easycooking.adapter.ricetta.RicettaDBEntity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
-import kotlinx.android.synthetic.main.activity_vista_ricetta.*
 import java.util.ArrayList
 
 
@@ -30,9 +24,6 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
-    private val offlineViewModel: OfflineViewModel by viewModels {
-        OfflineViewModel.OfflineViewModelFactory((activity?.application as DispensaApplication).repositoryOffline)
-    }
     //private lateinit var ricettaArray2: ArrayList<Ricetta>
    // private lateinit var search: EditText
 
@@ -167,18 +158,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
                 nome_ricetta = nome?.text.toString()
                 ricettaArray = arrayListOf<Ricetta>()
                 //ricettaArray2 = arrayListOf<Ricetta>()
-                val ricettaOff : OfflineViewModel
-
                 getRicetteFiltrate(origin,categ,nome_ricetta)
-                for (i in ricettaArray){
-                    var entity:OfflineDBEntity
-                    button2.setOnClickListener{
-                        entity.nome = i.nome.toString()
-
-
-                        }
-                    }
-                }
                 //searchNome(nome_ricetta)
             }
         })
@@ -320,10 +300,9 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
                             } else {
                                 ricettaArray.add(ricetta!!)
                             }
-                    }
 
+                        }
                     }
-
 
                     recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
                 }

@@ -22,7 +22,6 @@ import com.example.easycooking.adapter.offline.OfflineViewModel
 import com.example.easycooking.adapter.ricetta.*
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
-import kotlinx.android.synthetic.main.activity_vista_ricetta.*
 
 class Offline : Fragment() {
     private val newRicettaActivityRequestCode = 1
@@ -50,7 +49,7 @@ class Offline : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        val rev = view?.findViewById<RecyclerView>(R.id.rv_offline)
+        val rev = view?.findViewById<RecyclerView>(R.id.rv1)
 
 
         val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
@@ -73,14 +72,14 @@ class Offline : Fragment() {
                 resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin)
             )
         )
-        rev?.layoutManager = GridLayoutManager(activity, 2)
+        rev?.layoutManager = GridLayoutManager(activity,2)
 
-        val item = object : SwipeToDelete(requireActivity(), 0, ItemTouchHelper.LEFT) {
+        val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
                 //dispensaViewModel.delete(dispensa)
-                var ric = offlineViewModel.offprod.value
-                var discanc = ric?.get(viewHolder.bindingAdapterPosition)
+                var ric=offlineViewModel.offprod.value
+                var discanc= ric?.get(viewHolder.bindingAdapterPosition)
                 adapter.elemo1.remove(this)
                 if (discanc != null) {
                     offlineViewModel.delete(discanc)
@@ -129,6 +128,40 @@ class Offline : Fragment() {
                 val dialog: AlertDialog? = builder?.create()*/
             }
         }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+
+        if (requestCode == newRicettaActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            //var quant = intentData?.getStringExtra("quant")
+            //var unit = intentData?.getStringExtra("unit")
+            intentData?.getStringExtra(Inserisci_ricetta.EXTRAs_REPLY)?.let { reply ->
+                val ricetta = OfflineDBEntity(reply,
+                    intentData?.getStringExtra("ingredienti")!!,
+                    intentData?.getStringExtra("tempo_cott")!!,
+                   // intentData?.getStringExtra("photo"),
+                    intentData?.getStringExtra("porzioni")!!,
+                    intentData?.getStringExtra("tempo_prep")!!,
+                    intentData?.getStringExtra("procedimento")!!,
+                    intentData?.getStringExtra("totalTime")!!,
+                    intentData?.getStringExtra("preparaz")!!,
+                   //intentData?.getStringExtra("quantProdotto")!!,
+                    //intentData?.getStringExtra("unitProdotto")!!
+                )
+
+                offlineViewModel.insert(ricetta)
+
+            }
+        }else {
+            Toast.makeText(
+                context,
+                "Non hai inserito una ricetta",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+
     }
 
 }
