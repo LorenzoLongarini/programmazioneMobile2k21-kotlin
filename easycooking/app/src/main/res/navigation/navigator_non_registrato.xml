@@ -40,8 +40,4 @@
         android:name="com.example.easycooking.view.Informations"
         android:label="informations"
         tools:layout="@layout/informations" />
-    <fragment
-        android:id="@+id/offline"
-        android:name="com.example.easycooking.view.Offline"
-        android:label="Offline" />
 </navigation>
