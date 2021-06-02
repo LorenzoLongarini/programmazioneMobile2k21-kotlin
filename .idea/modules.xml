@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/programmazioneMobile2k21-kotlin.iml" filepath="$PROJECT_DIR$/.idea/programmazioneMobile2k21-kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EasyCooking.iml" filepath="$PROJECT_DIR$/.idea/modules/EasyCooking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/EasyCooking.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/EasyCooking.app.iml" />
     </modules>
   </component>
 </project>
