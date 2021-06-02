@@ -59,4 +59,5 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_prodotto_inserimento" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

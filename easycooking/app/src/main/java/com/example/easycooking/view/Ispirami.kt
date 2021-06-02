@@ -51,7 +51,7 @@ class Ispirami : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Ispirami"
 
 
         //var ricettina:Ricetta= ricettaArray.random()

@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil.setContentView
 import com.example.easycooking.R
@@ -48,6 +49,7 @@ class Log_in_base : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Login"
         auth = FirebaseAuth.getInstance()
         createRequest()
        bottone_gmail2.setOnClickListener { onClick(bottone_gmail2) }

@@ -41,10 +41,6 @@
         android:label="Ispirami"
         tools:layout="@layout/ispirami" />
     <fragment
-        android:id="@+id/ricetta_del_giorno4"
-        android:name="com.example.easycooking.view.Ricetta_del_giorno"
-        android:label="Ricetta_del_giorno" />
-    <fragment
         android:id="@+id/informations"
         android:name="com.example.easycooking.view.Informations"
         android:label="Informations" />

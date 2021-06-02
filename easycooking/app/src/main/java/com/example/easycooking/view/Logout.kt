@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.MainActivity
 import com.example.easycooking.R
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +26,7 @@ class Logout : Fragment(R.layout.fragment_logout) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Logout"
         logout()
 
         }

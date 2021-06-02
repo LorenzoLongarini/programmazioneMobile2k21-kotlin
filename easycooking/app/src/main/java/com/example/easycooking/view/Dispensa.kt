@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 
 import androidx.fragment.app.Fragment
@@ -148,7 +149,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                 }
             }
         }
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Dispensa"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {

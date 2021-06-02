@@ -8,26 +8,45 @@
     tools:context=".view.RicetteCerca">
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ]]>
+
     <TextView
         android:id="@+id/textView10"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="56dp"
         android:text="Nome:"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/categoria_ricerca"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/nome_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="412dp"
         android:background="@color/arancione_sbiadito"
         android:paddingStart="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +57,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="28dp"
         android:text="@string/cat"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/categoria_ricerca"
@@ -50,8 +69,8 @@
         android:id="@+id/categoria_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="412dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_ricerca" />
@@ -61,7 +80,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="32dp"
         android:text="@string/naz"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/origine_ricerca"
@@ -73,8 +92,8 @@
         android:id="@+id/origine_ricerca"
         android:layout_width="200dp"
         android:layout_height="34dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="412dp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoria_ricerca" />
@@ -89,6 +108,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -99,27 +119,29 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:layout_marginTop="80dp"
         android:contentDescription="Cerca ricette"
         android:text="Vedi ricette"
         app:backgroundTint="@color/arancio_giallino"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074"
         app:srcCompat="@drawable/ic_baseline_search_24"
         app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="410dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="397dp"
+        android:layout_height="312dp"
+        android:foregroundGravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottone_ricerca"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/categoria_ricerca"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
         tools:listitem="@layout/cards">
 
     </androidx.recyclerview.widget.RecyclerView>

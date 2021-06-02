@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.Log_in_base">
 
-
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bella fra, registrati"
+        android:text="Effettua il login per sbloccare le funzionalità aggiuntive!"
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

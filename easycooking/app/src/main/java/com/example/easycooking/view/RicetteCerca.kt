@@ -1,11 +1,11 @@
 package com.example.easycooking.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +15,7 @@ import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import java.util.ArrayList
+import java.util.*
 
 
 class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnItemSelectedListener {
@@ -24,6 +24,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
     private lateinit var dbref: DatabaseReference
     private lateinit var recView: RecyclerView
     private lateinit var ricettaArray: ArrayList<Ricetta>
+
     //private lateinit var ricettaArray2: ArrayList<Ricetta>
    // private lateinit var search: EditText
 
@@ -152,17 +153,20 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
         btn?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
-                btn?.text="cerca"
-                 categ=cate?.selectedItem.toString()
-                 origin=orig?.selectedItem.toString()
+                btn?.text = "cerca"
+                categ = cate?.selectedItem.toString()
+                origin = orig?.selectedItem.toString()
                 nome_ricetta = nome?.text.toString()
                 ricettaArray = arrayListOf<Ricetta>()
                 //ricettaArray2 = arrayListOf<Ricetta>()
-                getRicetteFiltrate(origin,categ,nome_ricetta)
+                getRicetteFiltrate(origin, categ, nome_ricetta)
                 //searchNome(nome_ricetta)
             }
         })
+        (activity as AppCompatActivity).supportActionBar?.title = "Ricette"
+
     }
+
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
         // On selecting a spinner item
@@ -276,7 +280,7 @@ class RicetteCerca : Fragment(R.layout.fragment_ricettecerca), AdapterView.OnIte
 
 
     }*/
-    fun getRicetteFiltrate(origin:String,categ:String,nomeRic:String) {
+    fun getRicetteFiltrate(origin: String, categ: String, nomeRic: String) {
 
         dbref = FirebaseDatabase.getInstance().getReference("")
         dbref.addValueEventListener(object : ValueEventListener {

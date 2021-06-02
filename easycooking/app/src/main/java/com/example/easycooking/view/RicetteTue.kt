@@ -54,6 +54,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
 
         override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
             super.onViewCreated(itemView, savedInstanceState)
+            (activity as AppCompatActivity).supportActionBar?.title = "Le tue ricette"
             val bot = view?.findViewById<Button>(R.id.bottone_aggiungi_ricetta)
             val rev = view?.findViewById<RecyclerView>(R.id.rv)
 

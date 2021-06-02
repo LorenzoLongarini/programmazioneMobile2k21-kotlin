@@ -6,8 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.easycooking.adapter.dispensa.Dispensa
-import com.example.easycooking.adapter.offline.OfflineDAO
-import com.example.easycooking.adapter.offline.OfflineDBEntity
 import com.example.easycooking.adapter.ricetta.RicettaDAO
 import com.example.easycooking.adapter.ricetta.RicettaDBEntity
 import com.example.easycooking.spesa.SpesaDAO
@@ -16,7 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class, OfflineDBEntity::class), version = 7,exportSchema = false)
+@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class), version = 8,exportSchema = false)
 public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
 
@@ -46,7 +44,7 @@ public abstract class ChoiceDatabase : RoomDatabase() {
     abstract fun DispensaDAO(): DispensaDAO
     abstract fun SpesaDAO(): SpesaDAO
     abstract fun RicettaDAO(): RicettaDAO
-    abstract fun OfflineDAO(): OfflineDAO
+
 
     private class ChoiceDatabaseCallback(
         private val scope: CoroutineScope
@@ -63,14 +61,12 @@ public abstract class ChoiceDatabase : RoomDatabase() {
                     var dispensaDao = database.DispensaDAO()
                     var spesaDao = database.SpesaDAO()
                     var ricettaDao = database.RicettaDAO()
-                    var offlineDao = database.OfflineDAO()
 
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             dispensaDao.deleteAll()
             spesaDao.deleteAll()
             ricettaDao.deleteAll()
-            offlineDao.deleteAll()
 
             /*var dispensa= DispensaDBEntity("Hello",10,"grammi")
             dispensaDao.insert(dispensa)

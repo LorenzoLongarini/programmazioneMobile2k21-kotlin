@@ -2,9 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:id="@+id/ricetta_del_giorno4"
-        android:title="Ricetta del giorno" />
+
     <item
         android:title="Contattaci"
         android:id="@+id/contattaci2"/>

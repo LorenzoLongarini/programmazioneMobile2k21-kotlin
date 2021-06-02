@@ -7,13 +7,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easycooking.MainActivity
 import com.example.easycooking.R
 import com.example.easycooking.view.Base
+import com.example.easycooking.view.Log_in_base
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_registrati.*
 import java.util.*
 
 
@@ -67,7 +70,11 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this@RegistrationActivity, getString(R.string.inforequired), Toast.LENGTH_SHORT).show()
             }
         }
+        accedi_registrati.setOnClickListener{
+        val intent2 = Intent(this, MainActivity::class.java)
+        startActivity(intent2)
         supportActionBar!!.setTitle(getString(R.string.registrati))
+    }
     }
 
     private fun writeUserToDb(nome: String, cognome: String, uid: String) {

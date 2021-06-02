@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.easycooking.R
 
@@ -33,6 +34,7 @@ class Contattaci : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Contattaci"
         val ric8: CardView = view?.findViewById<CardView>(R.id.ric8)
         val melmag: CardView = view?.findViewById<CardView>(R.id.melmag)
         val mail:Button=view?.findViewById<Button>(R.id.mail)
