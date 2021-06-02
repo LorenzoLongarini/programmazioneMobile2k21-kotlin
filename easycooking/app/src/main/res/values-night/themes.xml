@@ -11,6 +11,8 @@
         <item name="colorSecondary">@color/arancione_scuro</item>
         <item name="colorSecondaryVariant">@color/arancio_giallino</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
