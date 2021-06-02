@@ -46,12 +46,14 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_nome"
+            android:textColor = "?android:textColorSecondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:textColor = "?android:textColorSecondary"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/cognome">
@@ -71,6 +73,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_email"
             android:layout_width="match_parent"
+            android:textColor = "?android:textColorSecondary"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,26 +87,17 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_password"
             android:layout_width="match_parent"
+            android:textColor = "?android:textColorSecondary"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <CheckBox
-        android:id="@+id/termini_privacy"
-        android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/accetto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_password" />
 
     <Button
         android:id="@+id/btn_registra"
         android:layout_width="233dp"
         android:layout_height="44dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/rosso_chiaro"
         android:text="@string/registrati"
         android:textColor="@android:color/white"
@@ -117,8 +111,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/accountesist"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </LinearLayout>
 </ScrollView>

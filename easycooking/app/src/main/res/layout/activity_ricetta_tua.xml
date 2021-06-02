@@ -81,6 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="7dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -89,6 +90,7 @@
                     android:id="@+id/tempo_cottura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor = "?android:textColorPrimary"
                     android:gravity="center"
                     android:padding="7dp"
                     android:text="TextView"
@@ -98,6 +100,7 @@
                     android:id="@+id/tempo_totale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor = "?android:textColorPrimary"
                     android:gravity="center"
                     android:padding="7dp"
                     android:text="TextView"

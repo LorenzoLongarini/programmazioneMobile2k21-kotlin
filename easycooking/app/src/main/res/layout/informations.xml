@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Cerca Ricette"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@id/textView20"
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Dispensa"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Lista Spesa"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Tue Ricette"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Login"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Offline"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Ispirami"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="・Contattaci"
                 android:textColor="@color/bordeaux"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"

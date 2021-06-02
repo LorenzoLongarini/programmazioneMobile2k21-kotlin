@@ -14,6 +14,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +73,7 @@
 
         <EditText
             android:id="@+id/email_accedi"
+            android:textColor = "?android:textColorSecondary"
             android:layout_width="match_parent"
             android:layout_height="47dp"
 
@@ -96,6 +98,7 @@
             android:ems="10"
             android:inputType="textPassword"
             android:padding="0dp"
+            android:textColor = "?android:textColorSecondary"
             android:paddingStart="0dp" />
 
         <Button

@@ -51,6 +51,7 @@
                 android:id="@+id/nome_ricetta_inserimento"
                 android:layout_width="330dp"
                 android:layout_height="47dp"
+                android:textColor = "?android:textColorSecondary"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +69,7 @@
                 android:id="@+id/editTextNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor = "?android:textColorSecondary"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -133,6 +135,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="time"
+                        android:textColor = "?android:textColorSecondary"
                         android:maxLength="8"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -155,6 +158,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="time"
+                        android:textColor = "?android:textColorSecondary"
                         android:maxLength="8"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.508"
@@ -186,6 +190,7 @@
                         android:layout_width="178dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:textColor = "?android:textColorSecondary"
                         android:hint="ingrediente, quantità"
                         android:inputType="textPersonName" />
 
@@ -212,6 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="89dp"
                 android:ems="10"
+                android:textColor = "?android:textColorSecondary"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
 
@@ -220,6 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="43dp"
                 android:text="Salva la ricetta"
+                android:backgroundTint="@color/rosso_chiaro"
                 app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

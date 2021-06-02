@@ -9,16 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="152dp"
-            android:text="Salva"
-            app:layout_constraintEnd_toEndOf="@+id/immagine_ricetta_vista"
-            app:layout_constraintHorizontal_bias="0.949"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/photo"
@@ -354,6 +344,7 @@
             android:layout_width="46dp"
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/rosso_chiaro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"

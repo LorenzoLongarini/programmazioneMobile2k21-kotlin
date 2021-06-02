@@ -93,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="7dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -102,6 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="7dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -111,6 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="7dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -167,6 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="9dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -176,6 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="9dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -234,6 +239,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="9dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -243,6 +249,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor = "?android:textColorPrimary"
                     android:padding="9dp"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -339,6 +346,7 @@
             android:layout_height="44dp"
             android:layout_marginBottom="20dp"
             android:text="Ispirami!"
+            android:backgroundTint="@color/rosso_chiaro"
             app:layout_constraintBottom_toTopOf="@+id/photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.MainActivity
 import com.example.easycooking.R
 import com.example.easycooking.view.Base
+import com.example.easycooking.view.Base_nonReg
 import com.example.easycooking.view.Log_in_base
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -84,6 +85,5 @@ class RegistrationActivity : AppCompatActivity() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         db.collection("utenti").document(uid).set(user)
     }
-
 
 }

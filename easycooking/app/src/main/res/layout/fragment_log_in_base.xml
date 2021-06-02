@@ -8,16 +8,16 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="49dp"
         android:text="Effettua il login per sbloccare le funzionalità aggiuntive!"
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <TextView
         android:id="@+id/email_log"
@@ -27,20 +27,21 @@
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <EditText
         android:id="@+id/email_accedi"
         android:layout_width="330dp"
         android:layout_height="47dp"
         android:ems="10"
+        android:textColor = "?android:textColorSecondary"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.257" />
@@ -53,10 +54,10 @@
         android:textColor="@color/bordeaux"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <EditText
         android:id="@+id/psw_accedi"
@@ -64,12 +65,13 @@
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor = "?android:textColorSecondary"
         app:layout_constraintBottom_toBottomOf="@+id/bottone_accedi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintVertical_bias="0.788" />
 
     <Button
         android:id="@+id/bottone_accedi"
@@ -94,8 +96,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659"
-        app:srcCompat="@drawable/gmail"/>
+        app:layout_constraintVertical_bias="0.698"
+        app:srcCompat="@drawable/gmail" />
 
     <TextView
         android:id="@+id/registrati_accedi1"
@@ -107,9 +109,9 @@
         android:textColor="@color/arancione_scuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintVertical_bias="0.826" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@
             android:layout_width="161dp"
             android:layout_height="51dp"
             android:text="logout"
+            android:backgroundTint="@color/rosso_chiaro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,23 +25,26 @@
 
         <TextView
             android:id="@+id/addio"
-            android:layout_width="204dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="232dp"
+            android:layout_width="258dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="168dp"
+            android:fontFamily="@font/lemonada"
             android:text="@string/addio"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/addio2"
-            android:layout_width="338dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="288dp"
+            android:layout_width="362dp"
+            android:layout_height="68dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="220dp"
+            android:fontFamily="@font/lemonada"
             android:text="@string/addio2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
