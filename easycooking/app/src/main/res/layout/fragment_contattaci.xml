@@ -92,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="Mandaci una e-mail"
+            android:backgroundTint="@color/rosso_chiaro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/melmag" />

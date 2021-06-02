@@ -5,154 +5,158 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-115dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            app:srcCompat="@drawable/frigologo" />
-
-        <TextView
-            android:id="@+id/titolo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bungee"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/app_name"
-            android:textAlignment="center"
-            android:textColor="@color/bordeaux"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/accedi"
-            android:textColor="@color/rosso_chiaro"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/benvenuto" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/email"
-            android:textColor="@color/bordeaux" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/frigologo" />
 
-        <EditText
-            android:id="@+id/email_accedi"
-            android:textColor = "?android:textColorSecondary"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
+            <TextView
+                android:id="@+id/titolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bungee"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/bordeaux"
+                android:textSize="20sp" />
 
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:padding="0dp"
-            android:paddingStart="0dp" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/accedi"
+                android:textColor="@color/rosso_chiaro"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/password"
-            android:textColor="@color/bordeaux" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/benvenuto" />
 
-        <EditText
-            android:id="@+id/psw_accedi"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:padding="0dp"
-            android:textColor = "?android:textColorSecondary"
-            android:paddingStart="0dp" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/email"
+                android:textColor="@color/bordeaux" />
 
-        <Button
-            android:id="@+id/bottone_accedi"
-            android:layout_width="180dp"
-            android:layout_height="44dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/rosso_chiaro"
-            android:paddingStart="20dp"
-            android:text="@string/accedi" />
+            <EditText
+                android:id="@+id/email_accedi"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:ems="10"
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/bottone_gmail"
-            android:layout_width="180dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="2dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/gmail" />
+                android:inputType="textEmailAddress"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:textColor="?android:textColorSecondary" />
 
-        <TextView
-            android:id="@+id/password_dimenticata"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="2dp"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/dimenticato" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/password"
+                android:textColor="@color/bordeaux" />
 
-        <TextView
-            android:id="@+id/registrati_accedi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:onClick="registratiView"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/registrati"
-            android:textColor="@color/arancione_scuro" />
+            <EditText
+                android:id="@+id/psw_accedi"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:textColor="?android:textColorSecondary" />
 
-        <TextView
-            android:id="@+id/senza_registrazione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="senzaReg"
-            android:padding="0dp"
-            android:paddingStart="0dp"
-            android:text="@string/noreg"
-            android:textColor="@color/bordeaux" />
+            <Button
+                android:id="@+id/bottone_accedi"
+                android:layout_width="180dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/rosso_chiaro"
+                android:paddingStart="20dp"
+                android:text="@string/accedi" />
 
-    </LinearLayout>
-</ScrollView>
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/bottone_gmail"
+                android:layout_width="180dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/gmail" />
+
+            <TextView
+                android:id="@+id/password_dimenticata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="2dp"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/dimenticato" />
+
+            <TextView
+                android:id="@+id/registrati_accedi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:onClick="registratiView"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/registrati"
+                android:textColor="@color/arancione_scuro" />
+
+            <TextView
+                android:id="@+id/senza_registrazione"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                android:onClick="senzaReg"
+                android:padding="0dp"
+                android:paddingStart="0dp"
+                android:text="@string/noreg"
+                android:textColor="@color/bordeaux" />
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,32 +15,34 @@
             android:id="@+id/Logout2"
             android:layout_width="161dp"
             android:layout_height="51dp"
+            android:backgroundTint="@color/rosso_chiaro"
             android:text="logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.619" />
+            app:layout_constraintVertical_bias="0.702" />
 
         <TextView
             android:id="@+id/addio"
-            android:layout_width="204dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="253dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/lemonada"
             android:text="@string/addio"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.499"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/addio2"
-            android:layout_width="338dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="92dp"
+            android:layout_width="618dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="112dp"
+            android:fontFamily="@font/lemonada"
             android:text="@string/addio2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.592"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

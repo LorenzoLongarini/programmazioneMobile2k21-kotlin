@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <item
         android:title="Contattaci"
         android:id="@+id/contattaci2"/>
@@ -8,6 +10,6 @@
         android:title="Ispirami"
         android:id="@+id/ispirami4"/>
     <item
-        android:title="logout"
+        android:title="Logout"
         android:id="@+id/logout2"/>
 </menu>
