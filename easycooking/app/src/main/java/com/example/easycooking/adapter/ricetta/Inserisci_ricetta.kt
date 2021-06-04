@@ -95,13 +95,6 @@ class Inserisci_ricetta : AppCompatActivity() {
                 Toast.makeText(applicationContext, "$appo è stato aggiunto", Toast.LENGTH_SHORT).show()
             }
 
-
-
-
-
-
-
-
         val bt: Button =findViewById<Button>(R.id.salvaRicetta)
         bt.setOnClickListener {
             val replyIntent = Intent()
