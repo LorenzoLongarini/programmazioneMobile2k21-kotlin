@@ -268,7 +268,8 @@ class Inserisci_ricetta : AppCompatActivity() {
             }
         }
 
-
+        photoview.setImageResource(R.drawable.thumbs_up)
+        photoview.drawable.setTintList(null)
         /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == YOUR_IMAGE_CODE) {
