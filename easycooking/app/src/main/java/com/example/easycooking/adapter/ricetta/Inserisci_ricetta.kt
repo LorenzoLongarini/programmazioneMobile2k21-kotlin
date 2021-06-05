@@ -210,6 +210,7 @@ class Inserisci_ricetta : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         checkCameraPermission()
+        checkGalleryPermission()
     }
 
 
@@ -224,6 +225,17 @@ class Inserisci_ricetta : AppCompatActivity() {
             )
         }
     }
+    private fun checkGalleryPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION
+            )
+        }
+    }
 
     private fun openCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
@@ -234,7 +246,7 @@ class Inserisci_ricetta : AppCompatActivity() {
     }
 
     private fun openGallery() {
-        Intent(Intent.ACTION_GET_CONTENT).also { intent ->
+        Intent(Intent.ACTION_OPEN_DOCUMENT).also { intent ->
             intent.type = "image/*"
             intent.resolveActivity(packageManager)?.also {
                 startActivityForResult(intent, REQUEST_PICK_IMAGE)

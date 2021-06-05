@@ -2,18 +2,18 @@ package com.example.easycooking.view
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
+import java.io.FileNotFoundException
+import java.io.InputStream
 
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 
 class Activity_ricettaTua : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class Activity_ricettaTua : AppCompatActivity() {
         val prep: TextView =findViewById<TextView>(R.id.procedimento_vista)
         val photona: ImageView=findViewById<ImageView>(R.id.photona)
 
-        var aiuto=intent.getIntExtra("aiuto",0)
+        var aiuto=intent.getIntExtra("aiuto", 0)
         var foto=intent.getStringExtra("foto")
 
         titolo.text=intent.getStringExtra("Titolo")
@@ -40,9 +40,19 @@ class Activity_ricettaTua : AppCompatActivity() {
 
         if(aiuto==1){
             val uri: Uri = Uri.parse(foto)
-            Glide.with(this)
+            /*Glide.with(this)
                 .load(uri)
-                .into(photona)}
+                .into(photona)*/
+            /*lateinit var yourDrawable:Drawable
+            try {
+                val inputStream: InputStream? = contentResolver.openInputStream(uri)
+                var yourDrawable = Drawable.createFromStream(inputStream, uri.toString())
+            } catch (e: FileNotFoundException) {
+                yourDrawable = resources.getDrawable(R.drawable.coltforc)
+            }
+        photona.setImageDrawable(yourDrawable)*/
+            photona.setImageURI(uri)
+        }
         else if (aiuto==0){
             photona.setImageBitmap(foto?.let { base64ToBitmap(it) })
         }
