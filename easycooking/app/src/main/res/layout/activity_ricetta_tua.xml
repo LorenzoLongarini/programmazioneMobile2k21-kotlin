@@ -5,9 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/photona"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ricvuota" />
 
         <TextView
             android:id="@+id/immagine_ricetta_vista"
@@ -20,9 +31,11 @@
             android:textAlignment="center"
             android:textColor="@color/bordeaux"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/photona"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -31,7 +44,7 @@
             android:background="@color/arancione_sbiadito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/immagine_ricetta_vista">
+            app:layout_constraintTop_toBottomOf="@+id/photona">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -81,29 +94,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor = "?android:textColorPrimary"
                     android:padding="7dp"
                     android:text="TextView"
+                    android:textColor="?android:textColorPrimary"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tempo_cottura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor = "?android:textColorPrimary"
                     android:gravity="center"
                     android:padding="7dp"
                     android:text="TextView"
+                    android:textColor="?android:textColorPrimary"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tempo_totale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor = "?android:textColorPrimary"
                     android:gravity="center"
                     android:padding="7dp"
                     android:text="TextView"
+                    android:textColor="?android:textColorPrimary"
                     android:textSize="14sp" />
             </TableRow>
 
