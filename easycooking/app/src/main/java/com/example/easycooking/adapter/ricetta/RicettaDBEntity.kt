@@ -22,6 +22,7 @@ data class RicettaDBEntity (
      //@ColumnInfo(name="nome_ricetta")val recipeCategory: String? = null,
      //@ColumnInfo(name="nome_ricetta")val recipeCuisine: String? = null,
      @ColumnInfo(name="tempotot_ricetta")val totalTime: String?,
+     @ColumnInfo(name="aiuto")val aiuto:Int,
      //@ColumnInfo(name="nome_ricetta")val unita: List<String>?
      //@ColumnInfo(name="nome_ricetta")val vegano: Boolean? = null
         //@ColumnInfo(name="quant_prodotto") val quantProdotto:Int?,

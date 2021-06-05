@@ -2,7 +2,10 @@ package com.example.easycooking.adapter.ricetta
 
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +29,7 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
 
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.nome, current.image)
+        holder.bind(current.nome, current.image, current.aiuto)
 
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context, Activity_ricettaTua::class.java)
@@ -47,12 +50,16 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
         //val comprato:Button=itemView.
 
 
-        fun bind(text: String?,foto:String?) {
+        fun bind(text: String?,foto:String?,aiuto:Int) {
             ricettaItemView.text = text
+            if(aiuto==1){
             val uri: Uri = Uri.parse(foto)
             Glide.with(itemView)
                 .load(uri)
-                .into(ricettaPhoto)
+                .into(ricettaPhoto)}
+            else if (aiuto==0){
+                ricettaPhoto.setImageBitmap(foto?.let { base64ToBitmap(it) })
+            }
 
         }
 
@@ -78,3 +85,7 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
 
 
  }
+private fun base64ToBitmap(b64: String): Bitmap {
+    val imageAsBytes = Base64.decode(b64.toByteArray(), Base64.DEFAULT)
+    return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.size)
+}

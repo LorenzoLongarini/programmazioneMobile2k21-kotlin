@@ -23,6 +23,7 @@ import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 import com.example.easycooking.adapter.ricetta.*
+import com.example.easycooking.spesa.Activity_compra.Companion.EXTRAs_REPLY
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
@@ -158,7 +159,8 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                         intentData?.getStringExtra("porzioni")!!,
                         intentData?.getStringExtra("tempo_prep")!!,
                         intentData?.getStringExtra("procedimento")!!,
-                        intentData?.getStringExtra("tempo_tot"))
+                        intentData?.getStringExtra("tempo_tot"),
+                        intentData?.getIntExtra("aiutolettura",0))
 
                     ricettaViewModel.insert(ricetta)
 
