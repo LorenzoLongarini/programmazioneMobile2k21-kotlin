@@ -1,4 +1,4 @@
-package com.example.easycooking.memory.ricetta
+package com.example.easycooking.memory.ricettaTua
 
 
 import android.content.Intent
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.easycooking.R
+import com.example.easycooking.memory.ricettaTua.RicettaDBEntity
 
 
 /**

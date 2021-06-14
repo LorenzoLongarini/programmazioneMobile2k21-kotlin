@@ -1,4 +1,4 @@
-package com.example.easycooking.memory.ricetta
+package com.example.easycooking.memory.ricettaTua
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

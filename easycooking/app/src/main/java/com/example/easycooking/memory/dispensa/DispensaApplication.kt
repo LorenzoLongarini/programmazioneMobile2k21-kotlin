@@ -3,7 +3,7 @@ package com.example.easycooking.memory.dispensa
 import android.app.Application
 import com.example.easycooking.memory.DB.ChoiceDatabase
 
-import com.example.easycooking.memory.ricetta.RicettaRepository
+import com.example.easycooking.memory.ricettaTua.RicettaRepository
 import com.example.easycooking.memory.spesa.SpesaRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

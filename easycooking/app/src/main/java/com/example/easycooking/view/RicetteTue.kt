@@ -23,6 +23,7 @@ import com.example.easycooking.memory.dispensa.DispensaApplication
 import com.example.easycooking.R
 import com.example.easycooking.memory.dispensa.DefaultItemDecorator
 import com.example.easycooking.memory.ricetta.*
+import com.example.easycooking.memory.ricettaTua.*
 import com.example.easycooking.utils.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter

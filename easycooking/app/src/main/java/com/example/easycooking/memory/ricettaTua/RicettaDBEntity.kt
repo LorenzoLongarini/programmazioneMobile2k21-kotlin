@@ -1,4 +1,4 @@
-package com.example.easycooking.memory.ricetta
+package com.example.easycooking.memory.ricettaTua
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

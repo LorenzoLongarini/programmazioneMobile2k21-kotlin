@@ -1,6 +1,8 @@
-package com.example.easycooking.memory.ricetta
+package com.example.easycooking.memory.ricettaTua
 
 import androidx.annotation.WorkerThread
+import com.example.easycooking.memory.ricettaTua.RicettaDAO
+import com.example.easycooking.memory.ricettaTua.RicettaDBEntity
 import kotlinx.coroutines.flow.Flow
 
 /**

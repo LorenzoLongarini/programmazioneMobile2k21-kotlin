@@ -1,4 +1,4 @@
-package com.example.easycooking.memory.ricetta
+package com.example.easycooking.memory.ricettaTua
 
 
 import android.content.Context
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
+import com.example.easycooking.memory.ricetta.Ricetta
 import com.example.easycooking.memory.spesa.ListaSpesaDispensa
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage

@@ -7,14 +7,14 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.easycooking.memory.dispensa.DispensaDAO
 import com.example.easycooking.memory.dispensa.DispensaDBEntity
-import com.example.easycooking.memory.ricetta.RicettaDAO
-import com.example.easycooking.memory.ricetta.RicettaDBEntity
+import com.example.easycooking.memory.ricettaTua.RicettaDAO
+import com.example.easycooking.memory.ricettaTua.RicettaDBEntity
 import com.example.easycooking.memory.spesa.SpesaDAO
 import com.example.easycooking.memory.spesa.SpesaDBEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class), version = 9,exportSchema = false)
+@Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class, RicettaDBEntity::class), version = 9,exportSchema = false)
 public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
 
