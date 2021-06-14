@@ -27,6 +27,7 @@
         <activity android:name=".view.Activity_ricettaTua" />
 
         <activity android:name=".adapter.ricetta.Inserisci_ricetta" />
+        <activity android:name=".adapter.ricetta.Inserisci_ricetta_noPermessi" />
 
         <activity android:name=".view.Activity_inserisci_dispensa" />
         <activity android:name=".view.Activity_ricetta" />

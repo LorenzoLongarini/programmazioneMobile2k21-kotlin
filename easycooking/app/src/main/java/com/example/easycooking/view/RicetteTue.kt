@@ -1,7 +1,9 @@
 package com.example.easycooking.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -34,6 +38,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
     private val ricettaViewModel: RicettaViewModel by viewModels {
         RicettaViewModel.RicettaViewModelFactory((activity?.application as DispensaApplication).repositoryRicetta)
     }
+    private val REQUEST_PERMISSION = 100
     val adapter = RicettaListAdapter()
 
         companion object {
@@ -59,6 +64,8 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
             val bot = view?.findViewById<Button>(R.id.bottone_aggiungi_ricetta)
             val rev = view?.findViewById<RecyclerView>(R.id.rv)
 
+            checkCameraPermission()
+            checkGalleryPermission()
 
             val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
                 // Change the durations.
@@ -66,6 +73,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                 // Disable the first scroll mode.
                 setFirstOnly(false)
             }
+
 
 
             rev?.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
@@ -137,15 +145,54 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
 
 
                     bot?.setOnClickListener {
-                        val intent = Intent(activity, Inserisci_ricetta::class.java)
-                        startActivityForResult(intent, newRicettaActivityRequestCode)
+
+                        if ((this.context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.CAMERA) }
+                                    != PackageManager.PERMISSION_GRANTED
+                                    ) && (this.context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE) }
+                                    != PackageManager.PERMISSION_GRANTED
+                                    )){
+                        val intent = Intent(activity, Inserisci_ricetta_noPermessi::class.java)
+                        startActivityForResult(intent, newRicettaActivityRequestCode)} else{
+                            val intent = Intent(activity, Inserisci_ricetta::class.java)
+                            startActivityForResult(intent, newRicettaActivityRequestCode)
+                        }
                     }
                 }
             }
 
         }
 
-        override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla fotocamera del telefono
+     */
+    private fun checkCameraPermission() {
+        if (this.context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.CAMERA) }
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this.activity as Activity,
+                arrayOf(Manifest.permission.CAMERA),
+                REQUEST_PERMISSION
+            )
+        }
+    }
+
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla galleria del telefono
+     */
+    private fun checkGalleryPermission() {
+        if (this.context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.READ_EXTERNAL_STORAGE) }
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this.activity as Activity,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION
+            )
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
             super.onActivityResult(requestCode, resultCode, intentData)
 
             if (requestCode == newRicettaActivityRequestCode && resultCode == Activity.RESULT_OK) {
