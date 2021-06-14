@@ -27,10 +27,15 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
         return RicettaViewHolder.create(parent)
     }
 
+    /**
+     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricette
+     * scaricate da Firebase. Cliccando poi su una ricetta specifica, questa viene visualizzata interamente
+     */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.nome, current.image, current.aiuto)
 
+        //vengono aggiornati i campi della ricetta nel momento in cui l'utente clicca sulla card specifica
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context, Activity_ricettaTua::class.java)
             intent.putExtra("Titolo", current.nome)
@@ -41,11 +46,18 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
             intent.putExtra("Preparaz",current.preparazione)
             intent.putExtra("aiuto", current.aiuto)
             intent.putExtra("foto",current.image)
+
+            //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta filtrata
             holder.itemView.context.startActivity(intent)
         }
 
     }
 
+
+    /**
+     * viasualizzazione della ricetta nella recyclerView
+     *
+     */
     class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ricettaItemView: TextView = itemView.findViewById(R.id.nome_ric)
         private val ricettaPhoto:ImageView=itemView.findViewById(R.id.foto_ricetta_cerca)
@@ -74,6 +86,11 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
         }
     }
 
+    /**
+     * questa classe viene utilizzata per verificare se la ricetta è gia presente o meno.
+     * Nel caso in cui fosse presente, la vecchia ricetta è sostituita dalla nuova, aventi entrambe lo stesso nome
+     *
+     */
     class RicettaComparator : DiffUtil.ItemCallback<RicettaDBEntity>() {
         override fun areItemsTheSame(oldItem: RicettaDBEntity, newItem: RicettaDBEntity): Boolean {
             return oldItem === newItem
@@ -86,6 +103,12 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
 
 
  }
+
+/**
+ * Questa funzione converte l'immagine da bitmap in una stringa,
+ * così che possa essere visualizzata nella singola card
+ *
+ */
 private fun base64ToBitmap(b64: String): Bitmap {
     val imageAsBytes = Base64.decode(b64.toByteArray(), Base64.DEFAULT)
     return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.size)

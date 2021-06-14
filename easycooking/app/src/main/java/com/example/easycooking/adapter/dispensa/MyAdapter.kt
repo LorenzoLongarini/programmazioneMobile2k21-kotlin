@@ -16,12 +16,20 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
         return DispensaViewHolder.create(parent)
     }
 
+    /**
+     * Attraverso questa funzione, viene visualizzato ogni ingrediente presente in dispensa
+     *
+     */
     override fun onBindViewHolder(holder: DispensaViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.nomeProdotto)
 
     }
 
+    /**
+     * Attraverso questa funzione, vengono visualizzati tutti gli ingredienti presenti nella dispensa
+     *
+     */
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dispensaItemView: TextView = itemView.findViewById(R.id.nome)
 
@@ -38,6 +46,11 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
         }
     }
 
+    /**
+     * questa classe viene utilizzata per verificare se l'ingrediente inserito è gia presente o meno in dispensa.
+     * Nel caso in cui fosse presente, il vecchio ingrediente è sostituito dal nuovo, aventi entrambi lo stesso nome
+     *
+     */
     class DispComparator : DiffUtil.ItemCallback<DispensaDBEntity>() {
             override fun areItemsTheSame(oldItem: DispensaDBEntity, newItem: DispensaDBEntity): Boolean {
                 return oldItem === newItem

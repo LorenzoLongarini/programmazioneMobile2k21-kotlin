@@ -297,7 +297,7 @@ class Inserisci_ricetta : AppCompatActivity() {
     }
 
     /**
-     * Questa funzione converte l'immagine in una stringa,
+     * Questa funzione converte l'immagine da bitmap in una stringa,
      * così che possa essere salvata nella room
      *
      */

@@ -37,7 +37,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
 
     /**
      * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta fitrata per nome
-     * e scaricata da Firebase
+     * e scaricata da Firebase. Cliccando poi la card, viene visualizzata interamente
      */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val currentitem = items.get(position)
@@ -84,8 +84,12 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
         }
 
     }
-    
-   inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
+
+    /**
+     * visualizzazione della ricetta nella recyclerView
+     *
+     */
+    inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
     }
