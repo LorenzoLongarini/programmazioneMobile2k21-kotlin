@@ -36,24 +36,33 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrati)
+
+        //viene inizializzata un'istanza di FirebaseAuth
         mAuth = FirebaseAuth.getInstance()
+
         textNome = findViewById(R.id.text_nome)
         textCognome = findViewById(R.id.text_cognome)
         textEmail = findViewById(R.id.text_email)
         textPassword = findViewById(R.id.text_password)
         btnRegistra = findViewById(R.id.btn_registra)
+
+        //al click sul bottone reigstra
         btnRegistra.setOnClickListener {
             try {
+                //inizializziamo le variabili con i valori inseriti nella form di registrazione
                 val nome = textNome.text.toString()
                 val cognome = textCognome.text.toString()
                 val email = textEmail.text.toString()
                 val password = textPassword.text.toString()
+
+                //prendiamo l'istanza della classe FirebaseAuth per lanciare il metodo createUserWithEmailAndPassword che permette di salavare le credenziali dell'utente
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user: FirebaseUser = mAuth.currentUser
                         val profileChangeRequest: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
                             .setDisplayName("$nome $cognome")
                             .build()
+                        //vengono salvati il nome, cognome e l'uid sul Firestore dataabse
                         user.updateProfile(profileChangeRequest).addOnCompleteListener {
                             writeUserToDb(nome, cognome, user.uid)
                             val intent = Intent()
@@ -61,16 +70,18 @@ class RegistrationActivity : AppCompatActivity() {
                             intent.putExtra("cognome", textCognome.text.toString())
                             setResult(Activity.RESULT_OK, intent)
                             finish()
+                            //viene lanciato l'intent per passare all'activity per utenti registrati
                             val intent1 = Intent(this, Base::class.java)
                             startActivity(intent1)
                         }
                     } else {
+                        //se ci sono errori nella registrazione viene lanciato un toast
                         task.exception!!.printStackTrace()
                         Toast.makeText(this@RegistrationActivity, getString(R.string.errorsignup), Toast.LENGTH_SHORT).show()
-
                     }
                 }
             } catch (e: Exception) {
+                //nel caso in cui l'utente clicchi sul bottone registra senza inserire uno dei campi richiesti
                 if(TextUtils.isEmpty(textNome.text.toString()) && TextUtils.isEmpty(textCognome.text.toString()) && TextUtils.isEmpty(textEmail.text.toString()) && TextUtils.isEmpty(textPassword.text.toString())){
                     textNome.setError("Per favore inserisci il tuo nome")
                     textCognome.setError("Per favore inserisci il tuo cognome")
@@ -97,6 +108,7 @@ class RegistrationActivity : AppCompatActivity() {
 
             }
         }
+        //nel caso in cui l'utente fosse già registrato, cliccando sulla scritta, ritorna  all'area di accesso
         accedi_registrati.setOnClickListener{
         val intent2 = Intent(this, MainActivity::class.java)
         startActivity(intent2)
@@ -104,6 +116,9 @@ class RegistrationActivity : AppCompatActivity() {
     }
     }
 
+    /**
+     * Questa funzione ci permette di salvare l'utente su FirebaseFirestore
+     */
     private fun writeUserToDb(nome: String, cognome: String, uid: String) {
         val user: MutableMap<String, Any> = HashMap()
         user["nome"] = nome
