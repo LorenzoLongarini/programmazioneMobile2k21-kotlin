@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Possiamo accedere a questa sezione semplicemente cliccando sul pulsante offline presente nelle varie aree dell'applicazione. Qui potremo visualizzare ed accedere alle ricette che abbiamo salvato in precedenza." />
+                android:text="Possiamo accedere a questa sezione solo se l\'utente è registrato, semplicemente cliccando sul pulsante RicetteTue. Qui potremo visualizzare ed accedere alle ricette che abbiamo salvato in precedenza." />
 
             <TextView
                 android:layout_width="wrap_content"

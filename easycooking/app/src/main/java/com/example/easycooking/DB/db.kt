@@ -5,13 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.easycooking.adapter.dispensa.Dispensa
 import com.example.easycooking.adapter.ricetta.RicettaDAO
 import com.example.easycooking.adapter.ricetta.RicettaDBEntity
 import com.example.easycooking.spesa.SpesaDAO
 import com.example.easycooking.spesa.SpesaDBEntity
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class,RicettaDBEntity::class), version = 9,exportSchema = false)

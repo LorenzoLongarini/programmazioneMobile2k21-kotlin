@@ -17,10 +17,13 @@ class DispensaRepository(private val dispensaDao: DispensaDAO) {
     // implement anything else to ensure we're not doing long running database work
     // off the main thread.
     @Suppress("RedundantSuspendModifier")
+    //andiamo a inserire l'ingrediente in dispensa
     @WorkerThread
     suspend fun insert(dispensa: DispensaDBEntity) {
         dispensaDao.insert(dispensa)
     }
+
+    //andiamo ad eliminare l'ingrediente in dispensa
     @WorkerThread
     suspend fun delete(dispensa: DispensaDBEntity){
         dispensaDao.delete(dispensa)
