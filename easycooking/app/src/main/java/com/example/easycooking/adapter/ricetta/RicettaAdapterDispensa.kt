@@ -19,8 +19,8 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.cards.view.*
 
 /**
- * Questa classe ci permette di visualizzare nella recycler view una signola ricetta filtrata
- * attraverso il nome della ricetta. Cliccando sulla card presente nella recycler view,
+ * Questa classe ci permette di visualizzare nella recycler view tutte le ricette
+ * filtrate per ingredienti. Cliccando sulla card presente nella recycler view,
  * è poi possibile visualizzare le specifiche nel dettaglio della ricetta.
  *
  */
@@ -29,9 +29,8 @@ class RicettaAdapterDispensa(
     val items: ArrayList<Ricetta>,
     val context: Context,
     val ingr: MutableList<String>
-) : RecyclerView.Adapter<RicettaAdapterDispensa.RicettaViewHolder>() , Filterable{
+) : RecyclerView.Adapter<RicettaAdapterDispensa.RicettaViewHolder>(){
 
-    lateinit var itemsFilter: ArrayList<Ricetta>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.cards, parent, false)
         return RicettaViewHolder(layout)
@@ -43,7 +42,7 @@ class RicettaAdapterDispensa(
     val storage = Firebase.storage
 
     /**
-     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta fitrata per nome
+     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta fitrata per ingredienti
      * e scaricata da Firebase. Cliccando poi la card, viene visualizzata interamente
      */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
@@ -85,6 +84,7 @@ class RicettaAdapterDispensa(
             intent.putExtra("Unit",currentitem.unita?.toTypedArray())
             intent.putExtra("Preparaz",currentitem.preparazione)
             intent.putExtra("image",currentitem.image)
+            //vengono qui inseriti gli ingredienti
             intent.putExtra("Disp",ingr.toTypedArray())
 
             //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta filtrata
@@ -102,41 +102,6 @@ class RicettaAdapterDispensa(
        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
     }
 
-    /**
-     * attraverso questa funzione, viene effettuata una ricerca della ricetta per nome
-     *
-     */
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(charsequence: CharSequence?): FilterResults {
-
-                val filterResults = FilterResults()
-                if(charsequence==null || charsequence.length < 0 ){
-                    filterResults.count = items.size
-                    filterResults.values = items
-                }else{
-                    var searchChr  = charsequence.toString().toLowerCase()
-                    val ricette = ArrayList<Ricetta>()
-
-                    for (item in ricette){
-                        if(item.nome!!.contains(searchChr)){
-                            ricette.add(item)
-                        }
-                    }
-                    filterResults.count = ricette.size
-                    filterResults.values = ricette
-                }
-                return filterResults
-
-            }
-
-            override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
-               itemsFilter = filterResults!!.values as ArrayList<Ricetta>
-                notifyDataSetChanged()
-            }
-
-        }
-    }
 
 }
 

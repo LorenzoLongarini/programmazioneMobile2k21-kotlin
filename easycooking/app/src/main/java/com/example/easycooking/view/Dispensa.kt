@@ -50,8 +50,6 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         }
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,14 +75,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             // set the custom adapter to the RecyclerView
         }
 
-        /*val ingr: MutableList<String> = ArrayList()
-        ingr
-        if (rv != null) {
-            for(i in rv){
-                ingr.add(i.toString())
-            }
-        }*/
-
+        //con il click sul bottone cerca, viene applicato un filtro su tutte le ricertte
+        // che contengono gli ingredienti presenti in dispensa
         bt_cerca?.setOnClickListener( object : View.OnClickListener{
             override fun onClick(v: View?) {
                 var ingr= mutableListOf<String>()
@@ -95,6 +87,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                     }
                         ricettaArray = arrayListOf<Ricetta>()
                 }
+                //viene richiamata la funzione per filtrare le ricette
+                //in base ai prodotti presenti in dispensa
                 getRicetteFiltrate(ingr)
             }
         })
@@ -121,6 +115,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         )
         rv?.layoutManager = LinearLayoutManager(activity)
 
+        //viene lanciata la funzione SwipeToDelete che permette di eliminare
+        // gli ingredienti presenti in dispensa
         val item  = object :SwipeToDelete(requireActivity(),0,ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
@@ -143,6 +139,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                 // Update the cached copy of the words in the adapter.
                 prods.let { adapter.submitList(it) }
 
+                //al click del bottone Aggiungi, viene l'anciata l'activity
+                // utilizzata per inserire i prodotti in dispensa
                 bt?.setOnClickListener {
                     val intent = Intent(activity, Activity_inserisci_dispensa::class.java)
                     startActivityForResult(intent, newDispensaActivityRequestCode)
@@ -152,16 +150,22 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
         (activity as AppCompatActivity).supportActionBar?.title = "Dispensa"
     }
 
+    /**
+     * Con questa funzione si verifica se l'inserimento del prodotto va o meno a buon fine
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newDispensaActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(Activity_inserisci_dispensa.EXTRA_REPLY)?.let { reply ->
+                //se l'inserimento va a buon fine, viene inserito il prodotto in dispensa
                 val dispensa = DispensaDBEntity(reply)
                 dispensaViewModel.insert(dispensa)
 
             }
         }else {
+            //altrimenti viene lanciato un messaggio di errore
+            //di non inserimento del prodotto in dispensa
                 Toast.makeText(
                     context,
                     "Non hai inserito un prodotto",
@@ -171,40 +175,47 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
         }
 
+    /**
+     * attraverso questa funzione è possibile filtrare le ricette per ingredienti,
+     * utilizzando i prodotti presenti in dispensa
+     */
+    fun getRicetteFiltrate(ingr: MutableList<String>) {
 
-fun getRicetteFiltrate(ingr: MutableList<String>) {
+        //vengono scaricate le ricette da firebase
+        dbref = FirebaseDatabase.getInstance().getReference("")
+        dbref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (ricetteSnapshot in snapshot.children) {
+                        val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
+                        if (ingr!=null) {
+                            for(j in ingr){
+                                var appoggio= mutableListOf<String>()
+                                for (ing in ricetta?.Ingredienti!!){
+                                    //vengono qui inseriti nella MutableList
+                                    // tutti gli ingredienti presenti in dispensa
+                                    appoggio.add(ing.toLowerCase())
+                                }
+                                if (appoggio.contains(j.toLowerCase())){
+                                    //se l'array che contiene tutte le ricette con gli ingredienti inseriti
+                                    //non contiene una ricetta avente almeno uno degli ingredienti inseriti in dispensa
+                                    //questa viene aggiunta
+                                    if (!ricettaArray.contains(ricetta!!))
+                                    ricettaArray.add(ricetta!!)
+                                }
+                            }
 
-    dbref = FirebaseDatabase.getInstance().getReference("")
-    dbref.addValueEventListener(object : ValueEventListener {
-        override fun onDataChange(snapshot: DataSnapshot) {
-            if (snapshot.exists()) {
-                for (ricetteSnapshot in snapshot.children) {
-                    val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
-                    if (ingr!=null) {
-                        for(j in ingr){
-                            var appoggio= mutableListOf<String>()
-                            for (ing in ricetta?.Ingredienti!!){
-                                appoggio.add(ing.toLowerCase())
-                            }
-                            if (appoggio.contains(j.toLowerCase())){
-                                if (!ricettaArray.contains(ricetta!!))
-                                ricettaArray.add(ricetta!!)
-                            }
                         }
 
                     }
-
+                    recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it,ingr) }
                 }
 
-                recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it,ingr) }
             }
 
-        }
-
-        override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
-        }
-    })
-
-}
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
 }

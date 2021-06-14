@@ -125,20 +125,23 @@
 
             <TextView
                 android:id="@+id/password_dimenticata"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="2dp"
+                android:textSize="18dp"
                 android:padding="0dp"
                 android:paddingStart="0dp"
+                android:textColor="@color/rosso_chiaro"
                 android:text="@string/dimenticato" />
 
             <TextView
                 android:id="@+id/registrati_accedi"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="2dp"
+                android:textSize="18dp"
                 android:onClick="registratiView"
                 android:padding="0dp"
                 android:paddingStart="0dp"
@@ -147,10 +150,11 @@
 
             <TextView
                 android:id="@+id/senza_registrazione"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="18dp"
                 android:onClick="senzaReg"
                 android:padding="0dp"
                 android:paddingStart="0dp"
