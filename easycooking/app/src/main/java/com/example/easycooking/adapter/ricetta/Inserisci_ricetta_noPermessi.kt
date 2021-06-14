@@ -114,7 +114,8 @@ class Inserisci_ricetta_noPermessi : AppCompatActivity() {
         })
 
 
-
+        photoview.setImageResource(R.drawable.divieto)
+        photoview.drawable.setTintList(null)
 
 
         var Ingredienti: ArrayList<String> = arrayListOf()
