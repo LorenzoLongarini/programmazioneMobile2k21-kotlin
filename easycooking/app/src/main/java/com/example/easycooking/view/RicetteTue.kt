@@ -56,6 +56,11 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
         }
 
 
+    override fun onResume() {
+        super.onResume()
+        checkCameraPermission()
+        checkGalleryPermission()
+    }
 
 
         override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
@@ -64,8 +69,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
             val bot = view?.findViewById<Button>(R.id.bottone_aggiungi_ricetta)
             val rev = view?.findViewById<RecyclerView>(R.id.rv)
 
-            checkCameraPermission()
-            checkGalleryPermission()
+
 
             val alphaAdapter = AlphaInAnimationAdapter(adapter).apply {
                 // Change the durations.
