@@ -32,12 +32,19 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
 
     override fun getItemCount(): Int = items.size
 
-
+    //viene definita e inizializzata un'istanza di Firebase
     val storage = Firebase.storage
 
+    /**
+     * Attraverso questa funzione, viene lanciata la richiesta per scaricare le ricette da Firebase
+     */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val currentitem = items.get(position)
         holder.nomeRicetta.text = currentitem.nome
+
+        /*
+         * viene scaricata l'immagine da Firebase facendo prima un controllo se questa sia o meno presente
+         */
         val n_image = "images/".plus(currentitem.image)
         val imagereference = storage.reference.child(n_image)
         imagereference.downloadUrl.addOnSuccessListener { uri ->
@@ -47,12 +54,14 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
                 .diskCacheStrategy(DiskCacheStrategy.ALL) //ALL or NONE as your requirement
                 .into(holder.itemView.foto_ricetta_cerca)
         }.addOnFailureListener { // Handle any errors
+            //se l'immagine non è presente, viene sostituita con l'immagine di default
             Glide.with(holder.itemView)
                 .load(R.drawable.coltforc)
                 .fitCenter()
                 .into(holder.itemView.foto_ricetta_cerca)
         }
 
+        //vengono aggiornati i campi della ricetta nel momento in cui l'utente clicca sulla card specifica
         holder.itemView.setOnClickListener {
             val intent= Intent(context,Activity_ricetta::class.java)
             intent.putExtra("Titolo", currentitem.nome)
@@ -68,6 +77,8 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
             intent.putExtra("Unit",currentitem.unita?.toTypedArray())
             intent.putExtra("Preparaz",currentitem.preparazione)
             intent.putExtra("image",currentitem.image)
+
+            //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta scelta
             context.startActivity(intent)
         }
 
@@ -75,34 +86,14 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
     
    inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
-        /*
-        val ingredienti = row.findViewById<TextView>(R.id.ingr)
-        val id = row.findViewById<TextView>(R.id.id)
-        val cookTime = row.findViewById<TextView>(R.id.cook_time)
-        val prepTime = row.findViewById<TextView>(R.id.prep_time)
-        val totalTime = row.findViewById<TextView>(R.id.total_time)
-        val Immagine = row.findViewById<TextView>(R.id.immagine)
-        val intolleranze = row.findViewById<TextView>(R.id.intolleranze)
-        val keywords = row.findViewById<TextView>(R.id.keywords)
-        val porzione = row.findViewById<TextView>(R.id.porzioni)
-        val quantità = row.findViewById<TextView>(R.id.quant)
-        val misura = row.findViewById<TextView>(R.id.misura)
-        val vegano = row.findViewById<TextView>(R.id.vegano)
-        val preparazione = row.findViewById<TextView>(R.id.prep)
-        val categoria = row.findViewById<TextView>(R.id.categoria)
-        val paese = row.findViewById<TextView>(R.id.country)
-        val descrizione = row.findViewById<TextView>(R.id.descr)
-
-         */
-       
-        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
-        val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
-        //val textView2 = row.findViewById<TextView>(R.id.prodotto_quant)
-
-
-
+       val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
+       val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
     }
 
+    /**
+     * attraverso questa funzione, viene effettuata una ricerca della ricetta per nome
+     * 
+     */
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(charsequence: CharSequence?): FilterResults {

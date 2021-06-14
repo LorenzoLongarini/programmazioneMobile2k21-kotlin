@@ -50,17 +50,17 @@ private val REQUEST_PERMISSION = 100
 private val REQUEST_IMAGE_CAPTURE = 1
 private val REQUEST_PICK_IMAGE = 2
 
-//private var allEds: List<EditText> = ArrayList<EditText>()
+/**
+ * Questa classe ci permette di aggiungere una ricetta che verrà poi salvata nel database locale
+ */
+
 class Inserisci_ricetta : AppCompatActivity() {
     companion object {
         const val EXTRAs_REPLY = "com.example.android.ricettalistsql.REPLY"
-        const val YOUR_IMAGE_CODE = 192
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scriviricetta)
-
-
 
         editorNomeView = findViewById(R.id.nome_ricetta_inserimento)
         photoview = findViewById(R.id.imageButton3)
@@ -69,8 +69,8 @@ class Inserisci_ricetta : AppCompatActivity() {
         editorCookTime = findViewById(R.id.cott_inserimento)
         editorPorzioni = findViewById(R.id.editTextNumber)
         editorIngr = findViewById(R.id.Ingrediente_1)
-        var n = 0
 
+        //andiamo a salvare la preparazione della ricetta inserita dall'utente nella form, all'interno del medesimo campo
         editorPrepTime.addTextChangedListener(object : TextWatcher {
             var len = 0
             override fun afterTextChanged(s: Editable) {
@@ -91,6 +91,8 @@ class Inserisci_ricetta : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
+
+        //andiamo a salvare il tempo della ricetta inserita dall'utente nella form, all'interno del medesimo campo
         editorCookTime.addTextChangedListener(object : TextWatcher {
             var len = 0
             override fun afterTextChanged(s: Editable) {
@@ -113,13 +115,14 @@ class Inserisci_ricetta : AppCompatActivity() {
         })
 
 
+        //andiamo a salvare l'immagine della ricetta inserita dall'utente, all'interno del medesimo campo
         photoview.setOnClickListener {
             fun showAlertDialogButtonClicked(view: View?) {
-                // setup the alert builder
+                // viene configurata la AlertDialog
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this)
                 builder.setTitle("Scegli:")
 
-                // add a list
+                //viene aggiunta una lista
                 val scelte = arrayOf("Scatta Foto", "Scegli dalla galleria")
                 builder.setItems(scelte, object : DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface?, which: Int) {
@@ -134,16 +137,18 @@ class Inserisci_ricetta : AppCompatActivity() {
                     }
                 })
 
-                // create and show the alert dialog
+                // viene creato e mostrato l'AlertDialog
                 val dialog: AlertDialog = builder.create()
                 dialog.show()
             }
+            //l'AlertDialog viene mostrato quando l'utente clicca sul bottone per aggiungere l'immagine
             showAlertDialogButtonClicked(it)
         }
 
-
         var Ingredienti: ArrayList<String> = arrayListOf()
         var add = findViewById<Button>(R.id.addingr)
+
+        //andiamo a salvare gli ingredienti della ricetta inserita dall'utente, all'interno del medesimo campo
         add.setOnClickListener { view ->
             var appo = editorIngr.text.toString()
             Ingredienti.add(appo)
@@ -152,9 +157,12 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
 
         val bt: Button = findViewById<Button>(R.id.salvaRicetta)
+
+        //viene quindi salvata la ricetta
         bt.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editorNomeView.text)) {
+                //se il nome della ricetta non viene inserito, la ricetta non viene salvata
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 var tempoprep = editorPrepTime.text.toString()
@@ -181,10 +189,6 @@ class Inserisci_ricetta : AppCompatActivity() {
                 var tempoTot: String =
                     oreTot.toString() + ":" + minTot.toString() + ":" + secTot.toString()
                 var strIngr = ""
-                /*for (J in 0..n){
-                        var ingre:String= allEds[J].text.toString()+"@"
-                        strIngr += ingre
-                    }*/
                 for (ingr in Ingredienti) {
                     strIngr += ingr + "\n"
                 }
@@ -207,13 +211,18 @@ class Inserisci_ricetta : AppCompatActivity() {
 
     }
 
+    /**
+     * attraverso questa funzione, viene verificato se sono stati concessi o meno i permessi di accesso alla fotocamera e galleria
+     */
     override fun onResume() {
         super.onResume()
         checkCameraPermission()
         checkGalleryPermission()
     }
 
-
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla fotocamera del telefono
+     */
     private fun checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
@@ -225,6 +234,10 @@ class Inserisci_ricetta : AppCompatActivity() {
             )
         }
     }
+
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla galleria del telefono
+     */
     private fun checkGalleryPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED
@@ -237,6 +250,9 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
     }
 
+    /**
+     * attraverso questa funzione, viene aperta la fotocamera
+     */
     private fun openCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             intent.resolveActivity(packageManager)?.also {
@@ -245,6 +261,9 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
     }
 
+    /**
+     * attraverso questa funzione, viene aperta la galleria
+     */
     private fun openGallery() {
         Intent(Intent.ACTION_OPEN_DOCUMENT).also { intent ->
             intent.type = "image/*"
@@ -254,6 +273,10 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
     }
 
+    /**
+     * Attraverso onActivityResult, viene effettuato un controllo per verificare se l'utente
+     * ha accettato o meno i consensi di accesso alla fotocamera o galleria
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == AppCompatActivity.RESULT_OK) {
@@ -270,21 +293,14 @@ class Inserisci_ricetta : AppCompatActivity() {
 
         photoview.setImageResource(R.drawable.thumbs_up)
         photoview.drawable.setTintList(null)
-        /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == YOUR_IMAGE_CODE) {
-            if(resultCode == RESULT_OK) {
-                //var selectedImageUri: Uri? = data?.data
-                //fotoscelta=selectedImageUri.toString()
-                    fotoscelta=data?.data
-                photoview.setImageResource(R.drawable.thumbs_up)
-                photoview.drawable.setTintList(null)
-            }
-        }
-    }*/
-
 
     }
+
+    /**
+     * Questa funzione converte l'immagine in una stringa,
+     * così che possa essere salvata nella room
+     *
+     */
     private fun bitmapToBase64(bitmap: Bitmap): String {
         val byteArrayOutputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)

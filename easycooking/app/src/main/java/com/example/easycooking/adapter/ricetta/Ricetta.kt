@@ -1,5 +1,9 @@
 package com.example.easycooking.adapter.ricetta
 
+/**
+ * Viene definita la data class Ricetta in cui vengono definiti
+ * tutti i campi della ricetta
+ */
 data class Ricetta(
 
         var Ingredienti: List<String>? = null,
