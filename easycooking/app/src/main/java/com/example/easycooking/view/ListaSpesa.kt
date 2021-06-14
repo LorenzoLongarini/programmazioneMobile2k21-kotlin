@@ -41,6 +41,7 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
         val view: View = inflater.inflate(R.layout.fragment_listaspesa, container, false)
         return view
     }
+
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Lista della spesa"
@@ -69,7 +70,8 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
         rv?.layoutManager = LinearLayoutManager(activity)
 
 
-
+        //viene qui istanziata la classe SwipeToDelete, che consente di eliminare il prodotto
+        //dalla lista della spesa
         val item  = object : SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
@@ -86,31 +88,33 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
         val itemTouchHelper = ItemTouchHelper(item)
         itemTouchHelper.attachToRecyclerView(rv)
 
-
-
-
         activity?.let {
             spesaViewModel.allprod.observe(it) { prods ->
                 // Update the cached copy of the words in the adapter.
                 prods.let { adapter.submitList(it) }
 
+                //al click sul bottone Compra, viene lanciata una nuova activity per inserire
+                //il prodotto da acquistare
                 bt?.setOnClickListener {
                     val intent = Intent(activity, Activity_compra::class.java)
                     startActivityForResult(intent, newSpesaActivityRequestCode)
                 }
             }
         }
-
     }
+
+    //nell'OnActivityResult andiamo a controllare se il prodotto viene inserito correttamente o meno
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newSpesaActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(Activity_compra.EXTRAs_REPLY)?.let { reply ->
+                //se l'ingrediente è inserito correttamente, viene salvato nel database locale
                 val spesa = SpesaDBEntity(reply)
                 spesaViewModel.insert(spesa)
             }
         } else {
+            //se l'ingrediente non è inserito correttamente, l'ingrediente non viene salvato
             Toast.makeText(
                 context,
                 "Non hai inserito un prodotto",

@@ -206,6 +206,8 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
                         }
 
                     }
+                    //nella recyclerview viene quindi visualizzato l'array contenente
+                    //le ricette che rispettano i vincoli di filtraggio per ingredienti
                     recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it,ingr) }
                 }
 

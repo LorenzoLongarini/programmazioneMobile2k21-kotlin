@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.MainActivity
 import com.example.easycooking.R
 
+/**
+ * questa classe viene utilizzata per visualizzare
+ * le informazioni relative alle funzionalità della app
+ */
+
 class Informations : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
