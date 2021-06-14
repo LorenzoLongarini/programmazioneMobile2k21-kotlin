@@ -36,7 +36,7 @@ class Activity_inserisci_dispensa : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 //il prodotto viene inserito in dispensa
-                val nomeprod = editorNomeView.text.toString()
+                val nomeprod = editorNomeView.text.toString().toLowerCase()
                 replyIntent.putExtra(EXTRA_REPLY, nomeprod)
                 setResult(Activity.RESULT_OK, replyIntent)
             }

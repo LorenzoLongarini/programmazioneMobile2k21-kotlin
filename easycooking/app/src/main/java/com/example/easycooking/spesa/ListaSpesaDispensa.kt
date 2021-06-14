@@ -40,23 +40,7 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compradis)
 
-        var arrayIngr=intent.getStringArrayExtra("Ingr")
-        var arrayDis=dispensaViewModel.allprod.value
-        var manc= arrayListOf<String>()
-        var dispensa= arrayListOf<String>()
-        if (arrayIngr != null) {
-            for (ing in arrayIngr){
-                if (arrayDis != null) {
-                    for (disp in arrayDis){
-                        dispensa.add(disp.nomeProdotto.toLowerCase())
-                    }
-                    if(!dispensa.contains(ing.toLowerCase())){
-                        manc.add(ing.toLowerCase())
-                    }
 
-                }
-            }
-        }
 
         var nome=intent.getStringExtra("Titolo")
         var prepTime=intent.getStringExtra("Prep")
@@ -71,6 +55,26 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         var unita=intent.getStringArrayExtra("Unit")
         var preparazione =intent.getStringExtra("Preparaz")
         var image=intent.getStringExtra("image")
+
+
+        var arrayDis=dispensaViewModel.allprod.value
+        var manc= Ingredienti
+        var dispensa= arrayListOf<String>()
+
+        if (manc != null) {
+            for (ma in manc){
+                if (arrayDis != null) {
+                    for (disp in arrayDis){
+                        dispensa.add(disp.nomeProdotto)
+                    }
+                    if(dispensa.contains(ma.toLowerCase())){
+                        manc.drop(manc.indexOf(ma))
+                    }
+
+                }
+            }
+        }
+
         var mancanti=""
         if (manc != null) {
             for (ma in manc){
@@ -84,9 +88,11 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         displaymancanti.text=mancanti
 
         agg.setOnClickListener {
-            for (ma in manc) {
-                var spe = SpesaDBEntity(ma)
-                spesaViewModel.insert(spe)
+            if (manc != null) {
+                for (ma in manc) {
+                    var spe = SpesaDBEntity(ma)
+                    spesaViewModel.insert(spe)
+                }
             }
             val intent= Intent(applicationContext, Activity_ricetta::class.java)
             intent.putExtra("Titolo", nome)
