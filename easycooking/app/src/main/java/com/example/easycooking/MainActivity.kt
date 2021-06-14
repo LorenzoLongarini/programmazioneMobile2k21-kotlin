@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(psw_accedi.text.toString())){
-                    email_accedi.setError("Per favore inserisci una password valida")
+                    psw_accedi.setError("Per favore inserisci una password valida")
                     return@setOnClickListener
                 }
                 auth.signInWithEmailAndPassword(email_accedi.text.toString(), psw_accedi.text.toString())
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             startActivity(intent)
                             finish()
                         }else{
-                            Toast.makeText(this@MainActivity, "Login fallito", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MainActivity, "Login fallito, email o password errati", Toast.LENGTH_LONG).show()
                         }
                     }
             }
