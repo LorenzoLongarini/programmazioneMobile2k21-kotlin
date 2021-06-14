@@ -36,7 +36,8 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
     val storage = Firebase.storage
 
     /**
-     * Attraverso questa funzione, viene lanciata la richiesta per scaricare le ricette da Firebase
+     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta fitrata per nome
+     * e scaricata da Firebase
      */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val currentitem = items.get(position)
@@ -78,7 +79,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
             intent.putExtra("Preparaz",currentitem.preparazione)
             intent.putExtra("image",currentitem.image)
 
-            //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta scelta
+            //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta filtrata
             context.startActivity(intent)
         }
 
@@ -87,12 +88,11 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
    inner class RicettaViewHolder(row: View) : RecyclerView.ViewHolder(row) {
 
        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
-       val Immagine1 = row.findViewById<ImageView>(R.id.foto_ricetta_cerca)
     }
 
     /**
      * attraverso questa funzione, viene effettuata una ricerca della ricetta per nome
-     * 
+     *
      */
     override fun getFilter(): Filter {
         return object : Filter() {

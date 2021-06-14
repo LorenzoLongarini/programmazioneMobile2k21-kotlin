@@ -49,7 +49,6 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
     class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ricettaItemView: TextView = itemView.findViewById(R.id.nome_ric)
         private val ricettaPhoto:ImageView=itemView.findViewById(R.id.foto_ricetta_cerca)
-        //val comprato:Button=itemView.
 
 
         fun bind(text: String?,foto:String?,aiuto:Int) {
