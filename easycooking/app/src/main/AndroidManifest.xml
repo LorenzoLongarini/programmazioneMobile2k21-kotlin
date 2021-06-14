@@ -32,6 +32,7 @@
         <activity android:name=".view.Activity_ricetta" />
         <activity android:name=".spesa.Activity_compra" />
         <activity android:name=".view.Base_nonReg" />
+        <activity android:name=".spesa.ListaSpesaDispensa" />
         <activity android:name=".auth.RegistrationActivity" />
         <activity android:name=".view.Base" />
 

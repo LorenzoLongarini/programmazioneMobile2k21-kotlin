@@ -42,7 +42,7 @@ class Activity_ricetta : AppCompatActivity() {
         var intoller=""
         if (arrayIntoll != null) {
             for (intol in arrayIntoll){
-                intoller += intol
+                intoller += intol+"\n"
             }
         }else{
             intoller="nessuna intolleranza"

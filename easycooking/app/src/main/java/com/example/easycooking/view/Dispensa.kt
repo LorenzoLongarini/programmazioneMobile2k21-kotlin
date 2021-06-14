@@ -23,6 +23,7 @@ import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 import com.example.easycooking.adapter.ricetta.Ricetta
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.example.easycooking.adapter.ricetta.RicettaAdapterDispensa
 
 import com.example.easycooking.view.Activity_inserisci_dispensa
 import com.example.easycooking.view.SwipeToDelete
@@ -196,7 +197,7 @@ fun getRicetteFiltrate(ingr: MutableList<String>) {
 
                 }
 
-                recView.adapter = context?.let { RicettaAdapter(ricettaArray, it) }
+                recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it) }
             }
 
         }
