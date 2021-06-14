@@ -16,10 +16,12 @@ class RicettaRepository (private val ricettaDao: RicettaDAO) {
     // off the main thread.
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    //andiamo a inserire la ricetta
     suspend fun insert(ricetta: RicettaDBEntity) {
         ricettaDao.insert(ricetta)
     }
     @WorkerThread
+    //andiamo a eliminare la ricetta
     suspend fun delete(ricetta: RicettaDBEntity){
         ricettaDao.delete(ricetta)
     }
