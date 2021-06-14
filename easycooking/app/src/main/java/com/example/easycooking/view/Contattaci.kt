@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.example.easycooking.R
 
+/**
+ * Fragment in cui sono contenuti i link alle pagine istagram
+ * e tasto per contattare gli sviluppatori della app
+ */
 
 class Contattaci : Fragment() {
 
@@ -39,6 +43,7 @@ class Contattaci : Fragment() {
         val melmag: CardView = view?.findViewById<CardView>(R.id.melmag)
         val mail:Button=view?.findViewById<Button>(R.id.mail)
 
+        //cliccando sopra l'immagine, rimanda alla pagina instragram di Ricette a 8 bit
         ric8.setOnClickListener {
             val uri: Uri = Uri.parse("https://www.instagram.com/ricette_a_8bit/")
              var likeIng:Intent = Intent(Intent.ACTION_VIEW, uri)
@@ -53,6 +58,7 @@ class Contattaci : Fragment() {
             }
         }
 
+        //cliccando sopra l'immagine, rimanda alla pagina instragram di MelaMagno
         melmag.setOnClickListener {
             val uri: Uri = Uri.parse("https://www.instagram.com/mela_magno/")
             var likeIng:Intent = Intent(Intent.ACTION_VIEW, uri)
@@ -67,6 +73,7 @@ class Contattaci : Fragment() {
             }
         }
 
+        //cliccando sul bottone, permette di inviare una mail agli sviluppatori della app
         mail.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:easycookingclm@gmail.com")

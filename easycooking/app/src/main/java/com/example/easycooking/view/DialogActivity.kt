@@ -13,6 +13,8 @@ import androidx.fragment.app.DialogFragment
 import com.example.easycooking.R
 
 
+
+
 class NoticeDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {

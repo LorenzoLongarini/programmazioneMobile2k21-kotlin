@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -91,10 +92,6 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
             spesaViewModel.allprod.observe(it) { prods ->
                 // Update the cached copy of the words in the adapter.
                 prods.let { adapter.submitList(it) }
-
-
-
-
 
                 bt?.setOnClickListener {
                     val intent = Intent(activity, Activity_compra::class.java)
