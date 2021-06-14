@@ -10,23 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.databinding.DataBindingUtil.setContentView
 import com.example.easycooking.R
 import com.example.easycooking.auth.RegistrationActivity
-import com.example.easycooking.databinding.ActivityMainBinding
+import com.example.easycooking.auth.ResetPassword
 import com.google.android.gms.auth.api.signin.*
-import com.google.android.gms.auth.api.signin.internal.zzi
-import com.google.android.gms.auth.api.signin.internal.zzi.getSignInResultFromIntent
-import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.bottone_accedi
 import kotlinx.android.synthetic.main.activity_main.email_accedi
 import kotlinx.android.synthetic.main.activity_main.psw_accedi
@@ -56,6 +48,7 @@ class Log_in_base : Fragment() {
 
         login()
         registratiView1()
+        resetPassword1()
     }
 
     private fun createRequest() {
@@ -152,6 +145,13 @@ class Log_in_base : Fragment() {
         registrati_accedi1.setOnClickListener {
             val intent2 = Intent(activity, RegistrationActivity::class.java)
             startActivity(intent2)
+        }
+    }
+
+    private fun resetPassword1() {
+        password_dimenticata1.setOnClickListener{
+            val intent = Intent(activity, ResetPassword::class.java)
+            startActivity(intent)
         }
     }
 }

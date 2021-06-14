@@ -14,17 +14,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.internal.NavigationMenu
 import kotlinx.android.synthetic.main.activity_base.*
 
+/**
+ * Activity base per gli utenti registrati
+ */
+
 class Base : AppCompatActivity() {
-//    private val LOGIN_REQUEST = 101
-//    private var mAuth: FirebaseAuth? = null
+
 
     lateinit var app_bar: AppBarConfiguration
     lateinit var navController: NavController
-    lateinit var logout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val binding = DataBindingUtil.setContentView<ActivityBaseBinding>(this, R.layout.activity_main)
         setContentView(R.layout.activity_base)
 
 
@@ -37,65 +38,36 @@ class Base : AppCompatActivity() {
         //appbar
         app_bar = AppBarConfiguration(navController.graph, drawerlayout)
         setupActionBarWithNavController(this, navController, drawerlayout)
-
-        //actionbar
-        //drawerlayout = binding.drawerlayout
-        //NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
-
-
-        //navigation drawer
-        //  findViewById<NavigationView>(R.id.navigation_view).setupWithNavController(navController)
-
-
         NavigationUI.setupWithNavController(navigation_view, navController)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerlayout)
 
 
-        //NavigationUI.setupWithNavController(navigation_view, navController)
     }
-    /*val rv: RecyclerView =findViewById(R.id.rv)
-        rv.layoutManager= GridLayoutManager(this,2)
-        rv.addItemDecoration(
-            DefaultItemDecorator(resources.getDimensionPixelSize(R.dimen.provider_name_horizontalBig_margin),
-                resources.getDimensionPixelSize(R.dimen.provider_name_vertical_margin))
-        )*/
 
-    /*val alphaAdapter = AlphaInAnimationAdapter(RicettaAdapter(TODO("PASSARE LISTA RICETTE"))).apply {
-            // Change the durations.
-            setDuration(500)
-            // Disable the first scroll mode.
-            setFirstOnly(false)
-        }
-        rv.adapter = ScaleInAnimationAdapter(alphaAdapter).apply {
-            setDuration(250)
-        }*/
+    /**
+     * questa funzione viene chiamata ogni volta che
+     * l'utente clicca sul navigation menu per accedere
+     * alle diverse funzionalità
+     */
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(drawerlayout)
     }
 
+    /**
+     * Viene visualizzato il menu con tutte le opzioni
+     * che possono essere cliccate al suo interno
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         return true
     }
 
+    /**
+     * Nel momento in cui l'utente clicca su un elemento del navigation menu,
+     * viene riportato sul fragment relativo allìelemento selezionato
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-
     }
 }
 
-
-
-
-   /* fun login(v: View) {
-        val preferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-        if (preferences.getBoolean("firstrun", true)) {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivityForResult(intent, LOGIN_REQUEST)
-        } else {
-            mAuth = FirebaseAuth.getInstance()
-            val currentUser = mAuth!!.getCurrentUser()
-            supportActionBar!!.setTitle(currentUser.displayName)
-        }
-    }*/
 
