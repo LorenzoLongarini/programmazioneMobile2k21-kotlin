@@ -27,6 +27,9 @@ class RicettaViewModel (private val repository: RicettaRepository) : ViewModel()
         repository.delete(ricetta)
     }
 
+    /**
+     * funzione che consente l'interazione con il viewModel della ricetta
+     */
     class RicettaViewModelFactory(private val repository: RicettaRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

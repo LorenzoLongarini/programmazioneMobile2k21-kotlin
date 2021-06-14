@@ -25,6 +25,7 @@ import java.util.*
 
 /**
  * classe utilizzata per la registrazione di un nuovo utente su firebase
+ *
  */
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var textNome: TextInputEditText

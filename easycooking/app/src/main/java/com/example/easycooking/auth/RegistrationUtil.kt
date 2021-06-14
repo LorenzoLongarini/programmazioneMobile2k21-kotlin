@@ -1,5 +1,10 @@
 package com.example.easycooking.auth
 
+/**
+ * Utilizzata per ettuare i test sulla validazione dei campi per quanto concerne la registrazione dell'utente
+ *
+ */
+
 object RegistrationUtil {
 
     private val existingUser = listOf("gina.sorrisi@icloud.com", "sandramilo@outlook.it")
