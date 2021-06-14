@@ -23,6 +23,11 @@ import com.example.easycooking.utils.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
+/**
+ * questa classe è utilizzata per visualizzare tutti i prodottti
+ * inseriti da acquistare
+ */
+
 class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
 
     private val newSpesaActivityRequestCode = 1

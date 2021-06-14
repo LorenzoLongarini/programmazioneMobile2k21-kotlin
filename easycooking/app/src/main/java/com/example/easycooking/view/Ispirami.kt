@@ -19,6 +19,11 @@ import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
+/**
+ * Questa classe è utilizzata per applicare la funzione Ispirami.
+ * Viene estratta una ricetta random dal database e visualizzata nel fragment
+ */
+
 class Ispirami : Fragment() {
 
 
@@ -63,7 +68,7 @@ class Ispirami : Fragment() {
                 val ricetta = ricetteSnapshot.getValue(Ricetta::class.java)
                 ricettaArray.add(ricetta!!)
             }
-            //di tutte le ricette, ne viene presa una random e i campi dell'activity
+            //di tutte le ricette, ne viene presa una random e i campi del fragment
             //vengono riempiti con i campi della ricetta estratta
             var ricettina = ricettaArray.random()
             titolo.text = ricettina?.nome
@@ -149,7 +154,7 @@ class Ispirami : Fragment() {
             }
 
             //al click sul pulsante Ispirami!, viene estratta un'altra ricetta random
-            //i campi dell'activity vengono aggiornati con i campi della nuova ricetta
+            //i campi del fragment vengono aggiornati con i campi della nuova ricetta
             ispirami.setOnClickListener {
                 ricettina=ricettaArray.random()
                 titolo.text = ricettina?.nome

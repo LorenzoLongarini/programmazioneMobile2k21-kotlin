@@ -18,9 +18,9 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.cards.view.*
 
 /**
- * Questa classe ci permette di visualizzare nella recycler view una singola ricetta filtrata
- * attraverso il nome della ricetta. Cliccando sulla card presente nella recycler view,
- * è poi possibile visualizzare le specifiche nel dettaglio della ricetta.
+ * Questa classe ci permette di visualizzare nella recycler view tutte le ricette.
+ * Cliccando sulla card presente nella recycler view,
+ * è possibile visualizzare le specifiche nel dettaglio della ricetta.
  *
  */
 
@@ -38,8 +38,8 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
     val storage = Firebase.storage
 
     /**
-     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta fitrata per nome
-     * e scaricata da Firebase. Cliccando poi la card, viene visualizzata interamente
+     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare la ricetta
+     * scaricata da Firebase. Cliccando poi la card, viene visualizzata interamente
      */
     override fun onBindViewHolder(holder: RicettaViewHolder, position: Int) {
         val currentitem = items.get(position)
