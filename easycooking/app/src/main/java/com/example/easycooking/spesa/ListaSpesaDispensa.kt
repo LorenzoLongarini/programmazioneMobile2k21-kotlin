@@ -55,22 +55,23 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         var unita=intent.getStringArrayExtra("Unit")
         var preparazione =intent.getStringExtra("Preparaz")
         var image=intent.getStringExtra("image")
+        var disp=intent.getStringArrayExtra("Disp")
 
 
-        var arrayDis=dispensaViewModel.allprod.value
-        var manc= Ingredienti
-        var dispensa= arrayListOf<String>()
+        var arrayDis=disp
+        var manc= arrayListOf<String>()
+
+
 
         if (manc != null) {
-            for (ma in manc){
-                if (arrayDis != null) {
-                    for (disp in arrayDis){
-                        dispensa.add(disp.nomeProdotto)
-                    }
-                    if(dispensa.contains(ma.toLowerCase())){
-                        manc.drop(manc.indexOf(ma))
-                    }
+            if (Ingredienti != null) {
+                for (ma in Ingredienti){
+                    if (arrayDis != null) {
+                        if(!arrayDis.contains(ma.toLowerCase())){
+                            manc.add(ma)
+                        }
 
+                    }
                 }
             }
         }

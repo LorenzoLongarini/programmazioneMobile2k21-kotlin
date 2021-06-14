@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.iterator
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,7 +21,6 @@ import com.example.easycooking.R
 import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
 import com.example.easycooking.adapter.dispensa.DispensaListAdapter
 import com.example.easycooking.adapter.ricetta.Ricetta
-import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import com.example.easycooking.adapter.ricetta.RicettaAdapterDispensa
 
 import com.example.easycooking.view.Activity_inserisci_dispensa
@@ -51,6 +49,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             return dispensaFrag()
         }
     }
+
 
 
     override fun onCreateView(
@@ -197,7 +196,7 @@ fun getRicetteFiltrate(ingr: MutableList<String>) {
 
                 }
 
-                recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it) }
+                recView.adapter = context?.let { RicettaAdapterDispensa(ricettaArray, it,ingr) }
             }
 
         }
