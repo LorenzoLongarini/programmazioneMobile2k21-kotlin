@@ -3,6 +3,7 @@ package com.example.easycooking.auth
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registrati.*
 import java.util.*
 
@@ -65,10 +67,34 @@ class RegistrationActivity : AppCompatActivity() {
                     } else {
                         task.exception!!.printStackTrace()
                         Toast.makeText(this@RegistrationActivity, getString(R.string.errorsignup), Toast.LENGTH_SHORT).show()
+
                     }
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@RegistrationActivity, getString(R.string.inforequired), Toast.LENGTH_SHORT).show()
+                if(TextUtils.isEmpty(textNome.text.toString()) && TextUtils.isEmpty(textCognome.text.toString()) && TextUtils.isEmpty(textEmail.text.toString()) && TextUtils.isEmpty(textPassword.text.toString())){
+                    textNome.setError("Per favore inserisci il tuo nome")
+                    textCognome.setError("Per favore inserisci il tuo cognome")
+                    textEmail.setError("Per favore inserisci la tua mail")
+                    textPassword.setError("Per favore inserisci una password composta da almeno 6 caratteri o numeri")
+                    return@setOnClickListener
+                }
+                else if(TextUtils.isEmpty(textNome.text.toString())){
+                    textNome.setError("Per favore inserisci il tuo nome")
+                    return@setOnClickListener
+                }
+                else if(TextUtils.isEmpty(textCognome.text.toString())){
+                    textCognome.setError("Per favore inserisci il tuo cognome")
+                    return@setOnClickListener
+                }
+                else if(TextUtils.isEmpty(textEmail.text.toString())){
+                    textEmail.setError("Per favore inserisci la tua mail")
+                    return@setOnClickListener
+                }
+                else if(TextUtils.isEmpty(textPassword.text.toString())){
+                    textPassword.setError("Per favore inserisci una password composta da almeno 6 caratteri o numeri")
+                    return@setOnClickListener
+                }
+
             }
         }
         accedi_registrati.setOnClickListener{

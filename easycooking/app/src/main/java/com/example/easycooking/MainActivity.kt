@@ -124,14 +124,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //login
         private fun login(){
             bottone_accedi.setOnClickListener{
-                if(TextUtils.isEmpty(email_accedi.text.toString())){
-                    email_accedi.setError("Per favore inserisci una mail valida")
+                if(TextUtils.isEmpty(email_accedi.text.toString()) && TextUtils.isEmpty(psw_accedi.text.toString())){
+                    email_accedi.setError("Per favore inserisci la tua mail")
+                    psw_accedi.setError("Per favore inserisci la tua password")
+                    return@setOnClickListener
+                }
+                else if(TextUtils.isEmpty(email_accedi.text.toString())){
+                    email_accedi.setError("Per favore inserisci la tua mail")
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(psw_accedi.text.toString())){
-                    psw_accedi.setError("Per favore inserisci una password valida")
+                    psw_accedi.setError("Per favore inserisci la tua password")
                     return@setOnClickListener
                 }
+
                 auth.signInWithEmailAndPassword(email_accedi.text.toString(), psw_accedi.text.toString())
                     .addOnCompleteListener{
                         if(it.isSuccessful){
@@ -139,7 +145,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             startActivity(intent)
                             finish()
                         }else{
-                            Toast.makeText(this@MainActivity, "Login fallito, email o password errati", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MainActivity, "Login fallito, email e/o password errati", Toast.LENGTH_LONG).show()
                         }
                     }
             }

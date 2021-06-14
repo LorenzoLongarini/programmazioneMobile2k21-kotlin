@@ -39,7 +39,7 @@
     <string name="proc">Procedimento:</string>
     <string name="cognome">Cognome</string>
     <string name="inforequired">Per favore, inserisci tutte le informazioni richieste.</string>
-    <string name="errorsignup">C\'è stato un errore nella registrazione.</string>
+    <string name="errorsignup">C\'è stato un errore nella registrazione: email o password non inseriti correttamente.</string>
     <string name="addio">Sei sicuro di voler andare via? </string>
     <string name="addio2">Se effettui il logout non avrai più possibilità di inserire le tue ricette.</string>
     <string name="resetPassword">Inserisci la tua mail per resettare la password</string>
