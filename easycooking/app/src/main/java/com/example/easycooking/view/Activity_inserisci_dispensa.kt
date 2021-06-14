@@ -12,31 +12,32 @@ import androidx.room.Room
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
 
+/**
+ * in questa activity viene effettuato l'inserimento di un nuovo prodotto in dispensa
+ *
+ */
+
 class Activity_inserisci_dispensa : AppCompatActivity() {
 
     private lateinit var editorNomeView:EditText
-    //private lateinit var editorQuantView:EditText
-    //private lateinit var editorUnitView:EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inserisci_in_dispensa)
         editorNomeView=findViewById(R.id.nome_prodotto_inserimento)
-        //editorQuantView=findViewById(R.id.quantita_prodotto_inserimento)
-        //editorUnitView=findViewById(R.id.unita_inserimento)
 
         val bt:Button=findViewById<Button>(R.id.bottone_aggiungi_inserimento)
+        //cliccando sul bottone aggiungi, viene inserito il prodotto nella dispensa
         bt.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editorNomeView.text)) {
+                //se si clicca sul bottone Aggiungi ma non si inserisce alcun prodotto, viene annullato l'inserimento
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
+                //il prodotto viene inserito in dispensa
                 val nomeprod = editorNomeView.text.toString()
-                //val quant = editorQuantView.text.toString()
-                //val unit = editorUnitView.text.toString()
                 replyIntent.putExtra(EXTRA_REPLY, nomeprod)
-                //replyIntent.putExtra("quant",quant)
-                //replyIntent.putExtra("unit",unit)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

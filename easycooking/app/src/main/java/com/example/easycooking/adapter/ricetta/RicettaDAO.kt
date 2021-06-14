@@ -4,6 +4,10 @@ import androidx.room.*
 import com.example.easycooking.DB.DispensaDBEntity
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Classe DAO per le ricette
+ */
+
 @Dao
 interface RicettaDAO {
 

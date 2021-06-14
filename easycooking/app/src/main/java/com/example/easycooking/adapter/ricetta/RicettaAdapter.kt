@@ -21,6 +21,12 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.cards.view.*
 
+/**
+ * Questa classe ci permette di visualizzare nella recycler view una signola ricetta filtrata
+ * attraverso il nome della ricetta. Cliccando sulla card presente nella recycler view,
+ * è poi possibile visualizzare le specifiche nel dettaglio della ricetta.
+ *
+ */
 
 class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() , Filterable{
 

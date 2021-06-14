@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.DB.DispensaDBEntity
 import com.example.easycooking.R
 
+/**
+ *  Questa classe è utilizzata per impostare la recycler view riguardante la dispensa e gli elementi al suo interno
+ *
+ */
+
 class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.DispensaViewHolder>(DispComparator()) {
     var elem = ArrayList<DispensaDBEntity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DispensaViewHolder {
@@ -27,7 +32,7 @@ class DispensaListAdapter : ListAdapter<DispensaDBEntity, DispensaListAdapter.Di
     }
 
     /**
-     * Attraverso questa funzione, vengono visualizzati tutti gli ingredienti presenti nella dispensa
+     * Attraverso questa classe, vengono visualizzati tutti gli ingredienti presenti nella dispensa
      *
      */
     class DispensaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

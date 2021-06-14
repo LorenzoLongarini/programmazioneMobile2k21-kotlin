@@ -14,12 +14,15 @@ class RicettaViewModel (private val repository: RicettaRepository) : ViewModel()
     val allprod: LiveData<List<RicettaDBEntity>> = repository.allprod.asLiveData()
 
     /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+     * funzione che permette di inserire una ricetta
      */
     fun insert(ricetta: RicettaDBEntity) = viewModelScope.launch {
         repository.insert(ricetta)
     }
 
+    /**
+     * funzione che permette di eliminare una ricetta
+     */
     fun delete(ricetta: RicettaDBEntity) = viewModelScope.launch {
         repository.delete(ricetta)
     }

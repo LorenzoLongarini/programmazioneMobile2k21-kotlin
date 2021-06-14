@@ -19,6 +19,14 @@ import com.example.easycooking.R
 import com.example.easycooking.view.Activity_ricetta
 import com.example.easycooking.view.Activity_ricettaTua
 
+
+/**
+ * Questa classe ci permette di visualizzare nella recycler view tutte le ricette
+ * Cliccando sulla card presente nella recycler view,
+ * è poi possibile visualizzare le specifiche nel dettaglio della ricetta.
+ *
+ */
+
 class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.RicettaViewHolder>(
      RicettaComparator()
  ) {

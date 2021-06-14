@@ -5,6 +5,10 @@ import com.example.easycooking.DB.DispensaDAO
 import com.example.easycooking.DB.DispensaDBEntity
 import kotlinx.coroutines.flow.Flow
 
+/**
+ *Questa classe permette di inserire o eliminare una nuova ricetta nel database locale
+ */
+
 class RicettaRepository (private val ricettaDao: RicettaDAO) {
 
     // Room executes all queries on a separate thread.
