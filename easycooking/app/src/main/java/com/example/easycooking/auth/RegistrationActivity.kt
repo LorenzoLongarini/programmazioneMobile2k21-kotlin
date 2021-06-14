@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -22,7 +23,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registrati.*
 import java.util.*
 
-
+/**
+ * classe utilizzata per la registrazione di un nuovo utente su firebase
+ */
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var textNome: TextInputEditText
     private lateinit var textCognome: TextInputEditText
@@ -105,7 +108,6 @@ class RegistrationActivity : AppCompatActivity() {
                     textPassword.setError("Per favore inserisci una password composta da almeno 6 caratteri o numeri")
                     return@setOnClickListener
                 }
-
             }
         }
         //nel caso in cui l'utente fosse già registrato, cliccando sulla scritta, ritorna  all'area di accesso

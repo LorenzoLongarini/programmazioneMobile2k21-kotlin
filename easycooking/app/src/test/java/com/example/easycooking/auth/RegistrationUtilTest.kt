@@ -4,8 +4,15 @@ package com.example.easycooking.auth
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
+/**
+ * classe utilizzata per effettuare i test
+ */
+
 class RegistrationUtilTest {
 
+    /**
+     * test per verificare se il campo email è vuoto
+     */
     @Test
     fun `empty email returns false`() {
         val result = RegistrationUtil.validateRegistrationInput(
@@ -17,6 +24,9 @@ class RegistrationUtilTest {
         assertThat(result).isFalse()
     }
 
+    /**
+     * test per verificare se i campi sono tutti correttamente inseriti
+     */
     @Test
     fun `valid nome cognome email password return true`() {
         val result = RegistrationUtil.validateRegistrationInput(
@@ -28,6 +38,9 @@ class RegistrationUtilTest {
         assertThat(result).isTrue()
     }
 
+    /**
+     * test per verificare se l'email inserita è già presente
+     */
     @Test
     fun `existing email`() {
         val result = RegistrationUtil.validateRegistrationInput(
@@ -39,7 +52,9 @@ class RegistrationUtilTest {
         assertThat(result).isFalse()
     }
 
-    //empty password
+    /**
+     * test per verificare se il campo password è vuoto
+     */
     @Test
     fun `empty password`() {
         val result = RegistrationUtil.validateRegistrationInput(
@@ -51,7 +66,9 @@ class RegistrationUtilTest {
         assertThat(result).isFalse()
     }
 
-    //password contains less than 6 digits
+    /**
+     * test per verificare se il campo password contiene almento 6 numeri o lettere
+     */
     @Test
     fun `less than 6 characters password returns false`() {
         val result = RegistrationUtil.validateRegistrationInput(

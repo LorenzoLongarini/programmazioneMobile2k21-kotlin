@@ -32,22 +32,30 @@ class ResetPassword : AppCompatActivity() {
         resetPasswordButton = findViewById(R.id.buttonReset)
         progressBar = findViewById(R.id.progress_bar)
 
+        //viene creata un'istanza di FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
+        //al click sul bottone Resetta Password viene lanciata la funzione resetPassword()
         resetPasswordButton.setOnClickListener {
                 resetPassword()
             }
         }
 
+    /**
+     * Questa funzione viene utilizzata per effettuare il reset della password
+     *
+     */
     private fun resetPassword() {
         val email = emailEditText.text.toString().trim()
 
+        //vengono effettuati dei controlli per vedere se l'email è stata inserita o meno
         if(email.isEmpty()){
             emailEditText.error = "Inserisci l'e-mail"
             emailEditText.requestFocus()
             return
         }
 
+        //vengono effettuati dei controlli per vedere se l'email è stata inserita correttamente
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailEditText.error = "Inserisci un formato e-mail valido"
             emailEditText.requestFocus()
@@ -55,13 +63,17 @@ class ResetPassword : AppCompatActivity() {
         }
 
         progressBar.visibility = View.VISIBLE
+
+        //prendiamo l'istanza della classe FirebaseAuth per lanciare il metodo sendPasswordResetEmail
         auth.sendPasswordResetEmail(email).addOnCompleteListener{ task ->
             if (task.isSuccessful) {
-                    Toast.makeText(this, "Controlla la tua mail per resettare la password", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, MainActivity::class.java))
+                //se il tutto va a buon fine, viene inviata una mail con un link per il reset della password
+                Toast.makeText(this, "Controlla la tua mail per resettare la password", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
-            Toast.makeText(this, "Riprova, qualcosa è andato storto", Toast.LENGTH_LONG).show()
+                //se qualcosa va storto, la mail non viene inviata
+                Toast.makeText(this, "Riprova, qualcosa è andato storto", Toast.LENGTH_LONG).show()
             }
         }
     }

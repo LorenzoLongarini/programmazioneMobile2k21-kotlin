@@ -4,11 +4,10 @@ object RegistrationUtil {
 
     private val existingUser = listOf("gina.sorrisi@icloud.com", "sandramilo@outlook.it")
 
-    /*
-     input non valido se i campi sono vuoti o l'email è gia stata inserita
-     o la password non è lunga abbastanza
-    */
-
+    /**
+     * funzione che controlla se i campi sono vuoti o l'email è già stata inserita o la password contiene almeno 6 numeri o lettere
+     *
+     */
     fun validateRegistrationInput(
         nome: String,
         cognome: String,
