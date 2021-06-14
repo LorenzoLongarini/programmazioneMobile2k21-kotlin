@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
-import com.example.easycooking.adapter.ricetta.Ricetta
-import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.example.easycooking.memory.ricetta.Ricetta
+import com.example.easycooking.memory.ricetta.RicettaAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*

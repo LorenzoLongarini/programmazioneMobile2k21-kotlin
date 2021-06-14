@@ -18,18 +18,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.DB.DispensaApplication
-import com.example.easycooking.DB.DispensaDBEntity
-import com.example.easycooking.DB.DispensaViewModel
+import com.example.easycooking.memory.dispensa.DispensaApplication
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.DispensaListAdapter
-import com.example.easycooking.adapter.ricetta.*
-import com.example.easycooking.spesa.Activity_compra.Companion.EXTRAs_REPLY
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
+import com.example.easycooking.memory.dispensa.DefaultItemDecorator
+import com.example.easycooking.memory.ricetta.*
+import com.example.easycooking.utils.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
@@ -94,7 +88,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
             )
             rev?.layoutManager = GridLayoutManager(activity,2)
 
-            val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
+            val item  = object : SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     //adapter.del(viewHolder.absoluteAdapterPosition)
                     //dispensaViewModel.delete(dispensa)

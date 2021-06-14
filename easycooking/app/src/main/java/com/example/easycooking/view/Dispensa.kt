@@ -15,16 +15,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.DB.*
 
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.adapter.dispensa.DispensaListAdapter
-import com.example.easycooking.adapter.ricetta.Ricetta
-import com.example.easycooking.adapter.ricetta.RicettaAdapterDispensa
+import com.example.easycooking.memory.dispensa.*
+import com.example.easycooking.memory.ricetta.Ricetta
+import com.example.easycooking.memory.ricetta.RicettaAdapterDispensa
 
-import com.example.easycooking.view.Activity_inserisci_dispensa
-import com.example.easycooking.view.SwipeToDelete
+import com.example.easycooking.memory.dispensa.Activity_inserisci_dispensa
+import com.example.easycooking.utils.SwipeToDelete
 import com.google.firebase.database.*
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
@@ -117,7 +115,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
         //viene lanciata la funzione SwipeToDelete che permette di eliminare
         // gli ingredienti presenti in dispensa
-        val item  = object :SwipeToDelete(requireActivity(),0,ItemTouchHelper.LEFT){
+        val item  = object : SwipeToDelete(requireActivity(),0,ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
                 //dispensaViewModel.delete(dispensa)

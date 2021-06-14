@@ -14,11 +14,12 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.DB.DispensaApplication
-import com.example.easycooking.spesa.SpesaDBEntity
+import com.example.easycooking.memory.dispensa.DispensaApplication
+import com.example.easycooking.memory.spesa.SpesaDBEntity
 import com.example.easycooking.R
-import com.example.easycooking.adapter.dispensa.DefaultItemDecorator
-import com.example.easycooking.spesa.*
+import com.example.easycooking.memory.dispensa.DefaultItemDecorator
+import com.example.easycooking.memory.spesa.*
+import com.example.easycooking.utils.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 
@@ -69,7 +70,7 @@ class ListaSpesa : Fragment(R.layout.fragment_listaspesa) {
 
 
 
-        val item  = object :SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
+        val item  = object : SwipeToDelete(requireActivity(),0, ItemTouchHelper.LEFT){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //adapter.del(viewHolder.absoluteAdapterPosition)
                 //dispensaViewModel.delete(dispensa)

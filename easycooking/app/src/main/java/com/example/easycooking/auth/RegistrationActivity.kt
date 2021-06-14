@@ -4,16 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Patterns
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.MainActivity
 import com.example.easycooking.R
 import com.example.easycooking.view.Base
-import com.example.easycooking.view.Base_nonReg
-import com.example.easycooking.view.Log_in_base
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

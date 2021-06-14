@@ -11,20 +11,13 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.easycooking.R
-import com.example.easycooking.adapter.ricetta.Ricetta
-import com.example.easycooking.adapter.ricetta.RicettaAdapter
+import com.example.easycooking.memory.ricetta.Ricetta
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.ispirami.*
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.random.Random
 
 class Ispirami : Fragment() {
 

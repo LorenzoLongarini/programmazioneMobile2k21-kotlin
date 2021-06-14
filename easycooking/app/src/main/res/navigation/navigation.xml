@@ -27,12 +27,12 @@
         tools:layout="@layout/fragment_contattaci" />
     <fragment
         android:id="@+id/logout2"
-        android:name="com.example.easycooking.view.Logout"
+        android:name="com.example.easycooking.auth.Logout"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/singolaRicetta"
-        android:name="com.example.easycooking.adapter.ricetta.SingolaRicetta"
+        android:name="com.example.easycooking.memory.ricetta.SingolaRicetta"
         android:label="fragment_singola_ricetta"
         tools:layout="@layout/fragment_singola_ricetta" />
     <fragment

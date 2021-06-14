@@ -19,7 +19,7 @@
         android:label="dispensaFrag" />
     <fragment
         android:id="@+id/log_in_base"
-        android:name="com.example.easycooking.view.Log_in_base"
+        android:name="com.example.easycooking.auth.Log_in_base"
         android:label="fragment_log_in_base"
         tools:layout="@layout/fragment_log_in_base" />
     <fragment
