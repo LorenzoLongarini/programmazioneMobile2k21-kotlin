@@ -15,6 +15,11 @@ import com.google.firebase.storage.ktx.storage
 import com.example.easycooking.adapter.ricetta.RicettaAdapter
 import kotlinx.android.synthetic.main.cards.view.*
 
+/**
+ * questa Activity ci permette di visualizzare la ricetta nel dettaglio,
+ * dopo aver cliccato nella card specifica, presente nella recyclerView
+ */
+
 class Activity_ricetta : AppCompatActivity() {
 
     private lateinit var condividi: ImageButton
@@ -37,7 +42,7 @@ class Activity_ricetta : AppCompatActivity() {
         val prep:TextView=findViewById<TextView>(R.id.procedimento_vista)
         val photo:ImageView=findViewById<ImageView>(R.id.photo)
 
-
+        //si vanno ad inserire le intolleranze della ricetta nell'apposito array
         var arrayIntoll=intent.getStringArrayExtra("Intoll")
         var intoller=""
         if (arrayIntoll != null) {
@@ -47,6 +52,7 @@ class Activity_ricetta : AppCompatActivity() {
         }else{
             intoller="nessuna intolleranza"
         }
+        //si vanno ad inserire gli ingredienti della ricetta nell'apposito array
         var arrayIngr=intent.getStringArrayExtra("Ingr")
         var ingred=""
         if (arrayIngr != null) {
@@ -54,6 +60,7 @@ class Activity_ricetta : AppCompatActivity() {
                 ingred=ingred+ing+"\n"
             }
         }
+        //si vanno ad inserire le quantità degli ingredienti nell'apposito array
         var arrayQuant=intent.getStringArrayExtra("Quant")
         var quantit=""
         if (arrayQuant != null) {
@@ -63,6 +70,7 @@ class Activity_ricetta : AppCompatActivity() {
         }else{
             quantit="null"
         }
+        //si vanno ad inserire le unità di misura delle quantità nell'apposito array
         var arrayUnit=intent.getStringArrayExtra("Unit")
         var unita=""
         if (arrayUnit != null) {
@@ -70,12 +78,19 @@ class Activity_ricetta : AppCompatActivity() {
                 unita=unita+ing+"\n"
             }
         }
+        //si va a settare il valore del campo "vegano"
         var veggy=intent.getBooleanExtra("Veg",false)
         var vegano="No"
         if (veggy){
             vegano="Si"
         }
 
+        /*
+         * si controlla se è o meno presente l'immagine della ricetta
+         * se è presente allora viene utilizzata nella visualizzazione della ricetta
+         * altrimenti si utilizza l'immagine di default
+         *
+         */
         val storage = Firebase.storage
         var image=intent.getStringExtra("image")
         val n_image = "images/".plus(image)
@@ -93,7 +108,7 @@ class Activity_ricetta : AppCompatActivity() {
                 .into(photo)
         }
 
-
+        //a questo punto si vanno a settare i vari campi dell'activity per la visualizzazione della ricetta
         titolo.text=intent.getStringExtra("Titolo")
         prepTime.text=intent.getStringExtra("Prep")
         cookTime.text=intent.getStringExtra("Cott")
@@ -109,9 +124,9 @@ class Activity_ricetta : AppCompatActivity() {
 
         condividi = findViewById(R.id.button_share)
 
+
+        //Bottone per la condivisione della ricetta
         condividi.setOnClickListener {
-
-
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             val shareSub = "Scarica EasyCooking"
@@ -119,8 +134,6 @@ class Activity_ricetta : AppCompatActivity() {
             intent.putExtra(Intent.EXTRA_SUBJECT, shareSub)
             intent.putExtra(Intent.EXTRA_TEXT, shareBody)
             startActivity(Intent.createChooser(intent, "Vieni a visitare la app EasyCooking"))
-
-
         }
 
     }

@@ -14,6 +14,10 @@ import com.example.easycooking.R
 import java.io.FileNotFoundException
 import java.io.InputStream
 
+/**
+ * Activity per la visualizzazione della ricetta inserita in locale
+ *
+ */
 
 class Activity_ricettaTua : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,7 @@ class Activity_ricettaTua : AppCompatActivity() {
         val prep: TextView =findViewById<TextView>(R.id.procedimento_vista)
         val photona: ImageView=findViewById<ImageView>(R.id.photona)
 
+        //si vanno a settare i vari campi dell'activity per la visualizzazione della ricetta
         var aiuto=intent.getIntExtra("aiuto", 0)
         var foto=intent.getStringExtra("foto")
 
@@ -39,25 +44,22 @@ class Activity_ricettaTua : AppCompatActivity() {
         prep.text=intent.getStringExtra("Preparaz")
 
         if(aiuto==1){
+            //nel caso in cui l'immagine venga inserita dall'utente
             val uri: Uri = Uri.parse(foto)
-            /*Glide.with(this)
-                .load(uri)
-                .into(photona)*/
-            /*lateinit var yourDrawable:Drawable
-            try {
-                val inputStream: InputStream? = contentResolver.openInputStream(uri)
-                var yourDrawable = Drawable.createFromStream(inputStream, uri.toString())
-            } catch (e: FileNotFoundException) {
-                yourDrawable = resources.getDrawable(R.drawable.coltforc)
-            }
-        photona.setImageDrawable(yourDrawable)*/
             photona.setImageURI(uri)
         }
         else if (aiuto==0){
+            //nel caso in cui l'immagine non venga inserita
             photona.setImageBitmap(foto?.let { base64ToBitmap(it) })
         }
     }
 }
+
+/**
+ * Questa funzione converte l'immagine da bitmap in una stringa,
+ * così che possa essere visualizzata nella singola card
+ *
+ */
 private fun base64ToBitmap(b64: String): Bitmap {
     val imageAsBytes = Base64.decode(b64.toByteArray(), Base64.DEFAULT)
     return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.size)
