@@ -31,6 +31,7 @@ import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
 
 const val PERMISSION_REQUEST_CAMERA = 0
+const val PERMISSION_REQUEST_GALLERY = 0
 
 var fotoscelta:String=""
 private lateinit var editorNomeView: EditText
@@ -70,7 +71,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
         editorPorzioni = findViewById(R.id.editTextNumber)
         editorIngr = findViewById(R.id.Ingrediente_1)
 
-        photoview.setOnClickListener { showCameraPreview()  }
+
 
 
         //andiamo a salvare la preparazione della ricetta inserita dall'utente nella form, all'interno del medesimo campo
@@ -119,7 +120,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
 
 
         //andiamo a salvare l'immagine della ricetta inserita dall'utente, all'interno del medesimo campo
-        /* photoview.setOnClickListener {
+         photoview.setOnClickListener {
              fun showAlertDialogButtonClicked(view: View?) {
                  // viene configurata la AlertDialog
                  val builder: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -134,7 +135,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
                                  showCameraPreview()
                              }
                              1 -> {
-                                 openGallery()
+                                 showGalleryPreview()
                              }
                          }
                      }
@@ -146,7 +147,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
              }
              //l'AlertDialog viene mostrato quando l'utente clicca sul bottone per aggiungere l'immagine
              showAlertDialogButtonClicked(it)
-         }*/
+         }
 
         var Ingredienti: ArrayList<String> = arrayListOf()
         var add = findViewById<Button>(R.id.addingr)
@@ -231,6 +232,19 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
                 photoview.drawable.setTintList(null)
             }
         }
+        if (requestCode == PERMISSION_REQUEST_GALLERY) {
+            // Request for camera permission.
+            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission has been granted. Start camera preview Activity.
+                startGallery()
+            } else {
+                // Permission request was denied.
+                ivImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png"
+                aiutolettura=1
+                photoview.setImageResource(R.drawable.divieto)
+                photoview.drawable.setTintList(null)
+            }
+        }
     }
     private fun showCameraPreview() {
         // Check if the Camera permission has been granted
@@ -241,6 +255,17 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
         } else {
             // Permission is missing and must be requested.
             requestCameraPermission()
+        }
+    }
+    private fun showGalleryPreview() {
+        // Check if the Camera permission has been granted
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED) {
+            // Permission is already available, start camera preview
+            startGallery()
+        } else {
+            // Permission is missing and must be requested.
+            requestGalleryPermission()
         }
     }
     private fun requestCameraPermission() {
@@ -256,6 +281,19 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CAMERA)
         }
     }
+    private fun requestGalleryPermission() {
+        // Permission has not been granted and must be requested.
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // Display a SnackBar with a button to request the missing permission.
+
+        } else {
+
+            // Request the permission. The result will be received in onRequestPermissionResult().
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_REQUEST_GALLERY)
+        }
+    }
     private fun startCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             intent.resolveActivity(packageManager)?.also {
@@ -263,13 +301,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             }
         }
     }
-
-
-
-    /**
-     * attraverso questa funzione, viene aperta la galleria
-     */
-    private fun openGallery() {
+    private fun startGallery() {
         Intent(Intent.ACTION_OPEN_DOCUMENT).also { intent ->
             intent.type = "image/*"
             intent.resolveActivity(packageManager)?.also {
@@ -277,6 +309,9 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             }
         }
     }
+
+
+
 
     /**
      * Attraverso onActivityResult, viene effettuato un controllo per verificare se l'utente
