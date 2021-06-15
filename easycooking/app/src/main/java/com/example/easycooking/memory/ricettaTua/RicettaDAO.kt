@@ -29,7 +29,7 @@ interface RicettaDAO {
     suspend fun delete(ricetta: RicettaDBEntity)
 
     /**
-     * attraverso questa query vengono eliminate tutte le ricette salvatenel database in locale
+     * attraverso questa query vengono eliminate tutte le ricette salvate nel database in locale
      */
     @Query("DELETE FROM ricetta_table")
     suspend fun deleteAll()

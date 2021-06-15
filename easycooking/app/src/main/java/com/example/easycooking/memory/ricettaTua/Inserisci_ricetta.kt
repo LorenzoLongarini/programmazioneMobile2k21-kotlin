@@ -33,7 +33,6 @@ import com.google.android.material.snackbar.Snackbar
 const val PERMISSION_REQUEST_CAMERA = 1
 const val PERMISSION_REQUEST_GALLERY = 0
 
-var fotoscelta:String=""
 private lateinit var editorNomeView: EditText
 private lateinit var photoview:ImageButton
 private lateinit var editorProcedimento:EditText
@@ -61,8 +60,6 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
         setContentView(R.layout.activity_scriviricetta)
         layout=findViewById(R.id.mainn)
 
-
-
         editorNomeView = findViewById(R.id.nome_ricetta_inserimento)
         photoview = findViewById(R.id.imageButton3)
         editorProcedimento = findViewById(R.id.editTextTextMultiLine)
@@ -70,9 +67,6 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
         editorCookTime = findViewById(R.id.cott_inserimento)
         editorPorzioni = findViewById(R.id.editTextNumber)
         editorIngr = findViewById(R.id.Ingrediente_1)
-
-
-
 
         //andiamo a salvare la preparazione della ricetta inserita dall'utente nella form, all'interno del medesimo campo
         editorPrepTime.addTextChangedListener(object : TextWatcher {
@@ -197,7 +191,6 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
                     strIngr += ingr + "\n"
                 }
 
-
                 val nomeric = editorNomeView.text.toString()
                 replyIntent.putExtra(EXTRAs_REPLY, nomeric)
                 replyIntent.putExtra("photo", ivImage)
@@ -214,31 +207,39 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
         }
 
     }
+
+    /**
+     * attraverso questa funzione andiamo a verificare se l'utente che sta inserendo la ricetta,
+     * nel momento in cui va a inserire l'immagine della ricetta, concede o meno i permessi
+     * di accesso alla galleria e alla fotocamera
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray
     ) {
+        //permessi fotocamera
         if (requestCode == PERMISSION_REQUEST_CAMERA) {
-            // Request for camera permission.
+            // richiesta dei permessi per accedere alla fotocamera
             if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission has been granted. Start camera preview Activity.
+                // il permesso viene concesso, viene lanciata la funzione startCamera() che apre la fotocamera
                 startCamera()
             } else {
-                // Permission request was denied.
+                // il permesso è stato negato
                 ivImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png"
                 aiutolettura=1
                 photoview.setImageResource(R.drawable.divieto)
                 photoview.drawable.setTintList(null)
             }
         }
+        //permessi galleria
         if (requestCode == PERMISSION_REQUEST_GALLERY) {
-            // Request for camera permission.
+            // richeista dei permssi per accedere alla galleria
             if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission has been granted. Start camera preview Activity.
+                // il permesso viene concesso, viene lanciata la funzione startGallery() che apre la galleria
                 startGallery()
             } else {
-                // Permission request was denied.
+                // il permesso è stato negato
                 ivImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png"
                 aiutolettura=1
                 photoview.setImageResource(R.drawable.divieto)
@@ -246,30 +247,44 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             }
         }
     }
+
+    /**
+     * attraverso questa funzione andiamo a controllare se l'utente ha già concesso o meno i permessi
+     * per quanto riguarda l'accesso alla fotocamera
+     */
     private fun showCameraPreview() {
-        // Check if the Camera permission has been granted
+        // si controlla se l'accesso alla fotocamera è stato già concesso
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) ==
             PackageManager.PERMISSION_GRANTED) {
-            // Permission is already available, start camera preview
+            //i permessi per la l'accesso alla fotocamera sono stati già concessi, viene lanciata la funzione startCamera()
             startCamera()
         } else {
-            // Permission is missing and must be requested.
+            //i permessi non sono stati ancora concessi, viene lanciata la funzione requestCameraPermission()
             requestCameraPermission()
         }
     }
+
+    /**
+     * attraverso questa funzione andiamo a controllare se l'utente ha già concesso o meno i permessi
+     * per quanto riguarda l'accesso alla galleria
+     */
     private fun showGalleryPreview() {
-        // Check if the Camera permission has been granted
+        // si controlla se l'accesso alla galleria è stato già concesso
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
             PackageManager.PERMISSION_GRANTED) {
-            // Permission is already available, start camera preview
+            //i permessi per l'accesso alla galleria sono stati già concessi, viene lanciata la funzione startGAllery()
             startGallery()
         } else {
-            // Permission is missing and must be requested.
+            //i permessi non sono stati ancora concessi, viene lanciata la funzione requestGalleryPermission()
             requestGalleryPermission()
         }
     }
+
+    /**
+     * questa funzione viene lanciata quando non sono stati ancora concessi i permessi alla fotocamera
+     */
     private fun requestCameraPermission() {
-        // Permission has not been granted and must be requested.
+        // il permesso di accesso alla fotocamera non è ancora stato concesso
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA)) {
             // Provide an additional rationale to the user if the permission was not granted
             // and the user would benefit from additional context for the use of the permission.
@@ -277,12 +292,14 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
 
         } else {
 
-            // Request the permission. The result will be received in onRequestPermissionResult().
+            //Viene richiesto il permesso di accesso alla fotocamera.
+            //L'esito della richiesta verrà trasmesso in onRequestPermissionResult()
             ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CAMERA)
         }
     }
+
     private fun requestGalleryPermission() {
-        // Permission has not been granted and must be requested.
+        // il permesso di accesso alla galleria non è ancora stato concesso
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)) {
             // Provide an additional rationale to the user if the permission was not granted
             // and the user would benefit from additional context for the use of the permission.
@@ -290,10 +307,15 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
 
         } else {
 
-            // Request the permission. The result will be received in onRequestPermissionResult().
+            //Viene richiesto il permesso di accesso alla galleria.
+            //L'esito della richiesta verrà trasmesso in onRequestPermissionResult()
             ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_REQUEST_GALLERY)
         }
     }
+
+    /**
+     * questa funzione viene lanciata per dare l'accesso alla fotocamera
+     */
     private fun startCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             intent.resolveActivity(packageManager)?.also {
@@ -301,6 +323,10 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             }
         }
     }
+
+    /**
+     * questa funzione viene lanciata per dare l'accesso alla galleria
+     */
     private fun startGallery() {
         Intent(Intent.ACTION_OPEN_DOCUMENT).also { intent ->
             intent.type = "image/*"
@@ -309,9 +335,6 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             }
         }
     }
-
-
-
 
     /**
      * Attraverso onActivityResult, viene effettuato un controllo per verificare se l'utente

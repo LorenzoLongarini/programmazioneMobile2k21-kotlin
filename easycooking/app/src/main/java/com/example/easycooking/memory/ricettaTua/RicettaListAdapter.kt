@@ -60,7 +60,6 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
 
     }
 
-
     /**
      * viasualizzazione della ricetta nella recyclerView
      *

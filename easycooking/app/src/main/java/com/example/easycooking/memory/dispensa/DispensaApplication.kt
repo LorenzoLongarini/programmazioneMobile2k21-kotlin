@@ -8,6 +8,10 @@ import com.example.easycooking.memory.spesa.SpesaRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
+/**
+ * In questa classe vengono definite tutte le repository
+ */
+
 class DispensaApplication : Application() {
 
     val applicationScope = CoroutineScope(SupervisorJob())

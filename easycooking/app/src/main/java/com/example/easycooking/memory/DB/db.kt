@@ -14,6 +14,10 @@ import com.example.easycooking.memory.spesa.SpesaDBEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * questa classe astratta viene utilizzata per definire le room che abbiamo utilizzato nella nostra applicazione
+ */
+
 @Database(entities = arrayOf(DispensaDBEntity::class, SpesaDBEntity::class, RicettaDBEntity::class), version = 9,exportSchema = false)
 public abstract class ChoiceDatabase : RoomDatabase() {
     companion object {
@@ -34,13 +38,9 @@ public abstract class ChoiceDatabase : RoomDatabase() {
                 instance
             }
         }
-
-        /**
-         * Populate the database in a new coroutine.
-         * If you want to start with more words, just add them.
-         */
     }
 
+    //definizione delle room utilizzate
     abstract fun DispensaDAO(): DispensaDAO
     abstract fun SpesaDAO(): SpesaDAO
     abstract fun RicettaDAO(): RicettaDAO
@@ -58,6 +58,7 @@ public abstract class ChoiceDatabase : RoomDatabase() {
             // comment out the following line.
             INSTANCE?.let { database ->
                 scope.launch{
+                    //inizializzazione dei database
                     var dispensaDao = database.DispensaDAO()
                     var spesaDao = database.SpesaDAO()
                     var ricettaDao = database.RicettaDAO()
@@ -67,15 +68,10 @@ public abstract class ChoiceDatabase : RoomDatabase() {
             dispensaDao.deleteAll()
             spesaDao.deleteAll()
             ricettaDao.deleteAll()
-
-            /*var dispensa= DispensaDBEntity("Hello",10,"grammi")
-            dispensaDao.insert(dispensa)
-            dispensa= DispensaDBEntity("World!",20,"Litri")
-            dispensaDao.insert(dispensa)*/
-
+                }
+            }
+        }
     }
-}
-        }}
 
 
 
