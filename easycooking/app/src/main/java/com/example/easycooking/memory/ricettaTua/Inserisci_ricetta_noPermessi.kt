@@ -23,10 +23,6 @@ private lateinit var editorCookTime:EditText
 private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
 
-private val REQUEST_PERMISSION = 100
-private val REQUEST_IMAGE_CAPTURE = 1
-private val REQUEST_PICK_IMAGE = 2
-
 /**
  * Questa classe ci permette di aggiungere una ricetta che verrà poi salvata nel database locale
  */

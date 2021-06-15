@@ -10,21 +10,21 @@ import com.example.easycooking.memory.dispensa.DispensaViewModel
 import com.example.easycooking.R
 import com.example.easycooking.memory.ricetta.Activity_ricetta
 
+/**
+ * questa classe ci consente di lanciare un'activity che controlla se tutti gli ingredienti della ricetta
+ * sono presenti o meno all'interno della dispensa. Se alcuni ingredienti non sono presenti, viene richiesto,
+ * attraverso questa activity, se l'utente vuole inserire o meno i prodotti mancanti nella lista della spesa
+ */
+
 class ListaSpesaDispensa :  AppCompatActivity() {
 
-    private val newSpesaActivityRequestCode = 1
     private val spesaViewModel: SpesaViewModel by viewModels {
         SpesaViewModelFactory((this.application as DispensaApplication).repositorySpesa)
-    }
-    private val dispensaViewModel: DispensaViewModel by viewModels {
-        DispensaViewModel.DispensaViewModelFactory((this.application as DispensaApplication).repositoryDispensa)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compradis)
-
-
 
         var nome=intent.getStringExtra("Titolo")
         var prepTime=intent.getStringExtra("Prep")
@@ -41,10 +41,8 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         var image=intent.getStringExtra("image")
         var disp=intent.getStringArrayExtra("Disp")
 
-
         var arrayDis=disp
         var manc= arrayListOf<String>()
-
 
 
         if (manc != null) {
@@ -52,9 +50,11 @@ class ListaSpesaDispensa :  AppCompatActivity() {
                 for (ma in Ingredienti){
                     if (arrayDis != null) {
                         if(!arrayDis.contains(ma.toLowerCase())){
+                            //se l'ingrediente della ricetta non è contenuto
+                            //nella dispensa, questo ingrediente viene aggiunto
+                            //all'array degli ingredienti mancanti
                             manc.add(ma)
                         }
-
                     }
                 }
             }
@@ -72,6 +72,8 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         var ignora=findViewById<Button>(R.id.button3)
         displaymancanti.text=mancanti
 
+        //se l'utente clicca sul bottone aggiungi, gli ingredienti mancanti
+        //vengono aggiunti nella lista della spesa
         agg.setOnClickListener {
             if (manc != null) {
                 for (ma in manc) {
@@ -79,6 +81,8 @@ class ListaSpesaDispensa :  AppCompatActivity() {
                     spesaViewModel.insert(spe)
                 }
             }
+
+            //a questo punto viene lanciata l'activity per visualizzare la ricetta
             val intent= Intent(applicationContext, Activity_ricetta::class.java)
             intent.putExtra("Titolo", nome)
             intent.putExtra("Prep",prepTime)
@@ -93,13 +97,17 @@ class ListaSpesaDispensa :  AppCompatActivity() {
             intent.putExtra("Unit",unita)
             intent.putExtra("Preparaz",preparazione)
             intent.putExtra("image",image)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-            //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta filtrata
             applicationContext.startActivity(intent)
 
         }
+
+        //se l'utente clicca sul bottone ignora, gli ingredienti mancanti
+        //non vengono aggiunti nella lista della spesa
         ignora.setOnClickListener {
+
+            //viene lanciata l'activity per visualizzare la ricetta
             val intent= Intent(applicationContext, Activity_ricetta::class.java)
             intent.putExtra("Titolo", nome)
             intent.putExtra("Prep",prepTime)
@@ -119,9 +127,8 @@ class ListaSpesaDispensa :  AppCompatActivity() {
             //la visualizzazione della ricetta avviene dopo il click sulla singola card della ricetta filtrata
             applicationContext.startActivity(intent)
         }
-        }
-
     }
+}
 
 
 
