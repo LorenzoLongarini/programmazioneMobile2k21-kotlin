@@ -41,8 +41,8 @@ private lateinit var editorPrepTime:EditText
 private lateinit var editorCookTime:EditText
 private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
-lateinit var ivImage:String
-var aiutolettura by Delegates.notNull<Int>()
+var ivImage=""
+var aiutolettura =2
 
 private val REQUEST_IMAGE_CAPTURE = 1
 private val REQUEST_PICK_IMAGE = 2

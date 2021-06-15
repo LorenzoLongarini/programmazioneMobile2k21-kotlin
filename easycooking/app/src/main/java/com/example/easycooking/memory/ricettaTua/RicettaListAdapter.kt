@@ -79,6 +79,8 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
                 .into(ricettaPhoto)}
             else if (aiuto==0){
                 ricettaPhoto.setImageBitmap(foto?.let { base64ToBitmap(it) })
+            } else if (aiuto==2){
+                ricettaPhoto.setImageResource(R.drawable.ricvuota)
             }
 
         }
