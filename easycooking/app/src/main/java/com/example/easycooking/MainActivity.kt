@@ -162,16 +162,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 //effettuiamo i controlli per vedere se l'utente inserisce o meno le credenziali dopo aver cliccato sul bottone accedi
                 if(TextUtils.isEmpty(email_accedi.text.toString()) && TextUtils.isEmpty(psw_accedi.text.toString())){
-                    email_accedi.setError("Per favore inserisci la tua mail")
-                    psw_accedi.setError("Per favore inserisci la tua password")
+                    email_accedi.error = "Per favore inserisci la tua mail"
+                    psw_accedi.error = "Per favore inserisci la tua password"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(email_accedi.text.toString())){
-                    email_accedi.setError("Per favore inserisci la tua mail")
+                    email_accedi.error = "Per favore inserisci la tua mail"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(psw_accedi.text.toString())){
-                    psw_accedi.setError("Per favore inserisci la tua password")
+                    psw_accedi.error = "Per favore inserisci la tua password"
                     return@setOnClickListener
                 }
 

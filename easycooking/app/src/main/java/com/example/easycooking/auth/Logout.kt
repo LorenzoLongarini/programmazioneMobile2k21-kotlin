@@ -13,6 +13,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_logout.*
 
+/**
+ * questa classe viene utilizzata per lanciare il fragment per effettuare il logout dalla applicazione
+ */
+
 class Logout : Fragment(R.layout.fragment_logout) {
 
 
@@ -38,6 +42,7 @@ class Logout : Fragment(R.layout.fragment_logout) {
     }
 
 
+    //questa funzione viene utilizzata per effettuare il logout
     private fun signOut() {
         // [START auth_sign_out]
         Firebase.auth.signOut()
@@ -46,6 +51,8 @@ class Logout : Fragment(R.layout.fragment_logout) {
 
     private fun logout() {
 
+        //al click sul bottone di logout, viene richiamata la funzione signOut()
+        //e si viene rimandati all'activity iniziale di login
         Logout2.setOnClickListener {
             signOut()
                 val intent = Intent(activity, MainActivity::class.java)

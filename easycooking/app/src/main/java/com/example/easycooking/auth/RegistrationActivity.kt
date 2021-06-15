@@ -83,26 +83,26 @@ class RegistrationActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 //nel caso in cui l'utente clicchi sul bottone registra senza inserire uno dei campi richiesti
                 if(TextUtils.isEmpty(textNome.text.toString()) && TextUtils.isEmpty(textCognome.text.toString()) && TextUtils.isEmpty(textEmail.text.toString()) && TextUtils.isEmpty(textPassword.text.toString())){
-                    textNome.setError("Per favore inserisci il tuo nome")
-                    textCognome.setError("Per favore inserisci il tuo cognome")
-                    textEmail.setError("Per favore inserisci la tua mail")
-                    textPassword.setError("Per favore inserisci una password composta da almeno 6 caratteri o numeri")
+                    textNome.error = "Per favore inserisci il tuo nome"
+                    textCognome.error = "Per favore inserisci il tuo cognome"
+                    textEmail.error = "Per favore inserisci la tua mail"
+                    textPassword.error = "Per favore inserisci una password composta da almeno 6 caratteri o numeri"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(textNome.text.toString())){
-                    textNome.setError("Per favore inserisci il tuo nome")
+                    textNome.error = "Per favore inserisci il tuo nome"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(textCognome.text.toString())){
-                    textCognome.setError("Per favore inserisci il tuo cognome")
+                    textCognome.error = "Per favore inserisci il tuo cognome"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(textEmail.text.toString())){
-                    textEmail.setError("Per favore inserisci la tua mail")
+                    textEmail.error = "Per favore inserisci la tua mail"
                     return@setOnClickListener
                 }
                 else if(TextUtils.isEmpty(textPassword.text.toString())){
-                    textPassword.setError("Per favore inserisci una password composta da almeno 6 caratteri o numeri")
+                    textPassword.error = "Per favore inserisci una password composta da almeno 6 caratteri o numeri"
                     return@setOnClickListener
                 }
             }
