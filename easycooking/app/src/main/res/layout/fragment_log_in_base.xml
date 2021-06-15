@@ -31,7 +31,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="392dp"
                 android:layout_height="45dp"
-                android:text="Effettua il login per sbloccare le funzionalità aggiuntive!"
+                android:text="Effettua il login per sbloccare funzionalità aggiuntive!"
                 android:textAlignment="center"
                 android:textColor="@color/bordeaux"
                 app:layout_constraintBottom_toBottomOf="parent"
