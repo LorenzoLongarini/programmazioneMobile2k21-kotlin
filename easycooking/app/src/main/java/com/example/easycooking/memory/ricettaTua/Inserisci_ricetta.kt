@@ -1,6 +1,7 @@
 package com.example.easycooking.memory.ricettaTua
 
 
+import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -13,11 +14,14 @@ import android.widget.*
 
 import com.example.easycooking.R
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.properties.Delegates
@@ -33,7 +37,7 @@ private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
 lateinit var ivImage:String
 var aiutolettura by Delegates.notNull<Int>()
-
+private val REQUEST_PERMISSION = 100
 private val REQUEST_IMAGE_CAPTURE = 1
 private val REQUEST_PICK_IMAGE = 2
 
@@ -201,9 +205,41 @@ class Inserisci_ricetta : AppCompatActivity() {
     /**
      * attraverso questa funzione, viene verificato se sono stati concessi o meno i permessi di accesso alla fotocamera e galleria
      */
+    override fun onResume() {
+        super.onResume()
+        checkCameraPermission()
+        checkGalleryPermission()
+    }
 
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla fotocamera del telefono
+     */
+    private fun checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA),
+                REQUEST_PERMISSION
+            )
+        }
+    }
 
-
+    /**
+     * attraverso questa funzione, vengono richiesti i permessi di accesso alla galleria del telefono
+     */
+    private fun checkGalleryPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION
+            )
+        }
+    }
 
     /**
      * attraverso questa funzione, viene aperta la fotocamera
