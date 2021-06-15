@@ -13,16 +13,23 @@ class SpesaViewModel(private val repository: SpesaRepository) : ViewModel() {
     val allprod: LiveData<List<SpesaDBEntity>> = repository.allprod.asLiveData()
 
     /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+     * funzione che permette di inserire un prodotto nella lista della spesa
      */
     fun insert(spesa: SpesaDBEntity) = viewModelScope.launch {
         repository.insert(spesa)
     }
+
+    /**
+     * funzione che permette di eliminare un prodotto dalla lista della spesa
+     */
     fun delete(spesa: SpesaDBEntity) = viewModelScope.launch {
         repository.delete(spesa)
     }
 }
 
+/**
+ * funzione che consente l'interazione con il viewModel della spesa
+ */
 class SpesaViewModelFactory(private val repository: SpesaRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SpesaViewModel::class.java)) {

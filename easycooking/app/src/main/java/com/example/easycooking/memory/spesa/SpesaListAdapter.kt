@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easycooking.R
 
-
+/**
+ * Questa classe ci permette di visualizzare nella recycler view
+ * tutti i prodotti presenti nella lista della spesa
+ *
+ */
 
 class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHolder>(SpesaComparator()) {
     var elems = ArrayList<SpesaDBEntity>()
@@ -17,6 +21,9 @@ class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHo
         return SpesaViewHolder.create(parent)
     }
 
+    /**
+     * Attraverso questa funzione, viene lanciata la richiesta per visualizzare i prodotti presenti in dispensa
+     */
     override fun onBindViewHolder(holder: SpesaViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.nomeProdotto)
@@ -24,13 +31,15 @@ class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHo
 
     }
 
+    /**
+     * visualizzazione di un prodotto nella recyclerView
+     *
+     */
     class SpesaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val spesaItemView: TextView = itemView.findViewById(R.id.prodotto_compra)
-        //val comprato:Button=itemView.
 
         fun bind(text: String?) {
             spesaItemView.text = text
-
         }
 
         companion object {
@@ -42,6 +51,11 @@ class SpesaListAdapter : ListAdapter<SpesaDBEntity, SpesaListAdapter.SpesaViewHo
         }
     }
 
+    /**
+     * questa classe viene utilizzata per verificare se il prodotto è già presente o meno nella lista della spesa.
+     * Nel caso in cui fosse presente, il vecchio prodotto è sostituito dal nuovo
+     *
+     */
     class SpesaComparator : DiffUtil.ItemCallback<SpesaDBEntity>() {
         override fun areItemsTheSame(oldItem: SpesaDBEntity, newItem: SpesaDBEntity): Boolean {
             return oldItem === newItem

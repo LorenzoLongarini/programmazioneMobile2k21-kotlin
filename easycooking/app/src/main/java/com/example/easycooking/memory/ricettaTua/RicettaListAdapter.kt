@@ -61,7 +61,7 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
     }
 
     /**
-     * viasualizzazione della ricetta nella recyclerView
+     * visualizzazione della ricetta nella recyclerView
      *
      */
     class RicettaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -96,7 +96,7 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
 
     /**
      * questa classe viene utilizzata per verificare se la ricetta è gia presente o meno.
-     * Nel caso in cui fosse presente, la vecchia ricetta è sostituita dalla nuova, aventi entrambe lo stesso nome
+     * Nel caso in cui fosse presente, la vecchia ricetta è sostituita dalla nuova
      *
      */
     class RicettaComparator : DiffUtil.ItemCallback<RicettaDBEntity>() {
@@ -108,7 +108,6 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
             return oldItem.nome == newItem.nome
         }
     }
-
 
  }
 
