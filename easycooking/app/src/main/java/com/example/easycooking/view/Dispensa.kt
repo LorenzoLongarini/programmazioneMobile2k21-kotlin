@@ -28,6 +28,11 @@ import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 import java.util.ArrayList
 
+/**
+ * questa classe permette di lanciare un fragment che ci consente di visualizzare e inserire i prodotti in dispensa
+ * per poi applicare un filtro sulle ricette, in base agli ingredienti presenti in dispensa.
+ * Le ricette filtrate verrano poi mostrate nella recyclerView
+ */
 
 class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
 
@@ -73,7 +78,7 @@ class dispensaFrag: Fragment(R.layout.fragment_dispensa) {
             // set the custom adapter to the RecyclerView
         }
 
-        //con il click sul bottone cerca, viene applicato un filtro su tutte le ricertte
+        //con il click sul bottone cerca, viene applicato un filtro su tutte le ricette
         // che contengono gli ingredienti presenti in dispensa
         bt_cerca?.setOnClickListener( object : View.OnClickListener{
             override fun onClick(v: View?) {
