@@ -101,24 +101,24 @@
         android:contentDescription="Cerca ricette"
         android:text="Vedi ricette"
         app:backgroundTint="@color/arancio_giallino"
-        app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114"
         app:srcCompat="@drawable/ic_baseline_search_24"
         app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="329dp"
-        android:layout_height="302dp"
+        android:layout_width="355dp"
+        android:layout_height="189dp"
         android:foregroundGravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottone_ricerca"
+        app:layout_constraintVertical_bias="0.056"
         tools:listitem="@layout/cards">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -112,6 +112,7 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
 
+        aiutolettura = 2
 
         //andiamo a salvare l'immagine della ricetta inserita dall'utente, all'interno del medesimo campo
          photoview.setOnClickListener {
@@ -142,6 +143,8 @@ class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissio
              //l'AlertDialog viene mostrato quando l'utente clicca sul bottone per aggiungere l'immagine
              showAlertDialogButtonClicked(it)
          }
+
+
 
         var Ingredienti: ArrayList<String> = arrayListOf()
         var add = findViewById<Button>(R.id.addingr)

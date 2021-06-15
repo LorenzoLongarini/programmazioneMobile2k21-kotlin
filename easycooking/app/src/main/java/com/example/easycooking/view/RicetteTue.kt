@@ -111,7 +111,8 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
                 bot?.setOnClickListener {
 
 
-                    //se i permessi vengono concessi, viene lanciata un'activity che consente di inserire l'immagine della ricetta
+                    //nle momento in cui l'utente clicca sul bottone aggiungi ricetta
+                    //viene lanciata un'activity che mostra i campi da inserire
                     val intent = Intent(activity, Inserisci_ricetta::class.java)
                     startActivityForResult(intent, newRicettaActivityRequestCode)
                 }

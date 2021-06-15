@@ -111,15 +111,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="382dp"
+        android:layout_width="371dp"
+        android:layout_height="379dp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottone_ricerca"
+        app:layout_constraintVertical_bias="0.057"
         tools:listitem="@layout/cards">
 
     </androidx.recyclerview.widget.RecyclerView>

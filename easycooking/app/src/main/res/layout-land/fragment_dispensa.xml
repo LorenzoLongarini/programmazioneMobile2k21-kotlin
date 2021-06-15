@@ -24,8 +24,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="314dp"
-        android:layout_height="146dp"
+        android:layout_width="315dp"
+        android:layout_height="129dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:onClick="ricetteTue"
@@ -74,8 +74,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv1"
-        android:layout_width="347dp"
-        android:layout_height="152dp"
+        android:layout_width="336dp"
+        android:layout_height="128dp"
         android:layout_marginTop="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="124dp"
         android:rotation="180"
         android:scaleX="1"
         android:scaleY="0.8"

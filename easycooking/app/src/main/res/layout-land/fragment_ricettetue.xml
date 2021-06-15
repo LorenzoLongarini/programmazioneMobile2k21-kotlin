@@ -9,23 +9,7 @@
 
     ]]>
 
-    <Button
-        android:id="@+id/bottone_aggiungi_ricetta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:text="Aggiungi la tua ricetta"
-        android:contentDescription="Aggiungi un prodotto in dispensa"
-        app:backgroundTint="@color/rosso_chiaro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        app:tint="@color/white" />
+
 
     <LinearLayout
         android:layout_width="0dp"
@@ -41,12 +25,29 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="164dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <Button
+            android:id="@+id/bottone_aggiungi_ricetta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:text="Aggiungi la tua ricetta"
+            android:contentDescription="Aggiungi un prodotto in dispensa"
+            app:backgroundTint="@color/rosso_chiaro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.96"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:srcCompat="@drawable/ic_baseline_add_24"
+            app:tint="@color/white" />
 
 
     </LinearLayout>
