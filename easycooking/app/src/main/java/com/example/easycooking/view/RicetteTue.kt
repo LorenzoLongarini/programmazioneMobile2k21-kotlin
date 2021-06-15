@@ -54,13 +54,7 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
     }
 
 
-    //vengono richiamate le due funzioni per controllare
-    //se l'utente ha dato i permessi o meno
-    override fun onResume() {
-        super.onResume()
-        checkCameraPermission()
-        checkGalleryPermission()
-    }
+
 
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
@@ -116,69 +110,16 @@ class RicetteTue : Fragment(R.layout.fragment_ricettetue) {
 
                 bot?.setOnClickListener {
 
-                    if ((this.context?.let {
-                            ContextCompat.checkSelfPermission(
-                                it,
-                                Manifest.permission.CAMERA
-                            )
-                        }
-                                != PackageManager.PERMISSION_GRANTED
-                                ) && (this.context?.let {
-                            ContextCompat.checkSelfPermission(
-                                it,
-                                Manifest.permission.READ_EXTERNAL_STORAGE
-                            )
-                        }
-                                != PackageManager.PERMISSION_GRANTED
-                                )) {
-                        //se i permessi non vengono concessi, viene lanciata un'activity in cui non è presente l'immagine da inserire
-                        val intent = Intent(activity, Inserisci_ricetta_noPermessi::class.java)
-                        startActivityForResult(intent, newRicettaActivityRequestCode)
-                    } else {
-                        //se i permessi vengono concessi, viene lanciata un'activity che consente di inserire l'immagine della ricetta
-                        val intent = Intent(activity, Inserisci_ricetta::class.java)
-                        startActivityForResult(intent, newRicettaActivityRequestCode)
-                    }
+
+                    //se i permessi vengono concessi, viene lanciata un'activity che consente di inserire l'immagine della ricetta
+                    val intent = Intent(activity, Inserisci_ricetta::class.java)
+                    startActivityForResult(intent, newRicettaActivityRequestCode)
                 }
             }
         }
-
     }
 
-    /**
-     * attraverso questa funzione, vengono richiesti i permessi di accesso alla fotocamera del telefono
-     */
-    private fun checkCameraPermission() {
-        if (this.context?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.CAMERA) }
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this.activity as Activity,
-                arrayOf(Manifest.permission.CAMERA),
-                REQUEST_PERMISSION
-            )
-        }
-    }
 
-    /**
-     * attraverso questa funzione, vengono richiesti i permessi di accesso alla galleria del telefono
-     */
-    private fun checkGalleryPermission() {
-        if (this.context?.let {
-                ContextCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            }
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this.activity as Activity,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION
-            )
-        }
-    }
 
     /**
      * se tutti i campi vengono inseriti correttamente allora la ricetta viene inserita nel database locale

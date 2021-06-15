@@ -1,7 +1,6 @@
 package com.example.easycooking.memory.ricettaTua
 
 
-import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -14,18 +13,24 @@ import android.widget.*
 
 import com.example.easycooking.R
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.properties.Delegates
+import android.Manifest
 
+import android.content.pm.PackageManager
+
+import android.widget.Button
+
+import androidx.core.app.ActivityCompat
+import com.google.android.material.snackbar.Snackbar
+
+const val PERMISSION_REQUEST_CAMERA = 0
 
 var fotoscelta:String=""
 private lateinit var editorNomeView: EditText
@@ -37,7 +42,7 @@ private lateinit var editorPorzioni:EditText
 private lateinit var editorIngr:EditText
 lateinit var ivImage:String
 var aiutolettura by Delegates.notNull<Int>()
-private val REQUEST_PERMISSION = 100
+
 private val REQUEST_IMAGE_CAPTURE = 1
 private val REQUEST_PICK_IMAGE = 2
 
@@ -45,13 +50,17 @@ private val REQUEST_PICK_IMAGE = 2
  * Questa classe ci permette di aggiungere una ricetta che verrà poi salvata nel database locale
  */
 
-class Inserisci_ricetta : AppCompatActivity() {
+class Inserisci_ricetta : AppCompatActivity(), ActivityCompat.OnRequestPermissionsResultCallback  {
     companion object {
         const val EXTRAs_REPLY = "com.example.android.ricettalistsql.REPLY"
     }
+    private lateinit var layout: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scriviricetta)
+        layout=findViewById(R.id.mainn)
+
+
 
         editorNomeView = findViewById(R.id.nome_ricetta_inserimento)
         photoview = findViewById(R.id.imageButton3)
@@ -60,6 +69,9 @@ class Inserisci_ricetta : AppCompatActivity() {
         editorCookTime = findViewById(R.id.cott_inserimento)
         editorPorzioni = findViewById(R.id.editTextNumber)
         editorIngr = findViewById(R.id.Ingrediente_1)
+
+        photoview.setOnClickListener { showCameraPreview()  }
+
 
         //andiamo a salvare la preparazione della ricetta inserita dall'utente nella form, all'interno del medesimo campo
         editorPrepTime.addTextChangedListener(object : TextWatcher {
@@ -107,34 +119,34 @@ class Inserisci_ricetta : AppCompatActivity() {
 
 
         //andiamo a salvare l'immagine della ricetta inserita dall'utente, all'interno del medesimo campo
-        photoview.setOnClickListener {
-            fun showAlertDialogButtonClicked(view: View?) {
-                // viene configurata la AlertDialog
-                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-                builder.setTitle("Scegli:")
+        /* photoview.setOnClickListener {
+             fun showAlertDialogButtonClicked(view: View?) {
+                 // viene configurata la AlertDialog
+                 val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                 builder.setTitle("Scegli:")
 
-                //viene aggiunta una lista
-                val scelte = arrayOf("Scatta Foto", "Scegli dalla galleria")
-                builder.setItems(scelte, object : DialogInterface.OnClickListener {
-                    override fun onClick(dialog: DialogInterface?, which: Int) {
-                        when (which) {
-                            0 -> {
-                                openCamera()
-                            }
-                            1 -> {
-                                openGallery()
-                            }
-                        }
-                    }
-                })
+                 //viene aggiunta una lista
+                 val scelte = arrayOf("Scatta Foto", "Scegli dalla galleria")
+                 builder.setItems(scelte, object : DialogInterface.OnClickListener {
+                     override fun onClick(dialog: DialogInterface?, which: Int) {
+                         when (which) {
+                             0 -> {
+                                 showCameraPreview()
+                             }
+                             1 -> {
+                                 openGallery()
+                             }
+                         }
+                     }
+                 })
 
-                // viene creato e mostrato l'AlertDialog
-                val dialog: AlertDialog = builder.create()
-                dialog.show()
-            }
-            //l'AlertDialog viene mostrato quando l'utente clicca sul bottone per aggiungere l'immagine
-            showAlertDialogButtonClicked(it)
-        }
+                 // viene creato e mostrato l'AlertDialog
+                 val dialog: AlertDialog = builder.create()
+                 dialog.show()
+             }
+             //l'AlertDialog viene mostrato quando l'utente clicca sul bottone per aggiungere l'immagine
+             showAlertDialogButtonClicked(it)
+         }*/
 
         var Ingredienti: ArrayList<String> = arrayListOf()
         var add = findViewById<Button>(R.id.addingr)
@@ -201,56 +213,58 @@ class Inserisci_ricetta : AppCompatActivity() {
         }
 
     }
-
-    /**
-     * attraverso questa funzione, viene verificato se sono stati concessi o meno i permessi di accesso alla fotocamera e galleria
-     */
-    override fun onResume() {
-        super.onResume()
-        checkCameraPermission()
-        checkGalleryPermission()
-    }
-
-    /**
-     * attraverso questa funzione, vengono richiesti i permessi di accesso alla fotocamera del telefono
-     */
-    private fun checkCameraPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.CAMERA),
-                REQUEST_PERMISSION
-            )
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == PERMISSION_REQUEST_CAMERA) {
+            // Request for camera permission.
+            if (grantResults.size == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission has been granted. Start camera preview Activity.
+                startCamera()
+            } else {
+                // Permission request was denied.
+                ivImage="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png"
+                aiutolettura=1
+                photoview.setImageResource(R.drawable.divieto)
+                photoview.drawable.setTintList(null)
+            }
         }
     }
-
-    /**
-     * attraverso questa funzione, vengono richiesti i permessi di accesso alla galleria del telefono
-     */
-    private fun checkGalleryPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION
-            )
+    private fun showCameraPreview() {
+        // Check if the Camera permission has been granted
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) ==
+            PackageManager.PERMISSION_GRANTED) {
+            // Permission is already available, start camera preview
+            startCamera()
+        } else {
+            // Permission is missing and must be requested.
+            requestCameraPermission()
         }
     }
+    private fun requestCameraPermission() {
+        // Permission has not been granted and must be requested.
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // Display a SnackBar with a button to request the missing permission.
 
-    /**
-     * attraverso questa funzione, viene aperta la fotocamera
-     */
-    private fun openCamera() {
+        } else {
+
+            // Request the permission. The result will be received in onRequestPermissionResult().
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CAMERA)
+        }
+    }
+    private fun startCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             intent.resolveActivity(packageManager)?.also {
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
             }
         }
     }
+
+
 
     /**
      * attraverso questa funzione, viene aperta la galleria
