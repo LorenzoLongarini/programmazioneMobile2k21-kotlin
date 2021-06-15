@@ -55,7 +55,8 @@ class RegistrationActivity : AppCompatActivity() {
                 val email = textEmail.text.toString()
                 val password = textPassword.text.toString()
 
-                //prendiamo l'istanza della classe FirebaseAuth per lanciare il metodo createUserWithEmailAndPassword che permette di salavare le credenziali dell'utente
+                //prendiamo l'istanza della classe FirebaseAuth per lanciare il metodo createUserWithEmailAndPassword
+                //che permette di salavare le credenziali dell'utente
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user: FirebaseUser = mAuth.currentUser

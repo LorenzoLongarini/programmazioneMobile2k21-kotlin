@@ -30,7 +30,7 @@ import android.widget.Button
 import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
 
-const val PERMISSION_REQUEST_CAMERA = 0
+const val PERMISSION_REQUEST_CAMERA = 1
 const val PERMISSION_REQUEST_GALLERY = 0
 
 var fotoscelta:String=""
