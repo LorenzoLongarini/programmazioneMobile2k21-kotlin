@@ -24,10 +24,10 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".auth.ResetPassword" />
-        <activity android:name=".view.Activity_ricettaTua" />
+        <activity android:name=".memory.ricettaTua.Activity_ricettaTua" />
 
-        <activity android:name=".memory.ricetta.Inserisci_ricetta" />
-        <activity android:name=".memory.ricetta.Inserisci_ricetta_noPermessi" />
+        <activity android:name=".memory.ricettaTua.Inserisci_ricetta" />
+        <activity android:name=".memory.ricettaTua.Inserisci_ricetta_noPermessi" />
 
         <activity android:name=".memory.dispensa.Activity_inserisci_dispensa" />
         <activity android:name=".memory.ricetta.Activity_ricetta" />
