@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-            //richiamo funzione createRequest()
+            //viene lanciata la funzione createRequest() per accedere alle informazioni riguardanti l'account google dell'utente
             createRequest()
 
             //viene inizializzata un'istanza di FirebaseAuth
@@ -83,7 +83,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     /**
-     * Attraverso questa funzione viene lanciato un intent per aprire una finestra di dialogo per scegliere l'account google con cui l'utente vuole effettuare l'accesso.
+     * Attraverso questa funzione viene lanciato un intent per aprire una finestra di dialogo
+     * per scegliere l'account google con cui l'utente vuole effettuare l'accesso.
      *
      */
     private fun signIn() {
@@ -132,7 +133,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 }
 
-                //viene quindi anciato un intent che ci porta all'activity vase
+                //viene quindi lanciato un intent che ci porta all'activity vase
                 val intent = Intent(this, Base::class.java)
                 startActivity(intent)
                 finish()
