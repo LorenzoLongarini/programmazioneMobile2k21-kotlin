@@ -74,6 +74,11 @@ class RegistrationActivity : AppCompatActivity() {
                             //viene lanciato l'intent per passare all'activity per utenti registrati
                             val intent1 = Intent(this, Base::class.java)
                             startActivity(intent1)
+                            Toast.makeText(
+                                this,
+                                "Registrazione effettuata con successo",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     } else {
                         //se ci sono errori nella registrazione viene lanciato un toast

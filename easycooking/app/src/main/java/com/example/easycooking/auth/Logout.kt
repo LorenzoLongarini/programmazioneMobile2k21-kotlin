@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easycooking.MainActivity
 import com.example.easycooking.R
@@ -57,6 +58,11 @@ class Logout : Fragment(R.layout.fragment_logout) {
             signOut()
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
+            Toast.makeText(
+                context,
+                "Logout effettuato con successo",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 

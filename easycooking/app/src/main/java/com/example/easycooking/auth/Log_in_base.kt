@@ -52,7 +52,9 @@ class Log_in_base : Fragment() {
         createRequest()
 
         //andiamo a settare il click del bottone per il sign-in con google
-        bottone_gmail2.setOnClickListener { onClick(bottone_gmail2) }
+        bottone_gmail2.setOnClickListener {
+            onClick(bottone_gmail2)
+        }
 
         //viene richiamata la funzione che permette all'utente di effettuare il login
         login()
@@ -130,6 +132,11 @@ class Log_in_base : Fragment() {
                 //viene quindi lanciato un intent che ci porta all'activity vase
                 val intent = Intent(activity, Base::class.java)
                 startActivity(intent)
+                Toast.makeText(
+                    context,
+                    "Sign in con google effettuato con successo",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             .addOnFailureListener(OnFailureListener {
                 Log.d(TAG, "failure")
@@ -180,6 +187,11 @@ class Log_in_base : Fragment() {
                         //se le credenziali sono inserite correttamente, l'utente è loggato e viene lanciata l'activity riservata ai soli utenti registrati
                         val intent = Intent(activity, Base::class.java)
                         startActivity(intent)
+                        Toast.makeText(
+                            context,
+                            "Login effettuato con successo",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }else{
                         //se le credenziali non sono inserite correttamente, appare un messaggio di errore
                         Toast.makeText(activity, "Login fallito", Toast.LENGTH_LONG).show()

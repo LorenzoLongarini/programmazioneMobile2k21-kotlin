@@ -58,7 +58,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             auth = FirebaseAuth.getInstance()
 
             //usiamo l'istanza della classe Binding per settare il click del bottone GoogleSignIn
-            binding.bottoneGmail.setOnClickListener { onClick(bottone_gmail) }
+            binding.bottoneGmail.setOnClickListener {
+                onClick(bottone_gmail)
+            }
 
             forgotPassword = findViewById(R.id.password_dimenticata)
             //al click sulla scritta "Hai dimenticato la password?" viene lanciato l'intent che ci rimanda all'activity per il reset della password
@@ -137,6 +139,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this, Base::class.java)
                 startActivity(intent)
                 finish()
+                Toast.makeText(
+                    this@MainActivity,
+                    "Sign in con google effettuato con successo",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             .addOnFailureListener(OnFailureListener {
                 Log.d(TAG, "failure")
@@ -183,6 +190,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             val intent = Intent(this, Base::class.java)
                             startActivity(intent)
                             finish()
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Login effettuato con successo",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }else{
                             //se le credenziali non sono inserite correttamente, appare un messaggio di errore
                             Toast.makeText(this@MainActivity, "Login fallito, email e/o password errati", Toast.LENGTH_LONG).show()
@@ -198,6 +210,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     fun senzaReg(v: View) {
          val intent = Intent(this, Base_nonReg::class.java)
             startActivity(intent)
+        Toast.makeText(
+            this@MainActivity,
+            "Sei entrato senza registrarti",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     /**
