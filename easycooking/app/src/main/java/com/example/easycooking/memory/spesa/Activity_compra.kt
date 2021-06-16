@@ -35,7 +35,7 @@ class Activity_compra : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 //il prodotto viene inserito nella lista della spesa
-                val nomeprod = editorNomeView.text.toString()
+                val nomeprod = editorNomeView.text.toString().toLowerCase()
                 replyIntent.putExtra(EXTRAs_REPLY, nomeprod)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
