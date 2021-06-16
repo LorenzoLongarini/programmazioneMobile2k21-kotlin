@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.easycooking.R
+import com.example.easycooking.memory.DB.DispensaApplication
 import com.example.easycooking.memory.dispensa.*
 import com.example.easycooking.memory.ricetta.Ricetta
 import com.example.easycooking.memory.ricettaTua.RicettaAdapterDispensa

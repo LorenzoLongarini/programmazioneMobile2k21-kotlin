@@ -19,10 +19,9 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.easycooking.memory.dispensa.DispensaApplication
+import com.example.easycooking.memory.DB.DispensaApplication
 import com.example.easycooking.R
 import com.example.easycooking.memory.dispensa.DefaultItemDecorator
-import com.example.easycooking.memory.ricetta.*
 import com.example.easycooking.memory.ricettaTua.*
 import com.example.easycooking.utils.SwipeToDelete
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter

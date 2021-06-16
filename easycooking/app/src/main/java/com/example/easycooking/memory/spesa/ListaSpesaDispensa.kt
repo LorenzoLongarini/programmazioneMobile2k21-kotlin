@@ -5,7 +5,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.easycooking.memory.dispensa.DispensaApplication
+import com.example.easycooking.memory.DB.DispensaApplication
 import com.example.easycooking.memory.dispensa.DispensaViewModel
 import com.example.easycooking.R
 import com.example.easycooking.memory.ricetta.Activity_ricetta
