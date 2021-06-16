@@ -77,7 +77,7 @@ class ListaSpesaDispensa :  AppCompatActivity() {
         agg.setOnClickListener {
             if (manc != null) {
                 for (ma in manc) {
-                    var spe = SpesaDBEntity(ma)
+                    var spe = SpesaDBEntity(ma.toLowerCase())
                     spesaViewModel.insert(spe)
                 }
             }
