@@ -21,13 +21,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addio2"
-            app:layout_constraintVertical_bias="0.351" />
+            app:layout_constraintVertical_bias="0.07999998" />
 
         <TextView
             android:id="@+id/addio"
-            android:layout_width="253dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/lemonada"
             android:text="@string/addio"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,14 +37,14 @@
         <TextView
             android:id="@+id/addio2"
             android:layout_width="618dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="112dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/lemonada"
             android:text="@string/addio2"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.592"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/addio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
