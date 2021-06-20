@@ -24,9 +24,9 @@ import kotlinx.android.synthetic.main.cards.view.*
  *
  */
 
-class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() , Filterable{
+class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : RecyclerView.Adapter<RicettaAdapter.RicettaViewHolder>() {
 
-    lateinit var itemsFilter: ArrayList<Ricetta>
+    //lateinit var itemsFilter: ArrayList<Ricetta>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RicettaViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.cards, parent, false)
         return RicettaViewHolder(layout)
@@ -96,10 +96,13 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
     }
 
-    /**
-     * attraverso questa funzione, viene effettuata una ricerca della ricetta per nome
-     *
-     */
+
+
+
+
+
+
+    /*
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(charsequence: CharSequence?): FilterResults {
@@ -111,6 +114,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
                 }else{
                     var searchChr  = charsequence.toString().toLowerCase()
                     val ricette = ArrayList<Ricetta>()
+
 
                     for (item in ricette){
                         if(item.nome!!.contains(searchChr)){
@@ -130,7 +134,7 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
             }
 
         }
-    }
+    }*/
 
 }
 

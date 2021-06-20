@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 onClick(bottone_gmail)
             }
 
+
             forgotPassword = findViewById(R.id.password_dimenticata)
             //al click sulla scritta "Hai dimenticato la password?" viene lanciato l'intent che ci rimanda all'activity per il reset della password
             forgotPassword.setOnClickListener{startActivity(Intent(this, ResetPassword::class.java))}

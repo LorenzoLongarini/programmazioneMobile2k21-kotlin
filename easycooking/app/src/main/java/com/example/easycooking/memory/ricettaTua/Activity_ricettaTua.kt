@@ -44,19 +44,19 @@ class Activity_ricettaTua : AppCompatActivity() {
         prep.text=intent.getStringExtra("Preparaz")
 
         if(aiuto==1){
-            //nel caso in cui l'immagine venga inserita dall'utente
+            //nel caso in cui l'immagine venga presa dalla galleria
             val uri: Uri = Uri.parse(foto)
             photona.setImageURI(uri)
         }
         else if (aiuto==0){
-            //nel caso in cui l'immagine non venga inserita
+            //nel caso in cui l'immagine venga presa dalla fotocamera
             photona.setImageBitmap(foto?.let { base64ToBitmap(it) })
         }
     }
 }
 
 /**
- * Questa funzione converte l'immagine da bitmap in una stringa,
+ * Questa funzione converte l'immagine da stringa a bitmap,
  * così che possa essere visualizzata nella singola card
  *
  */

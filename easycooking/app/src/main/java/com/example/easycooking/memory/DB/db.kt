@@ -35,6 +35,7 @@ public abstract class ChoiceDatabase : RoomDatabase() {
                     .build()
                 INSTANCE = instance
                 // return instance
+                //aggiorna la lista con i dati nel database
                 instance
             }
         }
