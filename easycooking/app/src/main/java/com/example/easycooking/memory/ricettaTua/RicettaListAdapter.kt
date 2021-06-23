@@ -112,7 +112,7 @@ class RicettaListAdapter : ListAdapter<RicettaDBEntity, RicettaListAdapter.Ricet
  }
 
 /**
- * Questa funzione converte l'immagine da bitmap in una stringa,
+ * Questa funzione converte l'immagine da stringa a bitmap,
  * così che possa essere visualizzata nella singola card
  *
  */
