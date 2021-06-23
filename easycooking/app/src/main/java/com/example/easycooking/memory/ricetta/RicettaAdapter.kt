@@ -96,46 +96,6 @@ class RicettaAdapter(val items: ArrayList<Ricetta>, val context: Context) : Recy
        val nomeRicetta = row.findViewById<TextView>(R.id.nome_ric)
     }
 
-
-
-
-
-
-
-    /*
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(charsequence: CharSequence?): FilterResults {
-
-                val filterResults = FilterResults()
-                if(charsequence==null || charsequence.length < 0 ){
-                    filterResults.count = items.size
-                    filterResults.values = items
-                }else{
-                    var searchChr  = charsequence.toString().toLowerCase()
-                    val ricette = ArrayList<Ricetta>()
-
-
-                    for (item in ricette){
-                        if(item.nome!!.contains(searchChr)){
-                            ricette.add(item)
-                        }
-                    }
-                    filterResults.count = ricette.size
-                    filterResults.values = ricette
-                }
-                return filterResults
-
-            }
-
-            override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
-               itemsFilter = filterResults!!.values as ArrayList<Ricetta>
-                notifyDataSetChanged()
-            }
-
-        }
-    }*/
-
 }
 
 
